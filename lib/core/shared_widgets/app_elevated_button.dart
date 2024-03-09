@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../theming/colors.dart';
+import '../theming/styles.dart';
 class AppTextButton extends StatelessWidget {
   const AppTextButton(
       {super.key,
@@ -27,9 +28,9 @@ class AppTextButton extends StatelessWidget {
     return TextButton(
       style: ButtonStyle(
           minimumSize:
-              MaterialStateProperty.all(const Size(double.infinity, 52)),
+              MaterialStateProperty.all( Size(double.infinity, 60.h)),
           shape: MaterialStatePropertyAll(
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius ?? 8))),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius ?? 25))),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           padding: MaterialStatePropertyAll<EdgeInsets>(
             EdgeInsets.symmetric(
@@ -41,11 +42,11 @@ class AppTextButton extends StatelessWidget {
             Size(buttonWidth ?? double.maxFinite, buttonHeight ?? 50.h),
           ),
           backgroundColor: MaterialStateProperty.all(
-              backgroundColor ?? ColorsManager.mainBlue)),
+              backgroundColor ?? ColorsManager.mainWhite)),
       onPressed: onPressed,
       child: Text(
         textButton,
-        style: textStyle,
+        style: textStyle ?? TextStyles.font18SemiBoldPurple,
       ),
     );
   }

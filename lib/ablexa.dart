@@ -27,10 +27,10 @@ class AplexaApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Doc App',
         theme: ThemeData(
-          primaryColor: ColorsManager.mainBlue,
+          primaryColor: ColorsManager.mainColor,
           scaffoldBackgroundColor: Colors.white,
         ),
-        initialRoute: Routes.splashScreen,
+        initialRoute: Routes.landingPage,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );
