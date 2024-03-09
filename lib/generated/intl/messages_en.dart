@@ -22,13 +22,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "back": MessageLookupByLibrary.simpleMessage("Back"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("Change Password"),
+        "confirm_new_password":
+            MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "did_not_receive_code":
             MessageLookupByLibrary.simpleMessage("I didn\'t receive a code !"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "email_hint_text": MessageLookupByLibrary.simpleMessage(
             "Enter your email or phone number"),
+        "enter_new_password":
+            MessageLookupByLibrary.simpleMessage("Enter New Password"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("Forget Password ?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full Name"),
@@ -43,7 +48,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "sign in to access your account"),
         "name_hint_text":
             MessageLookupByLibrary.simpleMessage("Enter Your Name"),
+        "new_password": MessageLookupByLibrary.simpleMessage("New password"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
+        "password_changed":
+            MessageLookupByLibrary.simpleMessage("Password changed"),
         "password_hint_text":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
         "please_check_your_email":
@@ -52,8 +60,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),
         "text_forget_password": MessageLookupByLibrary.simpleMessage(
             "Don’t worry! It happens. Please enter the \n email associated with your account."),
+        "text_password_change": MessageLookupByLibrary.simpleMessage(
+            "Your password has been changed successfully"),
         "text_verify_code":
             MessageLookupByLibrary.simpleMessage("We’ve sent a code to "),
+        "update_password":
+            MessageLookupByLibrary.simpleMessage("Update password"),
         "verify": MessageLookupByLibrary.simpleMessage("Verify")
       };
 }

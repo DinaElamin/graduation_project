@@ -5,5 +5,6 @@ class Routes {
   static const forgetPasswordPage = '/forgetPasswordPage';
   static const verifyCodePage = '/verifyCodePage';
   static const changePasswordPage = '/changePasswordPage';
+  static const successfullyPage = '/successfullyPage';
 
 }

@@ -35,6 +35,8 @@ class TextAndButtonWidget extends StatelessWidget {
             Padding(
               padding:  EdgeInsets.only(left: 30.w,right: 30.w),
               child: AppTextButton(
+               backgroundColor: ColorsManager.mainWhite,
+                  textStyle: TextStyles.font18SemiBoldPurple,
                   textButton: S.of(context).get_started, onPressed: (){
                     context.pushNamed(Routes.loginPage);
               }),

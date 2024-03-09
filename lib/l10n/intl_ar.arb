@@ -19,6 +19,13 @@
   "please_check_your_email": "يرجى التحقق من بريدك الإلكتروني",
   "text_verify_code": "لقد قمنا بإرسال رمز إلى",
   "text_forget_password": "لا تقلق! يحدث ذلك. يرجى إدخال البريد \nالإلكتروني المرتبط بحسابك.",
-  "change_password": "تغيير كلمة المرور"
+  "change_password": "تغيير كلمة المرور",
+  "enter_new_password": "أدخل كلمة المرور الجديدة",
+  "new_password": "كلمة المرور الجديدة",
+  "confirm_new_password": "تأكيد كلمة المرور الجديدة",
+  "password_changed": "تم تغيير كلمة المرور",
+  "text_password_change": "تم تغيير كلمة المرور بنجاح",
+  "update_password": "تحديث كلمة المرور",
+  "back": "رجوع"
 
 }

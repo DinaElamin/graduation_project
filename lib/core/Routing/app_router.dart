@@ -5,6 +5,7 @@ import 'package:ablexa/features/feature_landing_page/presentations/screens/featu
 import 'package:ablexa/features/feature_verify_code_page/presentations/screens/feature_verify_code_page.dart';
 import 'package:flutter/material.dart';
 import '../../features/feature_login_page/presentations/screens/feature_login_page.dart';
+import '../../features/feature_successfully_page/presentations/screens/feature_successfully_page.dart';
 import 'routers.dart';
 
 class AppRouter {
@@ -34,6 +35,11 @@ class AppRouter {
       case Routes.changePasswordPage:
         return MaterialPageRoute(
           builder: (context) => const ChangePasswordPage(),
+        );
+        //SuccessfullyPage
+      case Routes.successfullyPage:
+        return MaterialPageRoute(
+          builder: (context) => const SuccessfullyPage(),
         );
       default:
         return MaterialPageRoute(

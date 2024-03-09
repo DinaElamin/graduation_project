@@ -22,13 +22,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "back": MessageLookupByLibrary.simpleMessage("رجوع"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
+        "confirm_new_password":
+            MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور الجديدة"),
         "did_not_receive_code":
             MessageLookupByLibrary.simpleMessage("لم أتلقَ رمزًا!"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "email_hint_text": MessageLookupByLibrary.simpleMessage(
             "أدخل بريدك الإلكتروني أو رقم هاتفك"),
+        "enter_new_password":
+            MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور الجديدة"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور ؟"),
         "full_name": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
@@ -40,7 +45,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_text_desc": MessageLookupByLibrary.simpleMessage(
             "تسجيل الدخول للوصول إلى حسابك"),
         "name_hint_text": MessageLookupByLibrary.simpleMessage("أدخل اسمك"),
+        "new_password":
+            MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
+        "password_changed":
+            MessageLookupByLibrary.simpleMessage("تم تغيير كلمة المرور"),
         "password_hint_text":
             MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور الخاصة بك"),
         "please_check_your_email": MessageLookupByLibrary.simpleMessage(
@@ -49,8 +58,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "send_code": MessageLookupByLibrary.simpleMessage("ارسال الكود"),
         "text_forget_password": MessageLookupByLibrary.simpleMessage(
             "لا تقلق! يحدث ذلك. يرجى إدخال البريد \nالإلكتروني المرتبط بحسابك."),
+        "text_password_change":
+            MessageLookupByLibrary.simpleMessage("تم تغيير كلمة المرور بنجاح"),
         "text_verify_code":
             MessageLookupByLibrary.simpleMessage("لقد قمنا بإرسال رمز إلى"),
+        "update_password":
+            MessageLookupByLibrary.simpleMessage("تحديث كلمة المرور"),
         "verify": MessageLookupByLibrary.simpleMessage("تحقق")
       };
 }

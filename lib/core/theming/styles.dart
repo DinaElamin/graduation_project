@@ -45,4 +45,8 @@ class TextStyles {
       color: ColorsManager.mainColor,
       fontSize: 16.sp,
       fontWeight: FontWeightHelper.semiBold);
+  static TextStyle font24SemiBoldBlack = TextStyle(
+      color: ColorsManager.mainBlack,
+      fontSize: 24.sp,
+      fontWeight: FontWeightHelper.semiBold);
 }

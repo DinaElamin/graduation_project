@@ -19,5 +19,13 @@
  "text_forget_password": "Don’t worry! It happens. Please enter the \n email associated with your account.",
  "verify": "Verify",
 "resend": "Resend",
- "change_password": "Change Password"
+ "change_password": "Change Password",
+ "enter_new_password": "Enter New Password",
+ "new_password": "New password",
+ "confirm_new_password": "Confirm new password",
+ "update_password": "Update password",
+ "password_changed": "Password changed",
+ "text_password_change":"Your password has been changed successfully",
+ "back": "Back"
+
 }
