@@ -1,7 +1,8 @@
+import 'package:ablexa/core/helper/extentions.dart';
 import 'package:ablexa/core/theming/media_query_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import '../../../../core/Routing/routers.dart';
 import '../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/spacing.dart';
@@ -34,7 +35,9 @@ class TextAndButtonWidget extends StatelessWidget {
             Padding(
               padding:  EdgeInsets.only(left: 30.w,right: 30.w),
               child: AppTextButton(
-                  textButton: S.of(context).get_started, onPressed: (){}),
+                  textButton: S.of(context).get_started, onPressed: (){
+                    context.pushNamed(Routes.loginPage);
+              }),
             )
           ]),);
   }

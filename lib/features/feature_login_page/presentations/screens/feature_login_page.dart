@@ -1,22 +1,17 @@
-import 'package:ablexa/core/helper/extentions.dart';
 import 'package:ablexa/core/theming/spacing.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/Routing/routers.dart';
-import '../../../../core/shared_widgets/app_elevated_button.dart';
-import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/styles.dart';
 import '../../../../generated/l10n.dart';
 import '../widgets/all_text_field.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<LoginPage> createState() => _LoginPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
+class _LoginPageState extends State<LoginPage> {
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -24,19 +19,19 @@ class _SignUpPageState extends State<SignUpPage> {
     return Scaffold(
       body: SafeArea(
         child: ListView(children: [
-          verticalSpacing(50),
+          verticalSpacing(100),
           Text(
             textAlign: TextAlign.center,
-            S.of(context).sign_up,
+            S.of(context).login_text,
             style: TextStyles.font20BoldBlack,
           ),
           verticalSpacing(10),
           Text(
               textAlign: TextAlign.center,
               maxLines: 2,
-              S.of(context).sign_up_text_desc,
+              S.of(context).login_text_desc,
               style: TextStyles.font14MediumLightBlack),
-          verticalSpacing(30),
+          verticalSpacing(50),
           const AllTextFieldsWidget(),
 
         ]),

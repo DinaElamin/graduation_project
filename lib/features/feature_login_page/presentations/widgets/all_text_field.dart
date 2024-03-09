@@ -18,7 +18,6 @@ class AllTextFieldsWidget extends StatefulWidget {
 class _AllTextFieldsWidgetState extends State<AllTextFieldsWidget> {
   final formKey = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
   bool isPasswordVisible = false;
   TextEditingController passwordController = TextEditingController();
   @override
@@ -35,21 +34,6 @@ class _AllTextFieldsWidgetState extends State<AllTextFieldsWidget> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(S.of(context).full_name,
-                    style: TextStyles.font16SemiBoldBlack),
-                verticalSpacing(10),
-                AppTextFormField(
-                  controller: nameController,
-                  hintText: S.of(context).name_hint_text,
-                  validator: (name) {
-                    if (name!.isEmpty) {
-                      return 'Name cannot be empty';
-                    } else if (!RegExp(r'^[a-zA-Z ]+$').hasMatch(name)) {
-                      return 'Enter a valid name (only letters and spaces are allowed)';
-                    }
-                    return null; // Return null if the name is valid
-                  },
-                ),
                 verticalSpacing(10),
               ],),
             Column(
@@ -60,6 +44,7 @@ class _AllTextFieldsWidgetState extends State<AllTextFieldsWidget> {
                     style: TextStyles.font16SemiBoldBlack),
                 verticalSpacing(10),
                 AppTextFormField(
+                  maxLines: 1,
                   controller: emailController,
                   hintText: S.of(context).email_hint_text,
                   validator: (email) {
@@ -109,14 +94,27 @@ class _AllTextFieldsWidgetState extends State<AllTextFieldsWidget> {
                     return null; // Return null if the password is valid
                   },
                 ),
-                verticalSpacing(40),
+
               ],),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                TextButton(
+                  child: Text(S.of(context).forget_password,style: TextStyles.font12RegularPurple),
+                    onPressed: (){
+                    context.pushNamed(Routes.forgetPasswordPage);
+                    },
+                    ),
+              ],
+            ),
+            verticalSpacing(40),
             Padding(
-              padding:  EdgeInsets.only(right: 30.w,left: 30.w),
+              padding:  EdgeInsets.only(right: 30.w,left: 30.w,top: 30.h,bottom: 30.h),
               child: AppTextButton(
                   backgroundColor: ColorsManager.mainColor,
                   textStyle: TextStyles.font18SemiBoldWhite,
-                  textButton: S.of(context).sign_up, onPressed: (){
+                  textButton: S.of(context).login, onPressed: (){
                 validateThenDoSignUp(context);
               }),
             ),

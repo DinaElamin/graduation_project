@@ -30,7 +30,7 @@ class AppTextButton extends StatelessWidget {
           minimumSize:
               MaterialStateProperty.all( Size(double.infinity, 60.h)),
           shape: MaterialStatePropertyAll(
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius ?? 25))),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius ?? 30))),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
           padding: MaterialStatePropertyAll<EdgeInsets>(
             EdgeInsets.symmetric(

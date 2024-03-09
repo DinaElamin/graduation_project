@@ -1,6 +1,18 @@
 {
  "landing_text1": "Your School  App",
   "landing_text2": "Bring the school to you",
-  "get_started": "Get Started"
+  "get_started": "Get Started",
+  "login": "Log In ",
+ "login_text": "Welcome back",
+ "login_text_desc": "sign in to access your account",
+ "full_name": "Full Name",
+ "email": "Email",
+ "password": "Password",
+ "name_hint_text": "Enter Your Name",
+ "email_hint_text": "Enter your email or phone number",
+ "password_hint_text": "Enter your password",
+"forget_password": "Forget Password ?",
+ "send_code": "Send Code",
+ "text_forget_password": "Don’t worry! It happens. Please enter the \n email associated with your account."
 
 }

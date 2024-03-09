@@ -79,6 +79,126 @@ class S {
       args: [],
     );
   }
+
+  /// `Log In `
+  String get login {
+    return Intl.message(
+      'Log In ',
+      name: 'login',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome back`
+  String get login_text {
+    return Intl.message(
+      'Welcome back',
+      name: 'login_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `sign in to access your account`
+  String get login_text_desc {
+    return Intl.message(
+      'sign in to access your account',
+      name: 'login_text_desc',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Full Name`
+  String get full_name {
+    return Intl.message(
+      'Full Name',
+      name: 'full_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get email {
+    return Intl.message(
+      'Email',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get password {
+    return Intl.message(
+      'Password',
+      name: 'password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Your Name`
+  String get name_hint_text {
+    return Intl.message(
+      'Enter Your Name',
+      name: 'name_hint_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your email or phone number`
+  String get email_hint_text {
+    return Intl.message(
+      'Enter your email or phone number',
+      name: 'email_hint_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your password`
+  String get password_hint_text {
+    return Intl.message(
+      'Enter your password',
+      name: 'password_hint_text',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forget Password ?`
+  String get forget_password {
+    return Intl.message(
+      'Forget Password ?',
+      name: 'forget_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Send Code`
+  String get send_code {
+    return Intl.message(
+      'Send Code',
+      name: 'send_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don’t worry! It happens. Please enter the \n email associated with your account.`
+  String get text_forget_password {
+    return Intl.message(
+      'Don’t worry! It happens. Please enter the \n email associated with your account.',
+      name: 'text_forget_password',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
