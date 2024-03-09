@@ -41,4 +41,8 @@ class TextStyles {
       color: ColorsManager.mainBlack,
       fontSize: 16.sp,
       fontWeight: FontWeightHelper.semiBold);
+  static TextStyle font16SemiBoldPurple = TextStyle(
+      color: ColorsManager.mainColor,
+      fontSize: 16.sp,
+      fontWeight: FontWeightHelper.semiBold);
 }

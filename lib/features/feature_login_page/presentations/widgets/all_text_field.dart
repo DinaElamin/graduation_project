@@ -126,7 +126,7 @@ class _AllTextFieldsWidgetState extends State<AllTextFieldsWidget> {
   void validateThenDoSignUp(BuildContext context) {
     if (formKey.currentState!.validate()) {
       print("Validation successful. Navigating to verifyEmailManagerPage");
-      context.pushNamed(Routes.verifyEmailManagerPage);
+      // context.pushNamed(Routes.verifyEmailManagerPage);
     } else {
       print("Validation failed. Please check the form fields.");
     }

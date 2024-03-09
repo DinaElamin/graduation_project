@@ -190,11 +190,71 @@ class S {
     );
   }
 
+  /// `please check your email`
+  String get please_check_your_email {
+    return Intl.message(
+      'please check your email',
+      name: 'please_check_your_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `We’ve sent a code to `
+  String get text_verify_code {
+    return Intl.message(
+      'We’ve sent a code to ',
+      name: 'text_verify_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I didn't receive a code !`
+  String get did_not_receive_code {
+    return Intl.message(
+      'I didn\'t receive a code !',
+      name: 'did_not_receive_code',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Don’t worry! It happens. Please enter the \n email associated with your account.`
   String get text_forget_password {
     return Intl.message(
       'Don’t worry! It happens. Please enter the \n email associated with your account.',
       name: 'text_forget_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify`
+  String get verify {
+    return Intl.message(
+      'Verify',
+      name: 'verify',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resend`
+  String get resend {
+    return Intl.message(
+      'Resend',
+      name: 'resend',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change Password`
+  String get change_password {
+    return Intl.message(
+      'Change Password',
+      name: 'change_password',
       desc: '',
       args: [],
     );

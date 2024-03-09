@@ -10,13 +10,17 @@ class LandingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColorsManager.mainWhite,
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: ListView(
         children: [
-          SizedBox(
-              height: context.screenHeight*0.6,
-              child: Image.asset(ImageManager.featuresLandingScreen)),
-          const TextAndButtonWidget(),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                  height: context.screenHeight*0.6,
+                  child: Image.asset(ImageManager.featuresLandingScreen)),
+              const TextAndButtonWidget(),
+            ],
+          ),
         ],
       ),
     );

@@ -1,8 +1,10 @@
+import 'package:ablexa/core/helper/extentions.dart';
 import 'package:ablexa/core/theming/image_manager.dart';
 import 'package:ablexa/core/theming/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/Routing/routers.dart';
 import '../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../core/shared_widgets/app_text_feild.dart';
 import '../../../../core/theming/colors.dart';
@@ -17,7 +19,7 @@ class ForgetPasswordPage extends StatefulWidget {
 
 class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   TextEditingController emailController = TextEditingController();
-
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,28 +39,31 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
               verticalSpacing(20),
               Text(S.of(context).text_forget_password,style: TextStyles.font14MediumLightBlack.copyWith(fontSize: 16.sp),),
               verticalSpacing(50),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(S.of(context).email,
-                      style: TextStyles.font16SemiBoldBlack),
-                  verticalSpacing(10),
-                  AppTextFormField(
-                    maxLines: 1,
-                    controller: emailController,
-                    hintText: S.of(context).email_hint_text,
-                    validator: (email) {
-                      if (email!.isEmpty) {
-                        return 'Email cannot be empty';
-                      } else if (!RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$').hasMatch(email)) {
-                        return 'Enter a valid email address';
-                      }
-                      return null; // Return null if the email is valid
-                    },
-                  ),
-                  verticalSpacing(10),
-                ],),
+              Form(
+                key: formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(S.of(context).email,
+                        style: TextStyles.font16SemiBoldBlack),
+                    verticalSpacing(10),
+                    AppTextFormField(
+                      maxLines: 1,
+                      controller: emailController,
+                      hintText: S.of(context).email_hint_text,
+                      validator: (email) {
+                        if (email!.isEmpty) {
+                          return 'Email cannot be empty';
+                        } else if (!RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$').hasMatch(email)) {
+                          return 'Enter a valid email address';
+                        }
+                        return null; // Return null if the email is valid
+                      },
+                    ),
+                    verticalSpacing(10),
+                  ],),
+              ),
               verticalSpacing(50),
             ],),
           ),
@@ -68,7 +73,9 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                 backgroundColor: ColorsManager.mainColor,
                 textStyle: TextStyles.font18SemiBoldWhite,
                 textButton: S.of(context).send_code, onPressed: (){
-
+             if(formKey.currentState!.validate()){
+               context.pushNamed(Routes.verifyCodePage);
+             }
             }),
           ),
 

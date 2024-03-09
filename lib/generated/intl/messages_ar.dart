@@ -22,6 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "change_password":
+            MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
+        "did_not_receive_code":
+            MessageLookupByLibrary.simpleMessage("لم أتلقَ رمزًا!"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "email_hint_text": MessageLookupByLibrary.simpleMessage(
             "أدخل بريدك الإلكتروني أو رقم هاتفك"),
@@ -39,8 +43,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "password_hint_text":
             MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور الخاصة بك"),
+        "please_check_your_email": MessageLookupByLibrary.simpleMessage(
+            "يرجى التحقق من بريدك الإلكتروني"),
+        "resend": MessageLookupByLibrary.simpleMessage("اعادة ارسال"),
         "send_code": MessageLookupByLibrary.simpleMessage("ارسال الكود"),
         "text_forget_password": MessageLookupByLibrary.simpleMessage(
-            "لا تقلق! يحدث ذلك. يرجى إدخال البريد \nالإلكتروني المرتبط بحسابك.")
+            "لا تقلق! يحدث ذلك. يرجى إدخال البريد \nالإلكتروني المرتبط بحسابك."),
+        "text_verify_code":
+            MessageLookupByLibrary.simpleMessage("لقد قمنا بإرسال رمز إلى"),
+        "verify": MessageLookupByLibrary.simpleMessage("تحقق")
       };
 }

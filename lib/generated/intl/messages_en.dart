@@ -22,6 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "change_password":
+            MessageLookupByLibrary.simpleMessage("Change Password"),
+        "did_not_receive_code":
+            MessageLookupByLibrary.simpleMessage("I didn\'t receive a code !"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "email_hint_text": MessageLookupByLibrary.simpleMessage(
             "Enter your email or phone number"),
@@ -42,8 +46,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "password_hint_text":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
+        "please_check_your_email":
+            MessageLookupByLibrary.simpleMessage("please check your email"),
+        "resend": MessageLookupByLibrary.simpleMessage("Resend"),
         "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),
         "text_forget_password": MessageLookupByLibrary.simpleMessage(
-            "Don’t worry! It happens. Please enter the \n email associated with your account.")
+            "Don’t worry! It happens. Please enter the \n email associated with your account."),
+        "text_verify_code":
+            MessageLookupByLibrary.simpleMessage("We’ve sent a code to "),
+        "verify": MessageLookupByLibrary.simpleMessage("Verify")
       };
 }

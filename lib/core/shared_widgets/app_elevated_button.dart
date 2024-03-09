@@ -28,7 +28,7 @@ class AppTextButton extends StatelessWidget {
     return TextButton(
       style: ButtonStyle(
           minimumSize:
-              MaterialStateProperty.all( Size(double.infinity, 60.h)),
+              MaterialStateProperty.all( Size(double.infinity, 55.h)),
           shape: MaterialStatePropertyAll(
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(borderRadius ?? 30))),
           tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -42,11 +42,11 @@ class AppTextButton extends StatelessWidget {
             Size(buttonWidth ?? double.maxFinite, buttonHeight ?? 50.h),
           ),
           backgroundColor: MaterialStateProperty.all(
-              backgroundColor ?? ColorsManager.mainWhite)),
+              backgroundColor ?? ColorsManager.mainColor)),
       onPressed: onPressed,
       child: Text(
         textButton,
-        style: textStyle ?? TextStyles.font18SemiBoldPurple,
+        style: textStyle ?? TextStyles.font18SemiBoldWhite,
       ),
     );
   }

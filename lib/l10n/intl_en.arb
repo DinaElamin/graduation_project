@@ -13,6 +13,11 @@
  "password_hint_text": "Enter your password",
 "forget_password": "Forget Password ?",
  "send_code": "Send Code",
- "text_forget_password": "Don’t worry! It happens. Please enter the \n email associated with your account."
-
+ "please_check_your_email": "please check your email",
+ "text_verify_code": "We’ve sent a code to ",
+ "did_not_receive_code": "I didn't receive a code !",
+ "text_forget_password": "Don’t worry! It happens. Please enter the \n email associated with your account.",
+ "verify": "Verify",
+"resend": "Resend",
+ "change_password": "Change Password"
 }
