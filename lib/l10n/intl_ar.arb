@@ -26,6 +26,15 @@
   "password_changed": "تم تغيير كلمة المرور",
   "text_password_change": "تم تغيير كلمة المرور بنجاح",
   "update_password": "تحديث كلمة المرور",
-  "back": "رجوع"
-
+  "back": "رجوع",
+  "search": "بحث",
+  "users": "المستخدمين",
+  "all": "الكل",
+  "students": "الطلاب",
+  "teachers": "الموعلمين",
+  "classes": "الفصول",
+  "view_profile": "عرض الملف الشخصي",
+  "delete": "حذف",
+  "my_profile": "الملف الشخصي",
+  "setting": "الاعدادات"
 }

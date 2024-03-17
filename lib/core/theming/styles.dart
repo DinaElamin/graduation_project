@@ -29,6 +29,10 @@ class TextStyles {
       color: ColorsManager.mainColor,
       fontSize: 12.sp,
       fontWeight: FontWeightHelper.regular);
+  static TextStyle font12BlackBold = TextStyle(
+      color: ColorsManager.mainBlack,
+      fontSize: 12.sp,
+      fontWeight: FontWeightHelper.bold);
   static TextStyle font18SemiBoldWhite = TextStyle(
       color: ColorsManager.mainWhite,
       fontSize: 18.sp,

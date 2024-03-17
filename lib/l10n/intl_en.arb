@@ -26,6 +26,16 @@
  "update_password": "Update password",
  "password_changed": "Password changed",
  "text_password_change":"Your password has been changed successfully",
- "back": "Back"
+ "back": "Back",
+ "search": "Search",
+ "users": "Users",
+ "all": "All",
+ "students": "Students",
+ "teachers": "Teachers",
+ "classes": "Classes",
+ "view_profile": "View Profile",
+ "delete": "Delete",
+ "my_profile": "My Profile",
+ "setting": "Settings"
 
 }

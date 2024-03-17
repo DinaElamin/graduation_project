@@ -17,6 +17,7 @@ class AppTextFormField extends StatelessWidget {
   final TextInputType? textInputType;
   final double? borderRadius;
   final int? maxLines;
+  final Color? fillColorFromBackground;
   const AppTextFormField(
       {super.key,
       required this.hintText,
@@ -27,7 +28,7 @@ class AppTextFormField extends StatelessWidget {
       this.contentPadding,
       required this.validator,
       this.controller,
-      this.textInputType, this.prefixIcon, this.borderRadius, this.maxLines});
+      this.textInputType, this.prefixIcon, this.borderRadius, this.maxLines, this.fillColorFromBackground});
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +46,7 @@ class AppTextFormField extends StatelessWidget {
 
   InputDecoration decorationFromTextField() {
     return InputDecoration(
+
         isDense: true,
         contentPadding: contentPadding ??
             EdgeInsets.symmetric(horizontal: 10.w, vertical: 17.h),
@@ -81,6 +83,8 @@ class AppTextFormField extends StatelessWidget {
             color: ColorsManager.mainBlack.withOpacity(0.2)),
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,
+      filled: true, // Set filled to true
+      fillColor: fillColorFromBackground, // Set white background color
 
        );
   }

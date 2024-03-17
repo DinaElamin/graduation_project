@@ -22,11 +22,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "all": MessageLookupByLibrary.simpleMessage("الكل"),
         "back": MessageLookupByLibrary.simpleMessage("رجوع"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
+        "classes": MessageLookupByLibrary.simpleMessage("الفصول"),
         "confirm_new_password":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور الجديدة"),
+        "delete": MessageLookupByLibrary.simpleMessage("حذف"),
         "did_not_receive_code":
             MessageLookupByLibrary.simpleMessage("لم أتلقَ رمزًا!"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
@@ -44,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "login_text_desc": MessageLookupByLibrary.simpleMessage(
             "تسجيل الدخول للوصول إلى حسابك"),
+        "my_profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
         "name_hint_text": MessageLookupByLibrary.simpleMessage("أدخل اسمك"),
         "new_password":
             MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
@@ -55,7 +59,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "please_check_your_email": MessageLookupByLibrary.simpleMessage(
             "يرجى التحقق من بريدك الإلكتروني"),
         "resend": MessageLookupByLibrary.simpleMessage("اعادة ارسال"),
+        "search": MessageLookupByLibrary.simpleMessage("بحث"),
         "send_code": MessageLookupByLibrary.simpleMessage("ارسال الكود"),
+        "setting": MessageLookupByLibrary.simpleMessage("الاعدادات"),
+        "students": MessageLookupByLibrary.simpleMessage("الطلاب"),
+        "teachers": MessageLookupByLibrary.simpleMessage("الموعلمين"),
         "text_forget_password": MessageLookupByLibrary.simpleMessage(
             "لا تقلق! يحدث ذلك. يرجى إدخال البريد \nالإلكتروني المرتبط بحسابك."),
         "text_password_change":
@@ -64,6 +72,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لقد قمنا بإرسال رمز إلى"),
         "update_password":
             MessageLookupByLibrary.simpleMessage("تحديث كلمة المرور"),
-        "verify": MessageLookupByLibrary.simpleMessage("تحقق")
+        "users": MessageLookupByLibrary.simpleMessage("المستخدمين"),
+        "verify": MessageLookupByLibrary.simpleMessage("تحقق"),
+        "view_profile": MessageLookupByLibrary.simpleMessage("عرض الملف الشخصي")
       };
 }

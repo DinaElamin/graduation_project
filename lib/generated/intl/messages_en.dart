@@ -22,11 +22,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "all": MessageLookupByLibrary.simpleMessage("All"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("Change Password"),
+        "classes": MessageLookupByLibrary.simpleMessage("Classes"),
         "confirm_new_password":
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
+        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "did_not_receive_code":
             MessageLookupByLibrary.simpleMessage("I didn\'t receive a code !"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -46,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_text": MessageLookupByLibrary.simpleMessage("Welcome back"),
         "login_text_desc": MessageLookupByLibrary.simpleMessage(
             "sign in to access your account"),
+        "my_profile": MessageLookupByLibrary.simpleMessage("My Profile"),
         "name_hint_text":
             MessageLookupByLibrary.simpleMessage("Enter Your Name"),
         "new_password": MessageLookupByLibrary.simpleMessage("New password"),
@@ -57,7 +61,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "please_check_your_email":
             MessageLookupByLibrary.simpleMessage("please check your email"),
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
+        "search": MessageLookupByLibrary.simpleMessage("Search"),
         "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),
+        "setting": MessageLookupByLibrary.simpleMessage("Settings"),
+        "students": MessageLookupByLibrary.simpleMessage("Students"),
+        "teachers": MessageLookupByLibrary.simpleMessage("Teachers"),
         "text_forget_password": MessageLookupByLibrary.simpleMessage(
             "Don’t worry! It happens. Please enter the \n email associated with your account."),
         "text_password_change": MessageLookupByLibrary.simpleMessage(
@@ -66,6 +74,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("We’ve sent a code to "),
         "update_password":
             MessageLookupByLibrary.simpleMessage("Update password"),
-        "verify": MessageLookupByLibrary.simpleMessage("Verify")
+        "users": MessageLookupByLibrary.simpleMessage("Users"),
+        "verify": MessageLookupByLibrary.simpleMessage("Verify"),
+        "view_profile": MessageLookupByLibrary.simpleMessage("View Profile")
       };
 }

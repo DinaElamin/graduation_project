@@ -1,6 +1,7 @@
 
 import 'package:ablexa/features/feature_change_password_page/presentations/screens/feature_change_password_page.dart';
 import 'package:ablexa/features/feature_forget_password_page/presentations/screens/feature_forget_password_page.dart';
+import 'package:ablexa/features/feature_home_manager_page/presentations/screens/feature_home_manager.dart';
 import 'package:ablexa/features/feature_landing_page/presentations/screens/feature_landing_page.dart';
 import 'package:ablexa/features/feature_verify_code_page/presentations/screens/feature_verify_code_page.dart';
 import 'package:flutter/material.dart';
@@ -40,6 +41,11 @@ class AppRouter {
       case Routes.successfullyPage:
         return MaterialPageRoute(
           builder: (context) => const SuccessfullyPage(),
+        );
+    //home Manager Page
+      case Routes.homeManagerPage:
+        return MaterialPageRoute(
+          builder: (context) => const HomeManagerPage(),
         );
       default:
         return MaterialPageRoute(
