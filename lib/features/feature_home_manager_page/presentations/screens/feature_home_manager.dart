@@ -1,7 +1,9 @@
+import 'package:ablexa/core/helper/extentions.dart';
 import 'package:ablexa/core/theming/image_manager.dart';
 import 'package:ablexa/core/theming/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/Routing/routers.dart';
 import '../../../../core/shared_widgets/app_text_feild.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/spacing.dart';
@@ -54,6 +56,9 @@ class _HomeManagerPageState extends State<HomeManagerPage> with TickerProviderSt
                       offset: const Offset(0, 40), // Offset to position menu under the icon
                       itemBuilder: (BuildContext context) => [
                         PopupMenuItem(
+                          onTap: () {
+                            context.pushNamed(Routes.managerProfilePage);
+                          },
                           value: 'my_profile',
                           child: SizedBox(
                             width: 100.w,
@@ -67,6 +72,9 @@ class _HomeManagerPageState extends State<HomeManagerPage> with TickerProviderSt
                           ),
                         ),
                         PopupMenuItem(
+                          onTap: () {
+                            context.pushNamed(Routes.settingPage);
+                          },
                           value: 'settings',
                           child: SizedBox(
                             width: 100.w,

@@ -36,6 +36,8 @@
  "view_profile": "View Profile",
  "delete": "Delete",
  "my_profile": "My Profile",
- "setting": "Settings"
+ "setting": "Settings",
+ "user_name": "User Name",
+ "phone_number": "Phone Number"
 
 }

@@ -3,9 +3,11 @@ import 'package:ablexa/features/feature_change_password_page/presentations/scree
 import 'package:ablexa/features/feature_forget_password_page/presentations/screens/feature_forget_password_page.dart';
 import 'package:ablexa/features/feature_home_manager_page/presentations/screens/feature_home_manager.dart';
 import 'package:ablexa/features/feature_landing_page/presentations/screens/feature_landing_page.dart';
+import 'package:ablexa/features/feature_student_profile_page/presentations/screens/student_profile_page.dart';
 import 'package:ablexa/features/feature_verify_code_page/presentations/screens/feature_verify_code_page.dart';
 import 'package:flutter/material.dart';
 import '../../features/feature_login_page/presentations/screens/feature_login_page.dart';
+import '../../features/feature_profile_manager_page/presentations/screens/profile_manager.dart';
 import '../../features/feature_successfully_page/presentations/screens/feature_successfully_page.dart';
 import 'routers.dart';
 
@@ -46,6 +48,16 @@ class AppRouter {
       case Routes.homeManagerPage:
         return MaterialPageRoute(
           builder: (context) => const HomeManagerPage(),
+        );
+    // manager profile
+      case Routes.managerProfilePage:
+        return MaterialPageRoute(
+          builder: (context) => const ProfileManagerPage(),
+        );
+    // student profile
+      case Routes.studentProfilePage:
+        return MaterialPageRoute(
+          builder: (context) => const StudentProfilePage(),
         );
       default:
         return MaterialPageRoute(

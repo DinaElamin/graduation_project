@@ -1,3 +1,4 @@
+import 'package:ablexa/core/helper/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ablexa/core/theming/colors.dart';
@@ -5,6 +6,7 @@ import 'package:ablexa/core/theming/image_manager.dart';
 import 'package:ablexa/core/theming/spacing.dart';
 import 'package:ablexa/core/theming/styles.dart';
 
+import '../../../../core/Routing/routers.dart';
 import '../../../../generated/l10n.dart';
 
 class CardInformation extends StatelessWidget {
@@ -59,6 +61,10 @@ class CardInformation extends StatelessWidget {
             },
             itemBuilder: (BuildContext context) => [
               PopupMenuItem(
+                onTap: () {
+
+                  context.pushNamed(Routes.studentProfilePage);
+                },
                 value: 'view_profile',
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),

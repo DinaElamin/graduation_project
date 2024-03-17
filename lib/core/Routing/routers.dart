@@ -7,5 +7,8 @@ class Routes {
   static const changePasswordPage = '/changePasswordPage';
   static const successfullyPage = '/successfullyPage';
   static const homeManagerPage = '/homeManagerPage';
+  static const managerProfilePage = "/managerProfile";
+  static const studentProfilePage = "/studentProfile";
+  static const settingPage = "/settingPage";
 
 }

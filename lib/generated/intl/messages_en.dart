@@ -58,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Password changed"),
         "password_hint_text":
             MessageLookupByLibrary.simpleMessage("Enter your password"),
+        "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "please_check_your_email":
             MessageLookupByLibrary.simpleMessage("please check your email"),
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
@@ -74,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("We’ve sent a code to "),
         "update_password":
             MessageLookupByLibrary.simpleMessage("Update password"),
+        "user_name": MessageLookupByLibrary.simpleMessage("User Name"),
         "users": MessageLookupByLibrary.simpleMessage("Users"),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),
         "view_profile": MessageLookupByLibrary.simpleMessage("View Profile")

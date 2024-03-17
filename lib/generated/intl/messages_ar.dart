@@ -56,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تم تغيير كلمة المرور"),
         "password_hint_text":
             MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور الخاصة بك"),
+        "phone_number": MessageLookupByLibrary.simpleMessage("رقم الجوال"),
         "please_check_your_email": MessageLookupByLibrary.simpleMessage(
             "يرجى التحقق من بريدك الإلكتروني"),
         "resend": MessageLookupByLibrary.simpleMessage("اعادة ارسال"),
@@ -72,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لقد قمنا بإرسال رمز إلى"),
         "update_password":
             MessageLookupByLibrary.simpleMessage("تحديث كلمة المرور"),
+        "user_name": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
         "users": MessageLookupByLibrary.simpleMessage("المستخدمين"),
         "verify": MessageLookupByLibrary.simpleMessage("تحقق"),
         "view_profile": MessageLookupByLibrary.simpleMessage("عرض الملف الشخصي")

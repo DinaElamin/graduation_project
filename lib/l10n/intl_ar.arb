@@ -36,5 +36,9 @@
   "view_profile": "عرض الملف الشخصي",
   "delete": "حذف",
   "my_profile": "الملف الشخصي",
-  "setting": "الاعدادات"
+  "setting": "الاعدادات",
+  "user_name": "اسم المستخدم",
+  "phone_number": "رقم الجوال"
+
+
 }

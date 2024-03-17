@@ -6,4 +6,7 @@ class ImageManager {
   static const studentImage = "assets/images/student_image.png";
   static const settingHome = "assets/icons/setting_home_icon.png";
   static const profileIcon = "assets/icons/profile.png";
+  static const defaultImageProfile = "assets/images/defoult_image_from_profile.png";
+  static const cameraIconFromProfile = "assets/icons/camera_icon_from_profile.png";
+  static const editIcon = "assets/icons/edit_icon.png";
 }

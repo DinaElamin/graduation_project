@@ -11,12 +11,13 @@ class CardListView extends StatelessWidget {
       shrinkWrap: true,
       itemCount: 10,
       physics: const AlwaysScrollableScrollPhysics(),
-      itemBuilder: (context, index) =>  Padding(
+      itemBuilder: (context, index) => Padding(
         padding: const EdgeInsets.all(5.0),
         child: CardInformation(
-
-            type: type,
-            image: ImageManager.studentImage, name:           "Shaban Salah Abdulhameed ",),
+          type: type,
+          image: ImageManager.studentImage,
+          name: "Shaban Salah Abdulhameed ",
+        ),
       ),
     );
   }
