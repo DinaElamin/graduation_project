@@ -38,7 +38,12 @@
   "my_profile": "الملف الشخصي",
   "setting": "الاعدادات",
   "user_name": "اسم المستخدم",
-  "phone_number": "رقم الجوال"
-
+  "phone_number": "رقم الجوال",
+  "reset_password": "إعادة تعيين كلمة المرور",
+  "help": "المساعدة",
+  "contact_us": "اتصل بنا",
+  "privacy_policy": "سياسة الخصوصية",
+  "about_us": "معلومات عنا",
+  "logout": "تسجيل الخروج"
 
 }

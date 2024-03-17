@@ -9,4 +9,10 @@ class ImageManager {
   static const defaultImageProfile = "assets/images/defoult_image_from_profile.png";
   static const cameraIconFromProfile = "assets/icons/camera_icon_from_profile.png";
   static const editIcon = "assets/icons/edit_icon.png";
+  static const aboutUsIcon = "assets/icons/about_us.png";
+  static const contactUsIcon = "assets/icons/contact_us.png";
+  static const helpIcon = "assets/icons/help_icon.png";
+  static const privacyPolicyIcon = "assets/icons/privacy_policy.png";
+  static const resetPasswordIcon = "assets/icons/reset_password.png";
+  static const logoutIcon = "assets/icons/logout.png";
 }

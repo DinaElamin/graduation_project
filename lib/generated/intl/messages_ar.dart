@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "about_us": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
         "all": MessageLookupByLibrary.simpleMessage("الكل"),
         "back": MessageLookupByLibrary.simpleMessage("رجوع"),
         "change_password":
@@ -29,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "classes": MessageLookupByLibrary.simpleMessage("الفصول"),
         "confirm_new_password":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور الجديدة"),
+        "contact_us": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
         "delete": MessageLookupByLibrary.simpleMessage("حذف"),
         "did_not_receive_code":
             MessageLookupByLibrary.simpleMessage("لم أتلقَ رمزًا!"),
@@ -41,12 +43,14 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور ؟"),
         "full_name": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
         "get_started": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
+        "help": MessageLookupByLibrary.simpleMessage("المساعدة"),
         "landing_text1": MessageLookupByLibrary.simpleMessage("تطبيق مدرستك"),
         "landing_text2":
             MessageLookupByLibrary.simpleMessage("جلب المدرسة إليك"),
         "login": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "login_text_desc": MessageLookupByLibrary.simpleMessage(
             "تسجيل الدخول للوصول إلى حسابك"),
+        "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "my_profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
         "name_hint_text": MessageLookupByLibrary.simpleMessage("أدخل اسمك"),
         "new_password":
@@ -59,7 +63,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone_number": MessageLookupByLibrary.simpleMessage("رقم الجوال"),
         "please_check_your_email": MessageLookupByLibrary.simpleMessage(
             "يرجى التحقق من بريدك الإلكتروني"),
+        "privacy_policy":
+            MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
         "resend": MessageLookupByLibrary.simpleMessage("اعادة ارسال"),
+        "reset_password":
+            MessageLookupByLibrary.simpleMessage("إعادة تعيين كلمة المرور"),
         "search": MessageLookupByLibrary.simpleMessage("بحث"),
         "send_code": MessageLookupByLibrary.simpleMessage("ارسال الكود"),
         "setting": MessageLookupByLibrary.simpleMessage("الاعدادات"),

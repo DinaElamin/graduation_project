@@ -38,6 +38,12 @@
  "my_profile": "My Profile",
  "setting": "Settings",
  "user_name": "User Name",
- "phone_number": "Phone Number"
+ "phone_number": "Phone Number",
+ "reset_password": "Reset Password",
+ "help": "Help",
+ "contact_us": "Contact Us",
+ "privacy_policy": "Privacy Policy",
+ "about_us": "About Us",
+ "logout": "Logout"
 
 }

@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "about_us": MessageLookupByLibrary.simpleMessage("About Us"),
         "all": MessageLookupByLibrary.simpleMessage("All"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "change_password":
@@ -29,6 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "classes": MessageLookupByLibrary.simpleMessage("Classes"),
         "confirm_new_password":
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
+        "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "did_not_receive_code":
             MessageLookupByLibrary.simpleMessage("I didn\'t receive a code !"),
@@ -41,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Forget Password ?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full Name"),
         "get_started": MessageLookupByLibrary.simpleMessage("Get Started"),
+        "help": MessageLookupByLibrary.simpleMessage("Help"),
         "landing_text1":
             MessageLookupByLibrary.simpleMessage("Your School  App"),
         "landing_text2":
@@ -49,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_text": MessageLookupByLibrary.simpleMessage("Welcome back"),
         "login_text_desc": MessageLookupByLibrary.simpleMessage(
             "sign in to access your account"),
+        "logout": MessageLookupByLibrary.simpleMessage("Logout"),
         "my_profile": MessageLookupByLibrary.simpleMessage("My Profile"),
         "name_hint_text":
             MessageLookupByLibrary.simpleMessage("Enter Your Name"),
@@ -61,7 +65,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "please_check_your_email":
             MessageLookupByLibrary.simpleMessage("please check your email"),
+        "privacy_policy":
+            MessageLookupByLibrary.simpleMessage("Privacy Policy"),
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
+        "reset_password":
+            MessageLookupByLibrary.simpleMessage("Reset Password"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),
         "setting": MessageLookupByLibrary.simpleMessage("Settings"),

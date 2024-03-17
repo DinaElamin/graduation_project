@@ -8,6 +8,7 @@ import 'package:ablexa/features/feature_verify_code_page/presentations/screens/f
 import 'package:flutter/material.dart';
 import '../../features/feature_login_page/presentations/screens/feature_login_page.dart';
 import '../../features/feature_profile_manager_page/presentations/screens/profile_manager.dart';
+import '../../features/feature_setting_page/presentations/screens/setting_page.dart';
 import '../../features/feature_successfully_page/presentations/screens/feature_successfully_page.dart';
 import 'routers.dart';
 
@@ -58,6 +59,11 @@ class AppRouter {
       case Routes.studentProfilePage:
         return MaterialPageRoute(
           builder: (context) => const StudentProfilePage(),
+        );
+    // student profile
+      case Routes.settingPage:
+        return MaterialPageRoute(
+          builder: (context) => const SettingPage(),
         );
       default:
         return MaterialPageRoute(
