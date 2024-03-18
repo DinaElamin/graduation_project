@@ -48,5 +48,15 @@
   "logout": "تسجيل الخروج",
   "student_profile": "ملف الطالب",
   "national_iD":"الرقم القومي",
-  "save_change": "حفظ التغيرات"
+  "save_change": "حفظ التغيرات",
+  "add_student": "اضافة طالب",
+  "add_teacher":  "اضافة مدرس",
+  "add_grade":  "اضافة صف",
+  "enter_full_name": "أدخل الاسم الكامل",
+  "enter_national_id": "أدخل الرقم القومي",
+  "enter_email": "أدخل البريد الإلكتروني",
+  "enter_class_code": "أدخل رمز الصف",
+  "class_code": " رمز الصف",
+  "update_user_image": "تحديث صورة المستخدم",
+  "grade": "الصف"
 }

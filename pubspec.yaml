@@ -60,6 +60,7 @@ dependencies:
   klocalizations_flutter: ^0.0.8
   flutter_verification_code: ^1.1.7
   popover: ^0.2.8+2
+  dropdown_button2: ^2.3.9
 
 dev_dependencies:
   json_serializable: ^6.7.1

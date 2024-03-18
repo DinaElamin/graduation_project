@@ -33,6 +33,7 @@ class AppTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+
       maxLines: maxLines,
       keyboardType: textInputType,
       controller: controller,
@@ -49,7 +50,7 @@ class AppTextFormField extends StatelessWidget {
 
         isDense: true,
         contentPadding: contentPadding ??
-            EdgeInsets.symmetric(horizontal: 10.w, vertical: 17.h),
+            EdgeInsets.symmetric(horizontal: 15.w, vertical: 20.h),
         focusedBorder: focusedBorder ??
             OutlineInputBorder(
               borderSide: const BorderSide(
@@ -80,6 +81,7 @@ class AppTextFormField extends StatelessWidget {
         ),
         hintText: hintText,
         hintStyle: TextStyles.font14MediumLightBlack.copyWith(
+          fontSize: 15.sp,
             color: ColorsManager.mainBlack.withOpacity(0.2)),
         suffixIcon: suffixIcon,
         prefixIcon: prefixIcon,

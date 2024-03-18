@@ -15,4 +15,5 @@ class ImageManager {
   static const privacyPolicyIcon = "assets/icons/privacy_policy.png";
   static const resetPasswordIcon = "assets/icons/reset_password.png";
   static const logoutIcon = "assets/icons/logout.png";
+  static const uploadImageIcon = "assets/icons/upload_image_icon.png";
 }

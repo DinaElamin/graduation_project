@@ -559,6 +559,106 @@ class S {
       args: [],
     );
   }
+
+  /// `Add Student`
+  String get add_student {
+    return Intl.message(
+      'Add Student',
+      name: 'add_student',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Teacher`
+  String get add_teacher {
+    return Intl.message(
+      'Add Teacher',
+      name: 'add_teacher',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Grade`
+  String get add_grade {
+    return Intl.message(
+      'Add Grade',
+      name: 'add_grade',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Full Name`
+  String get enter_full_name {
+    return Intl.message(
+      'Enter Full Name',
+      name: 'enter_full_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter National ID`
+  String get enter_national_id {
+    return Intl.message(
+      'Enter National ID',
+      name: 'enter_national_id',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Email`
+  String get enter_email {
+    return Intl.message(
+      'Enter Email',
+      name: 'enter_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Class Code`
+  String get enter_class_code {
+    return Intl.message(
+      'Enter Class Code',
+      name: 'enter_class_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Class Code`
+  String get class_code {
+    return Intl.message(
+      'Class Code',
+      name: 'class_code',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update User Image`
+  String get update_user_image {
+    return Intl.message(
+      'Update User Image',
+      name: 'update_user_image',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Grade`
+  String get grade {
+    return Intl.message(
+      'Grade',
+      name: 'grade',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

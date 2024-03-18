@@ -23,10 +23,14 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about_us": MessageLookupByLibrary.simpleMessage("About Us"),
+        "add_grade": MessageLookupByLibrary.simpleMessage("Add Grade"),
+        "add_student": MessageLookupByLibrary.simpleMessage("Add Student"),
+        "add_teacher": MessageLookupByLibrary.simpleMessage("Add Teacher"),
         "all": MessageLookupByLibrary.simpleMessage("All"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("Change Password"),
+        "class_code": MessageLookupByLibrary.simpleMessage("Class Code"),
         "class_student": MessageLookupByLibrary.simpleMessage("Class"),
         "classes": MessageLookupByLibrary.simpleMessage("Classes"),
         "confirm_new_password":
@@ -38,12 +42,20 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "email_hint_text": MessageLookupByLibrary.simpleMessage(
             "Enter your email or phone number"),
+        "enter_class_code":
+            MessageLookupByLibrary.simpleMessage("Enter Class Code"),
+        "enter_email": MessageLookupByLibrary.simpleMessage("Enter Email"),
+        "enter_full_name":
+            MessageLookupByLibrary.simpleMessage("Enter Full Name"),
+        "enter_national_id":
+            MessageLookupByLibrary.simpleMessage("Enter National ID"),
         "enter_new_password":
             MessageLookupByLibrary.simpleMessage("Enter New Password"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("Forget Password ?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full Name"),
         "get_started": MessageLookupByLibrary.simpleMessage("Get Started"),
+        "grade": MessageLookupByLibrary.simpleMessage("Grade"),
         "help": MessageLookupByLibrary.simpleMessage("Help"),
         "landing_text1":
             MessageLookupByLibrary.simpleMessage("Your School  App"),
@@ -88,6 +100,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("We’ve sent a code to "),
         "update_password":
             MessageLookupByLibrary.simpleMessage("Update password"),
+        "update_user_image":
+            MessageLookupByLibrary.simpleMessage("Update User Image"),
         "user_name": MessageLookupByLibrary.simpleMessage("User Name"),
         "users": MessageLookupByLibrary.simpleMessage("Users"),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),

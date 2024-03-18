@@ -49,6 +49,16 @@
  "logout": "Logout",
  "student_profile": "Student Profile",
  "national_iD": "National ID",
- "save_change": "Save Change"
+ "save_change": "Save Change",
+ "add_student": "Add Student",
+ "add_teacher": "Add Teacher",
+ "add_grade": "Add Grade",
+ "enter_full_name": "Enter Full Name",
+ "enter_national_id": "Enter National ID",
+ "enter_email": "Enter Email",
+ "enter_class_code": "Enter Class Code",
+ "class_code": "Class Code",
+ "update_user_image": "Update User Image",
+ "grade": "Grade"
 
 }

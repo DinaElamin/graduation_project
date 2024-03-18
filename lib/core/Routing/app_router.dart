@@ -1,4 +1,7 @@
 
+import 'package:ablexa/features/feature_add_grade_page/presentations/screens/add_grade_page.dart';
+import 'package:ablexa/features/feature_add_student_page/presentations/screens/feature_add_student_page.dart';
+import 'package:ablexa/features/feature_add_teacher_page/presentations/screens/add_teacher_page.dart';
 import 'package:ablexa/features/feature_change_password_page/presentations/screens/feature_change_password_page.dart';
 import 'package:ablexa/features/feature_forget_password_page/presentations/screens/feature_forget_password_page.dart';
 import 'package:ablexa/features/feature_home_manager_page/presentations/screens/feature_home_manager.dart';
@@ -64,6 +67,21 @@ class AppRouter {
       case Routes.settingPage:
         return MaterialPageRoute(
           builder: (context) => const SettingPage(),
+        );
+    // add student from manager
+      case Routes.addStudentPage:
+        return MaterialPageRoute(
+          builder: (context) => const AddStudentPage(),
+        );
+    // add teacher from manager
+      case Routes.addTeacherPage:
+        return MaterialPageRoute(
+          builder: (context) => const AddTeacherPage(),
+        );
+    // add student from manager
+      case Routes.addGradePage:
+        return MaterialPageRoute(
+          builder: (context) => const AddGradePage(),
         );
       default:
         return MaterialPageRoute(

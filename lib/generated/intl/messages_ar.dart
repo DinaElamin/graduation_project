@@ -23,10 +23,14 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about_us": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
+        "add_grade": MessageLookupByLibrary.simpleMessage("اضافة صف"),
+        "add_student": MessageLookupByLibrary.simpleMessage("اضافة طالب"),
+        "add_teacher": MessageLookupByLibrary.simpleMessage("اضافة مدرس"),
         "all": MessageLookupByLibrary.simpleMessage("الكل"),
         "back": MessageLookupByLibrary.simpleMessage("رجوع"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
+        "class_code": MessageLookupByLibrary.simpleMessage(" رمز الصف"),
         "class_student": MessageLookupByLibrary.simpleMessage("الفصل"),
         "classes": MessageLookupByLibrary.simpleMessage("الفصول"),
         "confirm_new_password":
@@ -38,12 +42,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "email_hint_text": MessageLookupByLibrary.simpleMessage(
             "أدخل بريدك الإلكتروني أو رقم هاتفك"),
+        "enter_class_code":
+            MessageLookupByLibrary.simpleMessage("أدخل رمز الصف"),
+        "enter_email":
+            MessageLookupByLibrary.simpleMessage("أدخل البريد الإلكتروني"),
+        "enter_full_name":
+            MessageLookupByLibrary.simpleMessage("أدخل الاسم الكامل"),
+        "enter_national_id":
+            MessageLookupByLibrary.simpleMessage("أدخل الرقم القومي"),
         "enter_new_password":
             MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور الجديدة"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور ؟"),
         "full_name": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
         "get_started": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
+        "grade": MessageLookupByLibrary.simpleMessage("الصف"),
         "help": MessageLookupByLibrary.simpleMessage("المساعدة"),
         "landing_text1": MessageLookupByLibrary.simpleMessage("تطبيق مدرستك"),
         "landing_text2":
@@ -85,6 +98,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لقد قمنا بإرسال رمز إلى"),
         "update_password":
             MessageLookupByLibrary.simpleMessage("تحديث كلمة المرور"),
+        "update_user_image":
+            MessageLookupByLibrary.simpleMessage("تحديث صورة المستخدم"),
         "user_name": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
         "users": MessageLookupByLibrary.simpleMessage("المستخدمين"),
         "verify": MessageLookupByLibrary.simpleMessage("تحقق"),

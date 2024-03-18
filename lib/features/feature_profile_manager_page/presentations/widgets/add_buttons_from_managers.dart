@@ -1,6 +1,7 @@
+import 'package:ablexa/core/helper/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import '../../../../core/Routing/routers.dart';
 import '../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/spacing.dart';
@@ -24,47 +25,56 @@ class _AddButtonsFromManagerState extends State<AddButtonsFromManager> {
       padding: EdgeInsets.symmetric(horizontal: 20.w),
       child: Column(
         children: [
-         Row(children: [ Expanded(
-           child: buildButton(
-             buttonText: 'Add Student',
-             onPressed: () {
-               setState(() {
-                 isStudentButtonPressed = true;
-                 isTeacherButtonPressed = false;
-                 isGradeButtonPressed = false;
-               });
-             },
-             isPressed: isStudentButtonPressed,
-           ),
-         ),
-           horizontalSpacing(40),
-           
-         Expanded(child: buildButton(
-           buttonText: 'Add Teacher',
-           onPressed: () {
-             setState(() {
-               isStudentButtonPressed = false;
-               isTeacherButtonPressed = true;
-               isGradeButtonPressed = false;
-             });
-           },
-           isPressed: isTeacherButtonPressed,
-         ),)
-         ],),
+          Row(
+            children: [
+              Expanded(
+                child: buildButton(
+                  buttonText: 'Add Student',
+                  onPressed: () {
+                    setState(() {
+                      isStudentButtonPressed = true;
+                      isTeacherButtonPressed = false;
+                      isGradeButtonPressed = false;
+                    });
+                    context.pushNamed(Routes.addStudentPage);
+                  },
+                  isPressed: isStudentButtonPressed,
+
+                ),
+              ),
+              horizontalSpacing(40),
+              Expanded(
+                child: buildButton(
+                  buttonText: 'Add Teacher',
+                  onPressed: () {
+                    setState(() {
+                      isStudentButtonPressed = false;
+                      isTeacherButtonPressed = true;
+                      isGradeButtonPressed = false;
+                    });
+                    context.pushNamed(Routes.addTeacherPage);
+                  },
+                  isPressed: isTeacherButtonPressed,
+                ),
+              )
+            ],
+          ),
           verticalSpacing(20),
-         Padding(padding: EdgeInsets.only(left: 70.w,right: 70.w),
-         child:  buildButton(
-           buttonText: 'Add Grade',
-           onPressed: () {
-             setState(() {
-               isStudentButtonPressed = false;
-               isTeacherButtonPressed = false;
-               isGradeButtonPressed = true;
-             });
-           },
-           isPressed: isGradeButtonPressed,
-         ),
-         )
+          Padding(
+            padding: EdgeInsets.only(left: 70.w, right: 70.w),
+            child: buildButton(
+              buttonText: 'Add Grade',
+              onPressed: () {
+                setState(() {
+                  isStudentButtonPressed = false;
+                  isTeacherButtonPressed = false;
+                  isGradeButtonPressed = true;
+                });
+                context.pushNamed(Routes.addGradePage);
+              },
+              isPressed: isGradeButtonPressed,
+            ),
+          )
         ],
       ),
     );
@@ -76,7 +86,9 @@ class _AddButtonsFromManagerState extends State<AddButtonsFromManager> {
     required bool isPressed,
   }) {
     return AppTextButton(
-      textStyle: isPressed ? TextStyles.font18SemiBoldWhite.copyWith(fontSize: 16.sp) : TextStyles.font16SemiBoldBlack,
+      textStyle: isPressed
+          ? TextStyles.font18SemiBoldWhite.copyWith(fontSize: 16.sp)
+          : TextStyles.font16SemiBoldBlack,
       buttonWidth: 120.w,
       backgroundColor: isPressed ? ColorsManager.mainColor : ColorsManager.grey,
       textButton: buttonText,
