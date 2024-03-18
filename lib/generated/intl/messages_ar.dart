@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "back": MessageLookupByLibrary.simpleMessage("رجوع"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
+        "choose_the_subject":
+            MessageLookupByLibrary.simpleMessage("اختار المادة"),
         "class_code": MessageLookupByLibrary.simpleMessage(" رمز الصف"),
         "class_student": MessageLookupByLibrary.simpleMessage("الفصل"),
         "classes": MessageLookupByLibrary.simpleMessage("الفصول"),
@@ -61,6 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "full_name": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
         "get_started": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
         "grade": MessageLookupByLibrary.simpleMessage("الصف"),
+        "grades": MessageLookupByLibrary.simpleMessage("المواد"),
         "help": MessageLookupByLibrary.simpleMessage("المساعدة"),
         "landing_text1": MessageLookupByLibrary.simpleMessage("تطبيق مدرستك"),
         "landing_text2":
@@ -87,8 +90,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "resend": MessageLookupByLibrary.simpleMessage("اعادة ارسال"),
         "reset_password":
             MessageLookupByLibrary.simpleMessage("إعادة تعيين كلمة المرور"),
+        "save": MessageLookupByLibrary.simpleMessage("حفظ"),
         "save_change": MessageLookupByLibrary.simpleMessage("حفظ التغيرات"),
         "search": MessageLookupByLibrary.simpleMessage("بحث"),
+        "semester_one":
+            MessageLookupByLibrary.simpleMessage("الفصل الدراسي الأول"),
+        "semester_two":
+            MessageLookupByLibrary.simpleMessage("الفصل الدراسي الثاني"),
         "send_code": MessageLookupByLibrary.simpleMessage("ارسال الكود"),
         "setting": MessageLookupByLibrary.simpleMessage("الاعدادات"),
         "student_profile": MessageLookupByLibrary.simpleMessage("ملف الطالب"),

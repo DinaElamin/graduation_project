@@ -61,5 +61,11 @@
   "grade": "الصف",
   "subject": "المادة",
   "enter_the_teacher_subject": "ادخل موضوع المعلم",
-  "enter_the_teacher_class": "ادخل صف المعلم"
+  "enter_the_teacher_class": "ادخل صف المعلم",
+  "choose_the_subject": "اختار المادة",
+  "semester_two": "الفصل الدراسي الثاني",
+  "semester_one": "الفصل الدراسي الأول",
+  "save": "حفظ",
+  "grades": "المواد"
+
 }

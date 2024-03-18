@@ -4,7 +4,6 @@ import '../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/spacing.dart';
 import '../../../../generated/l10n.dart';
-import '../../../feature_add_student_page/presentations/widgets/upload_image_widget.dart';
 import '../widgets/text_form_fiels_from_add_teacher.dart';
 
 class AddTeacherPage extends StatelessWidget {
@@ -26,8 +25,6 @@ class AddTeacherPage extends StatelessWidget {
               child: Column(children: [
                 verticalSpacing(10),
                 const TextFormFieldFromAddTeacher(),
-                verticalSpacing(20),
-                const UploadImageWidget(),
                 verticalSpacing(20),
                 Padding(
                   padding:  EdgeInsets.only(left: 50.w,right: 50.w),

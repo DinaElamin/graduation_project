@@ -6,7 +6,6 @@ import '../../../../core/theming/colors.dart';
 import '../../../../generated/l10n.dart';
 import '../widgets/drop_down_grade.dart';
 import '../widgets/text_form_fiels_from_add_student.dart';
-import '../widgets/upload_image_widget.dart';
 
 class AddStudentPage extends StatelessWidget {
   const AddStudentPage({super.key});
@@ -31,8 +30,6 @@ class AddStudentPage extends StatelessWidget {
               SizedBox(
                   height: 60.h,
                   child: const DropDownMenuGrade()),
-              verticalSpacing(20),
-              const UploadImageWidget(),
               verticalSpacing(20),
               Padding(
                 padding:  EdgeInsets.only(left: 50.w,right: 50.w),

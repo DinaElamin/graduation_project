@@ -689,6 +689,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Choose the Subject`
+  String get choose_the_subject {
+    return Intl.message(
+      'Choose the Subject',
+      name: 'choose_the_subject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Semester Two`
+  String get semester_two {
+    return Intl.message(
+      'Semester Two',
+      name: 'semester_two',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Semester One`
+  String get semester_one {
+    return Intl.message(
+      'Semester One',
+      name: 'semester_one',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message(
+      'Save',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Grades`
+  String get grades {
+    return Intl.message(
+      'Grades',
+      name: 'grades',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
