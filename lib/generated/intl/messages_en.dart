@@ -51,6 +51,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter National ID"),
         "enter_new_password":
             MessageLookupByLibrary.simpleMessage("Enter New Password"),
+        "enter_the_teacher_class":
+            MessageLookupByLibrary.simpleMessage("enter the teacher\'s class"),
+        "enter_the_teacher_subject": MessageLookupByLibrary.simpleMessage(
+            "enter the teacher\'s subject"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("Forget Password ?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full Name"),
@@ -91,6 +95,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "student_profile":
             MessageLookupByLibrary.simpleMessage("Student Profile"),
         "students": MessageLookupByLibrary.simpleMessage("Students"),
+        "subject": MessageLookupByLibrary.simpleMessage("Subject"),
         "teachers": MessageLookupByLibrary.simpleMessage("Teachers"),
         "text_forget_password": MessageLookupByLibrary.simpleMessage(
             "Don’t worry! It happens. Please enter the \n email associated with your account."),

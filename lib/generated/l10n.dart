@@ -630,6 +630,26 @@ class S {
     );
   }
 
+  /// `enter the teacher's subject`
+  String get enter_the_teacher_subject {
+    return Intl.message(
+      'enter the teacher\'s subject',
+      name: 'enter_the_teacher_subject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `enter the teacher's class`
+  String get enter_the_teacher_class {
+    return Intl.message(
+      'enter the teacher\'s class',
+      name: 'enter_the_teacher_class',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Class Code`
   String get class_code {
     return Intl.message(
@@ -655,6 +675,16 @@ class S {
     return Intl.message(
       'Grade',
       name: 'grade',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subject`
+  String get subject {
+    return Intl.message(
+      'Subject',
+      name: 'subject',
       desc: '',
       args: [],
     );

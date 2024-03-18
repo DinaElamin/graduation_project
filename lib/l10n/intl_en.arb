@@ -57,8 +57,11 @@
  "enter_national_id": "Enter National ID",
  "enter_email": "Enter Email",
  "enter_class_code": "Enter Class Code",
+ "enter_the_teacher_subject": "enter the teacher's subject",
+ "enter_the_teacher_class": "enter the teacher's class",
  "class_code": "Class Code",
  "update_user_image": "Update User Image",
- "grade": "Grade"
+ "grade": "Grade",
+ "subject": "Subject"
 
 }

@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../core/theming/colors.dart';
+import '../../../../core/theming/spacing.dart';
 import '../../../../generated/l10n.dart';
+import '../../../feature_add_student_page/presentations/widgets/upload_image_widget.dart';
+import '../widgets/text_form_fiels_from_add_teacher.dart';
 
 class AddTeacherPage extends StatelessWidget {
   const AddTeacherPage({super.key});
@@ -14,11 +19,28 @@ class AddTeacherPage extends StatelessWidget {
       backgroundColor: ColorsManager.mainWhite,
       foregroundColor: ColorsManager.mainBlack,
     ),
-      body: ListView(children: [
-        Column(children: [
+      body: ListView(
+        children: [
+          Padding(
+              padding: EdgeInsets.only(left: 20.w, right: 20.w),
+              child: Column(children: [
+                verticalSpacing(10),
+                const TextFormFieldFromAddTeacher(),
+                verticalSpacing(20),
+                const UploadImageWidget(),
+                verticalSpacing(20),
+                Padding(
+                  padding:  EdgeInsets.only(left: 50.w,right: 50.w),
+                  child: AppTextButton(
+                      buttonHeight: 60.h,
+                      textButton: S.of(context).add_teacher, onPressed: (){}),
+                ),
+                verticalSpacing(20),
 
-        ],)
-      ]),
+              ],)
+          ),
+        ],
+      ),
 
     );
   }

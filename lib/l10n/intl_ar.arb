@@ -58,5 +58,8 @@
   "enter_class_code": "أدخل رمز الصف",
   "class_code": " رمز الصف",
   "update_user_image": "تحديث صورة المستخدم",
-  "grade": "الصف"
+  "grade": "الصف",
+  "subject": "المادة",
+  "enter_the_teacher_subject": "ادخل موضوع المعلم",
+  "enter_the_teacher_class": "ادخل صف المعلم"
 }

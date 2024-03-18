@@ -52,6 +52,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("أدخل الرقم القومي"),
         "enter_new_password":
             MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور الجديدة"),
+        "enter_the_teacher_class":
+            MessageLookupByLibrary.simpleMessage("ادخل صف المعلم"),
+        "enter_the_teacher_subject":
+            MessageLookupByLibrary.simpleMessage("ادخل موضوع المعلم"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور ؟"),
         "full_name": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
@@ -89,6 +93,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "setting": MessageLookupByLibrary.simpleMessage("الاعدادات"),
         "student_profile": MessageLookupByLibrary.simpleMessage("ملف الطالب"),
         "students": MessageLookupByLibrary.simpleMessage("الطلاب"),
+        "subject": MessageLookupByLibrary.simpleMessage("المادة"),
         "teachers": MessageLookupByLibrary.simpleMessage("الموعلمين"),
         "text_forget_password": MessageLookupByLibrary.simpleMessage(
             "لا تقلق! يحدث ذلك. يرجى إدخال البريد \nالإلكتروني المرتبط بحسابك."),
