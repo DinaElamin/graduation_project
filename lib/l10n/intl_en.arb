@@ -67,6 +67,7 @@
  "semester_two": "Semester Two",
  "semester_one": "Semester One",
  "save": "Save",
- "grades": "Grades"
+ "grades": "Grades",
+ "delete_garde": "Delete Grade ? "
 
 }

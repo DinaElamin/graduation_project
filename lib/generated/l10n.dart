@@ -739,6 +739,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Delete Grade ? `
+  String get delete_garde {
+    return Intl.message(
+      'Delete Grade ? ',
+      name: 'delete_garde',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

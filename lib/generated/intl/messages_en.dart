@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "delete_garde": MessageLookupByLibrary.simpleMessage("Delete Grade ? "),
         "did_not_receive_code":
             MessageLookupByLibrary.simpleMessage("I didn\'t receive a code !"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),

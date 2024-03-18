@@ -39,6 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور الجديدة"),
         "contact_us": MessageLookupByLibrary.simpleMessage("اتصل بنا"),
         "delete": MessageLookupByLibrary.simpleMessage("حذف"),
+        "delete_garde": MessageLookupByLibrary.simpleMessage("مسح الصف ؟"),
         "did_not_receive_code":
             MessageLookupByLibrary.simpleMessage("لم أتلقَ رمزًا!"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
