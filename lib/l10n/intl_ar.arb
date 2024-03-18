@@ -11,7 +11,7 @@
   "did_not_receive_code": "لم أتلقَ رمزًا!",
   "resend": "اعادة ارسال",
   "verify": "تحقق",
-
+  "verify_code": "تحقق الكود",
   "email_hint_text": "أدخل بريدك الإلكتروني أو رقم هاتفك",
   "password_hint_text": "أدخل كلمة المرور الخاصة بك",
   "forget_password": "نسيت كلمة المرور ؟",
@@ -33,6 +33,7 @@
   "students": "الطلاب",
   "teachers": "الموعلمين",
   "classes": "الفصول",
+  "class_student": "الفصل",
   "view_profile": "عرض الملف الشخصي",
   "delete": "حذف",
   "my_profile": "الملف الشخصي",
@@ -44,6 +45,8 @@
   "contact_us": "اتصل بنا",
   "privacy_policy": "سياسة الخصوصية",
   "about_us": "معلومات عنا",
-  "logout": "تسجيل الخروج"
-
+  "logout": "تسجيل الخروج",
+  "student_profile": "ملف الطالب",
+  "national_iD":"الرقم القومي",
+  "save_change": "حفظ التغيرات"
 }

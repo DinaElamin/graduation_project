@@ -18,6 +18,7 @@
  "did_not_receive_code": "I didn't receive a code !",
  "text_forget_password": "Don’t worry! It happens. Please enter the \n email associated with your account.",
  "verify": "Verify",
+ "verify_code": "Verify Code",
 "resend": "Resend",
  "change_password": "Change Password",
  "enter_new_password": "Enter New Password",
@@ -33,6 +34,7 @@
  "students": "Students",
  "teachers": "Teachers",
  "classes": "Classes",
+ "class_student": "Class",
  "view_profile": "View Profile",
  "delete": "Delete",
  "my_profile": "My Profile",
@@ -44,6 +46,9 @@
  "contact_us": "Contact Us",
  "privacy_policy": "Privacy Policy",
  "about_us": "About Us",
- "logout": "Logout"
+ "logout": "Logout",
+ "student_profile": "Student Profile",
+ "national_iD": "National ID",
+ "save_change": "Save Change"
 
 }

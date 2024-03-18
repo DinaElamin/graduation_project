@@ -25,6 +25,7 @@ class _VerifyCodePageState extends State<VerifyCodePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text(S.of(context).verify_code),
         elevation: 0,
         backgroundColor: ColorsManager.mainWhite,
         foregroundColor: ColorsManager.mainBlack,

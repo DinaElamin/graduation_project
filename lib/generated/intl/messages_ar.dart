@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "back": MessageLookupByLibrary.simpleMessage("رجوع"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
+        "class_student": MessageLookupByLibrary.simpleMessage("الفصل"),
         "classes": MessageLookupByLibrary.simpleMessage("الفصول"),
         "confirm_new_password":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور الجديدة"),
@@ -53,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "logout": MessageLookupByLibrary.simpleMessage("تسجيل الخروج"),
         "my_profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
         "name_hint_text": MessageLookupByLibrary.simpleMessage("أدخل اسمك"),
+        "national_iD": MessageLookupByLibrary.simpleMessage("الرقم القومي"),
         "new_password":
             MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
@@ -68,9 +70,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "resend": MessageLookupByLibrary.simpleMessage("اعادة ارسال"),
         "reset_password":
             MessageLookupByLibrary.simpleMessage("إعادة تعيين كلمة المرور"),
+        "save_change": MessageLookupByLibrary.simpleMessage("حفظ التغيرات"),
         "search": MessageLookupByLibrary.simpleMessage("بحث"),
         "send_code": MessageLookupByLibrary.simpleMessage("ارسال الكود"),
         "setting": MessageLookupByLibrary.simpleMessage("الاعدادات"),
+        "student_profile": MessageLookupByLibrary.simpleMessage("ملف الطالب"),
         "students": MessageLookupByLibrary.simpleMessage("الطلاب"),
         "teachers": MessageLookupByLibrary.simpleMessage("الموعلمين"),
         "text_forget_password": MessageLookupByLibrary.simpleMessage(
@@ -84,6 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "user_name": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
         "users": MessageLookupByLibrary.simpleMessage("المستخدمين"),
         "verify": MessageLookupByLibrary.simpleMessage("تحقق"),
+        "verify_code": MessageLookupByLibrary.simpleMessage("تحقق الكود"),
         "view_profile": MessageLookupByLibrary.simpleMessage("عرض الملف الشخصي")
       };
 }

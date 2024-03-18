@@ -240,6 +240,16 @@ class S {
     );
   }
 
+  /// `Verify Code`
+  String get verify_code {
+    return Intl.message(
+      'Verify Code',
+      name: 'verify_code',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Resend`
   String get resend {
     return Intl.message(
@@ -390,6 +400,16 @@ class S {
     );
   }
 
+  /// `Class`
+  String get class_student {
+    return Intl.message(
+      'Class',
+      name: 'class_student',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `View Profile`
   String get view_profile {
     return Intl.message(
@@ -505,6 +525,36 @@ class S {
     return Intl.message(
       'Logout',
       name: 'logout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Student Profile`
+  String get student_profile {
+    return Intl.message(
+      'Student Profile',
+      name: 'student_profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `National ID`
+  String get national_iD {
+    return Intl.message(
+      'National ID',
+      name: 'national_iD',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save Change`
+  String get save_change {
+    return Intl.message(
+      'Save Change',
+      name: 'save_change',
       desc: '',
       args: [],
     );

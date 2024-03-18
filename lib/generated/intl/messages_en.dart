@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("Change Password"),
+        "class_student": MessageLookupByLibrary.simpleMessage("Class"),
         "classes": MessageLookupByLibrary.simpleMessage("Classes"),
         "confirm_new_password":
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
@@ -56,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "my_profile": MessageLookupByLibrary.simpleMessage("My Profile"),
         "name_hint_text":
             MessageLookupByLibrary.simpleMessage("Enter Your Name"),
+        "national_iD": MessageLookupByLibrary.simpleMessage("National ID"),
         "new_password": MessageLookupByLibrary.simpleMessage("New password"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "password_changed":
@@ -70,9 +72,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
         "reset_password":
             MessageLookupByLibrary.simpleMessage("Reset Password"),
+        "save_change": MessageLookupByLibrary.simpleMessage("Save Change"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),
         "setting": MessageLookupByLibrary.simpleMessage("Settings"),
+        "student_profile":
+            MessageLookupByLibrary.simpleMessage("Student Profile"),
         "students": MessageLookupByLibrary.simpleMessage("Students"),
         "teachers": MessageLookupByLibrary.simpleMessage("Teachers"),
         "text_forget_password": MessageLookupByLibrary.simpleMessage(
@@ -86,6 +91,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "user_name": MessageLookupByLibrary.simpleMessage("User Name"),
         "users": MessageLookupByLibrary.simpleMessage("Users"),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),
+        "verify_code": MessageLookupByLibrary.simpleMessage("Verify Code"),
         "view_profile": MessageLookupByLibrary.simpleMessage("View Profile")
       };
 }

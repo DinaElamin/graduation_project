@@ -1,5 +1,6 @@
 import 'package:ablexa/core/helper/extentions.dart';
 import 'package:ablexa/core/shared_widgets/app_elevated_button.dart';
+import 'package:ablexa/core/theming/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -50,6 +51,7 @@ class _TextFormFieldPasswordState extends State<TextFormFieldPassword> {
                       ? Icons.visibility
                       : Icons.visibility_off_rounded,
                   size: 22,
+                  color: ColorsManager.mainColor,
                 ),
               ),
               hintText: S.of(context).enter_new_password,
@@ -83,6 +85,7 @@ class _TextFormFieldPasswordState extends State<TextFormFieldPassword> {
                       ? Icons.visibility
                       : Icons.visibility_off_rounded,
                   size: 22,
+                  color: ColorsManager.mainColor,
                 ),
               ),
               hintText: S.of(context).enter_new_password,

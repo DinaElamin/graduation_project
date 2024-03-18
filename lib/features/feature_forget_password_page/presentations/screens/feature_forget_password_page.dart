@@ -23,6 +23,12 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(S.of(context).forget_password),
+        elevation: 0,
+        backgroundColor: ColorsManager.mainWhite,
+        foregroundColor: ColorsManager.mainBlack,
+      ),
       body: ListView(children: [
         Column(
           children: [
