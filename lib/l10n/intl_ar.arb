@@ -67,7 +67,8 @@
   "semester_one": "الفصل الدراسي الأول",
   "save": "حفظ",
   "grades": "المواد",
-  "delete_garde": "مسح الصف ؟"
-
+  "delete_garde": "مسح الصف ؟",
+  "cancel": "الغاء",
+  "grade_details": "تفاصيل الصف"
 
 }

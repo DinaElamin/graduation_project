@@ -5,14 +5,14 @@ import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/styles.dart';
 import '../../../../generated/l10n.dart';
 
-class SemesterOneDropDown extends StatefulWidget {
-  const SemesterOneDropDown({Key? key}) : super(key: key);
+class SemesterDropDown extends StatefulWidget {
+  const SemesterDropDown({Key? key}) : super(key: key);
 
   @override
-  State<SemesterOneDropDown> createState() => _SemesterOneDropDownState();
+  State<SemesterDropDown> createState() => _SemesterOneDropDownState();
 }
 
-class _SemesterOneDropDownState extends State<SemesterOneDropDown> {
+class _SemesterOneDropDownState extends State<SemesterDropDown> {
   final List<String> items = ['Math', 'English', 'Arabic', 'Science'];
   String? selectedValue;
   List<String> selectedSubjects = [];

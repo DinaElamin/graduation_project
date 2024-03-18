@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_teacher": MessageLookupByLibrary.simpleMessage("اضافة مدرس"),
         "all": MessageLookupByLibrary.simpleMessage("الكل"),
         "back": MessageLookupByLibrary.simpleMessage("رجوع"),
+        "cancel": MessageLookupByLibrary.simpleMessage("الغاء"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
         "choose_the_subject":
@@ -64,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "full_name": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
         "get_started": MessageLookupByLibrary.simpleMessage("ابدأ الآن"),
         "grade": MessageLookupByLibrary.simpleMessage("الصف"),
+        "grade_details": MessageLookupByLibrary.simpleMessage("تفاصيل الصف"),
         "grades": MessageLookupByLibrary.simpleMessage("المواد"),
         "help": MessageLookupByLibrary.simpleMessage("المساعدة"),
         "landing_text1": MessageLookupByLibrary.simpleMessage("تطبيق مدرستك"),

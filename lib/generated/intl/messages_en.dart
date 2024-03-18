@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_teacher": MessageLookupByLibrary.simpleMessage("Add Teacher"),
         "all": MessageLookupByLibrary.simpleMessage("All"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("Change Password"),
         "choose_the_subject":
@@ -63,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "full_name": MessageLookupByLibrary.simpleMessage("Full Name"),
         "get_started": MessageLookupByLibrary.simpleMessage("Get Started"),
         "grade": MessageLookupByLibrary.simpleMessage("Grade"),
+        "grade_details": MessageLookupByLibrary.simpleMessage("Grade Details"),
         "grades": MessageLookupByLibrary.simpleMessage("Grades"),
         "help": MessageLookupByLibrary.simpleMessage("Help"),
         "landing_text1":

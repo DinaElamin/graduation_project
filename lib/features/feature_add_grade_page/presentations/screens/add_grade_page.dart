@@ -92,7 +92,7 @@ class _AddGradePageState extends State<AddGradePage> {
       children: [
         Text(S.of(context).semester_two, style: TextStyles.font16SemiBoldBlack),
         verticalSpacing(10),
-        const SemesterOneDropDown(),
+        const SemesterDropDown(),
         verticalSpacing(20),
       ],
     );
@@ -104,7 +104,7 @@ class _AddGradePageState extends State<AddGradePage> {
         verticalSpacing(20),
         Text(S.of(context).semester_one, style: TextStyles.font16SemiBoldBlack),
         verticalSpacing(10),
-        const SemesterOneDropDown(),
+        const SemesterDropDown(),
         verticalSpacing(20),
       ],
     );

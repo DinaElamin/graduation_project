@@ -14,5 +14,6 @@ class Routes {
   static const addTeacherPage = "/addTeacherPage";
   static const addGradePage = "/addGradePage";
   static const gradePage= "/gradePage";
+  static const gradeDetailsPage = "/gradeDetailsPage";
 
 }

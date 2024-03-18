@@ -1,6 +1,8 @@
+import 'package:ablexa/core/helper/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/Routing/routers.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/styles.dart';
 import '../../../../generated/l10n.dart';
@@ -19,18 +21,24 @@ class GradeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding:  EdgeInsets.only(left: 20.w,right: 20.w,top: 10.h,bottom: 10.h),
-      child: Container(
-        height: 70.h,
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            color: ColorsManager.mainColor),
-        child: ListTile(
-          title: Text(gradeName,style: TextStyles.font18SemiBoldWhite),
-          trailing: IconButton(
-            icon: const Icon(Icons.delete,color: ColorsManager.mainWhite),
-            onPressed: () {
-              _showDeleteConfirmationDialog(context);
-            },
+      child: GestureDetector(
+onTap: () {
+  context.pushNamed(Routes.gradeDetailsPage,arguments:gradeName );
+},
+        child: Container(
+          height: 70.h,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              color: ColorsManager.mainColor),
+          child: ListTile(
+            title: Text(gradeName,style: TextStyles.font18SemiBoldWhite),
+            trailing: IconButton(
+              icon: const Icon(Icons.delete,color: ColorsManager.mainWhite),
+              onPressed: () {
+                _showDeleteConfirmationDialog(context);
+
+              },
+            ),
           ),
         ),
       ),
@@ -63,7 +71,7 @@ class GradeWidget extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      "Cancel",
+                      S.of(context).cancel,
                       style: TextStyles.font12RegularPurple.copyWith(color: Colors.red),
                     ),
                   ),

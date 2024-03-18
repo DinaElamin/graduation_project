@@ -4,6 +4,7 @@ import 'package:ablexa/features/feature_add_student_page/presentations/screens/f
 import 'package:ablexa/features/feature_add_teacher_page/presentations/screens/add_teacher_page.dart';
 import 'package:ablexa/features/feature_change_password_page/presentations/screens/feature_change_password_page.dart';
 import 'package:ablexa/features/feature_forget_password_page/presentations/screens/feature_forget_password_page.dart';
+import 'package:ablexa/features/feature_garde_details_page/presentations/screens/grade_details_page.dart';
 import 'package:ablexa/features/feature_grades_page/presentations/screens/grades_page.dart';
 import 'package:ablexa/features/feature_home_manager_page/presentations/screens/feature_home_manager.dart';
 import 'package:ablexa/features/feature_landing_page/presentations/screens/feature_landing_page.dart';
@@ -88,6 +89,12 @@ class AppRouter {
       case Routes.gradePage:
         return MaterialPageRoute(
           builder: (context) => const GradesPage(),
+        );
+    // grade Details page
+      case Routes.gradeDetailsPage:
+        final String gradeName = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (context) =>  GradeDetailsPage(gradeName: gradeName),
         );
       default:
         return MaterialPageRoute(
