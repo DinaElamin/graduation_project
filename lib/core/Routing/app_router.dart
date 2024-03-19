@@ -87,8 +87,10 @@ class AppRouter {
         );
     // grade page
       case Routes.gradePage:
+        final Map<String, String> args = settings.arguments as Map<String, String>;
+        final String gradeName = args['gradeText']!;
         return MaterialPageRoute(
-          builder: (context) => const GradesPage(),
+          builder: (context) => GradesPage(gradeName: gradeName),
         );
     // grade Details page
       case Routes.gradeDetailsPage:

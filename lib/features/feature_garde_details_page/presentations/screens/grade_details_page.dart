@@ -6,6 +6,8 @@ import '../../../../core/theming/spacing.dart';
 import '../../../../core/theming/styles.dart';
 import '../../../../generated/l10n.dart';
 import '../../../feature_add_grade_page/presentations/widgets/semester_one_drop_down_widget.dart';
+import '../widgets/semester_one_widget.dart';
+import '../widgets/semester_two_widget.dart';
 
 class GradeDetailsPage extends StatelessWidget {
   const GradeDetailsPage({super.key, required this.gradeName});
@@ -33,9 +35,9 @@ class GradeDetailsPage extends StatelessWidget {
                   style: TextStyles.font20BoldBlack,
                 ),
                 verticalSpacing(20),
-                const SemesterDropDown(),
+                const SemesterOneWidget(),
                 verticalSpacing(20),
-                const SemesterDropDown(),
+                const SemesterTwoWidget(),
               ],
             ),
           )

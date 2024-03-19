@@ -98,8 +98,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "search": MessageLookupByLibrary.simpleMessage("بحث"),
         "semester_one":
             MessageLookupByLibrary.simpleMessage("الفصل الدراسي الأول"),
+        "semester_one_subject": MessageLookupByLibrary.simpleMessage(
+            "المواد الدراسية في الفصل الدراسي الأول"),
         "semester_two":
             MessageLookupByLibrary.simpleMessage("الفصل الدراسي الثاني"),
+        "semester_two_subject": MessageLookupByLibrary.simpleMessage(
+            "المواد الدراسية في الفصل الدراسي الثاني"),
         "send_code": MessageLookupByLibrary.simpleMessage("ارسال الكود"),
         "setting": MessageLookupByLibrary.simpleMessage("الاعدادات"),
         "student_profile": MessageLookupByLibrary.simpleMessage("ملف الطالب"),

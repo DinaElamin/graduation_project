@@ -98,7 +98,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "save_change": MessageLookupByLibrary.simpleMessage("Save Change"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
         "semester_one": MessageLookupByLibrary.simpleMessage("Semester One"),
+        "semester_one_subject":
+            MessageLookupByLibrary.simpleMessage("Semester One Subject"),
         "semester_two": MessageLookupByLibrary.simpleMessage("Semester Two"),
+        "semester_two_subject":
+            MessageLookupByLibrary.simpleMessage("Semester Two Subject"),
         "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),
         "setting": MessageLookupByLibrary.simpleMessage("Settings"),
         "student_profile":

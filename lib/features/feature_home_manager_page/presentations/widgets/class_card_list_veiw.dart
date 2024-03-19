@@ -18,7 +18,7 @@ class _ClassCardListViewState extends State<ClassCardListView> {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: 10, // Example itemCount, replace with your actual data length
+      itemCount: 6, // Example itemCount, replace with your actual data length
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
@@ -37,7 +37,7 @@ class _ClassCardListViewState extends State<ClassCardListView> {
                 borderRadius: BorderRadius.circular(20.sp), // Set border radius to 20
               ),
               child: ListTile(
-                title: Text('Grade $index', style: TextStyles.font20BoldBlack),
+                title: Text('Grade ${index+1}', style: TextStyles.font20BoldBlack),
               ),
             ),
           ),

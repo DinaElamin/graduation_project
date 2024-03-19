@@ -70,6 +70,7 @@
  "grades": "Grades",
  "delete_garde": "Delete Grade ? ",
  "cancel": "Cancel",
- "grade_details": "Grade Details"
-
+ "grade_details": "Grade Details",
+ "semester_one_subject": "Semester One Subject",
+ "semester_two_subject": "Semester Two Subject"
 }

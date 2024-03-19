@@ -9,87 +9,116 @@ import '../../../../generated/l10n.dart';
 
 class TextFormFieldFromAddTeacher extends StatelessWidget {
   const TextFormFieldFromAddTeacher({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          Text(
-            S.of(context).full_name,
-            style: TextStyles.font16SemiBoldBlack,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.start,
+      children: [
+        Text(
+          S.of(context).full_name,
+          style: TextStyles.font16SemiBoldBlack,
+        ),
+        verticalSpacing(10),
+        AppTextFormField(
+          fillColorFromBackground: ColorsManager.mainWhite,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16.sp),
+            borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
           ),
-          verticalSpacing(10),
-          AppTextFormField(
-            fillColorFromBackground: ColorsManager.mainWhite,
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16.sp),
-                borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3))),
-            hintText: S.of(context).enter_full_name,
-            validator: (p0) {},
+          hintText: S.of(context).enter_full_name,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter full name';
+            }
+            return null; // Return null if the input is valid
+          },
+        ),
+        verticalSpacing(20),
+        Text(
+          S.of(context).national_iD,
+          style: TextStyles.font16SemiBoldBlack,
+        ),
+        verticalSpacing(10),
+        AppTextFormField(
+          fillColorFromBackground: ColorsManager.mainWhite,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16.sp),
+            borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
           ),
-          verticalSpacing(20),
-          Text(
-
-            S.of(context).national_iD,
-            style: TextStyles.font16SemiBoldBlack,
+          hintText: S.of(context).enter_national_id,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter national ID';
+            }
+            return null; // Return null if the input is valid
+          },
+        ),
+        verticalSpacing(20),
+        Text(
+          S.of(context).email,
+          style: TextStyles.font16SemiBoldBlack,
+        ),
+        verticalSpacing(10),
+        AppTextFormField(
+          fillColorFromBackground: ColorsManager.mainWhite,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16.sp),
+            borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
           ),
-          verticalSpacing(10),
-          AppTextFormField(
-            fillColorFromBackground: ColorsManager.mainWhite,
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16.sp),
-                borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3))),
-            hintText: S.of(context).enter_national_id,
-            validator: (p0) {},
+          hintText: S.of(context).enter_email,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter email';
+            }
+            // Add email format validation here if needed
+            return null; // Return null if the input is valid
+          },
+        ),
+        verticalSpacing(20),
+        Text(
+          S.of(context).subject,
+          style: TextStyles.font16SemiBoldBlack,
+        ),
+        verticalSpacing(10),
+        AppTextFormField(
+          fillColorFromBackground: ColorsManager.mainWhite,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16.sp),
+            borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
           ),
-          verticalSpacing(20),
-
-          Text(
-            S.of(context).email,
-            style: TextStyles.font16SemiBoldBlack,
+          hintText: S.of(context).enter_the_teacher_subject,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter teacher subject';
+            }
+            return null; // Return null if the input is valid
+          },
+        ),
+        verticalSpacing(20),
+        Text(
+          S.of(context).class_code,
+          style: TextStyles.font16SemiBoldBlack,
+        ),
+        verticalSpacing(10),
+        AppTextFormField(
+          fillColorFromBackground: ColorsManager.mainWhite,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(16.sp),
+            borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
           ),
-          verticalSpacing(10),
-          AppTextFormField(
-            fillColorFromBackground: ColorsManager.mainWhite,
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16.sp),
-                borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3))),
-            hintText:  S.of(context).enter_email,
-            validator: (p0) {},
-          ),
-          verticalSpacing(20),
-          Text(
-            S.of(context).subject,
-            style: TextStyles.font16SemiBoldBlack,
-          ),
-          verticalSpacing(10),
-          AppTextFormField(
-            fillColorFromBackground: ColorsManager.mainWhite,
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16.sp),
-                borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3))),
-            hintText:  S.of(context).enter_the_teacher_subject,
-            validator: (p0) {},
-          ),
-          verticalSpacing(20),
-          Text(
-            S.of(context).class_code,
-            style: TextStyles.font16SemiBoldBlack,
-          ),
-          verticalSpacing(10),
-          AppTextFormField(
-            fillColorFromBackground: ColorsManager.mainWhite,
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16.sp),
-                borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3))),
-            hintText:  S.of(context).enter_the_teacher_class,
-            validator: (p0) {},
-          ),
-
-        ]);
+          hintText: S.of(context).enter_the_teacher_class,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter teacher class code';
+            }
+            return null; // Return null if the input is valid
+          },
+        ),
+      ],
+    );
   }
 }

@@ -5,11 +5,11 @@ class ColorsManager{
   static const Color mainWhite = Color(0xffffffff);
   static const Color mainBlack =Color(0xff212121);
   static const Color grey = Color(0xffF5F5F5);
-  static const lighterGrey =Color(0xffFDFDFF);
-  static const lightGrey = Color(0xffEDEDED);
-  static const moreLightGrey = Color(0xffFDFDFF);
-  static const neutralGray = Color(0xff9E9E9E);
-  static const completeColor = Color(0xffE41D1D);
-  static const activeColor = Color(0xff31B23E);
-  static const pendingColor = Color(0xffDABF30);
+  static const Color lighterGrey =Color(0xffFDFDFF);
+  static const Color lightGrey = Color(0xffEDEDED);
+  static const Color moreLightGrey = Color(0xffFDFDFF);
+  static const Color neutralGray = Color(0xff9E9E9E);
+  static const Color redColor = Color(0xffFC4A4A);
+  static const Color greenColor = Color(0xff4CAF50);
+  static const Color pendingColor = Color(0xffDABF30);
 }

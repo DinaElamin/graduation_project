@@ -81,6 +81,7 @@ class _AllTextFieldsWidgetState extends State<AllTextFieldsWidget> {
                           ? Icons.visibility
                           : Icons.visibility_off_rounded,
                       size: 22,
+                      color: ColorsManager.mainColor,
                     ),
                   ),
                   hintText: S.of(context).password_hint_text,

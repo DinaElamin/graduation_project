@@ -47,6 +47,7 @@ onTap: () {
 
   Future<void> _showDeleteConfirmationDialog(BuildContext context) async {
     return showDialog(
+
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
@@ -60,24 +61,6 @@ onTap: () {
           content: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(false),
-                child: Container(
-                  height: 30.h,
-                  width: 60.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(color: ColorsManager.mainBlack.withOpacity(0.3)),
-                  ),
-                  child: Center(
-                    child: Text(
-                      S.of(context).cancel,
-                      style: TextStyles.font12RegularPurple.copyWith(color: Colors.red),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(width: 10.w), // Add spacing between buttons
               TextButton(
                 onPressed: () {
                   Navigator.of(context).pop(true);
@@ -93,6 +76,24 @@ onTap: () {
                   child: Center(
                     child: Text(
                       S.of(context).delete,
+                      style: TextStyles.font12RegularPurple.copyWith(color: Colors.red),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(width: 10.w), // Add spacing between buttons
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: Container(
+                  height: 30.h,
+                  width: 60.w,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: ColorsManager.mainBlack.withOpacity(0.3)),
+                  ),
+                  child: Center(
+                    child: Text(
+                      S.of(context).cancel,
                       style: TextStyles.font12RegularPurple.copyWith(color: ColorsManager.mainBlack),
                     ),
                   ),

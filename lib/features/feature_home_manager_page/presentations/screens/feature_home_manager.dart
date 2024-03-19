@@ -64,7 +64,7 @@ class _HomeManagerPageState extends State<HomeManagerPage> with TickerProviderSt
                             width: 100.w,
                             child: Row(
                               children: [
-                                Image.asset(ImageManager.profileIcon),
+                                const Icon(Icons.person_outline_sharp),
                                 horizontalSpacing(5),
                                 Text(S.of(context).my_profile, style: TextStyles.font12BlackBold),
                               ],
@@ -79,7 +79,7 @@ class _HomeManagerPageState extends State<HomeManagerPage> with TickerProviderSt
                           child: SizedBox(
                             width: 100.w,
                               child: Row(children: [
-                                Image.asset(ImageManager.settingHome),
+                                const Icon(Icons.settings),
                                 horizontalSpacing(5),
                                  Text(S.of(context).setting, style: TextStyles.font12BlackBold),
                               ],)

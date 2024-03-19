@@ -30,7 +30,7 @@ class AplexaApp extends StatelessWidget {
           primaryColor: ColorsManager.mainColor,
           scaffoldBackgroundColor: Colors.white,
         ),
-        initialRoute: Routes.gradePage,
+        initialRoute: Routes.landingPage,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );

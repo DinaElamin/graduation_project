@@ -106,7 +106,9 @@ Widget myInputBox(BuildContext context, TextEditingController controller) {
         Radius.circular(10.sp),
       ),
     ),
-    child: TextField(
+    child:TextField(
+      cursorColor: ColorsManager.mainColor,
+      mouseCursor: MouseCursor.uncontrolled,
       controller: controller,
       maxLength: 1,
       textAlign: TextAlign.center,
@@ -114,6 +116,12 @@ Widget myInputBox(BuildContext context, TextEditingController controller) {
       style: TextStyle(fontSize: 42.sp),
       decoration: const InputDecoration(
         counterText: '',
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: ColorsManager.mainWhite), // Set the color of the underline here
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: ColorsManager.mainColor), // Set the color of the underline when focused
+        ),
       ),
       onChanged: (value) {
         if (value.length == 1) {
@@ -121,5 +129,6 @@ Widget myInputBox(BuildContext context, TextEditingController controller) {
         }
       },
     ),
+
   );
 }

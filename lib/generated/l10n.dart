@@ -769,6 +769,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Semester One Subject`
+  String get semester_one_subject {
+    return Intl.message(
+      'Semester One Subject',
+      name: 'semester_one_subject',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Semester Two Subject`
+  String get semester_two_subject {
+    return Intl.message(
+      'Semester Two Subject',
+      name: 'semester_two_subject',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

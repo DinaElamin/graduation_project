@@ -1,3 +1,4 @@
+import 'package:ablexa/core/theming/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -30,11 +31,14 @@ class ImageAndNameProfile extends StatelessWidget {
             child: Image.asset(ImageManager.defaultImageProfile),
           ),
           Positioned(
-              bottom: -2.h,
-              right: 20.w,
+              bottom: -1.h,
+              right: 18.w,
               height: 35.h,
               width: 35.w,
-              child: Image.asset(ImageManager.cameraIconFromProfile)),
+              child: CircleAvatar(
+                backgroundColor: ColorsManager.mainColor,
+                radius: 20.sp,child: const Icon(
+                  Icons.camera_alt,color: ColorsManager.mainWhite),),),
         ],
       ),
     );

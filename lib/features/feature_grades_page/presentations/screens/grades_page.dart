@@ -6,14 +6,14 @@ import '../../../../generated/l10n.dart';
 import '../widgets/grade_widget.dart';
 
 class GradesPage extends StatefulWidget {
-  const GradesPage({Key? key}) : super(key: key);
-
+  const GradesPage({Key? key, required this.gradeName}) : super(key: key);
+ final String gradeName;
   @override
   _GradesPageState createState() => _GradesPageState();
 }
 
 class _GradesPageState extends State<GradesPage> {
-  List<String> gradeList = ['Grade 1', 'Grade 2', 'Grade 3', 'Grade 4', 'Grade 5','Grade 6','Grade 7','Grade 8','Grade 9','Grade 10'];
+  List<String> gradeList = ['Grade 1'];
 
   void deleteGrade(int index) {
     setState(() {
@@ -38,7 +38,7 @@ class _GradesPageState extends State<GradesPage> {
       body: ListView.builder(
         itemCount: gradeList.length,
         itemBuilder: (context, index) => GradeWidget(
-          gradeName: gradeList[index],
+          gradeName:widget.gradeName,
           deleteAction: () => deleteGrade(index),
         ),
       ),
