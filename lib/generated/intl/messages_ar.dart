@@ -109,6 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "student_profile": MessageLookupByLibrary.simpleMessage("ملف الطالب"),
         "students": MessageLookupByLibrary.simpleMessage("الطلاب"),
         "subject": MessageLookupByLibrary.simpleMessage("المادة"),
+        "teacher_home": MessageLookupByLibrary.simpleMessage("صفحة المدرس"),
         "teachers": MessageLookupByLibrary.simpleMessage("الموعلمين"),
         "text_forget_password": MessageLookupByLibrary.simpleMessage(
             "لا تقلق! يحدث ذلك. يرجى إدخال البريد \nالإلكتروني المرتبط بحسابك."),

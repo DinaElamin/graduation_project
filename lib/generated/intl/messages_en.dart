@@ -109,6 +109,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Student Profile"),
         "students": MessageLookupByLibrary.simpleMessage("Students"),
         "subject": MessageLookupByLibrary.simpleMessage("Subject"),
+        "teacher_home": MessageLookupByLibrary.simpleMessage("Teacher Home"),
         "teachers": MessageLookupByLibrary.simpleMessage("Teachers"),
         "text_forget_password": MessageLookupByLibrary.simpleMessage(
             "Don’t worry! It happens. Please enter the \n email associated with your account."),

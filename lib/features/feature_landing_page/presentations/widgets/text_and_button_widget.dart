@@ -37,7 +37,8 @@ class TextAndButtonWidget extends StatelessWidget {
               child: AppTextButton(
                backgroundColor: ColorsManager.mainWhite,
                   textStyle: TextStyles.font18SemiBoldPurple,
-                  textButton: S.of(context).get_started, onPressed: (){
+                  textButton: S.of(context).get_started,
+                  onPressed: (){
                     context.pushNamed(Routes.loginPage);
               }),
             )
