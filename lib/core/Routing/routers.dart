@@ -17,4 +17,5 @@ class Routes {
   static const gradeDetailsPage = "/gradeDetailsPage";
   static const teacherHomePage =  "/teacherHomePage";
   static const studentsPage = "/studentsPage";
+  static const teacherProfilePage = "/teacherProfilePage";
 }

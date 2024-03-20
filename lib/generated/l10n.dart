@@ -799,6 +799,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Add New Exam`
+  String get add_new_exam {
+    return Intl.message(
+      'Add New Exam',
+      name: 'add_new_exam',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

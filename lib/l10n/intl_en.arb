@@ -73,5 +73,6 @@
  "grade_details": "Grade Details",
  "semester_one_subject": "Semester One Subject",
  "semester_two_subject": "Semester Two Subject",
- "teacher_home": "Teacher Home"
+ "teacher_home": "Teacher Home",
+ "add_new_exam": "Add New Exam"
 }
