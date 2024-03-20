@@ -1,7 +1,9 @@
+import 'package:ablexa/core/helper/extentions.dart';
 import 'package:ablexa/core/shared_widgets/app_elevated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../../core/Routing/routers.dart';
 import '../../../../core/shared_widgets/app_text_feild.dart';
 import '../../../../core/theming/image_manager.dart';
 import '../../../../core/theming/spacing.dart';
@@ -76,7 +78,9 @@ class TextFormFieldProfileManager extends StatelessWidget {
             padding:  EdgeInsets.only(left: 50.w,right: 50.w),
             child: AppTextButton(
 
-                textButton: S.of(context).add_new_exam, onPressed: (){}),
+                textButton: S.of(context).add_exam, onPressed: (){
+                  context.pushNamed(Routes.addExamPage);
+            }),
           )
         ],
       ),

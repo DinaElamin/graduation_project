@@ -1,4 +1,5 @@
 
+import 'package:ablexa/features/feature_add_exam_page/presentations/screens/add_exam_page.dart';
 import 'package:ablexa/features/feature_add_grade_page/presentations/screens/add_grade_page.dart';
 import 'package:ablexa/features/feature_add_student_page/presentations/screens/feature_add_student_page.dart';
 import 'package:ablexa/features/feature_add_teacher_page/presentations/screens/add_teacher_page.dart';
@@ -116,6 +117,11 @@ class AppRouter {
       case Routes.teacherProfilePage:
         return MaterialPageRoute(
           builder: (context) =>  const ProfileTeacherPage(),
+        );
+    // add Exam page
+      case Routes.addExamPage:
+        return MaterialPageRoute(
+          builder: (context) =>  const AddExamPage(),
         );
       default:
         return MaterialPageRoute(

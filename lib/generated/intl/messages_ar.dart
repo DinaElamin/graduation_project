@@ -23,9 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about_us": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
+        "add_exam": MessageLookupByLibrary.simpleMessage("إضافة امتحان"),
         "add_grade": MessageLookupByLibrary.simpleMessage("اضافة صف"),
-        "add_new_exam":
-            MessageLookupByLibrary.simpleMessage("اضافة امتحان جديد"),
         "add_student": MessageLookupByLibrary.simpleMessage("اضافة طالب"),
         "add_teacher": MessageLookupByLibrary.simpleMessage("اضافة مدرس"),
         "all": MessageLookupByLibrary.simpleMessage("الكل"),
@@ -52,16 +51,21 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("أدخل رمز الصف"),
         "enter_email":
             MessageLookupByLibrary.simpleMessage("أدخل البريد الإلكتروني"),
+        "enter_exam_name":
+            MessageLookupByLibrary.simpleMessage("أدخل اسم الامتحان"),
         "enter_full_name":
             MessageLookupByLibrary.simpleMessage("أدخل الاسم الكامل"),
         "enter_national_id":
             MessageLookupByLibrary.simpleMessage("أدخل الرقم القومي"),
         "enter_new_password":
             MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور الجديدة"),
+        "enter_subject_id":
+            MessageLookupByLibrary.simpleMessage("أدخل معرف المادة"),
         "enter_the_teacher_class":
             MessageLookupByLibrary.simpleMessage("ادخل صف المعلم"),
         "enter_the_teacher_subject":
             MessageLookupByLibrary.simpleMessage("ادخل موضوع المعلم"),
+        "exam_name": MessageLookupByLibrary.simpleMessage("اسم الامتحان"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور ؟"),
         "full_name": MessageLookupByLibrary.simpleMessage("الاسم الكامل"),
@@ -111,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "student_profile": MessageLookupByLibrary.simpleMessage("ملف الطالب"),
         "students": MessageLookupByLibrary.simpleMessage("الطلاب"),
         "subject": MessageLookupByLibrary.simpleMessage("المادة"),
+        "subject_id": MessageLookupByLibrary.simpleMessage("معرف المادة"),
         "teacher_home": MessageLookupByLibrary.simpleMessage("صفحة المدرس"),
         "teachers": MessageLookupByLibrary.simpleMessage("الموعلمين"),
         "text_forget_password": MessageLookupByLibrary.simpleMessage(
@@ -123,6 +128,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تحديث كلمة المرور"),
         "update_user_image":
             MessageLookupByLibrary.simpleMessage("تحديث صورة المستخدم"),
+        "upload_exam_image":
+            MessageLookupByLibrary.simpleMessage("تحميل صورة الامتحان"),
         "user_name": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
         "users": MessageLookupByLibrary.simpleMessage("المستخدمين"),
         "verify": MessageLookupByLibrary.simpleMessage("تحقق"),

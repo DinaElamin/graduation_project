@@ -74,5 +74,10 @@
  "semester_one_subject": "Semester One Subject",
  "semester_two_subject": "Semester Two Subject",
  "teacher_home": "Teacher Home",
- "add_new_exam": "Add New Exam"
+ "add_exam": "Add Exam",
+ "exam_name": "Exam Name",
+ "enter_exam_name": "Enter Exam Name",
+ "subject_id": "Subject Id",
+ "enter_subject_id": "Enter Subject Id",
+ "upload_exam_image": "Upload Exam Image"
 }

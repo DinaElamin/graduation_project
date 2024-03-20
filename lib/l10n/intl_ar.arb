@@ -73,5 +73,10 @@
   "semester_one_subject": "المواد الدراسية في الفصل الدراسي الأول",
   "semester_two_subject": "المواد الدراسية في الفصل الدراسي الثاني",
   "teacher_home": "صفحة المدرس",
-  "add_new_exam": "اضافة امتحان جديد"
+  "add_exam": "إضافة امتحان",
+  "exam_name": "اسم الامتحان",
+  "enter_exam_name": "أدخل اسم الامتحان",
+  "subject_id": "معرف المادة",
+  "enter_subject_id": "أدخل معرف المادة",
+  "upload_exam_image": "تحميل صورة الامتحان"
 }

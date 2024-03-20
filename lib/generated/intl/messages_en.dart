@@ -23,8 +23,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about_us": MessageLookupByLibrary.simpleMessage("About Us"),
+        "add_exam": MessageLookupByLibrary.simpleMessage("Add Exam"),
         "add_grade": MessageLookupByLibrary.simpleMessage("Add Grade"),
-        "add_new_exam": MessageLookupByLibrary.simpleMessage("Add New Exam"),
         "add_student": MessageLookupByLibrary.simpleMessage("Add Student"),
         "add_teacher": MessageLookupByLibrary.simpleMessage("Add Teacher"),
         "all": MessageLookupByLibrary.simpleMessage("All"),
@@ -50,16 +50,21 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_class_code":
             MessageLookupByLibrary.simpleMessage("Enter Class Code"),
         "enter_email": MessageLookupByLibrary.simpleMessage("Enter Email"),
+        "enter_exam_name":
+            MessageLookupByLibrary.simpleMessage("Enter Exam Name"),
         "enter_full_name":
             MessageLookupByLibrary.simpleMessage("Enter Full Name"),
         "enter_national_id":
             MessageLookupByLibrary.simpleMessage("Enter National ID"),
         "enter_new_password":
             MessageLookupByLibrary.simpleMessage("Enter New Password"),
+        "enter_subject_id":
+            MessageLookupByLibrary.simpleMessage("Enter Subject Id"),
         "enter_the_teacher_class":
             MessageLookupByLibrary.simpleMessage("enter the teacher\'s class"),
         "enter_the_teacher_subject": MessageLookupByLibrary.simpleMessage(
             "enter the teacher\'s subject"),
+        "exam_name": MessageLookupByLibrary.simpleMessage("Exam Name"),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("Forget Password ?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full Name"),
@@ -110,6 +115,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Student Profile"),
         "students": MessageLookupByLibrary.simpleMessage("Students"),
         "subject": MessageLookupByLibrary.simpleMessage("Subject"),
+        "subject_id": MessageLookupByLibrary.simpleMessage("Subject Id"),
         "teacher_home": MessageLookupByLibrary.simpleMessage("Teacher Home"),
         "teachers": MessageLookupByLibrary.simpleMessage("Teachers"),
         "text_forget_password": MessageLookupByLibrary.simpleMessage(
@@ -122,6 +128,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Update password"),
         "update_user_image":
             MessageLookupByLibrary.simpleMessage("Update User Image"),
+        "upload_exam_image":
+            MessageLookupByLibrary.simpleMessage("Upload Exam Image"),
         "user_name": MessageLookupByLibrary.simpleMessage("User Name"),
         "users": MessageLookupByLibrary.simpleMessage("Users"),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),

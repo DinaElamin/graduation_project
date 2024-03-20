@@ -6,6 +6,7 @@ import '../../../../core/Routing/routers.dart';
 import '../../../../core/theming/image_manager.dart';
 import '../../../../core/theming/spacing.dart';
 import '../../../../core/theming/styles.dart';
+
 class ProfileAndSettingWidget extends StatelessWidget {
   const ProfileAndSettingWidget({
     super.key,
@@ -15,7 +16,7 @@ class ProfileAndSettingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-context.pushNamed(Routes.teacherProfilePage);
+        context.pushNamed(Routes.teacherProfilePage);
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -29,8 +30,7 @@ context.pushNamed(Routes.teacherProfilePage);
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Ahmed Mohamed",
-                      style: TextStyles.font16SemiBoldBlack),
+                  Text("Ahmed Mohamed", style: TextStyles.font16SemiBoldBlack),
                   Text("Ahmed Mohamed@gmail.com",
                       style: TextStyles.font14MediumLightBlack),
                 ],
@@ -39,8 +39,9 @@ context.pushNamed(Routes.teacherProfilePage);
           ),
           IconButton(
               onPressed: () {
-context.pushNamed(Routes.settingPage);
-              }, icon: const Icon(Icons.settings_rounded)),
+                context.pushNamed(Routes.settingPage);
+              },
+              icon: const Icon(Icons.settings_rounded)),
         ],
       ),
     );

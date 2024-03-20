@@ -800,11 +800,61 @@ class S {
     );
   }
 
-  /// `Add New Exam`
-  String get add_new_exam {
+  /// `Add Exam`
+  String get add_exam {
     return Intl.message(
-      'Add New Exam',
-      name: 'add_new_exam',
+      'Add Exam',
+      name: 'add_exam',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exam Name`
+  String get exam_name {
+    return Intl.message(
+      'Exam Name',
+      name: 'exam_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Exam Name`
+  String get enter_exam_name {
+    return Intl.message(
+      'Enter Exam Name',
+      name: 'enter_exam_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subject Id`
+  String get subject_id {
+    return Intl.message(
+      'Subject Id',
+      name: 'subject_id',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter Subject Id`
+  String get enter_subject_id {
+    return Intl.message(
+      'Enter Subject Id',
+      name: 'enter_subject_id',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload Exam Image`
+  String get upload_exam_image {
+    return Intl.message(
+      'Upload Exam Image',
+      name: 'upload_exam_image',
       desc: '',
       args: [],
     );
