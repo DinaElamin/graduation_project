@@ -42,5 +42,3 @@ class TeacherHome extends StatelessWidget {
     );
   }
 }
-
-

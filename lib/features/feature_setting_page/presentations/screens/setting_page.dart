@@ -1,11 +1,10 @@
+import 'package:ablexa/core/helper/extentions.dart';
+import 'package:ablexa/core/theming/colors.dart';
 import 'package:ablexa/core/theming/image_manager.dart';
 import 'package:ablexa/core/theming/spacing.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_rx/src/rx_typedefs/rx_typedefs.dart';
-
-import '../../../../core/theming/colors.dart';
-import '../../../../core/theming/styles.dart';
+import '../../../../core/Routing/routers.dart';
+import '../../../../core/shared_widgets/appBar_widget.dart';
 import '../../../../generated/l10n.dart';
 import '../widgets/button_logout.dart';
 import '../widgets/containt_of_setting_container.dart';
@@ -16,40 +15,44 @@ class SettingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).setting),
-        elevation: 0,
-        backgroundColor: ColorsManager.mainWhite,
-        foregroundColor: ColorsManager.mainBlack,
-      ),
       body: Column(
         children: [
           Expanded(
             child: ListView(
               children: [
+                AppBarWidget(pageName: S.of(context).setting),
                 verticalSpacing(50),
                 ContantOfSettingContainer(
-                  iconName: ImageManager.resetPasswordIcon,
-                  text: S.of(context).reset_password,
-                  onPressedFromArrow: () {},
+                  iconName:  Icon(Icons.person,color: ColorsManager.mainBlack.withOpacity(0.5)),
+                  text: S.of(context).my_profile,
+                  onPressedFromArrow: () {
+
+                  },
                 ),
                 ContantOfSettingContainer(
-                  iconName: ImageManager.helpIcon,
+                  iconName: Icon(Icons.key_outlined,color: ColorsManager.mainBlack.withOpacity(0.5)),
+                  text: S.of(context).reset_password,
+                  onPressedFromArrow: () {
+                    context.pushNamed(Routes.resetPasswordPage);
+                  },
+                ),
+                ContantOfSettingContainer(
+                  iconName: Icon(Icons.help,color: ColorsManager.mainBlack.withOpacity(0.5)),
                   text: S.of(context).help,
                   onPressedFromArrow: () {},
                 ),
                 ContantOfSettingContainer(
-                  iconName: ImageManager.contactUsIcon,
+                  iconName: Icon(Icons.email_outlined,color: ColorsManager.mainBlack.withOpacity(0.5)),
                   text: S.of(context).contact_us,
                   onPressedFromArrow: () {},
                 ),
                 ContantOfSettingContainer(
-                  iconName: ImageManager.privacyPolicyIcon,
+                  iconName: Icon(Icons.privacy_tip_outlined,color: ColorsManager.mainBlack.withOpacity(0.5)),
                   text: S.of(context).privacy_policy,
                   onPressedFromArrow: () {},
                 ),
                 ContantOfSettingContainer(
-                  iconName: ImageManager.aboutUsIcon,
+                  iconName: Icon(Icons.info_outline,color: ColorsManager.mainBlack.withOpacity(0.5)),
                   text: S.of(context).about_us,
                   onPressedFromArrow: () {},
                 ),

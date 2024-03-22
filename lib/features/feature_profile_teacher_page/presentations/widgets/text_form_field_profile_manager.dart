@@ -48,6 +48,7 @@ class TextFormFieldProfileManager extends StatelessWidget {
             S.of(context).phone_number,
             style: TextStyles.font16SemiBoldBlack,
           ),
+          verticalSpacing(10),
           AppTextFormField(
             suffixIcon: Image.asset(ImageManager.editIcon),
             hintText: "0102256486",
@@ -58,6 +59,7 @@ class TextFormFieldProfileManager extends StatelessWidget {
             S.of(context).subject,
             style: TextStyles.font16SemiBoldBlack,
           ),
+          verticalSpacing(10),
           AppTextFormField(
             suffixIcon: Image.asset(ImageManager.editIcon),
             hintText: "Science , Math",
@@ -68,6 +70,7 @@ class TextFormFieldProfileManager extends StatelessWidget {
             S.of(context).classes,
             style: TextStyles.font16SemiBoldBlack,
           ),
+          verticalSpacing(10),
           AppTextFormField(
             suffixIcon: Image.asset(ImageManager.editIcon),
             hintText: "Grade1 , Grade2",

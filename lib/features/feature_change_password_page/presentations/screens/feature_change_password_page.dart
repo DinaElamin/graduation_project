@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../core/theming/colors.dart';
+import '../../../../core/shared_widgets/appBar_widget.dart';
 import '../../../../core/theming/spacing.dart';
 import '../../../../generated/l10n.dart';
 import '../widgets/text-form_filed_password.dart';
@@ -17,14 +17,9 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).change_password),
-        elevation: 0,
-        backgroundColor: ColorsManager.mainWhite,
-        foregroundColor: ColorsManager.mainBlack,
-      ),
       body: ListView(
         children: [
+          AppBarWidget(pageName: S.of(context).change_password),
           Column(children: [
             verticalSpacing(100),
 

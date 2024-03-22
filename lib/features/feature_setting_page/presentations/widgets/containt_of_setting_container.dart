@@ -12,7 +12,7 @@ class ContantOfSettingContainer extends StatelessWidget {
     required this.text,
     required this.onPressedFromArrow,
   });
-  final String iconName;
+  final Widget iconName;
   final String text;
   final Callback onPressedFromArrow;
   @override
@@ -23,16 +23,16 @@ class ContantOfSettingContainer extends StatelessWidget {
       child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Row(
           children: [
-            Image.asset(iconName),
+            iconName,
             horizontalSpacing(20),
             Text(text,
                 style: TextStyles.font14MediumLightBlack),
           ],
         ),
         GestureDetector(
-          onTap: () {
-            onPressedFromArrow;
-          },
+          onTap:
+            onPressedFromArrow,
+
           child: Icon(Icons.arrow_back_ios,
               color: ColorsManager.mainBlack.withOpacity(0.5)),
         ),

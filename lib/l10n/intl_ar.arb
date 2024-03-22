@@ -78,5 +78,21 @@
   "enter_exam_name": "أدخل اسم الامتحان",
   "subject_id": "معرف المادة",
   "enter_subject_id": "أدخل معرف المادة",
-  "upload_exam_image": "تحميل صورة الامتحان"
+  "upload_exam_image": "تحميل صورة الامتحان",
+  "camera": "الكاميرا",
+  "gallery": "المعرض",
+  "select_image_source": "اختر مصدر الصورة",
+  "student_exams": "امتحانات الطلاب",
+  "behaviors": "السلوكيات",
+  "appearance": "المظهر",
+  "exams": "الامتحانات",
+  "attendence": "الحضور",
+  "current_password": "كلمة المرور الحالية",
+  "subject_details": "تفاصيل المواد",
+  "change_profile": "تغير الايميل",
+  "find_a_student": "ابحث على طالب ..."
+
+
+
+
 }

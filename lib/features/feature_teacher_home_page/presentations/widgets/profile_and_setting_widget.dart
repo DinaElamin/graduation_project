@@ -6,7 +6,6 @@ import '../../../../core/Routing/routers.dart';
 import '../../../../core/theming/image_manager.dart';
 import '../../../../core/theming/spacing.dart';
 import '../../../../core/theming/styles.dart';
-
 class ProfileAndSettingWidget extends StatelessWidget {
   const ProfileAndSettingWidget({
     super.key,
@@ -14,14 +13,15 @@ class ProfileAndSettingWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        context.pushNamed(Routes.teacherProfilePage);
-      },
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        GestureDetector
+          (
+          onTap: (){
+            context.pushNamed(Routes.teacherProfilePage);
+          },
+          child: Row(
             children: [
               Image.asset(ImageManager.defaultImageProfile,
                   width: 50.w, height: 50.h),
@@ -30,20 +30,20 @@ class ProfileAndSettingWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Ahmed Mohamed", style: TextStyles.font16SemiBoldBlack),
+                  Text("Ahmed Mohamed",
+                      style: TextStyles.font16SemiBoldBlack),
                   Text("Ahmed Mohamed@gmail.com",
                       style: TextStyles.font14MediumLightBlack),
                 ],
               )
             ],
           ),
-          IconButton(
-              onPressed: () {
-                context.pushNamed(Routes.settingPage);
-              },
-              icon: const Icon(Icons.settings_rounded)),
-        ],
-      ),
+        ),
+        IconButton(
+            onPressed: () {
+context.pushNamed(Routes.settingPage);
+            }, icon: const Icon(Icons.settings_rounded)),
+      ],
     );
   }
 }

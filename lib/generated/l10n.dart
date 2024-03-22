@@ -859,6 +859,126 @@ class S {
       args: [],
     );
   }
+
+  /// `Camera`
+  String get camera {
+    return Intl.message(
+      'Camera',
+      name: 'camera',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Gallery`
+  String get gallery {
+    return Intl.message(
+      'Gallery',
+      name: 'gallery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Image Source`
+  String get select_image_source {
+    return Intl.message(
+      'Select Image Source',
+      name: 'select_image_source',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Student Exams`
+  String get student_exams {
+    return Intl.message(
+      'Student Exams',
+      name: 'student_exams',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Behaviors`
+  String get behaviors {
+    return Intl.message(
+      'Behaviors',
+      name: 'behaviors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Appearance`
+  String get appearance {
+    return Intl.message(
+      'Appearance',
+      name: 'appearance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exams`
+  String get exams {
+    return Intl.message(
+      'Exams',
+      name: 'exams',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Attendence`
+  String get attendence {
+    return Intl.message(
+      'Attendence',
+      name: 'attendence',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Current Password`
+  String get current_password {
+    return Intl.message(
+      'Current Password',
+      name: 'current_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subject Details`
+  String get subject_details {
+    return Intl.message(
+      'Subject Details',
+      name: 'subject_details',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Change Profile`
+  String get change_profile {
+    return Intl.message(
+      'Change Profile',
+      name: 'change_profile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Find a student ...`
+  String get find_a_student {
+    return Intl.message(
+      'Find a student ...',
+      name: 'find_a_student',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

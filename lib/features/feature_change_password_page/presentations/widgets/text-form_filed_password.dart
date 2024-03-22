@@ -1,14 +1,15 @@
 import 'package:ablexa/core/helper/extentions.dart';
-import 'package:ablexa/core/shared_widgets/app_elevated_button.dart';
 import 'package:ablexa/core/theming/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../core/Routing/routers.dart';
+import '../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../core/shared_widgets/app_text_feild.dart';
+import '../../../../core/shared_widgets/success_widget.dart';
 import '../../../../core/theming/spacing.dart';
 import '../../../../core/theming/styles.dart';
 import '../../../../generated/l10n.dart';
+
 class TextFormFieldPassword extends StatefulWidget {
   const TextFormFieldPassword({super.key});
 
@@ -24,10 +25,10 @@ class _TextFormFieldPasswordState extends State<TextFormFieldPassword> {
 
   @override
   Widget build(BuildContext context) {
-    return       Form(
+    return Form(
       key: formKey,
       child: Padding(
-        padding:  EdgeInsets.only(left: 20.w,right: 20.w),
+        padding: EdgeInsets.only(left: 20.w, right: 20.w),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -100,11 +101,18 @@ class _TextFormFieldPasswordState extends State<TextFormFieldPassword> {
               },
             ),
             verticalSpacing(50),
-            AppTextButton(textButton: S.of(context).update_password, onPressed: (){
-              if(formKey.currentState!.validate()){
-                context.pushNamed(Routes.successfullyPage);
-              }
-            })
+            AppTextButton(
+                textButton: S.of(context).update_password,
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    showSuccessDialog(context, onPressed: () {
+                      context.pop();
+                      context.pushNamed(Routes.loginPage);
+                    },
+                        text: S.of(context).change_password,
+                        contentText: S.of(context).text_password_change);
+                  }
+                })
           ],
         ),
       ),

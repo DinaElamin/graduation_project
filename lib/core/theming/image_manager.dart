@@ -18,4 +18,5 @@ class ImageManager {
   static const uploadImageIcon = "assets/icons/upload_image_icon.png";
   static const minusIcon = "assets/icons/minus_icon.png";
   static const plusIcon = "assets/icons/plus_icon.png";
+  static const changeProfileImage = "assets/images/change_profile_image.png";
 }

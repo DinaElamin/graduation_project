@@ -37,7 +37,7 @@ class _ClassCardListViewState extends State<TeacherClasses> {
               color: selectedIndex == index ? ColorsManager.mainColor : null,
               shape: RoundedRectangleBorder(
                 borderRadius:
-                    BorderRadius.circular(16.sp),
+                BorderRadius.circular(16.sp),
               ),
               child: ListTile(
                 mouseCursor: MouseCursor.uncontrolled,

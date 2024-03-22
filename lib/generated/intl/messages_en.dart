@@ -28,10 +28,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_student": MessageLookupByLibrary.simpleMessage("Add Student"),
         "add_teacher": MessageLookupByLibrary.simpleMessage("Add Teacher"),
         "all": MessageLookupByLibrary.simpleMessage("All"),
+        "appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
+        "attendence": MessageLookupByLibrary.simpleMessage("Attendence"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
+        "behaviors": MessageLookupByLibrary.simpleMessage("Behaviors"),
+        "camera": MessageLookupByLibrary.simpleMessage("Camera"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "change_password":
             MessageLookupByLibrary.simpleMessage("Change Password"),
+        "change_profile":
+            MessageLookupByLibrary.simpleMessage("Change Profile"),
         "choose_the_subject":
             MessageLookupByLibrary.simpleMessage("Choose the Subject"),
         "class_code": MessageLookupByLibrary.simpleMessage("Class Code"),
@@ -40,6 +46,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "confirm_new_password":
             MessageLookupByLibrary.simpleMessage("Confirm new password"),
         "contact_us": MessageLookupByLibrary.simpleMessage("Contact Us"),
+        "current_password":
+            MessageLookupByLibrary.simpleMessage("Current Password"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "delete_garde": MessageLookupByLibrary.simpleMessage("Delete Grade ? "),
         "did_not_receive_code":
@@ -65,9 +73,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_the_teacher_subject": MessageLookupByLibrary.simpleMessage(
             "enter the teacher\'s subject"),
         "exam_name": MessageLookupByLibrary.simpleMessage("Exam Name"),
+        "exams": MessageLookupByLibrary.simpleMessage("Exams"),
+        "find_a_student":
+            MessageLookupByLibrary.simpleMessage("Find a student ..."),
         "forget_password":
             MessageLookupByLibrary.simpleMessage("Forget Password ?"),
         "full_name": MessageLookupByLibrary.simpleMessage("Full Name"),
+        "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
         "get_started": MessageLookupByLibrary.simpleMessage("Get Started"),
         "grade": MessageLookupByLibrary.simpleMessage("Grade"),
         "grade_details": MessageLookupByLibrary.simpleMessage("Grade Details"),
@@ -103,6 +115,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "save": MessageLookupByLibrary.simpleMessage("Save"),
         "save_change": MessageLookupByLibrary.simpleMessage("Save Change"),
         "search": MessageLookupByLibrary.simpleMessage("Search"),
+        "select_image_source":
+            MessageLookupByLibrary.simpleMessage("Select Image Source"),
         "semester_one": MessageLookupByLibrary.simpleMessage("Semester One"),
         "semester_one_subject":
             MessageLookupByLibrary.simpleMessage("Semester One Subject"),
@@ -111,10 +125,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Semester Two Subject"),
         "send_code": MessageLookupByLibrary.simpleMessage("Send Code"),
         "setting": MessageLookupByLibrary.simpleMessage("Settings"),
+        "student_exams": MessageLookupByLibrary.simpleMessage("Student Exams"),
         "student_profile":
             MessageLookupByLibrary.simpleMessage("Student Profile"),
         "students": MessageLookupByLibrary.simpleMessage("Students"),
         "subject": MessageLookupByLibrary.simpleMessage("Subject"),
+        "subject_details":
+            MessageLookupByLibrary.simpleMessage("Subject Details"),
         "subject_id": MessageLookupByLibrary.simpleMessage("Subject Id"),
         "teacher_home": MessageLookupByLibrary.simpleMessage("Teacher Home"),
         "teachers": MessageLookupByLibrary.simpleMessage("Teachers"),

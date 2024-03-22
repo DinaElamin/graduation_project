@@ -79,5 +79,17 @@
  "enter_exam_name": "Enter Exam Name",
  "subject_id": "Subject Id",
  "enter_subject_id": "Enter Subject Id",
- "upload_exam_image": "Upload Exam Image"
+ "upload_exam_image": "Upload Exam Image",
+ "camera": "Camera",
+ "gallery":"Gallery",
+ "select_image_source": "Select Image Source",
+ "student_exams": "Student Exams",
+ "behaviors": "Behaviors",
+ "appearance": "Appearance",
+ "exams": "Exams",
+ "attendence": "Attendence",
+ "current_password": "Current Password",
+ "subject_details": "Subject Details",
+ "change_profile": "Change Profile",
+ "find_a_student": "Find a student ..."
 }

@@ -1,4 +1,6 @@
 // all name from application
+import 'package:ablexa/features/feature_subject_details_page/presentations/screens/subject_details.dart';
+
 class Routes {
   static const landingPage = '/landingPage';
   static const loginPage = '/loginPage';
@@ -19,4 +21,10 @@ class Routes {
   static const studentsPage = "/studentsPage";
   static const teacherProfilePage = "/teacherProfilePage";
   static const addExamPage ="/addExamPage";
+  static const studentExamsPage ="/studentExamsPage";
+  static const quizUpdatedDegreePage = "/quizPage";
+  static const quizDegreePage ="/quizDegreePage";
+  static const resetPasswordPage = "/resetPasswordPage";
+  static const subjectDetailsPage = "/SubjectDetailsPage";
+  static const changeProfilePage ="/changeProfilePage";
 }

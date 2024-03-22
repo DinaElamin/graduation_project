@@ -4,19 +4,25 @@ import 'package:ablexa/features/feature_add_grade_page/presentations/screens/add
 import 'package:ablexa/features/feature_add_student_page/presentations/screens/feature_add_student_page.dart';
 import 'package:ablexa/features/feature_add_teacher_page/presentations/screens/add_teacher_page.dart';
 import 'package:ablexa/features/feature_change_password_page/presentations/screens/feature_change_password_page.dart';
+import 'package:ablexa/features/feature_change_profile_page/presentations/screens/change_profile.dart';
 import 'package:ablexa/features/feature_forget_password_page/presentations/screens/feature_forget_password_page.dart';
 import 'package:ablexa/features/feature_garde_details_page/presentations/screens/grade_details_page.dart';
 import 'package:ablexa/features/feature_grades_page/presentations/screens/grades_page.dart';
 import 'package:ablexa/features/feature_home_manager_page/presentations/screens/feature_home_manager.dart';
 import 'package:ablexa/features/feature_landing_page/presentations/screens/feature_landing_page.dart';
 import 'package:ablexa/features/feature_profile_teacher_page/presentations/screens/profile_teacher.dart';
+import 'package:ablexa/features/feature_quiz_degree_page/presentations/screens/quiz_degree.dart';
+import 'package:ablexa/features/feature_reset_password_page/presentations/screens/reset_password.dart';
 import 'package:ablexa/features/feature_student_profile_page/presentations/screens/student_profile_page.dart';
+import 'package:ablexa/features/feature_students_exams_page/presentations/screens/student_exams.dart';
 import 'package:ablexa/features/feature_students_page/presentations/screens/students_page.dart';
+import 'package:ablexa/features/feature_subject_details_page/presentations/screens/subject_details.dart';
 import 'package:ablexa/features/feature_teacher_home_page/presentations/screens/feature_teacher_home.dart';
 import 'package:ablexa/features/feature_verify_code_page/presentations/screens/feature_verify_code_page.dart';
 import 'package:flutter/material.dart';
 import '../../features/feature_login_page/presentations/screens/feature_login_page.dart';
 import '../../features/feature_profile_manager_page/presentations/screens/profile_manager.dart';
+import '../../features/feature_quiz_update_degree_page/presentations/screens/quiz_update_degree_page.dart';
 import '../../features/feature_setting_page/presentations/screens/setting_page.dart';
 import '../../features/feature_successfully_page/presentations/screens/feature_successfully_page.dart';
 import 'routers.dart';
@@ -122,6 +128,39 @@ class AppRouter {
       case Routes.addExamPage:
         return MaterialPageRoute(
           builder: (context) =>  const AddExamPage(),
+        );
+    // change profile page
+      case Routes.changeProfilePage:
+        return MaterialPageRoute(
+          builder: (context) =>  const ChangeProfile(),
+        );
+    // student Exams page
+      case Routes.studentExamsPage:
+        return MaterialPageRoute(
+          builder: (context) =>    const StudentExamsPage(),
+        );
+    // student Exams page
+      case Routes.quizUpdatedDegreePage:
+        final String quizName = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (context) =>   QuizUpdateDegreePage(quizName: quizName),
+        );
+    // student Exams page
+      case Routes.quizDegreePage:
+        final String quizName = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (context) =>   QuizDegree(quizName: quizName),
+        );
+    // subject details page
+      case Routes.subjectDetailsPage:
+        final String subjectName = settings.arguments as String;
+        return MaterialPageRoute(
+          builder: (context) =>    SubjectDetailsPage(subjectName: subjectName)
+        );
+    // student Exams page
+      case Routes.resetPasswordPage:
+        return MaterialPageRoute(
+          builder: (context) =>   const ResetPassword(),
         );
       default:
         return MaterialPageRoute(

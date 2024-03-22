@@ -9,6 +9,10 @@ class TextStyles {
       color: ColorsManager.mainWhite,
       fontSize: 20.sp,
       fontWeight: FontWeightHelper.bold);
+  static TextStyle font15MediumDarkGreen = TextStyle(
+      color: ColorsManager.darkGreenColor,
+      fontSize: 15.sp,
+      fontWeight: FontWeightHelper.medium);
   static TextStyle font20BoldBlack = TextStyle(
       color: ColorsManager.mainBlack,
       fontSize: 20.sp,
@@ -35,6 +39,10 @@ class TextStyles {
       fontWeight: FontWeightHelper.bold);
   static TextStyle font18SemiBoldWhite = TextStyle(
       color: ColorsManager.mainWhite,
+      fontSize: 18.sp,
+      fontWeight: FontWeightHelper.semiBold);
+  static TextStyle font18SemiBoldBlack = TextStyle(
+      color: ColorsManager.mainBlack,
       fontSize: 18.sp,
       fontWeight: FontWeightHelper.semiBold);
   static TextStyle font14MediumLightBlack = TextStyle(

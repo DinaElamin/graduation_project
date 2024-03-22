@@ -8,7 +8,7 @@ class GradeStudents extends StatelessWidget {
   final String gradeName;
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: MediaQuery.of(context).size.height * 0.9, // Set a percentage of the screen height
       child: ListView.builder(
         shrinkWrap: true,

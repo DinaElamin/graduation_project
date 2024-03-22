@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/Routing/routers.dart';
+import '../../../../core/shared_widgets/appBar_widget.dart';
 import '../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../core/shared_widgets/app_text_feild.dart';
 import '../../../../core/theming/colors.dart';
@@ -23,13 +24,9 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).forget_password),
-        elevation: 0,
-        backgroundColor: ColorsManager.mainWhite,
-        foregroundColor: ColorsManager.mainBlack,
-      ),
+
       body: ListView(children: [
+        AppBarWidget(pageName: S.of(context).forget_password),
         Column(
           children: [
             verticalSpacing(50),
