@@ -340,10 +340,10 @@ class S {
     );
   }
 
-  /// `Search`
+  /// `Search ... `
   String get search {
     return Intl.message(
-      'Search',
+      'Search ... ',
       name: 'search',
       desc: '',
       args: [],
