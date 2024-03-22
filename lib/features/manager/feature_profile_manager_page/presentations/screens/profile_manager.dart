@@ -1,4 +1,4 @@
-import '../../../../../core/theming/colors.dart';
+import 'package:ablexa/core/shared_widgets/appBar_widget.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../generated/l10n.dart';
 import '../widgets/image_and_name_profile_manager.dart';
@@ -17,15 +17,10 @@ class _ProfileManagerPageState extends State<ProfileManagerPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).my_profile),
-        elevation: 0,
-        backgroundColor: ColorsManager.mainWhite,
-        foregroundColor: ColorsManager.mainBlack,
-      ),
       body: SingleChildScrollView( // Wrap the ListView with SingleChildScrollView
         child: Column(
           children: [
+            AppBarWidget(pageName: S.of(context).my_profile),
             verticalSpacing(20),
             const ImageAndNameProfile(),
             verticalSpacing(40),

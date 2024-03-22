@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/Routing/routers.dart';
+import '../../../../../core/shared_widgets/appBar_widget.dart';
 import '../../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../../core/shared_widgets/app_text_feild.dart';
-import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
@@ -23,14 +23,9 @@ class _AddGradePageState extends State<AddGradePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).add_grade),
-        elevation: 0,
-        backgroundColor: ColorsManager.mainWhite,
-        foregroundColor: ColorsManager.mainBlack,
-      ),
       body: ListView(
         children: [
+          AppBarWidget(pageName: S.of(context).add_grade),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: Form(

@@ -2,6 +2,7 @@ import 'package:ablexa/core/helper/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/Routing/routers.dart';
+import '../../../../../core/shared_widgets/appBar_widget.dart';
 import '../../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/spacing.dart';
@@ -22,14 +23,10 @@ class _AddStudentPageState extends State<AddStudentPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).add_student),
-        elevation: 0,
-        backgroundColor: ColorsManager.mainWhite,
-        foregroundColor: ColorsManager.mainBlack,
-      ),
+
       body: ListView(
         children: [
+          AppBarWidget(pageName: S.of(context).add_student),
           Padding(
             padding: EdgeInsets.only(left: 20.w, right: 20.w),
             child: Form(

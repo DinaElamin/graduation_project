@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../core/theming/colors.dart';
+import '../../../../../core/shared_widgets/appBar_widget.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
@@ -13,14 +13,10 @@ class GradeDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(S.of(context).grade_details),
-        elevation: 0,
-        backgroundColor: ColorsManager.mainWhite,
-        foregroundColor: ColorsManager.mainBlack,
-      ),
+
       body: ListView(
         children: [
+          AppBarWidget(pageName: S.of(context).grade_details),
           Padding(
             padding:  EdgeInsets.only(left: 20.w,right: 20.w)       ,
             child: Column(
