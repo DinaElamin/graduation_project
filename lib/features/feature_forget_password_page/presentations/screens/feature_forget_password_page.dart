@@ -1,6 +1,6 @@
-import 'package:ablexa/core/helper/extentions.dart';
-import 'package:ablexa/core/theming/image_manager.dart';
-import 'package:ablexa/core/theming/spacing.dart';
+import '../../../../core/helper/extentions.dart';
+import '../../../../core/theming/image_manager.dart';
+import '../../../../core/theming/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

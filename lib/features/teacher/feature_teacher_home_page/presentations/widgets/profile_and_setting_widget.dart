@@ -1,11 +1,11 @@
-import '../../../../core/helper/extentions.dart';
+import 'package:ablexa/core/helper/extentions.dart';
+
+import '../../../../../core/Routing/routers.dart';
+import '../../../../../core/theming/image_manager.dart';
+import '../../../../../core/theming/spacing.dart';
+import '../../../../../core/theming/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../core/Routing/routers.dart';
-import '../../../../core/theming/image_manager.dart';
-import '../../../../core/theming/spacing.dart';
-import '../../../../core/theming/styles.dart';
 class ProfileAndSettingWidget extends StatelessWidget {
   const ProfileAndSettingWidget({
     super.key,

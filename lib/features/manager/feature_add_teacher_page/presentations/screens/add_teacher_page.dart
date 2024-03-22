@@ -1,11 +1,11 @@
-import '../../../../core/Routing/routers.dart';
-import '../../../../core/helper/extentions.dart';
+import 'package:ablexa/core/helper/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/shared_widgets/app_elevated_button.dart';
-import '../../../../core/theming/colors.dart';
-import '../../../../core/theming/spacing.dart';
-import '../../../../generated/l10n.dart';
+import '../../../../../core/Routing/routers.dart';
+import '../../../../../core/shared_widgets/app_elevated_button.dart';
+import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/spacing.dart';
+import '../../../../../generated/l10n.dart';
 import '../widgets/text_form_fiels_from_add_teacher.dart';
 
 class AddTeacherPage extends StatefulWidget {

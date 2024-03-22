@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../core/theming/colors.dart';
-import '../../../../core/theming/spacing.dart';
-import '../../../../core/theming/styles.dart';
-import '../../../../generated/l10n.dart';
+import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/spacing.dart';
+import '../../../../../core/theming/styles.dart';
+import '../../../../../generated/l10n.dart';
 import '../widgets/semester_one_widget.dart';
 import '../widgets/semester_two_widget.dart';
 

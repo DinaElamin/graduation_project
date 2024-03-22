@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../../../../core/theming/colors.dart';
-import '../../../../core/theming/image_manager.dart';
-import '../../../../core/theming/spacing.dart';
-import '../../../../core/theming/styles.dart';
-import '../../../../generated/l10n.dart';
+import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/image_manager.dart';
+import '../../../../../core/theming/spacing.dart';
+import '../../../../../core/theming/styles.dart';
+import '../../../../../generated/l10n.dart';
 
 class ImageAndNameProfile extends StatefulWidget {
   const ImageAndNameProfile({super.key});

@@ -1,14 +1,12 @@
-import 'package:ablexa/core/helper/extentions.dart';
+import '../../../../../core/Routing/routers.dart';
+import '../../../../../core/helper/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ablexa/core/theming/colors.dart';
-import 'package:ablexa/core/theming/image_manager.dart';
-import 'package:ablexa/core/theming/spacing.dart';
-import 'package:ablexa/core/theming/styles.dart';
-
-import '../../../../core/Routing/routers.dart';
-import '../../../../generated/l10n.dart';
-
+import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/image_manager.dart';
+import '../../../../../core/theming/spacing.dart';
+import '../../../../../core/theming/styles.dart';
+import '../../../../../generated/l10n.dart';
 class CardInformation extends StatelessWidget {
   final String name, type, image;
 

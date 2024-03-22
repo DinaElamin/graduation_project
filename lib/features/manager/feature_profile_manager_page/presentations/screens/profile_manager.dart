@@ -1,8 +1,8 @@
-import '../../../../core/theming/spacing.dart';
+import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/spacing.dart';
+import '../../../../../generated/l10n.dart';
 import '../widgets/image_and_name_profile_manager.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/theming/colors.dart';
-import '../../../../generated/l10n.dart';
 import '../widgets/add_buttons_from_managers.dart';
 import '../widgets/text_form_field_profile_manager.dart';
 

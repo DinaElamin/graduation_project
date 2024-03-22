@@ -1,9 +1,8 @@
-import 'package:ablexa/core/theming/colors.dart';
+import '../../../../../core/theming/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/theming/styles.dart';
-
+import '../../../../../core/theming/styles.dart';
 class ClassCardListView extends StatefulWidget {
   const ClassCardListView({Key? key}) : super(key: key);
 

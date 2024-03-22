@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../core/Routing/routers.dart';
-import '../../../../core/shared_widgets/appBar_widget.dart';
-import '../../../../core/shared_widgets/app_elevated_button.dart';
-import '../../../../core/theming/colors.dart';
-import '../../../../core/theming/spacing.dart';
-import '../../../../core/theming/styles.dart';
+import '../../../../../core/Routing/routers.dart';
+import '../../../../../core/shared_widgets/appBar_widget.dart';
+import '../../../../../core/shared_widgets/app_elevated_button.dart';
+import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/spacing.dart';
+import '../../../../../core/theming/styles.dart';
 class QuizDegree extends StatelessWidget {
   const QuizDegree({super.key, required this.quizName});
  final String quizName;

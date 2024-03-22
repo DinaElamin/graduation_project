@@ -1,10 +1,10 @@
-import 'package:ablexa/core/helper/extentions.dart';
-import 'package:ablexa/core/shared_widgets/appBar_widget.dart';
-import 'package:ablexa/core/shared_widgets/app_elevated_button.dart';
-import 'package:ablexa/core/shared_widgets/app_text_feild.dart';
-import 'package:ablexa/core/theming/colors.dart';
-import 'package:ablexa/core/theming/image_manager.dart';
-import 'package:ablexa/core/theming/spacing.dart';
+import '../../../../core/helper/extentions.dart';
+import '../../../../core/shared_widgets/appBar_widget.dart';
+import '../../../../core/shared_widgets/app_elevated_button.dart';
+import '../../../../core/shared_widgets/app_text_feild.dart';
+import '../../../../core/theming/colors.dart';
+import '../../../../core/theming/image_manager.dart';
+import '../../../../core/theming/spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,8 +1,8 @@
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/theming/colors.dart';
-import '../../../../generated/l10n.dart';
+import '../../../../../core/theming/colors.dart';
+import '../../../../../generated/l10n.dart';
 import 'apperence_widget.dart';
 import 'attendence_widget.dart';
 import 'behaviors_widget.dart';

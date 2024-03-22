@@ -1,10 +1,11 @@
-import '../../../../core/helper/extentions.dart';
+import 'package:ablexa/core/helper/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/theming/colors.dart';
-import '../../../../core/theming/spacing.dart';
-import '../../../../core/theming/styles.dart';
-import '../../../../core/Routing/routers.dart';
+
+import '../../../../../core/Routing/routers.dart';
+import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/spacing.dart';
+import '../../../../../core/theming/styles.dart';
 
 class CardInformationGradeStudents extends StatelessWidget {
   final String name, type, image;

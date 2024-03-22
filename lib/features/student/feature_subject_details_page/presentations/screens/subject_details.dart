@@ -1,8 +1,7 @@
-import '../../../../core/theming/media_query_helper.dart';
-import 'package:flutter/material.dart';
+import 'package:ablexa/core/theming/media_query_helper.dart';
 
-import '../../../../core/shared_widgets/appBar_widget.dart';
-import '../../../../generated/l10n.dart';
+import '../../../../../core/shared_widgets/appBar_widget.dart';
+import 'package:flutter/material.dart';
 import '../widgets/subject_degree_widget.dart';
 
 class SubjectDetailsPage extends StatelessWidget {

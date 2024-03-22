@@ -1,6 +1,6 @@
-import 'package:ablexa/core/theming/colors.dart';
-import 'package:ablexa/core/theming/image_manager.dart';
-import 'package:ablexa/core/theming/media_query_helper.dart';
+import '../../../../core/theming/colors.dart';
+import '../../../../core/theming/image_manager.dart';
+import '../../../../core/theming/media_query_helper.dart';
 import 'package:flutter/material.dart';
 import '../widgets/text_and_button_widget.dart';
 class LandingPage extends StatelessWidget {

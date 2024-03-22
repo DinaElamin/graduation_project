@@ -1,6 +1,7 @@
-import 'package:ablexa/core/theming/image_manager.dart';
-import 'package:ablexa/features/feature_home_manager_page/presentations/widgets/card_information.dart';
+import '../../../../../core/theming/image_manager.dart';
 import 'package:flutter/material.dart';
+
+import 'card_information.dart';
 
 class CardListView extends StatelessWidget {
   const CardListView({super.key, required this.type});

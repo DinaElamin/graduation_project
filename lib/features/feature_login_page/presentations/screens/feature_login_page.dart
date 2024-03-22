@@ -1,4 +1,4 @@
-import 'package:ablexa/core/theming/spacing.dart';
+import '../../../../core/theming/spacing.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/shared_widgets/appBar_widget.dart';
 import '../../../../core/theming/colors.dart';

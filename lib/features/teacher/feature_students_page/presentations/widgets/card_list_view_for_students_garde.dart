@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/theming/image_manager.dart';
 import 'card_information_grade_student.dart';
-import '../../../../core/theming/image_manager.dart';
 
 class GradeStudents extends StatelessWidget {
   const GradeStudents({Key? key, required this.gradeName});

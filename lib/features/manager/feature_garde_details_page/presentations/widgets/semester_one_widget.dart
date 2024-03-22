@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/theming/colors.dart';
-import '../../../../core/theming/image_manager.dart';
-import '../../../../core/theming/styles.dart';
-import '../../../../generated/l10n.dart';
 
+import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/image_manager.dart';
+import '../../../../../core/theming/styles.dart';
+import '../../../../../generated/l10n.dart';
 class SemesterOneWidget extends StatefulWidget {
   const SemesterOneWidget({Key? key}) : super(key: key);
 

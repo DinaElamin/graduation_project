@@ -1,8 +1,8 @@
-import '../../../../core/helper/extentions.dart';
+import 'package:ablexa/core/helper/extentions.dart';
 import 'package:flutter/material.dart';
-import '../../../../core/Routing/routers.dart';
-import '../../../../core/theming/colors.dart';
-import '../../../../generated/l10n.dart';
+import '../../../../../core/Routing/routers.dart';
+import '../../../../../core/theming/colors.dart';
+import '../../../../../generated/l10n.dart';
 import '../widgets/grade_widget.dart';
 
 class GradesPage extends StatefulWidget {

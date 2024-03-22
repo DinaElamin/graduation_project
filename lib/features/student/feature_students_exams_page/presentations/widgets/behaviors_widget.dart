@@ -1,9 +1,8 @@
-import '../../../../core/theming/media_query_helper.dart';
+import 'package:ablexa/core/theming/media_query_helper.dart';
+import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../core/theming/colors.dart';
-import '../../../../core/theming/styles.dart';
 class BehaviorsWidget extends StatelessWidget {
   const BehaviorsWidget({super.key});
 

@@ -1,12 +1,13 @@
-import '../../../../core/helper/extentions.dart';
-import '../../../../core/theming/colors.dart';
+
+import 'package:ablexa/core/helper/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../core/Routing/routers.dart';
-import '../../../../core/theming/image_manager.dart';
-import '../../../../core/theming/spacing.dart';
-import '../../../../core/theming/styles.dart';
-import '../../../../generated/l10n.dart';
+import '../../../../../core/Routing/routers.dart';
+import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/image_manager.dart';
+import '../../../../../core/theming/spacing.dart';
+import '../../../../../core/theming/styles.dart';
+import '../../../../../generated/l10n.dart';
 import '../widgets/students_information_widget.dart';
 
 class StudentExamsPage extends StatefulWidget {

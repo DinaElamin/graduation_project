@@ -1,5 +1,3 @@
-// all name from application
-import 'package:ablexa/features/feature_subject_details_page/presentations/screens/subject_details.dart';
 
 class Routes {
   static const landingPage = '/landingPage';

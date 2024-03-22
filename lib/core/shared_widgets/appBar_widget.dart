@@ -1,7 +1,7 @@
-import 'package:ablexa/core/helper/extentions.dart';
-import 'package:ablexa/core/theming/colors.dart';
-import 'package:ablexa/core/theming/spacing.dart';
-import 'package:ablexa/core/theming/styles.dart';
+import '../helper/extentions.dart';
+import '../theming/colors.dart';
+import '../theming/spacing.dart';
+import '../theming/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppBarWidget extends StatelessWidget {

@@ -1,11 +1,10 @@
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../core/theming/colors.dart';
-import '../../../../core/theming/spacing.dart';
-import '../../../../core/theming/styles.dart';
-import '../../../../generated/l10n.dart';
+import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/spacing.dart';
+import '../../../../../core/theming/styles.dart';
+import '../../../../../generated/l10n.dart';
 import 'card_list_view.dart';
 import 'class_card_list_veiw.dart';
 class UsersWidget extends StatelessWidget {
