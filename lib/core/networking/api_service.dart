@@ -1,3 +1,6 @@
+import 'package:ablexa/features/feature_login_page/data/models/login/request/login_response_model.dart';
+import 'package:ablexa/features/feature_login_page/data/models/login/response/login_request_model.dart';
+import 'package:ablexa/features/manager/feature_home_manager_page/data/models/get_all_teacher_model/get_all_teacher_model.dart';
 import 'package:dio/dio.dart' hide Headers;
 import 'api_constant.dart';
 import 'package:retrofit/retrofit.dart';
@@ -6,6 +9,15 @@ part 'api_service.g.dart';
 abstract class ApiService {
   factory ApiService(Dio dio, {String baseUrl}) = _ApiService;
 
+
+  // login page
+  @POST(ApiConstant.login)
+  @Headers(<String, dynamic>{
+    'Content-Type': 'application/json',
+  })
+  Future<LoginResponseModel> login(
+      @Body() LoginRequestModel loginRequestModel,
+      );
 //   // signIn
 //   @POST(ApiConstant.login)
 //   @FormUrlEncoded()
@@ -26,10 +38,9 @@ abstract class ApiService {
 //   @Headers({"Authorization": "Bearer {token}"})
 //   Future<LogoutDataModel> logout();
 //
-//   // homeSlider data
-//   @GET(ApiConstant.homeSlider)
-//   @FormUrlEncoded()
-//   Future<SliderModel> homeSliderData();
+  // getAllTeacher Page
+  @GET(ApiConstant.getAllTeacherData)
+  Future<GetAllTeacherModel> getAllTeacherData();
 //
 //   // specializationPopularDoctorsData
 //   @GET(ApiConstant.specializationPopularDoctors)

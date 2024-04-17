@@ -1,5 +1,8 @@
 
 
+import 'package:ablexa/features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../features/feature_change_password_page/presentations/screens/feature_change_password_page.dart';
 import '../../features/feature_change_profile_page/presentations/screens/change_profile.dart';
 import '../../features/feature_forget_password_page/presentations/screens/feature_forget_password_page.dart';
@@ -28,6 +31,7 @@ import '../../features/teacher/feature_profile_teacher_page/presentations/screen
 import '../../features/teacher/feature_quiz_update_degree_page/presentations/screens/quiz_update_degree_page.dart';
 import '../../features/teacher/feature_students_page/presentations/screens/students_page.dart';
 import '../../features/teacher/feature_teacher_home_page/presentations/screens/feature_teacher_home.dart';
+import '../di/dependacy_injection.dart';
 import 'routers.dart';
 
 class AppRouter {
@@ -41,7 +45,9 @@ class AppRouter {
         //LoginPage
       case Routes.loginPage:
         return MaterialPageRoute(
-          builder: (context) => const LoginPage(),
+          builder: (context) => BlocProvider(
+              create: (context) => getIt<LoginCubit>(),
+              child: const LoginPage()),
         );
         //ForgetPasswordPage
       case Routes.forgetPasswordPage:

@@ -1,3 +1,7 @@
+import 'package:ablexa/features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
+import 'package:ablexa/features/feature_login_page/presentations/widgets/login_bloc_listener.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../core/helper/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,16 +20,13 @@ class AllTextFieldsWidget extends StatefulWidget {
 }
 
 class _AllTextFieldsWidgetState extends State<AllTextFieldsWidget> {
-  final formKey = GlobalKey<FormState>();
-  TextEditingController emailController = TextEditingController();
   bool isPasswordVisible = false;
-  TextEditingController passwordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return  Padding(
       padding: EdgeInsets.only(left: 20.w, right: 20.w),
       child: Form(
-        key: formKey,
+        key: context.read<LoginCubit>().formKey,
         child:  Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,7 +46,7 @@ class _AllTextFieldsWidgetState extends State<AllTextFieldsWidget> {
                 verticalSpacing(10),
                 AppTextFormField(
                   maxLines: 1,
-                  controller: emailController,
+                  controller: context.read<LoginCubit>().emailController,
                   hintText: S.of(context).email_hint_text,
                   validator: (email) {
                     if (email!.isEmpty) {
@@ -66,7 +67,7 @@ class _AllTextFieldsWidgetState extends State<AllTextFieldsWidget> {
                 Text(S.of(context).password, style: TextStyles.font16SemiBoldBlack),
                 verticalSpacing(10),
                 AppTextFormField(
-                  controller: passwordController,
+                  controller: context.read<LoginCubit>().passwordController,
                   maxLines: 1,
                   textInputType: TextInputType.visiblePassword,
                   obscureText: !isPasswordVisible,
@@ -116,20 +117,23 @@ class _AllTextFieldsWidgetState extends State<AllTextFieldsWidget> {
                   backgroundColor: ColorsManager.mainColor,
                   textStyle: TextStyles.font18SemiBoldWhite,
                   textButton: S.of(context).login, onPressed: (){
-                validateThenDoSignUp(context);
+                validateThenDoLogin(context);
               }),
             ),
+            const LoginBlocListener(),
           ],
         ),
       ),
     );
   }
-  void validateThenDoSignUp(BuildContext context) {
-    if (formKey.currentState!.validate()) {
-      print("Validation successful. Navigating to verifyEmailManagerPage");
-       context.pushNamed(Routes.homeManagerPage);
-    } else {
-      print("Validation failed. Please check the form fields.");
+  void validateThenDoLogin(BuildContext context){
+    if(context.read<LoginCubit>().formKey.currentState!.validate()){
+      context.read<LoginCubit>().emitLoginInStates();
+
+      setState(() {
+        context.read<LoginCubit>().emailController.clear();
+        context.read<LoginCubit>().passwordController.clear();
+      });
     }
   }
 

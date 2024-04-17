@@ -1,6 +1,7 @@
 class ApiConstant {
- static const String apiBaseUrl = "https://doctoria.thetailorsweb.com/api/";
- static const String login = "auth/login";
+ static const String apiBaseUrl = "http://ablexav1.runasp.net/";
+ static const String login = "api/User/login";
+ static const String getAllTeacherData = "api/User/getallteachers";
  static const String signUp = "auth/signup";
  static const String logout = "auth/logout";
  static const String homeSlider ="settings/sliders";

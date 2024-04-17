@@ -40,8 +40,9 @@ class _HomeManagerPageState extends State<HomeManagerPage> with TickerProviderSt
                   children: [
                     Expanded(
                       child: AppTextFormField(
+                        contentPadding: const EdgeInsets.all(0),
                         fillColorFromBackground: ColorsManager.mainWhite,
-                        borderRadius: 25.sp,
+                        borderRadius: 16.sp,
                         prefixIcon: const Icon(Icons.search),
                         hintText: S.of(context).search,
                         validator: (value) {
