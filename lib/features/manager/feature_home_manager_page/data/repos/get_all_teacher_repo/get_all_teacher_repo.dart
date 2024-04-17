@@ -5,7 +5,7 @@ import '../../../../../../core/networking/api_service.dart';
 class GetAllTeacherRepo {
   final ApiService _apiService;
   GetAllTeacherRepo(this._apiService);
-  Future<ApiResult<GetAllTeacherModel>> getAllTeacherData() async{
+  Future<ApiResult<List<GetAllTeacherModel>>> getAllTeacherData() async{
     try{
       final response = await _apiService.getAllTeacherData();
       return ApiResult.success(response);

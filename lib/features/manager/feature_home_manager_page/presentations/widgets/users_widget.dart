@@ -1,3 +1,5 @@
+import 'package:ablexa/features/manager/feature_home_manager_page/presentations/widgets/students_list_view.dart';
+import 'package:ablexa/features/manager/feature_home_manager_page/presentations/widgets/teachers_list_view.dart';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,11 +29,10 @@ class UsersWidget extends StatelessWidget {
         ),
         verticalSpacing(20),
         DefaultTabController(
-          length: 4,
+          length: 3,
           child: Column(
             children: <Widget>[
               ButtonsTabBar(
-
                 height: 50.h,labelSpacing: 20,
                 radius: 16,
                 contentPadding: EdgeInsets.only(left: 20.w,right: 20.w),
@@ -50,20 +51,18 @@ class UsersWidget extends StatelessWidget {
                     fontSize: 12.sp
                 ),
                 tabs: [
-                  Tab(text: S.of(context).all),
-                  Tab(text: S.of(context).students),
                   Tab(text: S.of(context).teachers),
+                  Tab(text: S.of(context).students),
                   Tab(text: S.of(context).classes),
                 ],
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height, // Set a height constraint
-                child: const TabBarView(
+                child:  TabBarView(
                   children: [
                     // Add your TabBarView children here
-                    CardListView(type: "Teacher"),
-                    CardListView(type: "Student"),
-                    CardListView(type: "Teacher"),
+                    TeachersListView(),
+                    StudentsListView(),
                     ClassCardListView(),
                   ],
                 ),

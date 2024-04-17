@@ -1,6 +1,8 @@
 
 
 import 'package:ablexa/features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
+import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/get_all_student_cubit/login_cubit/get_all_student_cubit.dart';
+import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/get_all_teacher_cubit/login_cubit/get_all_teacher_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../features/feature_change_password_page/presentations/screens/feature_change_password_page.dart';
@@ -71,8 +73,18 @@ class AppRouter {
         );
     //home Manager Page
       case Routes.homeManagerPage:
+        final String token =settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => const HomeManagerPage(),
+          builder: (context) =>  MultiBlocProvider(
+              providers: [
+                BlocProvider(create: (context) => getIt<GetAllStudentDataCubit>(),),
+                BlocProvider(
+
+                  create: (context) => getIt<GetAllTeacherDataCubit>(),
+
+                ),
+              ],
+              child: HomeManagerPage(token: token)),
         );
     // manager profile
       case Routes.managerProfilePage:

@@ -1,21 +1,21 @@
-import 'package:ablexa/features/manager/feature_home_manager_page/data/repos/get_all_teacher_repo/get_all_teacher_repo.dart';
+import 'package:ablexa/features/manager/feature_home_manager_page/data/repos/get_all_student_model/get_all_student_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'get_all_teacher_state.dart';
+import 'get_all_student_state.dart';
 
-class GetAllTeacherDataCubit extends Cubit<GetAllTeacherDataState> {
-  final GetAllTeacherRepo getAllTeacherRepo;
-  GetAllTeacherDataCubit(this.getAllTeacherRepo) : super(const GetAllTeacherDataState.initial());
+class GetAllStudentDataCubit extends Cubit<GetAllStudentDataState> {
+  final GetAllStudentRepo getAllStudentRepo;
+  GetAllStudentDataCubit(this.getAllStudentRepo) : super(const GetAllStudentDataState.initial());
 
-  void emitAllTeacherStates() async {
-    emit(const GetAllTeacherDataState.loading());
-    final response = await getAllTeacherRepo.getAllTeacherData();
+  void emitAllStudentStates() async {
+    emit(const GetAllStudentDataState.loading());
+    final response = await getAllStudentRepo.getAllStudentData();
 
     response.when(
-      success: (loginResponse) {
-        emit(GetAllTeacherDataState.success(loginResponse));
+      success: (getAllStudentData) {
+        emit(GetAllStudentDataState.success(getAllStudentData));
       },
       failure: (error) {
-        emit(GetAllTeacherDataState.error(error: error.apiErrorModel.title ?? ''));
+        emit(GetAllStudentDataState.error(error: error.apiErrorModel.title ?? ''));
       },
     );
   }

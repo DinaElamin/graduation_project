@@ -10,8 +10,8 @@ import '../../../../../generated/l10n.dart';
 import '../widgets/users_widget.dart';
 
 class HomeManagerPage extends StatefulWidget {
-  const HomeManagerPage({Key? key}) : super(key: key);
-
+  const HomeManagerPage({Key? key, required this.token}) : super(key: key);
+final String token;
   @override
   State<HomeManagerPage> createState() => _HomeManagerPageState();
 }

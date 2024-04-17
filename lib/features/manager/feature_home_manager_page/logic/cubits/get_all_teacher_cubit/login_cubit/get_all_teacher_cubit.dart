@@ -11,8 +11,8 @@ class GetAllTeacherDataCubit extends Cubit<GetAllTeacherDataState> {
     final response = await getAllTeacherRepo.getAllTeacherData();
 
     response.when(
-      success: (loginResponse) {
-        emit(GetAllTeacherDataState.success(loginResponse));
+      success: (getAllTeacherData) {
+        emit(GetAllTeacherDataState.success(getAllTeacherData));
       },
       failure: (error) {
         emit(GetAllTeacherDataState.error(error: error.apiErrorModel.title ?? ''));

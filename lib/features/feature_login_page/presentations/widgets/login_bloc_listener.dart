@@ -36,8 +36,12 @@ class _SignInBlocListenerState extends State<LoginBlocListener> {
 
               context.pop();
               if(loginResponseModel.roleName! == "Manager" ) {
-                context.pushNamed(Routes.homeManagerPage,arguments: loginResponseModel!.token.toString());
-              } else {
+                context.pushNamed(Routes.homeManagerPage,arguments: loginResponseModel.token.toString());
+              }
+              else if(loginResponseModel.roleName! == "Teacher"){
+                context.pushNamed(Routes.teacherHomePage);
+              }
+              else {
                 context.pushNamed(Routes.teacherHomePage);
               }
             },

@@ -1,7 +1,6 @@
 import '../../../../core/theming/spacing.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/shared_widgets/appBar_widget.dart';
-import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/styles.dart';
 import '../../../../generated/l10n.dart';
 import '../widgets/all_text_field.dart';

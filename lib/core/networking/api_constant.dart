@@ -2,14 +2,7 @@ class ApiConstant {
  static const String apiBaseUrl = "http://ablexav1.runasp.net/";
  static const String login = "api/User/login";
  static const String getAllTeacherData = "api/User/getallteachers";
- static const String signUp = "auth/signup";
- static const String logout = "auth/logout";
- static const String homeSlider ="settings/sliders";
- static const String doctor ="settings/doctors_by_category";
- static const String specializationPopularDoctors = "settings/specialization_popular_doctors";
- static const String bookingPatient = "/doctor/auth/bookings";
- static const String bookingAccept = "/doctor/auth/accept_booking";
- static const String bookingAcceptDetails = "doctor/auth/booking_details";
+ static const String getAllStudentData = "api/User/getallstudentd";
 }
 
 class ApiErrors {
