@@ -3,6 +3,7 @@ import 'package:ablexa/features/feature_login_page/data/models/login/response/lo
 import 'package:ablexa/features/manager/feature_home_manager_page/data/models/get_all_student_model/get_all_student_model.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/data/models/get_all_teacher_model/get_all_teacher_model.dart';
 import 'package:dio/dio.dart' hide Headers;
+import '../../features/manager/feature_home_manager_page/data/models/get_all_classes_model/get_all_classes_model.dart';
 import 'api_constant.dart';
 import 'package:retrofit/retrofit.dart';
 part 'api_service.g.dart';
@@ -45,6 +46,9 @@ abstract class ApiService {
   // getAllStudent Page
   @GET(ApiConstant.getAllStudentData)
   Future<List<GetAllStudentModel>> getAllStudentData();
+  // getAllClass Page
+  @GET(ApiConstant.getAllClassesData)
+  Future<List<GetAllClassesModel>> getAllClassesData();
 //
 //   // specializationPopularDoctorsData
 //   @GET(ApiConstant.specializationPopularDoctors)

@@ -7,7 +7,6 @@ import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
-import 'card_list_view.dart';
 import 'class_card_list_veiw.dart';
 class UsersWidget extends StatelessWidget {
   const UsersWidget({

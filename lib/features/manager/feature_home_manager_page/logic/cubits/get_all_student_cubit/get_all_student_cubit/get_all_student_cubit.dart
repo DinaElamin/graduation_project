@@ -1,5 +1,5 @@
-import 'package:ablexa/features/manager/feature_home_manager_page/data/repos/get_all_student_model/get_all_student_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../data/repos/get_all_student_repo/get_all_student_repo.dart';
 import 'get_all_student_state.dart';
 
 class GetAllStudentDataCubit extends Cubit<GetAllStudentDataState> {

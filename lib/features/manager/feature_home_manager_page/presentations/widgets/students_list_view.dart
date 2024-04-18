@@ -1,11 +1,11 @@
 import 'package:ablexa/core/helper/extentions.dart';
-import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/get_all_student_cubit/login_cubit/get_all_student_cubit.dart';
-import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/get_all_student_cubit/login_cubit/get_all_student_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../data/models/get_all_student_model/get_all_student_model.dart';
+import '../../logic/cubits/get_all_student_cubit/get_all_student_cubit/get_all_student_cubit.dart';
+import '../../logic/cubits/get_all_student_cubit/get_all_student_cubit/get_all_student_state.dart';
 import 'card_information.dart';
 
 class StudentsListView extends StatefulWidget {
@@ -46,7 +46,7 @@ class _StudentsListViewState extends State<StudentsListView> {
                   padding: const EdgeInsets.all(5.0),
                   child:  CardInformation(
                     type: "Student",
-                    image: getAllStudentModel[index].image!,
+                    image: "file:///Images/${getAllStudentModel[index].image!.toString()}",
                     name:getAllStudentModel[index].name.toString(),
                   )
               ),

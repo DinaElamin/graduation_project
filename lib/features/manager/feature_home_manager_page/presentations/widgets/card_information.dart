@@ -30,10 +30,11 @@ class CardInformation extends StatelessWidget {
         children: [
           Row(
             children: [
-             SizedBox(
-                 height: 50.r,
-                 width: 50.r,
-                 child: Image.asset(ImageManager.defaultImageProfile)),
+              SizedBox(
+                  width: 50.r,
+                   height: 50.r,
+
+                  child: Image.asset(ImageManager.defaultImageProfile)),
               horizontalSpacing(10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

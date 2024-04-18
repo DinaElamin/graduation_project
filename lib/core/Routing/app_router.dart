@@ -1,17 +1,14 @@
 
 
 import 'package:ablexa/features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
-import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/get_all_student_cubit/login_cubit/get_all_student_cubit.dart';
+import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/get_all_teacher_cubit/login_cubit/get_all_teacher_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../features/feature_change_password_page/presentations/screens/feature_change_password_page.dart';
 import '../../features/feature_change_profile_page/presentations/screens/change_profile.dart';
 import '../../features/feature_forget_password_page/presentations/screens/feature_forget_password_page.dart';
-
 import '../../features/feature_landing_page/presentations/screens/feature_landing_page.dart';
 import '../../features/feature_reset_password_page/presentations/screens/reset_password.dart';
-
 import '../../features/feature_verify_code_page/presentations/screens/feature_verify_code_page.dart';
 import 'package:flutter/material.dart';
 import '../../features/feature_login_page/presentations/screens/feature_login_page.dart';
@@ -22,6 +19,7 @@ import '../../features/manager/feature_add_student_page/presentations/screens/fe
 import '../../features/manager/feature_add_teacher_page/presentations/screens/add_teacher_page.dart';
 import '../../features/manager/feature_garde_details_page/presentations/screens/grade_details_page.dart';
 import '../../features/manager/feature_grades_page/presentations/screens/grades_page.dart';
+import '../../features/manager/feature_home_manager_page/logic/cubits/get_all_student_cubit/get_all_student_cubit/get_all_student_cubit.dart';
 import '../../features/manager/feature_home_manager_page/presentations/screens/feature_home_manager.dart';
 import '../../features/manager/feature_profile_manager_page/presentations/screens/profile_manager.dart';
 import '../../features/student/feature_quiz_degree_page/presentations/screens/quiz_degree.dart';
@@ -78,11 +76,8 @@ class AppRouter {
           builder: (context) =>  MultiBlocProvider(
               providers: [
                 BlocProvider(create: (context) => getIt<GetAllStudentDataCubit>(),),
-                BlocProvider(
-
-                  create: (context) => getIt<GetAllTeacherDataCubit>(),
-
-                ),
+                BlocProvider(create: (context) => getIt<GetAllTeacherDataCubit>(),),
+                BlocProvider(create: (context) => getIt<GetAllClassesDataCubit>(),),
               ],
               child: HomeManagerPage(token: token)),
         );
