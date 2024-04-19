@@ -51,6 +51,37 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<VerifyCodeResponseModel> verifyCode(
+      VerifyCodeRequestModel verifyCodeRequestModel) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Content-Type': 'application/json'};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = <String, dynamic>{};
+    _data.addAll(verifyCodeRequestModel.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<VerifyCodeResponseModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'application/json',
+    )
+            .compose(
+              _dio.options,
+              'api/User/send_reset_code',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = VerifyCodeResponseModel.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<List<GetAllTeacherModel>> getAllTeacherData() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

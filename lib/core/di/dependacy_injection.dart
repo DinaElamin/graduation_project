@@ -1,5 +1,7 @@
 import 'package:ablexa/features/feature_login_page/data/repos/login_repo/login_repo.dart';
 import 'package:ablexa/features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
+import 'package:ablexa/features/feature_verify_code_page/data/repos/verify_code_repo.dart';
+import 'package:ablexa/features/feature_verify_code_page/logic/cubits/verify_code_cubit/verify_code_cubit.dart';
 import 'package:ablexa/features/manager/feature_get_all_student_by_id_page/data/repos/get_all_student_by_class_id_repo/get_all_student_by_class_id_repo.dart';
 import 'package:ablexa/features/manager/feature_get_all_student_by_id_page/logic/get_all_students_by_class_id_cubit/get_all_students_by_class_id_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/data/repos/get_all_classes_repo/get_all_classes_repo.dart';
@@ -33,4 +35,7 @@ final getIt = GetIt.instance;
   // get all students by classId data
   getIt.registerLazySingleton<GetAllStudentsByClassIdRepo>(() => GetAllStudentsByClassIdRepo(getIt()));
   getIt.registerFactory<GetAllStudentByClassIdCubit>(() => GetAllStudentByClassIdCubit(getIt()));
+  // verify code cubit
+  getIt.registerLazySingleton<VerifyCodeRepo>(() => VerifyCodeRepo(getIt()));
+  getIt.registerFactory<VerifyCodeCubit>(() => VerifyCodeCubit(getIt()));
  }

@@ -1,5 +1,7 @@
 import 'package:ablexa/features/feature_login_page/data/models/login/request/login_response_model.dart';
 import 'package:ablexa/features/feature_login_page/data/models/login/response/login_request_model.dart';
+import 'package:ablexa/features/feature_verify_code_page/data/models/verify_code_model/request/verify_code_request_model.dart';
+import 'package:ablexa/features/feature_verify_code_page/data/models/verify_code_model/response/verify_code_response_model.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/data/models/get_all_student_model/get_all_student_model.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/data/models/get_all_teacher_model/get_all_teacher_model.dart';
 import 'package:dio/dio.dart' hide Headers;
@@ -20,6 +22,14 @@ abstract class ApiService {
   })
   Future<LoginResponseModel> login(
       @Body() LoginRequestModel loginRequestModel,
+      );
+  // verify Code page
+  @POST(ApiConstant.verifyCode)
+  @Headers(<String, dynamic>{
+    'Content-Type': 'application/json',
+  })
+  Future<VerifyCodeResponseModel> verifyCode(
+      @Body() VerifyCodeRequestModel verifyCodeRequestModel,
       );
 //   // signIn
 //   @POST(ApiConstant.login)

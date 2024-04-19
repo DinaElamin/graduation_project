@@ -77,7 +77,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                 textStyle: TextStyles.font18SemiBoldWhite,
                 textButton: S.of(context).send_code, onPressed: (){
              if(formKey.currentState!.validate()){
-               context.pushNamed(Routes.verifyCodePage);
+               context.pushNamed(Routes.verifyCodePage,arguments:emailController.text );
              }
             }),
           ),
