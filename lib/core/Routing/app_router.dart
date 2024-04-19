@@ -2,6 +2,7 @@
 
 import 'package:ablexa/features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
 import 'package:ablexa/features/feature_verify_code_page/logic/cubits/verify_code_cubit/verify_code_cubit.dart';
+import 'package:ablexa/features/feature_verify_code_page/logic/cubits/verify_pin_code_cubit/verify_pin_code_cubit.dart';
 import 'package:ablexa/features/manager/feature_get_all_student_by_id_page/logic/get_all_students_by_class_id_cubit/get_all_students_by_class_id_cubit.dart';
 import 'package:ablexa/features/manager/feature_get_all_student_by_id_page/presentation/screens/get_all_student_by_id.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_cubit.dart';
@@ -61,8 +62,12 @@ class AppRouter {
       case Routes.verifyCodePage:
         final String email = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) =>  BlocProvider(
-              create: (context) => getIt<VerifyCodeCubit>(),
+          builder: (context) =>  MultiBlocProvider(
+              providers: [
+                BlocProvider(create: (context) => getIt<VerifyCodeCubit>(),),
+                BlocProvider(create: (context) => getIt<VerifyPinCodeCubit>(),),
+              ],
+
               child: VerifyCodePage(email: email)),
         );
         //change password

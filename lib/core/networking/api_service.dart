@@ -5,6 +5,8 @@ import 'package:ablexa/features/feature_verify_code_page/data/models/verify_code
 import 'package:ablexa/features/manager/feature_home_manager_page/data/models/get_all_student_model/get_all_student_model.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/data/models/get_all_teacher_model/get_all_teacher_model.dart';
 import 'package:dio/dio.dart' hide Headers;
+import '../../features/feature_verify_code_page/data/models/verify_pin_code_model/request/verify_pin_code_request_model.dart';
+import '../../features/feature_verify_code_page/data/models/verify_pin_code_model/response/verify_code_pin_response_model.dart';
 import '../../features/manager/feature_get_all_student_by_id_page/data/model/get_all_student_by_id_model/get_all_student_by_id_model.dart';
 import '../../features/manager/feature_home_manager_page/data/models/get_all_classes_model/get_all_classes_model.dart';
 import 'api_constant.dart';
@@ -30,6 +32,15 @@ abstract class ApiService {
   })
   Future<VerifyCodeResponseModel> verifyCode(
       @Body() VerifyCodeRequestModel verifyCodeRequestModel,
+      );
+  // verify Code page
+  @POST("${ApiConstant.verifyPinCode}/{email}")
+  @Headers(<String, dynamic>{
+    'Content-Type': 'application/json',
+  })
+  Future<VerifyPinCodeResponseModel> verifyPinCode(
+      @Path("email") String email ,
+      @Body() VerifyPinCodeRequestModel verifyPinCodeRequestModel,
       );
 //   // signIn
 //   @POST(ApiConstant.login)
