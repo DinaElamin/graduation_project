@@ -1,3 +1,4 @@
+import 'package:ablexa/features/feature_change_password_page/data/models/change_password_model/change_password_model.dart';
 import 'package:ablexa/features/feature_login_page/data/models/login/request/login_response_model.dart';
 import 'package:ablexa/features/feature_login_page/data/models/login/response/login_request_model.dart';
 import 'package:ablexa/features/feature_verify_code_page/data/models/verify_code_model/request/verify_code_request_model.dart';
@@ -41,6 +42,15 @@ abstract class ApiService {
   Future<VerifyPinCodeResponseModel> verifyPinCode(
       @Path("email") String email ,
       @Body() VerifyPinCodeRequestModel verifyPinCodeRequestModel,
+      );
+  // change password page
+  @POST("${ApiConstant.changePassword}/{email}")
+  @Headers(<String, dynamic>{
+    'Content-Type': 'application/json',
+  })
+  Future changePassword(
+      @Path("email") String email ,
+      @Body() ChangePasswordRequestModel changePasswordRequestModel,
       );
 //   // signIn
 //   @POST(ApiConstant.login)

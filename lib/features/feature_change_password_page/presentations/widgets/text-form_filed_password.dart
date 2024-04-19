@@ -1,3 +1,8 @@
+import 'package:ablexa/features/feature_change_password_page/data/models/change_password_model/change_password_model.dart';
+import 'package:ablexa/features/feature_change_password_page/logic/cubits/change_password_cubit/change_password_cubit.dart';
+import 'package:ablexa/features/feature_change_password_page/logic/cubits/change_password_cubit/change_password_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../core/helper/extentions.dart';
 import '../../../../core/theming/colors.dart';
 import 'package:flutter/material.dart';
@@ -11,8 +16,8 @@ import '../../../../core/theming/styles.dart';
 import '../../../../generated/l10n.dart';
 
 class TextFormFieldPassword extends StatefulWidget {
-  const TextFormFieldPassword({super.key});
-
+  const TextFormFieldPassword({super.key, required this.email});
+final String email;
   @override
   State<TextFormFieldPassword> createState() => _TextFormFieldPasswordState();
 }
@@ -101,18 +106,66 @@ class _TextFormFieldPasswordState extends State<TextFormFieldPassword> {
               },
             ),
             verticalSpacing(50),
-            AppTextButton(
-                textButton: S.of(context).update_password,
-                onPressed: () {
-                  if (formKey.currentState!.validate()) {
-                    showSuccessDialog(context, onPressed: () {
-                      context.pop();
-                      context.pushNamed(Routes.loginPage);
-                    },
-                        text: S.of(context).change_password,
-                        contentText: S.of(context).text_password_change);
-                  }
-                })
+            BlocListener<ChangePasswordCubit,
+                ChangePasswordState>(
+              listener: (context, state) {
+                state.when(
+                  initial: () {
+                    return const Center(
+                      child: CircularProgressIndicator(
+                        color: ColorsManager.mainColor,
+                      ),
+                    );
+                  },
+                  loading: () {
+                    return const Center(
+                      child: CircularProgressIndicator(
+                        color: ColorsManager.mainColor,
+                      ),
+                    );
+                  },
+                  success: (data) {
+                    context.pop();
+                    context.pushNamed(Routes.loginPage);
+                  },
+                  error: (error) {
+                    return AlertDialog(
+                      content: Text(
+                        error,
+                        style: TextStyles.font14MediumLightBlack,
+                      ),
+                      actions: [
+                        TextButton(
+                            onPressed: () {
+                              context.pop();
+                            },
+                            child: Text(
+                              'Got It ',
+                              style: TextStyles.font20BoldBlack,
+                            )),
+                      ],
+                      icon: const Icon(
+                        Icons.error,
+                        color: Colors.red,
+                        size: 32,
+                      ),
+                    );
+                  },
+                );
+              },
+              child: AppTextButton(
+                  textButton: S.of(context).update_password,
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      showSuccessDialog(context, onPressed: () {
+                       context.read<ChangePasswordCubit>().emitChangePasswordStates(widget.email,ChangePasswordRequestModel(newPassword: newPasswordController.text,confirmNewPassword: newConfirmPasswordController.text));
+                      },
+                          text: S.of(context).change_password,
+                          contentText: S.of(context).text_password_change);
+                    }
+                  })
+            )
+
           ],
         ),
       ),

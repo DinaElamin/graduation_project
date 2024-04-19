@@ -128,7 +128,7 @@ class _VerifyCodePageState extends State<VerifyCodePage> {
                                 );
                               },
                               success: (data) {
-                                context.pushNamed(Routes.changePasswordPage);
+                                context.pushNamed(Routes.changePasswordPage,arguments: widget.email);
                               },
                               error: (error) {
                                 return AlertDialog(

@@ -1,5 +1,6 @@
 
 
+import 'package:ablexa/features/feature_change_password_page/logic/cubits/change_password_cubit/change_password_cubit.dart';
 import 'package:ablexa/features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
 import 'package:ablexa/features/feature_verify_code_page/logic/cubits/verify_code_cubit/verify_code_cubit.dart';
 import 'package:ablexa/features/feature_verify_code_page/logic/cubits/verify_pin_code_cubit/verify_pin_code_cubit.dart';
@@ -72,8 +73,11 @@ class AppRouter {
         );
         //change password
       case Routes.changePasswordPage:
+        final String email = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => const ChangePasswordPage(),
+          builder: (context) =>  BlocProvider(
+              create: (context) => getIt<ChangePasswordCubit>(),
+              child: ChangePasswordPage(email: email)),
         );
         //SuccessfullyPage
       case Routes.successfullyPage:

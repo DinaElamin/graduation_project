@@ -1,3 +1,4 @@
+import 'package:ablexa/core/theming/colors.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/shared_widgets/appBar_widget.dart';
@@ -10,6 +11,7 @@ class GetAllStudentById extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      backgroundColor: ColorsManager.moreLightGrey,
       body: ListView(
 
         children: [

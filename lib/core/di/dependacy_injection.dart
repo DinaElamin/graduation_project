@@ -1,3 +1,5 @@
+import 'package:ablexa/features/feature_change_password_page/data/repos/change_password_repo/change_password_repo.dart';
+import 'package:ablexa/features/feature_change_password_page/logic/cubits/change_password_cubit/change_password_cubit.dart';
 import 'package:ablexa/features/feature_login_page/data/repos/login_repo/login_repo.dart';
 import 'package:ablexa/features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
 import 'package:ablexa/features/feature_verify_code_page/data/repos/verify_code_repo/verify_code_repo.dart';
@@ -43,4 +45,7 @@ final getIt = GetIt.instance;
   // verify pin code cubit
   getIt.registerLazySingleton<VerifyPinCodeRepo>(() => VerifyPinCodeRepo(getIt()));
   getIt.registerFactory<VerifyPinCodeCubit>(() => VerifyPinCodeCubit(getIt()));
+  // change password cubit
+  getIt.registerLazySingleton<ChangePasswordRepo>(() => ChangePasswordRepo(getIt()));
+  getIt.registerFactory<ChangePasswordCubit>(() => ChangePasswordCubit(getIt()));
  }

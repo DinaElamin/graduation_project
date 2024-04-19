@@ -7,6 +7,7 @@ class ApiConstant {
  static const String getAllStudentByClassId = "api/User/getstudentsbyclass";
  static const String verifyCode = "api/User/send_reset_code";
  static const String verifyPinCode ="api/User/verify_pin";
+ static const String changePassword  ="api/User/forget_password";
 
 }
 

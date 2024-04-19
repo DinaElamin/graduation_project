@@ -5,8 +5,8 @@ import '../../../../generated/l10n.dart';
 import '../widgets/text-form_filed_password.dart';
 
 class ChangePasswordPage extends StatefulWidget {
-  const ChangePasswordPage({super.key});
-
+  const ChangePasswordPage({super.key, required this.email});
+final String email;
   @override
   State<ChangePasswordPage> createState() => _ChangePasswordPageState();
 }
@@ -24,7 +24,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
             verticalSpacing(100),
 
             verticalSpacing(50),
-            const TextFormFieldPassword(),
+             TextFormFieldPassword(email: widget.email),
 
           ]),
         ],
