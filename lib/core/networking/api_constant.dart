@@ -4,6 +4,8 @@ class ApiConstant {
  static const String getAllTeacherData = "api/User/getallteachers";
  static const String getAllStudentData = "api/User/getallstudentd";
  static const String getAllClassesData = "api/PClass/getallclasses";
+ static const String getAllStudentByClassId = "api/User/getstudentsbyclass";
+
 }
 
 class ApiErrors {

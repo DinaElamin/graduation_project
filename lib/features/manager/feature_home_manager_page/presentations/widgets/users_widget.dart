@@ -28,13 +28,15 @@ class UsersWidget extends StatelessWidget {
         ),
         verticalSpacing(20),
         DefaultTabController(
+          animationDuration: const Duration(milliseconds: 30),
           length: 3,
           child: Column(
             children: <Widget>[
               ButtonsTabBar(
-                height: 50.h,labelSpacing: 20,
+                height: 50.h,
+                labelSpacing: 30,
                 radius: 16,
-                contentPadding: EdgeInsets.only(left: 20.w,right: 20.w),
+                contentPadding: EdgeInsets.only(left: 30.w,right: 30.w),
                 decoration: BoxDecoration(
                   color: ColorsManager.mainColor,
                   borderRadius: BorderRadius.circular(16),
@@ -47,7 +49,7 @@ class UsersWidget extends StatelessWidget {
                 unselectedLabelStyle:  TextStyle(
                     color: ColorsManager.mainBlack.withOpacity(0.4),
                     fontWeight: FontWeight.bold,
-                    fontSize: 12.sp
+                    fontSize: 14.sp
                 ),
                 tabs: [
                   Tab(text: S.of(context).teachers),
@@ -57,7 +59,7 @@ class UsersWidget extends StatelessWidget {
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height, // Set a height constraint
-                child:  TabBarView(
+                child:  const TabBarView(
                   children: [
                     // Add your TabBarView children here
                     TeachersListView(),

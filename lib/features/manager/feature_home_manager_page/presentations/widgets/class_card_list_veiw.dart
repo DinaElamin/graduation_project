@@ -1,3 +1,4 @@
+import 'package:ablexa/core/Routing/routers.dart';
 import 'package:ablexa/core/helper/extentions.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/data/models/get_all_classes_model/get_all_classes_model.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_cubit.dart';
@@ -45,6 +46,7 @@ class _ClassCardListViewState extends State<ClassCardListView> {
                     setState(() {
                       // Update the selected index
                       selectedIndex = index;
+                      context.pushNamed(Routes.getAllStudentByClassIdPage,arguments: getAllClassesModel[index].classId);
                     });
                   },
                   child: Container(

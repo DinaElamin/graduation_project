@@ -1,6 +1,8 @@
 
 
 import 'package:ablexa/features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
+import 'package:ablexa/features/manager/feature_get_all_student_by_id_page/logic/get_all_students_by_class_id_cubit/get_all_students_by_class_id_cubit.dart';
+import 'package:ablexa/features/manager/feature_get_all_student_by_id_page/presentation/screens/get_all_student_by_id.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/get_all_teacher_cubit/login_cubit/get_all_teacher_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -68,6 +70,16 @@ class AppRouter {
       case Routes.successfullyPage:
         return MaterialPageRoute(
           builder: (context) => const SuccessfullyPage(),
+
+        );
+        // getALlStudentById Page
+      case Routes.getAllStudentByClassIdPage:
+        final int classId = settings.arguments as int;
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+              create: (context) => getIt<GetAllStudentByClassIdCubit>(),
+              child: GetAllStudentById(classId: classId)),
+
         );
     //home Manager Page
       case Routes.homeManagerPage:
