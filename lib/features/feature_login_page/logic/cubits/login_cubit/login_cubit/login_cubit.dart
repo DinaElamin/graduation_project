@@ -1,7 +1,7 @@
-import 'package:ablexa/features/feature_login_page/data/models/login/response/login_request_model.dart';
 import 'package:ablexa/features/feature_login_page/data/repos/login_repo/login_repo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../data/models/login/request/login_request_model.dart';
 import 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {

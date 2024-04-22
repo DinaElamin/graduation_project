@@ -8,7 +8,7 @@ class ApiConstant {
  static const String verifyCode = "api/User/send_reset_code";
  static const String verifyPinCode ="api/User/verify_pin";
  static const String changePassword  ="api/User/forget_password";
-
+ static const String addTeacher = "api/User/addteacher";
 }
 
 class ApiErrors {

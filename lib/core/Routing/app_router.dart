@@ -4,6 +4,7 @@ import 'package:ablexa/features/feature_change_password_page/logic/cubits/change
 import 'package:ablexa/features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
 import 'package:ablexa/features/feature_verify_code_page/logic/cubits/verify_code_cubit/verify_code_cubit.dart';
 import 'package:ablexa/features/feature_verify_code_page/logic/cubits/verify_pin_code_cubit/verify_pin_code_cubit.dart';
+import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/add_teacher_cubit/get_all_classes_cubit.dart';
 import 'package:ablexa/features/manager/feature_get_all_student_by_id_page/logic/get_all_students_by_class_id_cubit/get_all_students_by_class_id_cubit.dart';
 import 'package:ablexa/features/manager/feature_get_all_student_by_id_page/presentation/screens/get_all_student_by_id.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_cubit.dart';
@@ -108,11 +109,13 @@ class AppRouter {
         );
     // manager profile
       case Routes.managerProfilePage:
+        final String token = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => const ProfileManagerPage(),
+          builder: (context) =>  ProfileManagerPage(token: token),
         );
     // student profile
       case Routes.studentProfilePage:
+
         return MaterialPageRoute(
           builder: (context) => const StudentProfilePage(),
         );
@@ -128,8 +131,11 @@ class AppRouter {
         );
     // add teacher from manager
       case Routes.addTeacherPage:
+        final String token = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => const AddTeacherPage(),
+          builder: (context) => BlocProvider(
+              create: (context) => getIt<AddTeacherCubit>(),
+              child:  AddTeacherPage(token: token,)),
         );
     // add student from manager
       case Routes.addGradePage:

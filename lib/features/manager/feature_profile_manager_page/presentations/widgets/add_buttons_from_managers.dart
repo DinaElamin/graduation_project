@@ -10,8 +10,8 @@ import '../../../../../core/theming/styles.dart';
 
 
 class AddButtonsFromManager extends StatefulWidget {
-  const AddButtonsFromManager({Key? key}) : super(key: key);
-
+  const AddButtonsFromManager({Key? key, required this.token}) : super(key: key);
+final String token;
   @override
   _AddButtonsFromManagerState createState() => _AddButtonsFromManagerState();
 }
@@ -54,7 +54,7 @@ class _AddButtonsFromManagerState extends State<AddButtonsFromManager> {
                       isTeacherButtonPressed = true;
                       isGradeButtonPressed = false;
                     });
-                    context.pushNamed(Routes.addTeacherPage);
+                    context.pushNamed(Routes.addTeacherPage,arguments: "Bearer ${widget.token}");
                   },
                   isPressed: isTeacherButtonPressed,
                 ),

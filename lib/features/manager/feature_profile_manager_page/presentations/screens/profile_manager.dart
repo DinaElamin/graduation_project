@@ -6,14 +6,9 @@ import 'package:flutter/material.dart';
 import '../widgets/add_buttons_from_managers.dart';
 import '../widgets/text_form_field_profile_manager.dart';
 
-class ProfileManagerPage extends StatefulWidget {
-  const ProfileManagerPage({Key? key});
-
-  @override
-  State<ProfileManagerPage> createState() => _ProfileManagerPageState();
-}
-
-class _ProfileManagerPageState extends State<ProfileManagerPage> {
+class ProfileManagerPage extends StatelessWidget {
+  const ProfileManagerPage({Key? key, required this.token});
+final String token;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +21,7 @@ class _ProfileManagerPageState extends State<ProfileManagerPage> {
             verticalSpacing(40),
             const TextFormFieldProfileManager(),
             verticalSpacing(40),
-            const AddButtonsFromManager(),
+             AddButtonsFromManager(token: token),
           ],
         ),
       ),

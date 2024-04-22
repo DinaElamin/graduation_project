@@ -4,6 +4,8 @@ import 'package:ablexa/features/feature_login_page/data/repos/login_repo/login_r
 import 'package:ablexa/features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
 import 'package:ablexa/features/feature_verify_code_page/data/repos/verify_code_repo/verify_code_repo.dart';
 import 'package:ablexa/features/feature_verify_code_page/logic/cubits/verify_code_cubit/verify_code_cubit.dart';
+import 'package:ablexa/features/manager/feature_add_teacher_page/data/repos/add_teacher_repo/add_teacher_repo.dart';
+import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/add_teacher_cubit/get_all_classes_cubit.dart';
 import 'package:ablexa/features/manager/feature_get_all_student_by_id_page/data/repos/get_all_student_by_class_id_repo/get_all_student_by_class_id_repo.dart';
 import 'package:ablexa/features/manager/feature_get_all_student_by_id_page/logic/get_all_students_by_class_id_cubit/get_all_students_by_class_id_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/data/repos/get_all_classes_repo/get_all_classes_repo.dart';
@@ -39,13 +41,16 @@ final getIt = GetIt.instance;
   // get all students by classId data
   getIt.registerLazySingleton<GetAllStudentsByClassIdRepo>(() => GetAllStudentsByClassIdRepo(getIt()));
   getIt.registerFactory<GetAllStudentByClassIdCubit>(() => GetAllStudentByClassIdCubit(getIt()));
-  // verify code cubit
+  // verify code data
   getIt.registerLazySingleton<VerifyCodeRepo>(() => VerifyCodeRepo(getIt()));
   getIt.registerFactory<VerifyCodeCubit>(() => VerifyCodeCubit(getIt()));
-  // verify pin code cubit
+  // verify pin code data
   getIt.registerLazySingleton<VerifyPinCodeRepo>(() => VerifyPinCodeRepo(getIt()));
   getIt.registerFactory<VerifyPinCodeCubit>(() => VerifyPinCodeCubit(getIt()));
-  // change password cubit
+  // change password data
   getIt.registerLazySingleton<ChangePasswordRepo>(() => ChangePasswordRepo(getIt()));
   getIt.registerFactory<ChangePasswordCubit>(() => ChangePasswordCubit(getIt()));
+  // add teacher data
+  getIt.registerLazySingleton<AddTeacherRepo>(() => AddTeacherRepo(getIt()));
+  getIt.registerFactory<AddTeacherCubit>(() => AddTeacherCubit(getIt()));
  }

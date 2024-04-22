@@ -1,4 +1,3 @@
-import 'package:ablexa/features/feature_login_page/data/models/login/request/login_response_model.dart';
 import 'package:ablexa/features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
 import 'package:ablexa/features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_state.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +6,7 @@ import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/helper/extentions.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
+import '../../data/models/login/response/login_response_model.dart';
 class LoginBlocListener extends StatefulWidget {
   const LoginBlocListener({super.key});
 
@@ -36,13 +36,13 @@ class _SignInBlocListenerState extends State<LoginBlocListener> {
 
               context.pop();
               if(loginResponseModel.roleName! == "Manager" ) {
-                context.pushNamed(Routes.homeManagerPage,arguments: loginResponseModel.token.toString());
+                context.pushNamed(Routes.homeManagerPage,arguments: loginResponseModel.token);
               }
               else if(loginResponseModel.roleName! == "Teacher"){
-                context.pushNamed(Routes.teacherHomePage);
+                context.pushNamed(Routes.teacherHomePage,arguments: loginResponseModel.token);
               }
               else {
-                context.pushNamed(Routes.teacherHomePage);
+                context.pushNamed(Routes.teacherHomePage,arguments: loginResponseModel.token);
               }
             },
             error:(error){

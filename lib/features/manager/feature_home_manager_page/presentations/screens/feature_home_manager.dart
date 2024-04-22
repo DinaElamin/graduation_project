@@ -57,7 +57,7 @@ class _HomeManagerPageState extends State<HomeManagerPage> with TickerProviderSt
                       itemBuilder: (BuildContext context) => [
                         PopupMenuItem(
                           onTap: () {
-                            context.pushNamed(Routes.managerProfilePage);
+                            context.pushNamed(Routes.managerProfilePage,arguments: widget.token);
                           },
                           value: 'my_profile',
                           child: SizedBox(
