@@ -20,4 +20,17 @@ class GetAllTeacherDataCubit extends Cubit<GetAllTeacherDataState> {
     );
   }
 
+  void searchByName(String name) async {
+    emit(const GetAllTeacherDataState.loading());
+    final response = await getAllTeacherRepo.searchTeacherByName(name);
+
+    response.when(
+      success: (getAllTeacherData) {
+        emit(GetAllTeacherDataState.success(getAllTeacherData));
+      },
+      failure: (error) {
+        emit(GetAllTeacherDataState.error(error: error.apiErrorModel.title ?? ''));
+      },
+    );
+  }
 }

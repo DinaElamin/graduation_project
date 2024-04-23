@@ -4,6 +4,7 @@ import 'get_all_student_state.dart';
 
 class GetAllStudentDataCubit extends Cubit<GetAllStudentDataState> {
   final GetAllStudentRepo getAllStudentRepo;
+
   GetAllStudentDataCubit(this.getAllStudentRepo) : super(const GetAllStudentDataState.initial());
 
   void emitAllStudentStates() async {
@@ -20,4 +21,18 @@ class GetAllStudentDataCubit extends Cubit<GetAllStudentDataState> {
     );
   }
 
+  void searchStudentByName(String name) async {
+    emit(const GetAllStudentDataState.loading());
+
+    final response = await getAllStudentRepo.searchStudentByName(name);
+
+    response.when(
+      success: (searchedStudents) {
+        emit(GetAllStudentDataState.success(searchedStudents));
+      },
+      failure: (error) {
+        emit(GetAllStudentDataState.error(error: error.apiErrorModel.title ?? ''));
+      },
+    );
+  }
 }
