@@ -17,7 +17,7 @@ class ChangePasswordCubit extends Cubit<ChangePasswordState> {
         emit(ChangePasswordState.success(changePasswordData));
       },
       failure: (error) {
-        emit(ChangePasswordState.error(error: error.apiErrorModel.title ?? ''));
+        emit(ChangePasswordState.error(error: error.apiErrorModel.errorMessage ?? ''));
       },
     );
   }

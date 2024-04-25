@@ -16,7 +16,7 @@ class GetAllStudentDataCubit extends Cubit<GetAllStudentDataState> {
         emit(GetAllStudentDataState.success(getAllStudentData));
       },
       failure: (error) {
-        emit(GetAllStudentDataState.error(error: error.apiErrorModel.title ?? ''));
+        emit(GetAllStudentDataState.error(error: error.apiErrorModel.errorMessage ?? ''));
       },
     );
   }
@@ -31,7 +31,7 @@ class GetAllStudentDataCubit extends Cubit<GetAllStudentDataState> {
         emit(GetAllStudentDataState.success(searchedStudents));
       },
       failure: (error) {
-        emit(GetAllStudentDataState.error(error: error.apiErrorModel.title ?? ''));
+        emit(GetAllStudentDataState.error(error: error.apiErrorModel.errorMessage ?? ''));
       },
     );
   }

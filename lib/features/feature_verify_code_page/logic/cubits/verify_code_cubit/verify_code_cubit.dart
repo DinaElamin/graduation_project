@@ -16,7 +16,7 @@ class VerifyCodeCubit extends Cubit<VerifyCodeState> {
         emit(VerifyCodeState.success(verifyCodeData));
       },
       failure: (error) {
-        emit(VerifyCodeState.error(error: error.apiErrorModel.title ?? ''));
+        emit(VerifyCodeState.error(error: error.apiErrorModel.errorMessage ?? ''));
       },
     );
   }

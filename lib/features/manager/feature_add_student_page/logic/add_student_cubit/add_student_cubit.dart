@@ -29,7 +29,7 @@ class AddStudentCubit extends Cubit<AddStudentState> {
         emit(AddStudentState.success(addTeacherData));
       },
       failure: (error) {
-        emit(AddStudentState.error(error: error.apiErrorModel.title ?? ''));
+        emit(AddStudentState.error(error: error.apiErrorModel.errorMessage ?? ''));
       },
     );
   }

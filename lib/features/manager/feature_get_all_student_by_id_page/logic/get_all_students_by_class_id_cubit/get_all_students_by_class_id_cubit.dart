@@ -15,7 +15,7 @@ class GetAllStudentByClassIdCubit extends Cubit<GetAllStudentsByClassIdState> {
         emit(GetAllStudentsByClassIdState.success(getAllClassesData));
       },
       failure: (error) {
-        emit(GetAllStudentsByClassIdState.error(error: error.apiErrorModel.title ?? ''));
+        emit(GetAllStudentsByClassIdState.error(error: error.apiErrorModel.errorMessage ?? ''));
       },
     );
   }

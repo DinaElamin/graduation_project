@@ -1,8 +1,6 @@
 import 'dart:io';
 
-import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../data/models/add_teacher_model/add_teacher_model.dart';
 import '../../../data/repos/add_teacher_repo/add_teacher_repo.dart';
 import 'add_teacher_state.dart';
 
@@ -20,7 +18,7 @@ class AddTeacherCubit extends Cubit<AddTeacherState> {
         emit(AddTeacherState.success(addTeacherData));
       },
       failure: (error) {
-        emit(AddTeacherState.error(error: error.apiErrorModel.title ?? ''));
+        emit(AddTeacherState.error(error: error.apiErrorModel.errorMessage ?? ''));
       },
     );
   }

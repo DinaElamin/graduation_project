@@ -15,7 +15,7 @@ class VerifyPinCodeCubit extends Cubit<VerifyPinCodeState> {
         emit(VerifyPinCodeState.success(getVerifyPinCodeData));
       },
       failure: (error) {
-        emit(VerifyPinCodeState.error(error: error.apiErrorModel.title ?? ''));
+        emit(VerifyPinCodeState.error(error: error.apiErrorModel.errorMessage ?? ''));
       },
     );
   }

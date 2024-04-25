@@ -15,7 +15,7 @@ class GetAllClassesDataCubit extends Cubit<GetAllClassesDataState> {
         emit(GetAllClassesDataState.success(getAllClassesData));
       },
       failure: (error) {
-        emit(GetAllClassesDataState.error(error: error.apiErrorModel.title ?? ''));
+        emit(GetAllClassesDataState.error(error: error.apiErrorModel.errorMessage ?? ''));
       },
     );
   }
