@@ -1,14 +1,12 @@
-
-
-import 'package:ablexa/features/feature_change_password_page/logic/cubits/change_password_cubit/change_password_cubit.dart';
-import 'package:ablexa/features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
-import 'package:ablexa/features/feature_verify_code_page/logic/cubits/verify_code_cubit/verify_code_cubit.dart';
-import 'package:ablexa/features/feature_verify_code_page/logic/cubits/verify_pin_code_cubit/verify_pin_code_cubit.dart';
-import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/add_teacher_cubit/get_all_classes_cubit.dart';
-import 'package:ablexa/features/manager/feature_get_all_student_by_id_page/logic/get_all_students_by_class_id_cubit/get_all_students_by_class_id_cubit.dart';
-import 'package:ablexa/features/manager/feature_get_all_student_by_id_page/presentation/screens/get_all_student_by_id.dart';
-import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_cubit.dart';
-import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/get_all_teacher_cubit/login_cubit/get_all_teacher_cubit.dart';
+import '../../features/feature_change_password_page/logic/cubits/change_password_cubit/change_password_cubit.dart';
+import '../../features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
+import '../../features/feature_verify_code_page/logic/cubits/verify_code_cubit/verify_code_cubit.dart';
+import '../../features/feature_verify_code_page/logic/cubits/verify_pin_code_cubit/verify_pin_code_cubit.dart';
+import '../../features/manager/feature_add_student_page/logic/add_student_cubit/add_student_cubit.dart';
+import '../../features/manager/feature_get_all_student_by_id_page/logic/get_all_students_by_class_id_cubit/get_all_students_by_class_id_cubit.dart';
+import '../../features/manager/feature_get_all_student_by_id_page/presentation/screens/get_all_student_by_id.dart';
+import '../../features/manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_cubit.dart';
+import '../../features/manager/feature_home_manager_page/logic/cubits/get_all_teacher_cubit/login_cubit/get_all_teacher_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/feature_change_password_page/presentations/screens/feature_change_password_page.dart';
 import '../../features/feature_change_profile_page/presentations/screens/change_profile.dart';
@@ -22,6 +20,7 @@ import '../../features/feature_setting_page/presentations/screens/setting_page.d
 import '../../features/feature_successfully_page/presentations/screens/feature_successfully_page.dart';
 import '../../features/manager/feature_add_grade_page/presentations/screens/add_grade_page.dart';
 import '../../features/manager/feature_add_student_page/presentations/screens/feature_add_student_page.dart';
+import '../../features/manager/feature_add_teacher_page/logic/cubits/add_teacher_cubit/add_teacher_cubit.dart';
 import '../../features/manager/feature_add_teacher_page/presentations/screens/add_teacher_page.dart';
 import '../../features/manager/feature_garde_details_page/presentations/screens/grade_details_page.dart';
 import '../../features/manager/feature_grades_page/presentations/screens/grades_page.dart';
@@ -48,166 +47,179 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => const LandingPage(),
         );
-        //LoginPage
+      //LoginPage
       case Routes.loginPage:
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
               create: (context) => getIt<LoginCubit>(),
               child: const LoginPage()),
         );
-        //ForgetPasswordPage
+      //ForgetPasswordPage
       case Routes.forgetPasswordPage:
         return MaterialPageRoute(
           builder: (context) => const ForgetPasswordPage(),
         );
-        // VerifyCodePage
+      // VerifyCodePage
       case Routes.verifyCodePage:
         final String email = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) =>  MultiBlocProvider(
-              providers: [
-                BlocProvider(create: (context) => getIt<VerifyCodeCubit>(),),
-                BlocProvider(create: (context) => getIt<VerifyPinCodeCubit>(),),
-              ],
-
-              child: VerifyCodePage(email: email)),
+          builder: (context) => MultiBlocProvider(providers: [
+            BlocProvider(
+              create: (context) => getIt<VerifyCodeCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<VerifyPinCodeCubit>(),
+            ),
+          ], child: VerifyCodePage(email: email)),
         );
-        //change password
+      //change password
       case Routes.changePasswordPage:
         final String email = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) =>  BlocProvider(
+          builder: (context) => BlocProvider(
               create: (context) => getIt<ChangePasswordCubit>(),
               child: ChangePasswordPage(email: email)),
         );
-        //SuccessfullyPage
+      //SuccessfullyPage
       case Routes.successfullyPage:
         return MaterialPageRoute(
           builder: (context) => const SuccessfullyPage(),
-
         );
-        // getALlStudentById Page
+      // getALlStudentById Page
       case Routes.getAllStudentByClassIdPage:
         final int classId = settings.arguments as int;
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
               create: (context) => getIt<GetAllStudentByClassIdCubit>(),
               child: GetAllStudentById(classId: classId)),
-
         );
-    //home Manager Page
+      //home Manager Page
       case Routes.homeManagerPage:
-        final String token =settings.arguments as String;
+        final String token = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) =>  MultiBlocProvider(
-              providers: [
-                BlocProvider(create: (context) => getIt<GetAllStudentDataCubit>(),),
-                BlocProvider(create: (context) => getIt<GetAllTeacherDataCubit>(),),
-                BlocProvider(create: (context) => getIt<GetAllClassesDataCubit>(),),
-              ],
-              child: HomeManagerPage(token: token)),
+          builder: (context) => MultiBlocProvider(providers: [
+            BlocProvider(
+              create: (context) => getIt<GetAllStudentDataCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<GetAllTeacherDataCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<GetAllClassesDataCubit>(),
+            ),
+          ], child: HomeManagerPage(token: token)),
         );
-    // manager profile
+      // manager profile
       case Routes.managerProfilePage:
         final String token = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) =>  ProfileManagerPage(token: token),
+          builder: (context) => ProfileManagerPage(token: token),
         );
-    // student profile
+      // student profile
       case Routes.studentProfilePage:
-
         return MaterialPageRoute(
           builder: (context) => const StudentProfilePage(),
         );
-    // student profile
+      // student profile
       case Routes.settingPage:
         return MaterialPageRoute(
           builder: (context) => const SettingPage(),
         );
-    // add student from manager
+      // add student from manager
       case Routes.addStudentPage:
+        final String token = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => const AddStudentPage(),
+          builder: (context) => MultiBlocProvider(providers: [
+            BlocProvider(
+              create: (context) => getIt<GetAllClassesDataCubit>(),
+
+            ),
+            BlocProvider(
+              create: (context) => getIt<AddStudentCubit>(),
+            ),
+          ], child:  AddStudentPage(token: token,)),
         );
-    // add teacher from manager
+      // add teacher from manager
       case Routes.addTeacherPage:
         final String token = settings.arguments as String;
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
               create: (context) => getIt<AddTeacherCubit>(),
-              child:  AddTeacherPage(token: token,)),
+              child: AddTeacherPage(
+                token: token,
+              )),
         );
-    // add student from manager
+      // add student from manager
       case Routes.addGradePage:
         return MaterialPageRoute(
           builder: (context) => const AddGradePage(),
         );
-    // grade page
+      // grade page
       case Routes.gradePage:
-        final Map<String, String> args = settings.arguments as Map<String, String>;
+        final Map<String, String> args =
+            settings.arguments as Map<String, String>;
         final String gradeName = args['gradeText']!;
         return MaterialPageRoute(
           builder: (context) => GradesPage(gradeName: gradeName),
         );
-    // grade Details page
+      // grade Details page
       case Routes.gradeDetailsPage:
         final String gradeName = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) =>  GradeDetailsPage(gradeName: gradeName),
+          builder: (context) => GradeDetailsPage(gradeName: gradeName),
         );
-    // teacher home
+      // teacher home
       case Routes.teacherHomePage:
         return MaterialPageRoute(
-          builder: (context) =>  const TeacherHome(),
+          builder: (context) => const TeacherHome(),
         );
-    // students Page
+      // students Page
       case Routes.studentsPage:
         final String gradeName = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) =>  StudentsPage(gradeName: gradeName),
+          builder: (context) => StudentsPage(gradeName: gradeName),
         );
-    // teacher profile page
+      // teacher profile page
       case Routes.teacherProfilePage:
         return MaterialPageRoute(
-          builder: (context) =>  const ProfileTeacherPage(),
+          builder: (context) => const ProfileTeacherPage(),
         );
-    // add Exam page
+      // add Exam page
       case Routes.addExamPage:
         return MaterialPageRoute(
-          builder: (context) =>  const AddExamPage(),
+          builder: (context) => const AddExamPage(),
         );
-    // change profile page
+      // change profile page
       case Routes.changeProfilePage:
         return MaterialPageRoute(
-          builder: (context) =>  const ChangeProfile(),
+          builder: (context) => const ChangeProfile(),
         );
-    // student Exams page
+      // student Exams page
       case Routes.studentExamsPage:
         return MaterialPageRoute(
-          builder: (context) =>    const StudentExamsPage(),
+          builder: (context) => const StudentExamsPage(),
         );
-    // student Exams page
+      // student Exams page
       case Routes.quizUpdatedDegreePage:
         final String quizName = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) =>   QuizUpdateDegreePage(quizName: quizName),
+          builder: (context) => QuizUpdateDegreePage(quizName: quizName),
         );
-    // student Exams page
+      // student Exams page
       case Routes.quizDegreePage:
         final String quizName = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) =>   QuizDegree(quizName: quizName),
+          builder: (context) => QuizDegree(quizName: quizName),
         );
-    // subject details page
+      // subject details page
       case Routes.subjectDetailsPage:
         final String subjectName = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) =>    SubjectDetailsPage(subjectName: subjectName)
-        );
-    // student Exams page
+            builder: (context) => SubjectDetailsPage(subjectName: subjectName));
+      // student Exams page
       case Routes.resetPasswordPage:
         return MaterialPageRoute(
-          builder: (context) =>   const ResetPassword(),
+          builder: (context) => const ResetPassword(),
         );
       default:
         return MaterialPageRoute(

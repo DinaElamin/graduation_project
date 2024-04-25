@@ -1,5 +1,5 @@
-import 'package:ablexa/features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
-import 'package:ablexa/features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_state.dart';
+import '../../logic/cubits/login_cubit/login_cubit/login_cubit.dart';
+import '../../logic/cubits/login_cubit/login_cubit/login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/Routing/routers.dart';
@@ -36,13 +36,13 @@ class _SignInBlocListenerState extends State<LoginBlocListener> {
 
               context.pop();
               if(loginResponseModel.roleName! == "Manager" ) {
-                context.pushNamed(Routes.homeManagerPage,arguments: loginResponseModel.token);
+                context.pushNamed(Routes.homeManagerPage,arguments: "Bearer ${loginResponseModel.token}");
               }
               else if(loginResponseModel.roleName! == "Teacher"){
-                context.pushNamed(Routes.teacherHomePage,arguments: loginResponseModel.token);
+                context.pushNamed(Routes.teacherHomePage,arguments: "Bearer ${loginResponseModel.token}");
               }
               else {
-                context.pushNamed(Routes.teacherHomePage,arguments: loginResponseModel.token);
+                context.pushNamed(Routes.teacherHomePage,arguments:"Bearer ${loginResponseModel.token}");
               }
             },
             error:(error){

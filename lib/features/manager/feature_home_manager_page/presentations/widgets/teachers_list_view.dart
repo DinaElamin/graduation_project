@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../core/shared_widgets/app_text_feild.dart';
+import '../../../../../core/shared_widgets/search_text_form_field.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
@@ -47,7 +47,7 @@ class _TeachersListViewState extends State<TeachersListView> {
                 Padding(
                   padding: EdgeInsets.only(left: 20.r, right: 20.r, top: 10.r, bottom: 10.r),
 
-                  child: AppTextFormField(
+                  child: SearchTextFormField(
                     controller: _searchController,
                     onChange: (value) {
 

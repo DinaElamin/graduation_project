@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:ablexa/features/feature_change_password_page/data/models/change_password_model/change_password_model.dart';
-import 'package:ablexa/features/feature_verify_code_page/data/models/verify_code_model/request/verify_code_request_model.dart';
-import 'package:ablexa/features/feature_verify_code_page/data/models/verify_code_model/response/verify_code_response_model.dart';
-import 'package:ablexa/features/manager/feature_home_manager_page/data/models/get_all_student_model/get_all_student_model.dart';
-import 'package:ablexa/features/manager/feature_home_manager_page/data/models/get_all_teacher_model/get_all_teacher_model.dart';
+import '../../features/feature_change_password_page/data/models/change_password_model/change_password_model.dart';
+import '../../features/feature_verify_code_page/data/models/verify_code_model/request/verify_code_request_model.dart';
+import '../../features/feature_verify_code_page/data/models/verify_code_model/response/verify_code_response_model.dart';
+import '../../features/manager/feature_home_manager_page/data/models/get_all_student_model/get_all_student_model.dart';
+import '../../features/manager/feature_home_manager_page/data/models/get_all_teacher_model/get_all_teacher_model.dart';
 import 'package:dio/dio.dart' hide Headers;
 import '../../features/feature_login_page/data/models/login/request/login_request_model.dart';
 import '../../features/feature_login_page/data/models/login/response/login_response_model.dart';
@@ -54,6 +54,7 @@ abstract class ApiService {
     @Path("email") String email,
     @Body() ChangePasswordRequestModel changePasswordRequestModel,
   );
+  // add Teacher
   @POST(ApiConstant.addTeacher)
   @MultiPart()
   Future addTeacher(
@@ -62,6 +63,18 @@ abstract class ApiService {
       @Part(name: "Email") String email,
       @Part(name: "NationalNum") String nationalNum,
       @Part(name: "Image") File image,
+      );
+  // add Student
+  @POST(ApiConstant.addStudent)
+  @MultiPart()
+  Future addStudent(
+      @Header("Authorization") String token,
+      @Part(name: "Name") String name,
+      @Part(name: "Email") String email,
+      @Part(name: "NationalNum") String nationalNum,
+      @Part(name: "Image") File image,
+      @Part(name: "PClassId") int PClassId,
+      @Part(name: "TermId") int TermId,
       );
   @GET(ApiConstant.getAllTeacherData)
   Future<List<GetAllTeacherModel>> getAllTeacherData();

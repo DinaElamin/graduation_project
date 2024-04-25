@@ -1,4 +1,4 @@
-import 'package:ablexa/features/feature_verify_code_page/data/models/verify_pin_code_model/response/verify_code_pin_response_model.dart';
+import '../../models/verify_pin_code_model/response/verify_code_pin_response_model.dart';
 import '../../../../../../../core/networking/api_error_handler.dart';
 import '../../../../../../../core/networking/api_result.dart';
 import '../../../../../../../core/networking/api_service.dart';

@@ -1,4 +1,4 @@
-import 'package:ablexa/features/manager/feature_home_manager_page/data/repos/get_all_teacher_repo/get_all_teacher_repo.dart';
+import '../../../../data/repos/get_all_teacher_repo/get_all_teacher_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'get_all_teacher_state.dart';
 

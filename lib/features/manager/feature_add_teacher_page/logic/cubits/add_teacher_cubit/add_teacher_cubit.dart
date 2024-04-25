@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../data/models/add_teacher_model/add_teacher_model.dart';
 import '../../../data/repos/add_teacher_repo/add_teacher_repo.dart';
-import 'get_all_classes_state.dart';
+import 'add_teacher_state.dart';
 
 class AddTeacherCubit extends Cubit<AddTeacherState> {
   final AddTeacherRepo addTeacherRepo;

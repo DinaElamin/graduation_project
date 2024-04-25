@@ -1,4 +1,4 @@
-import 'package:ablexa/core/helper/extentions.dart';
+import '../../../../../core/helper/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -38,7 +38,7 @@ class _AddButtonsFromManagerState extends State<AddButtonsFromManager> {
                       isTeacherButtonPressed = false;
                       isGradeButtonPressed = false;
                     });
-                    context.pushNamed(Routes.addStudentPage);
+                    context.pushNamed(Routes.addStudentPage,arguments: widget.token);
                   },
                   isPressed: isStudentButtonPressed,
 

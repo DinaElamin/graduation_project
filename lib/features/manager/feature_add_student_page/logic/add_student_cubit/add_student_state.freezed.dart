@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'get_all_classes_state.dart';
+part of 'add_student_state.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$AddTeacherState<T> {
+mixin _$AddStudentState<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -69,16 +69,16 @@ mixin _$AddTeacherState<T> {
 }
 
 /// @nodoc
-abstract class $AddTeacherStateCopyWith<T, $Res> {
-  factory $AddTeacherStateCopyWith(
-          AddTeacherState<T> value, $Res Function(AddTeacherState<T>) then) =
-      _$AddTeacherStateCopyWithImpl<T, $Res, AddTeacherState<T>>;
+abstract class $AddStudentStateCopyWith<T, $Res> {
+  factory $AddStudentStateCopyWith(
+          AddStudentState<T> value, $Res Function(AddStudentState<T>) then) =
+      _$AddStudentStateCopyWithImpl<T, $Res, AddStudentState<T>>;
 }
 
 /// @nodoc
-class _$AddTeacherStateCopyWithImpl<T, $Res, $Val extends AddTeacherState<T>>
-    implements $AddTeacherStateCopyWith<T, $Res> {
-  _$AddTeacherStateCopyWithImpl(this._value, this._then);
+class _$AddStudentStateCopyWithImpl<T, $Res, $Val extends AddStudentState<T>>
+    implements $AddStudentStateCopyWith<T, $Res> {
+  _$AddStudentStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -95,7 +95,7 @@ abstract class _$$InitialImplCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$InitialImplCopyWithImpl<T, $Res>
-    extends _$AddTeacherStateCopyWithImpl<T, $Res, _$InitialImpl<T>>
+    extends _$AddStudentStateCopyWithImpl<T, $Res, _$InitialImpl<T>>
     implements _$$InitialImplCopyWith<T, $Res> {
   __$$InitialImplCopyWithImpl(
       _$InitialImpl<T> _value, $Res Function(_$InitialImpl<T>) _then)
@@ -109,7 +109,7 @@ class _$InitialImpl<T> implements _Initial<T> {
 
   @override
   String toString() {
-    return 'AddTeacherState<$T>.initial()';
+    return 'AddStudentState<$T>.initial()';
   }
 
   @override
@@ -196,7 +196,7 @@ class _$InitialImpl<T> implements _Initial<T> {
   }
 }
 
-abstract class _Initial<T> implements AddTeacherState<T> {
+abstract class _Initial<T> implements AddStudentState<T> {
   const factory _Initial() = _$InitialImpl<T>;
 }
 
@@ -209,7 +209,7 @@ abstract class _$$LoadingImplCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$LoadingImplCopyWithImpl<T, $Res>
-    extends _$AddTeacherStateCopyWithImpl<T, $Res, _$LoadingImpl<T>>
+    extends _$AddStudentStateCopyWithImpl<T, $Res, _$LoadingImpl<T>>
     implements _$$LoadingImplCopyWith<T, $Res> {
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl<T> _value, $Res Function(_$LoadingImpl<T>) _then)
@@ -223,7 +223,7 @@ class _$LoadingImpl<T> implements Loading<T> {
 
   @override
   String toString() {
-    return 'AddTeacherState<$T>.loading()';
+    return 'AddStudentState<$T>.loading()';
   }
 
   @override
@@ -310,7 +310,7 @@ class _$LoadingImpl<T> implements Loading<T> {
   }
 }
 
-abstract class Loading<T> implements AddTeacherState<T> {
+abstract class Loading<T> implements AddStudentState<T> {
   const factory Loading() = _$LoadingImpl<T>;
 }
 
@@ -325,7 +325,7 @@ abstract class _$$SuccessImplCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$SuccessImplCopyWithImpl<T, $Res>
-    extends _$AddTeacherStateCopyWithImpl<T, $Res, _$SuccessImpl<T>>
+    extends _$AddStudentStateCopyWithImpl<T, $Res, _$SuccessImpl<T>>
     implements _$$SuccessImplCopyWith<T, $Res> {
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl<T> _value, $Res Function(_$SuccessImpl<T>) _then)
@@ -355,7 +355,7 @@ class _$SuccessImpl<T> implements Success<T> {
 
   @override
   String toString() {
-    return 'AddTeacherState<$T>.success(data: $data)';
+    return 'AddStudentState<$T>.success(data: $data)';
   }
 
   @override
@@ -451,7 +451,7 @@ class _$SuccessImpl<T> implements Success<T> {
   }
 }
 
-abstract class Success<T> implements AddTeacherState<T> {
+abstract class Success<T> implements AddStudentState<T> {
   const factory Success(final T data) = _$SuccessImpl<T>;
 
   T get data;
@@ -471,7 +471,7 @@ abstract class _$$ErrorImplCopyWith<T, $Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<T, $Res>
-    extends _$AddTeacherStateCopyWithImpl<T, $Res, _$ErrorImpl<T>>
+    extends _$AddStudentStateCopyWithImpl<T, $Res, _$ErrorImpl<T>>
     implements _$$ErrorImplCopyWith<T, $Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl<T> _value, $Res Function(_$ErrorImpl<T>) _then)
@@ -501,7 +501,7 @@ class _$ErrorImpl<T> implements Error<T> {
 
   @override
   String toString() {
-    return 'AddTeacherState<$T>.error(error: $error)';
+    return 'AddStudentState<$T>.error(error: $error)';
   }
 
   @override
@@ -596,7 +596,7 @@ class _$ErrorImpl<T> implements Error<T> {
   }
 }
 
-abstract class Error<T> implements AddTeacherState<T> {
+abstract class Error<T> implements AddStudentState<T> {
   const factory Error({required final String error}) = _$ErrorImpl<T>;
 
   String get error;

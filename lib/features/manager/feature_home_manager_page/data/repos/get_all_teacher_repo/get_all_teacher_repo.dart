@@ -1,4 +1,4 @@
-import 'package:ablexa/features/manager/feature_home_manager_page/data/models/get_all_teacher_model/get_all_teacher_model.dart';
+import '../../models/get_all_teacher_model/get_all_teacher_model.dart';
 import '../../../../../../core/networking/api_error_handler.dart';
 import '../../../../../../core/networking/api_result.dart';
 import '../../../../../../core/networking/api_service.dart';

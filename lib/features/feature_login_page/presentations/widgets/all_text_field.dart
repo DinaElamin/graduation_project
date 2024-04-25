@@ -1,5 +1,5 @@
-import 'package:ablexa/features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
-import 'package:ablexa/features/feature_login_page/presentations/widgets/login_bloc_listener.dart';
+import '../../logic/cubits/login_cubit/login_cubit/login_cubit.dart';
+import 'login_bloc_listener.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/helper/extentions.dart';
 import 'package:flutter/material.dart';

@@ -1,7 +1,7 @@
-import 'package:ablexa/core/helper/extentions.dart';
-import 'package:ablexa/features/manager/feature_get_all_student_by_id_page/data/model/get_all_student_by_id_model/get_all_student_by_id_model.dart';
-import 'package:ablexa/features/manager/feature_get_all_student_by_id_page/logic/get_all_students_by_class_id_cubit/get_all_students_by_class_id_cubit.dart';
-import 'package:ablexa/features/manager/feature_get_all_student_by_id_page/logic/get_all_students_by_class_id_cubit/get_all_students_by_class_id_state.dart';
+import '../../../../../core/helper/extentions.dart';
+import '../../data/model/get_all_student_by_id_model/get_all_student_by_id_model.dart';
+import '../../logic/get_all_students_by_class_id_cubit/get_all_students_by_class_id_cubit.dart';
+import '../../logic/get_all_students_by_class_id_cubit/get_all_students_by_class_id_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/theming/colors.dart';

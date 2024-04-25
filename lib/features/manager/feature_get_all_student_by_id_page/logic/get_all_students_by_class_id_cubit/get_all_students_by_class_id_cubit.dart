@@ -1,4 +1,4 @@
-import 'package:ablexa/features/manager/feature_get_all_student_by_id_page/data/repos/get_all_student_by_class_id_repo/get_all_student_by_class_id_repo.dart';
+import '../../data/repos/get_all_student_by_class_id_repo/get_all_student_by_class_id_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'get_all_students_by_class_id_state.dart';
 

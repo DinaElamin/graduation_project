@@ -1,5 +1,5 @@
-import 'package:ablexa/features/manager/feature_home_manager_page/presentations/widgets/students_list_view.dart';
-import 'package:ablexa/features/manager/feature_home_manager_page/presentations/widgets/teachers_list_view.dart';
+import 'students_list_view.dart';
+import 'teachers_list_view.dart';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

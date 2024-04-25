@@ -1,6 +1,6 @@
-import 'package:ablexa/features/feature_change_password_page/data/models/change_password_model/change_password_model.dart';
-import 'package:ablexa/features/feature_change_password_page/logic/cubits/change_password_cubit/change_password_cubit.dart';
-import 'package:ablexa/features/feature_change_password_page/logic/cubits/change_password_cubit/change_password_state.dart';
+import '../../data/models/change_password_model/change_password_model.dart';
+import '../../logic/cubits/change_password_cubit/change_password_cubit.dart';
+import '../../logic/cubits/change_password_cubit/change_password_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/helper/extentions.dart';

@@ -1,7 +1,7 @@
-import 'package:ablexa/features/feature_verify_code_page/data/models/verify_code_model/request/verify_code_request_model.dart';
-import 'package:ablexa/features/feature_verify_code_page/data/models/verify_pin_code_model/request/verify_pin_code_request_model.dart';
-import 'package:ablexa/features/feature_verify_code_page/logic/cubits/verify_code_cubit/verify_code_cubit.dart';
-import 'package:ablexa/features/feature_verify_code_page/logic/cubits/verify_code_cubit/verify_code_state.dart';
+import '../../data/models/verify_code_model/request/verify_code_request_model.dart';
+import '../../data/models/verify_pin_code_model/request/verify_pin_code_request_model.dart';
+import '../../logic/cubits/verify_code_cubit/verify_code_cubit.dart';
+import '../../logic/cubits/verify_code_cubit/verify_code_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/helper/extentions.dart';

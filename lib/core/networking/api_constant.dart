@@ -9,6 +9,7 @@ class ApiConstant {
  static const String verifyPinCode ="api/User/verify_pin";
  static const String changePassword  ="api/User/forget_password";
  static const String addTeacher = "api/User/addteacher";
+ static const String addStudent ="api/User/addStudent";
 }
 
 class ApiErrors {

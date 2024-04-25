@@ -1,7 +1,8 @@
-import 'package:ablexa/core/shared_widgets/app_text_feild.dart';
+import '../../../../../core/shared_widgets/app_text_feild.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/shared_widgets/search_text_form_field.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
@@ -53,7 +54,7 @@ class _StudentsListViewState extends State<StudentsListView> {
               children: [
                 Padding(
                   padding: EdgeInsets.all(20.0),
-                  child: AppTextFormField(
+                  child: SearchTextFormField(
 
                     validator: (value) {
                       // Your validation logic here

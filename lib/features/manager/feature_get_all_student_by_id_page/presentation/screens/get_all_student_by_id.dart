@@ -1,4 +1,4 @@
-import 'package:ablexa/core/theming/colors.dart';
+import '../../../../../core/theming/colors.dart';
 import 'package:flutter/material.dart';
 import '../../../../../core/shared_widgets/appBar_widget.dart';
 import '../../../../../generated/l10n.dart';

@@ -1,4 +1,4 @@
-import 'package:ablexa/core/theming/media_query_helper.dart';
+import '../../../../../core/theming/media_query_helper.dart';
 
 import '../../../../../core/shared_widgets/appBar_widget.dart';
 import 'package:flutter/material.dart';

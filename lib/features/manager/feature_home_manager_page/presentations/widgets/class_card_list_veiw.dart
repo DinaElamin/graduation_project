@@ -1,8 +1,8 @@
-import 'package:ablexa/core/Routing/routers.dart';
-import 'package:ablexa/core/helper/extentions.dart';
-import 'package:ablexa/features/manager/feature_home_manager_page/data/models/get_all_classes_model/get_all_classes_model.dart';
-import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_cubit.dart';
-import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_state.dart';
+import '../../../../../core/Routing/routers.dart';
+import '../../../../../core/helper/extentions.dart';
+import '../../data/models/get_all_classes_model/get_all_classes_model.dart';
+import '../../logic/cubits/get_all_classes_cubit/get_all_classes_cubit.dart';
+import '../../logic/cubits/get_all_classes_cubit/get_all_classes_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/theming/colors.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +25,8 @@ class _ClassCardListViewState extends State<ClassCardListView> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GetAllClassesDataCubit,GetAllClassesDataState>(builder: (context, state) {
-      return state.when(  initial:  (){
+      return state.when(
+        initial:  (){
         return const Center(child: CircularProgressIndicator(
           color: ColorsManager.mainColor,
         ),);

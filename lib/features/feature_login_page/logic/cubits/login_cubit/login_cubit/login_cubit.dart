@@ -1,4 +1,4 @@
-import 'package:ablexa/features/feature_login_page/data/repos/login_repo/login_repo.dart';
+import '../../../../data/repos/login_repo/login_repo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../data/models/login/request/login_request_model.dart';
@@ -26,7 +26,7 @@ class LoginCubit extends Cubit<LoginState> {
         emit(LoginState.success(loginResponse));
       },
       failure: (error) {
-        emit(LoginState.error(error: error.apiErrorModel.title ?? ''));
+        emit(LoginState.error(error: error.apiErrorModel.type.toString()));
       },
     );
   }

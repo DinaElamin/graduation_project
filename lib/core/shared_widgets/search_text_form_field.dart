@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../theming/colors.dart';
 import '../theming/styles.dart';
 
-class AppTextFormField extends StatelessWidget {
+class SearchTextFormField extends StatelessWidget {
   final String hintText;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
@@ -19,7 +19,8 @@ class AppTextFormField extends StatelessWidget {
   final int? maxLines;
   final Color? fillColorFromBackground;
   final Function(String)? onFieldSubmitted;
-  const AppTextFormField(
+  final Function(String)? onChange;
+  const SearchTextFormField(
       {super.key,
       required this.hintText,
       this.suffixIcon,
@@ -29,12 +30,14 @@ class AppTextFormField extends StatelessWidget {
       this.contentPadding,
       required this.validator,
       this.controller,
-      this.textInputType, this.prefixIcon, this.borderRadius, this.maxLines, this.fillColorFromBackground, this.onFieldSubmitted});
+      this.textInputType, this.prefixIcon, this.borderRadius, this.maxLines, this.fillColorFromBackground, this.onFieldSubmitted, this.onChange});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-
+      onChanged: (value) {
+        onChange!.call(value);
+      },
       onFieldSubmitted: (value) {
         onFieldSubmitted?.call(value);
       },

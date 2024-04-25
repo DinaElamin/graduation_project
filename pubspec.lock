@@ -217,6 +217,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.4.3+1"
+  drop_down_list:
+    dependency: "direct main"
+    description:
+      name: drop_down_list
+      sha256: "6ce1be8338bafc7c9b0cf917bdb5b26e00377279e4db15f616be4462fd3ac7bb"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.6"
   dropdown_button2:
     dependency: "direct main"
     description:
@@ -225,6 +233,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.9"
+  dropdown_model_list:
+    dependency: "direct main"
+    description:
+      name: dropdown_model_list
+      sha256: "1064553fd85193ada20258b054bf3a995e5a703dd21086ac6a763cfae9e1ce65"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   fake_async:
     dependency: transitive
     description:

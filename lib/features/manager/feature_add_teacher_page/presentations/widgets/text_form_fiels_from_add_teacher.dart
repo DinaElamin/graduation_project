@@ -1,6 +1,6 @@
 import 'dart:io';
-import 'package:ablexa/core/helper/extentions.dart';
-import 'package:ablexa/core/theming/image_manager.dart';
+import '../../../../../core/helper/extentions.dart';
+import '../../../../../core/theming/image_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,8 +11,8 @@ import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
-import '../../logic/cubits/add_teacher_cubit/get_all_classes_cubit.dart';
-import '../../logic/cubits/add_teacher_cubit/get_all_classes_state.dart';
+import '../../logic/cubits/add_teacher_cubit/add_teacher_cubit.dart';
+import '../../logic/cubits/add_teacher_cubit/add_teacher_state.dart';
 class TextFormFieldFromAddTeacher extends StatefulWidget {
   const TextFormFieldFromAddTeacher({
     Key? key, required this.token,
@@ -317,7 +317,7 @@ class _TextFormFieldFromAddTeacherState extends State<TextFormFieldFromAddTeache
       if (imageFile != null) {
         // Send the data to the AddTeacherCubit for processing
         context.read<AddTeacherCubit>().emitAddTeacherStates(
-          widget.token,
+         widget.token,
           Name: fullNameController.text,
           Email: emailController.text,
           NationalNum: nationalIdController.text,

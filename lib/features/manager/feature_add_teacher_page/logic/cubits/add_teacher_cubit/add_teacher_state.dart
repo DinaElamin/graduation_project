@@ -1,5 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-part 'get_all_classes_state.freezed.dart';
+part 'add_teacher_state.freezed.dart';
 @freezed
 abstract class AddTeacherState<T> with _$AddTeacherState<T> {
   const factory AddTeacherState.initial() = _Initial;

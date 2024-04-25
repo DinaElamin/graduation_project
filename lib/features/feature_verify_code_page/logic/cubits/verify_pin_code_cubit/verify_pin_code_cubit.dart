@@ -1,5 +1,5 @@
-import 'package:ablexa/features/feature_verify_code_page/data/models/verify_pin_code_model/request/verify_pin_code_request_model.dart';
-import 'package:ablexa/features/feature_verify_code_page/logic/cubits/verify_pin_code_cubit/verify_pin_code_state.dart';
+import '../../../data/models/verify_pin_code_model/request/verify_pin_code_request_model.dart';
+import 'verify_pin_code_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../data/repos/verify_pin_code_repo/verify_code_repo.dart';
 class VerifyPinCodeCubit extends Cubit<VerifyPinCodeState> {

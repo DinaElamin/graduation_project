@@ -130,30 +130,43 @@ class ErrorHandler implements Exception {
   }
 
 }
-ApiErrorModel _handleError(DioException error){
-
-  switch (error.type){
-    case DioExceptionType.connectionTimeout:return DataSource.CONNECT_TIMEOUT.getFailure();
-    case DioExceptionType.sendTimeout:return DataSource.SEND_TIMEOUT.getFailure();
-    case DioExceptionType.receiveTimeout:return DataSource.RECIEVE_TIMEOUT.getFailure();
+ApiErrorModel _handleError(DioException error) {
+  switch (error.type) {
+    case DioExceptionType.connectionTimeout:
+      return DataSource.CONNECT_TIMEOUT.getFailure();
+    case DioExceptionType.sendTimeout:
+      return DataSource.SEND_TIMEOUT.getFailure();
+    case DioExceptionType.receiveTimeout:
+      return DataSource.RECIEVE_TIMEOUT.getFailure();
     case DioExceptionType.badResponse:
-      if(error.response != null &&
-         error.response?.statusCode != null &&
-         error.response?.statusMessage != null){
-        return ApiErrorModel.fromJson(error.response!.data);}
-      else{
-        return DataSource.DEFAULT.getFailure();}
-  case DioExceptionType.cancel:return DataSource.CANCEL.getFailure();
-    case DioExceptionType.connectionError:return DataSource.DEFAULT.getFailure();
-    case DioExceptionType.badCertificate:return DataSource.DEFAULT.getFailure();
+      if (error.response != null &&
+          error.response?.statusCode == ResponseCode.BAD_REQUEST &&
+          error.response?.data != null &&
+          error.response?.data['errorMessage'] != null) {
+        // Extract the error message from the response data
+        String errorMessage = error.response!.statusMessage.toString();
+        // Create an ApiErrorModel with the error message
+        return ApiErrorModel(
+          status: ResponseCode.BAD_REQUEST,
+          title: errorMessage,
+        );
+      } else {
+        return DataSource.DEFAULT.getFailure();
+      }
+    case DioExceptionType.cancel:
+      return DataSource.CANCEL.getFailure();
+    case DioExceptionType.connectionError:
+      return DataSource.DEFAULT.getFailure();
+    case DioExceptionType.badCertificate:
+      return DataSource.DEFAULT.getFailure();
     case DioExceptionType.unknown:
-      if(error.response != null &&
+      if (error.response != null &&
           error.response?.statusCode != null &&
-          error.response?.statusMessage != null){
-        return ApiErrorModel.fromJson(error.response!.data);}else{return DataSource.DEFAULT.getFailure();}
-
-
-
+          error.response?.statusMessage != null) {
+        return ApiErrorModel.fromJson(error.response!.data);
+      } else {
+        return DataSource.DEFAULT.getFailure();
+      }
   }
 }
 

@@ -1,5 +1,5 @@
-import 'package:ablexa/features/feature_change_password_page/data/models/change_password_model/change_password_model.dart';
-import 'package:ablexa/features/feature_change_password_page/data/repos/change_password_repo/change_password_repo.dart';
+import '../../../data/models/change_password_model/change_password_model.dart';
+import '../../../data/repos/change_password_repo/change_password_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'change_password_state.dart';
