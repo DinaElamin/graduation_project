@@ -10,9 +10,9 @@ import '../../../../../generated/l10n.dart';
 import 'class_card_list_veiw.dart';
 class UsersWidget extends StatelessWidget {
   const UsersWidget({
-    super.key,
+    super.key, required this.token,
   });
-
+final String token;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -59,11 +59,11 @@ class UsersWidget extends StatelessWidget {
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height, // Set a height constraint
-                child:  const TabBarView(
+                child:   TabBarView(
                   children: [
                     // Add your TabBarView children here
-                    TeachersListView(),
-                    StudentsListView(),
+                    TeachersListView(token: token),
+                    StudentsListView(token: token),
                     ClassCardListView(),
                   ],
                 ),

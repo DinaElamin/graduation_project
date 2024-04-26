@@ -1,3 +1,5 @@
+import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
+
 import '../../features/feature_change_password_page/logic/cubits/change_password_cubit/change_password_cubit.dart';
 import '../../features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
 import '../../features/feature_verify_code_page/logic/cubits/verify_code_cubit/verify_code_cubit.dart';
@@ -100,6 +102,9 @@ class AppRouter {
           builder: (context) => MultiBlocProvider(providers: [
             BlocProvider(
               create: (context) => getIt<GetAllStudentDataCubit>(),
+            ),
+            BlocProvider(
+              create: (context) => getIt<DeleteUserCubit>(),
             ),
             BlocProvider(
               create: (context) => getIt<GetAllTeacherDataCubit>(),

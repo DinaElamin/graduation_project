@@ -1,4 +1,6 @@
 import 'package:ablexa/features/manager/feature_add_student_page/data/repos/add_student_repo/add_student_repo.dart';
+import 'package:ablexa/features/manager/feature_home_manager_page/data/repos/delete_user_repo/delete_user_repo.dart';
+import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
 
 import '../../features/feature_change_password_page/data/repos/change_password_repo/change_password_repo.dart';
 import '../../features/feature_change_password_page/logic/cubits/change_password_cubit/change_password_cubit.dart';
@@ -59,4 +61,7 @@ final getIt = GetIt.instance;
   // add student data
   getIt.registerLazySingleton<AddStudentRepo>(() => AddStudentRepo(getIt()));
   getIt.registerFactory<AddStudentCubit>(() => AddStudentCubit(getIt()));
+  // delete user
+  getIt.registerLazySingleton<DeleteUserRepo>(() => DeleteUserRepo(getIt()));
+  getIt.registerFactory<DeleteUserCubit>(() => DeleteUserCubit(getIt()));
  }

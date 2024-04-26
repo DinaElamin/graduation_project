@@ -115,6 +115,37 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<DeleteUserModel> deleteUser(
+    String token,
+    String userId,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<DeleteUserModel>(Options(
+      method: 'DELETE',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'api/User/deleteuser/${userId}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = DeleteUserModel.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<dynamic> changePassword(
     String email,
     ChangePasswordRequestModel changePasswordRequestModel,

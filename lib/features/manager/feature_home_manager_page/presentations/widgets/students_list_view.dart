@@ -12,8 +12,8 @@ import '../../logic/cubits/get_all_student_cubit/get_all_student_cubit/get_all_s
 import 'card_information.dart';
 
 class StudentsListView extends StatefulWidget {
-  const StudentsListView({Key? key});
-
+  const StudentsListView({Key? key, required this.token});
+final String token;
   @override
   State<StudentsListView> createState() => _StudentsListViewState();
 }
@@ -87,6 +87,8 @@ class _StudentsListViewState extends State<StudentsListView> {
                     itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: CardInformation(
+                        token: widget.token,
+                        id: getAllStudentModel[index].id.toString(),
                         type: "Student",
                         image:
                         getAllStudentModel[index].image!.toString(),
@@ -101,6 +103,8 @@ class _StudentsListViewState extends State<StudentsListView> {
                     itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: CardInformation(
+                        token: widget.token,
+                        id: getAllStudentModel[index].id.toString(),
                         type: "Student",
                         image: _searchedStudents[index].image!.toString(),
                         name: _searchedStudents[index].name.toString(),

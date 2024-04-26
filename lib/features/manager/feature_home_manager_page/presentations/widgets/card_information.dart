@@ -1,3 +1,6 @@
+import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/helper/extentions.dart';
 import 'package:flutter/material.dart';
@@ -8,13 +11,13 @@ import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 class CardInformation extends StatelessWidget {
-  final String name, type, image;
+  final String name, type, image,id,token;
 
   const CardInformation({
     Key? key,
     required this.name,
     required this.type,
-    required this.image,
+    required this.image, required this.id, required this.token,
   }) : super(key: key);
 
   @override
@@ -74,6 +77,9 @@ class CardInformation extends StatelessWidget {
                 ),
               ),
               PopupMenuItem(
+                onTap: (){
+                  context.read<DeleteUserCubit>().emitDeleteUserStates(token: token,userId: id);
+                },
                 value: 'delete',
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),

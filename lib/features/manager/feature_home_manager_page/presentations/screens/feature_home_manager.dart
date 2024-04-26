@@ -104,7 +104,7 @@ class _HomeManagerPageState extends State<HomeManagerPage> with TickerProviderSt
                 ),
               ),
               verticalSpacing(20),
-              const UsersWidget(),
+               UsersWidget(token: widget.token),
 
             ],
           ),

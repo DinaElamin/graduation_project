@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:ablexa/features/manager/feature_home_manager_page/data/models/delete_user_model/delete_uder_model_response.dart';
+
 import '../../features/feature_change_password_page/data/models/change_password_model/change_password_model.dart';
 import '../../features/feature_verify_code_page/data/models/verify_code_model/request/verify_code_request_model.dart';
 import '../../features/feature_verify_code_page/data/models/verify_code_model/response/verify_code_response_model.dart';
@@ -42,9 +44,17 @@ abstract class ApiService {
     'Content-Type': 'application/json',
   })
   Future<VerifyPinCodeResponseModel> verifyPinCode(
-    @Path("email") String email,
-    @Body() VerifyPinCodeRequestModel verifyPinCodeRequestModel,
-  );
+      @Path("email") String email,
+      @Body() VerifyPinCodeRequestModel verifyPinCodeRequestModel,
+      );
+  // delete user
+  @DELETE("${ApiConstant.deleteUser}/{userId}")
+  Future<DeleteUserModel> deleteUser(
+      @Header("Authorization") String token,
+      @Path("userId") String userId,
+      );
+
+
   // change password page
   @POST("${ApiConstant.changePassword}/{email}")
   @Headers(<String, dynamic>{

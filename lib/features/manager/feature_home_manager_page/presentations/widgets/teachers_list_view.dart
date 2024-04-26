@@ -11,8 +11,8 @@ import '../../logic/cubits/get_all_teacher_cubit/login_cubit/get_all_teacher_sta
 import 'card_information.dart';
 
 class TeachersListView extends StatefulWidget {
-  const TeachersListView({Key? key}) : super(key: key);
-
+  const TeachersListView({Key? key, required this.token}) : super(key: key);
+final String token;
   @override
   State<TeachersListView> createState() => _TeachersListViewState();
 }
@@ -79,6 +79,8 @@ class _TeachersListViewState extends State<TeachersListView> {
                     itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: CardInformation(
+                        token: widget.token,
+                        id: getAllTeacherModel[index].id.toString(),
                         type: "Teacher",
                         image: getAllTeacherModel[index].image!,
                         name: getAllTeacherModel[index].name.toString(),
@@ -92,6 +94,8 @@ class _TeachersListViewState extends State<TeachersListView> {
                     itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: CardInformation(
+                        token: widget.token,
+                        id: getAllTeacherModel[index].id.toString(),
                         type: "Teacher",
                         image: _searchedTeachers[index].image!,
                         name: _searchedTeachers[index].name.toString(),

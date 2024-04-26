@@ -10,6 +10,7 @@ class ApiConstant {
  static const String changePassword  ="api/User/forget_password";
  static const String addTeacher = "api/User/addteacher";
  static const String addStudent ="api/User/addStudent";
+ static const String deleteUser = "api/User/deleteuser";
 }
 
 class ApiErrors {
