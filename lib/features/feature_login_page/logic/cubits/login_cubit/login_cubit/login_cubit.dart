@@ -21,8 +21,6 @@ class LoginCubit extends Cubit<LoginState> {
 
     response.when(
       success: (loginResponse) {
-        // _saveToken(loginResponse.token!);
-        // _savePatientOrDoctor(loginResponse.roleName!);
         emit(LoginState.success(loginResponse));
       },
       failure: (error) {
@@ -36,19 +34,4 @@ class LoginCubit extends Cubit<LoginState> {
     passwordController.dispose();
     return super.close();
   }
-  // Future<void> _saveToken(String token) async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   prefs.setString(ApiConstant.keyAccessToken, token);
-  // }
-  //
-  // Future<void> _savePatientOrDoctor(String patientOrDoctor) async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   prefs.setString(ApiConstant.patientOrDoctor, patientOrDoctor);
-  // }
-  //
-  // void removeToken() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   prefs.remove(ApiConstant.keyAccessToken);
-  //   emit(const SignInState.error(error: 'Unauthorized'));
-   //}
 }

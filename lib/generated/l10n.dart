@@ -979,6 +979,86 @@ class S {
       args: [],
     );
   }
+
+  /// `Add Student Successfully !`
+  String get add_student_successfully {
+    return Intl.message(
+      'Add Student Successfully !',
+      name: 'add_student_successfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Teacher Successfully !`
+  String get add_teacher_successfully {
+    return Intl.message(
+      'Add Teacher Successfully !',
+      name: 'add_teacher_successfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Image Required`
+  String get image_required {
+    return Intl.message(
+      'Image Required',
+      name: 'image_required',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select an image to proceed.`
+  String get please_select_an_image {
+    return Intl.message(
+      'Please select an image to proceed.',
+      name: 'please_select_an_image',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ok`
+  String get ok {
+    return Intl.message(
+      'Ok',
+      name: 'ok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Take Photo`
+  String get take_photo {
+    return Intl.message(
+      'Take Photo',
+      name: 'take_photo',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose From The Gallery`
+  String get choose_from_the_gallery {
+    return Intl.message(
+      'Choose From The Gallery',
+      name: 'choose_from_the_gallery',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Upload user Image`
+  String get upload_user_image {
+    return Intl.message(
+      'Upload user Image',
+      name: 'upload_user_image',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

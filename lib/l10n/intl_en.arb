@@ -91,5 +91,14 @@
  "current_password": "Current Password",
  "subject_details": "Subject Details",
  "change_profile": "Change Profile",
- "find_a_student": "Find a student ..."
+ "find_a_student": "Find a student ...",
+ "add_student_successfully": "Add Student Successfully !",
+ "add_teacher_successfully": "Add Teacher Successfully !",
+ "image_required": "Image Required",
+ "please_select_an_image":"Please select an image to proceed.",
+ "ok": "Ok",
+ "take_photo": "Take Photo",
+ "choose_from_the_gallery": "Choose From The Gallery",
+ "upload_user_image": "Upload user Image"
+
 }

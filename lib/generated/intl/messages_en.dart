@@ -26,7 +26,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_exam": MessageLookupByLibrary.simpleMessage("Add Exam"),
         "add_grade": MessageLookupByLibrary.simpleMessage("Add Grade"),
         "add_student": MessageLookupByLibrary.simpleMessage("Add Student"),
+        "add_student_successfully":
+            MessageLookupByLibrary.simpleMessage("Add Student Successfully !"),
         "add_teacher": MessageLookupByLibrary.simpleMessage("Add Teacher"),
+        "add_teacher_successfully":
+            MessageLookupByLibrary.simpleMessage("Add Teacher Successfully !"),
         "all": MessageLookupByLibrary.simpleMessage("All"),
         "appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
         "attendence": MessageLookupByLibrary.simpleMessage("Attendence"),
@@ -38,6 +42,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change Password"),
         "change_profile":
             MessageLookupByLibrary.simpleMessage("Change Profile"),
+        "choose_from_the_gallery":
+            MessageLookupByLibrary.simpleMessage("Choose From The Gallery"),
         "choose_the_subject":
             MessageLookupByLibrary.simpleMessage("Choose the Subject"),
         "class_code": MessageLookupByLibrary.simpleMessage("Class Code"),
@@ -85,6 +91,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "grade_details": MessageLookupByLibrary.simpleMessage("Grade Details"),
         "grades": MessageLookupByLibrary.simpleMessage("Grades"),
         "help": MessageLookupByLibrary.simpleMessage("Help"),
+        "image_required":
+            MessageLookupByLibrary.simpleMessage("Image Required"),
         "landing_text1":
             MessageLookupByLibrary.simpleMessage("Your School  App"),
         "landing_text2":
@@ -99,6 +107,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter Your Name"),
         "national_iD": MessageLookupByLibrary.simpleMessage("National ID"),
         "new_password": MessageLookupByLibrary.simpleMessage("New password"),
+        "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "password": MessageLookupByLibrary.simpleMessage("Password"),
         "password_changed":
             MessageLookupByLibrary.simpleMessage("Password changed"),
@@ -107,6 +116,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "please_check_your_email":
             MessageLookupByLibrary.simpleMessage("please check your email"),
+        "please_select_an_image": MessageLookupByLibrary.simpleMessage(
+            "Please select an image to proceed."),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("Privacy Policy"),
         "resend": MessageLookupByLibrary.simpleMessage("Resend"),
@@ -133,6 +144,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "subject_details":
             MessageLookupByLibrary.simpleMessage("Subject Details"),
         "subject_id": MessageLookupByLibrary.simpleMessage("Subject Id"),
+        "take_photo": MessageLookupByLibrary.simpleMessage("Take Photo"),
         "teacher_home": MessageLookupByLibrary.simpleMessage("Teacher Home"),
         "teachers": MessageLookupByLibrary.simpleMessage("Teachers"),
         "text_forget_password": MessageLookupByLibrary.simpleMessage(
@@ -147,6 +159,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Update User Image"),
         "upload_exam_image":
             MessageLookupByLibrary.simpleMessage("Upload Exam Image"),
+        "upload_user_image":
+            MessageLookupByLibrary.simpleMessage("Upload user Image"),
         "user_name": MessageLookupByLibrary.simpleMessage("User Name"),
         "users": MessageLookupByLibrary.simpleMessage("Users"),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),

@@ -26,7 +26,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "add_exam": MessageLookupByLibrary.simpleMessage("إضافة امتحان"),
         "add_grade": MessageLookupByLibrary.simpleMessage("اضافة صف"),
         "add_student": MessageLookupByLibrary.simpleMessage("اضافة طالب"),
+        "add_student_successfully":
+            MessageLookupByLibrary.simpleMessage("تم اضافة الطالب بنجاح !"),
         "add_teacher": MessageLookupByLibrary.simpleMessage("اضافة مدرس"),
+        "add_teacher_successfully":
+            MessageLookupByLibrary.simpleMessage("تم اضافة المدرس بنجاح !"),
         "all": MessageLookupByLibrary.simpleMessage("الكل"),
         "appearance": MessageLookupByLibrary.simpleMessage("المظهر"),
         "attendence": MessageLookupByLibrary.simpleMessage("الحضور"),
@@ -37,6 +41,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "change_password":
             MessageLookupByLibrary.simpleMessage("تغيير كلمة المرور"),
         "change_profile": MessageLookupByLibrary.simpleMessage("تغير الايميل"),
+        "choose_from_the_gallery":
+            MessageLookupByLibrary.simpleMessage("اختار من المعرض"),
         "choose_the_subject":
             MessageLookupByLibrary.simpleMessage("اختار المادة"),
         "class_code": MessageLookupByLibrary.simpleMessage(" رمز الصف"),
@@ -85,6 +91,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "grade_details": MessageLookupByLibrary.simpleMessage("تفاصيل الصف"),
         "grades": MessageLookupByLibrary.simpleMessage("المواد"),
         "help": MessageLookupByLibrary.simpleMessage("المساعدة"),
+        "image_required": MessageLookupByLibrary.simpleMessage("ضع صورة"),
         "landing_text1": MessageLookupByLibrary.simpleMessage("تطبيق مدرستك"),
         "landing_text2":
             MessageLookupByLibrary.simpleMessage("جلب المدرسة إليك"),
@@ -97,6 +104,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "national_iD": MessageLookupByLibrary.simpleMessage("الرقم القومي"),
         "new_password":
             MessageLookupByLibrary.simpleMessage("كلمة المرور الجديدة"),
+        "ok": MessageLookupByLibrary.simpleMessage("تم"),
         "password": MessageLookupByLibrary.simpleMessage("كلمة المرور"),
         "password_changed":
             MessageLookupByLibrary.simpleMessage("تم تغيير كلمة المرور"),
@@ -105,6 +113,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone_number": MessageLookupByLibrary.simpleMessage("رقم الجوال"),
         "please_check_your_email": MessageLookupByLibrary.simpleMessage(
             "يرجى التحقق من بريدك الإلكتروني"),
+        "please_select_an_image":
+            MessageLookupByLibrary.simpleMessage("من فضلك ضع صورة"),
         "privacy_policy":
             MessageLookupByLibrary.simpleMessage("سياسة الخصوصية"),
         "resend": MessageLookupByLibrary.simpleMessage("اعادة ارسال"),
@@ -133,6 +143,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "subject_details":
             MessageLookupByLibrary.simpleMessage("تفاصيل المواد"),
         "subject_id": MessageLookupByLibrary.simpleMessage("معرف المادة"),
+        "take_photo": MessageLookupByLibrary.simpleMessage("خذ صورة"),
         "teacher_home": MessageLookupByLibrary.simpleMessage("صفحة المدرس"),
         "teachers": MessageLookupByLibrary.simpleMessage("الموعلمين"),
         "text_forget_password": MessageLookupByLibrary.simpleMessage(
@@ -147,6 +158,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("تحديث صورة المستخدم"),
         "upload_exam_image":
             MessageLookupByLibrary.simpleMessage("تحميل صورة الامتحان"),
+        "upload_user_image":
+            MessageLookupByLibrary.simpleMessage("حمل صورة المستخدم"),
         "user_name": MessageLookupByLibrary.simpleMessage("اسم المستخدم"),
         "users": MessageLookupByLibrary.simpleMessage("المستخدمين"),
         "verify": MessageLookupByLibrary.simpleMessage("تحقق"),

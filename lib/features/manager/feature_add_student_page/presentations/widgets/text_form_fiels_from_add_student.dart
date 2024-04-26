@@ -1,11 +1,13 @@
 import 'dart:io';
 
+import 'package:ablexa/core/Routing/routers.dart';
 import 'package:ablexa/core/helper/extentions.dart';
 import 'package:ablexa/features/manager/feature_add_student_page/logic/add_student_cubit/add_student_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../../core/shared_widgets/app_elevated_button.dart';
+import '../../../../../core/shared_widgets/success_widget.dart';
 import '../../../../../core/theming/image_manager.dart';
 import '../../logic/add_student_cubit/add_student_state.dart';
 import 'drop_down_grade.dart';
@@ -66,77 +68,15 @@ class _TextFormFieldFromAddStudentState extends State<TextFormFieldFromAddStuden
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Text(
-            S.of(context).full_name,
-            style: TextStyles.font16SemiBoldBlack,
-          ),
-          verticalSpacing(10),
-          AppTextFormField(
-            controller: fullNameController,
-            fillColorFromBackground: ColorsManager.mainWhite,
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16.sp),
-              borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
-            ),
-            hintText: S.of(context).enter_full_name,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter full name';
-              }
-              return null; // Return null if the input is valid
-            },
-          ),
-          verticalSpacing(20),
-          Text(
-            S.of(context).national_iD,
-            style: TextStyles.font16SemiBoldBlack,
-          ),
-          verticalSpacing(10),
-          AppTextFormField(
-            controller: nationalIdController,
-            fillColorFromBackground: ColorsManager.mainWhite,
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16.sp),
-              borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
-            ),
-            hintText: S.of(context).enter_national_id,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter national ID';
-              }
-              return null; // Return null if the input is valid
-            },
-          ),
-          verticalSpacing(20),
-          Text(
-            S.of(context).email,
-            style: TextStyles.font16SemiBoldBlack,
-          ),
-          verticalSpacing(10),
-          AppTextFormField(
-            controller: emailController,
-            fillColorFromBackground: ColorsManager.mainWhite,
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16.sp),
-              borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
-            ),
-            hintText: S.of(context).enter_email,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter email';
-              }
-              // Add email format validation here if needed
-              return null; // Return null if the input is valid
-            },
-          ),
-          verticalSpacing(20),
+          fullNameWidget(context),
+          nationalNumberWidget(context),
+          emailWidget(context),
           uploadImageWidget(context),
            GradeDropDown(
              onGradeSelected: (gradeId) {
                setState(() {
                  try {
                    pClassId = int.parse(gradeId); // Parse the String to int
-                   print("the pClassId : $pClassId");
                  } catch (e) {
                    print("Error parsing gradeId to int: $e");
                    // Handle the error as needed
@@ -149,7 +89,6 @@ class _TextFormFieldFromAddStudentState extends State<TextFormFieldFromAddStuden
               setState(() {
                 try {
                   termId = int.parse(selectedTermId); // Parse the String to int
-                  print("the termId : $termId");
                 } catch (e) {
                   print("Error parsing termId to int: $e");
                   // Handle the error as needed
@@ -157,65 +96,164 @@ class _TextFormFieldFromAddStudentState extends State<TextFormFieldFromAddStuden
               });
             },
           ),
-
-          Padding(
-            padding:  EdgeInsets.only(left: 50.w,right: 50.w),
-            child: BlocListener<AddStudentCubit,AddStudentState>(
-              listener: (context, state) {
-                state.when(
-                  initial: () {
-                    return const Center(
-                      child: CircularProgressIndicator(
-                        color: ColorsManager.mainColor,
-                      ),
-                    );
-                  },
-                  loading: () {
-                    return const Center(
-                      child: CircularProgressIndicator(
-                        color: ColorsManager.mainColor,
-                      ),
-                    );
-                  },
-                  success: (data) {
-
-                  },
-                  error: (error) {
-                    return AlertDialog(
-                      content: Text(
-                        error,
-                        style: TextStyles.font14MediumLightBlack,
-                      ),
-                      actions: [
-                        TextButton(
-                            onPressed: () {
-                              context.pop();
-                            },
-                            child: Text(
-                              'Got It ',
-                              style: TextStyles.font20BoldBlack,
-                            )),
-                      ],
-                      icon: const Icon(
-                        Icons.error,
-                        color: Colors.red,
-                        size: 32,
-                      ),
-                    );
-                  },
-                );
-              },
-              child: AppTextButton(
-                  buttonHeight: 60.h,
-                  textButton: S.of(context).add_student, onPressed: (){
-                validateThenDoAddStudent(context);
-              }),
-            ),
-          ),
+          addStudentButtonWidget(context),
 
         ],
       ),
     );
+  }
+
+  Padding addStudentButtonWidget(BuildContext context) {
+    return Padding(
+          padding:  EdgeInsets.only(left: 50.w,right: 50.w),
+          child: BlocListener<AddStudentCubit,AddStudentState>(
+            listener: (context, state) {
+              state.when(
+                initial: () {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: ColorsManager.mainColor,
+                    ),
+                  );
+                },
+                loading: () {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: ColorsManager.mainColor,
+                    ),
+                  );
+                },
+                success: (data) {
+                  showSuccessDialog(
+                    onPressed: (){
+                      context.pop();
+                      context.pushNamed(Routes.homeManagerPage,arguments: widget.token);
+                    },
+                      context,
+                      text: S.of(context).add_student,
+                      contentText: S.of(context).add_student_successfully);
+                },
+                error: (error) {
+                  return AlertDialog(
+                    content: Text(
+                      error,
+                      style: TextStyles.font14MediumLightBlack,
+                    ),
+                    actions: [
+                      TextButton(
+                          onPressed: () {
+                            context.pop();
+                          },
+                          child: Text(
+                            'Got It ',
+                            style: TextStyles.font20BoldBlack,
+                          )),
+                    ],
+                    icon: const Icon(
+                      Icons.error,
+                      color: Colors.red,
+                      size: 32,
+                    ),
+                  );
+                },
+              );
+            },
+            child: AppTextButton(
+                buttonHeight: 60.h,
+                textButton: S.of(context).add_student, onPressed: (){
+              validateThenDoAddStudent(context);
+            }),
+          ),
+        );
+  }
+
+  Column emailWidget(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              S.of(context).email,
+              style: TextStyles.font16SemiBoldBlack,
+            ),
+            verticalSpacing(10),
+            AppTextFormField(
+              controller: emailController,
+              fillColorFromBackground: ColorsManager.mainWhite,
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16.sp),
+                borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
+              ),
+              hintText: S.of(context).enter_email,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter email';
+                }
+                // Add email format validation here if needed
+                return null; // Return null if the input is valid
+              },
+            ),
+            verticalSpacing(20),
+          ],
+        );
+  }
+  Column nationalNumberWidget(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              S.of(context).national_iD,
+              style: TextStyles.font16SemiBoldBlack,
+            ),
+            verticalSpacing(10),
+            AppTextFormField(
+              controller: nationalIdController,
+              fillColorFromBackground: ColorsManager.mainWhite,
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16.sp),
+                borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
+              ),
+              hintText: S.of(context).enter_national_id,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter national ID';
+                }
+                return null; // Return null if the input is valid
+              },
+            ),
+            verticalSpacing(20),
+          ],
+        );
+  }
+  Column fullNameWidget(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              S.of(context).full_name,
+              style: TextStyles.font16SemiBoldBlack,
+            ),
+            verticalSpacing(10),
+            AppTextFormField(
+              controller: fullNameController,
+              fillColorFromBackground: ColorsManager.mainWhite,
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(16.sp),
+                borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
+              ),
+              hintText: S.of(context).enter_full_name,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter full name';
+                }
+                return null; // Return null if the input is valid
+              },
+            ),
+            verticalSpacing(20),
+          ],
+        );
   }
   void validateThenDoAddStudent(BuildContext context) {
     if (formKey.currentState!.validate()) {
@@ -235,14 +273,14 @@ class _TextFormFieldFromAddStudentState extends State<TextFormFieldFromAddStuden
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text("Image Required"),
-            content: const Text("Please select an image to proceed."),
+            title:  Text(S.of(context).image_required),
+            content:  Text(S.of(context).please_select_an_image),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: const Text("OK"),
+                child:  Text(S.of(context).ok),
               ),
             ],
           ),
@@ -269,14 +307,13 @@ class _TextFormFieldFromAddStudentState extends State<TextFormFieldFromAddStuden
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Upload user Image", style: TextStyles.font20BoldBlack),
+            Text(S.of(context).upload_user_image, style: TextStyles.font20BoldBlack),
             Image.asset(ImageManager.uploadImageIcon),
           ],
         ),
       ),
     );
   }
-
   void showImagePickerBottomSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -286,7 +323,7 @@ class _TextFormFieldFromAddStudentState extends State<TextFormFieldFromAddStuden
           children: <Widget>[
             ListTile(
               leading: const Icon(Icons.camera_alt),
-              title: const Text('Take Photo'),
+              title:  Text(S.of(context).take_photo),
               onTap: () {
                 Navigator.pop(context);
                 captureImageFromCamera(); // Call method to capture image from camera
@@ -294,7 +331,7 @@ class _TextFormFieldFromAddStudentState extends State<TextFormFieldFromAddStuden
             ),
             ListTile(
               leading: const Icon(Icons.photo_library),
-              title: const Text('Choose from Gallery'),
+              title:  Text(S.of(context).choose_from_the_gallery),
               onTap: () {
                 Navigator.pop(context);
                 selectImageFromGallery(); // Call method to select image from gallery

@@ -90,8 +90,15 @@
   "current_password": "كلمة المرور الحالية",
   "subject_details": "تفاصيل المواد",
   "change_profile": "تغير الايميل",
-  "find_a_student": "ابحث على طالب ..."
-
+  "find_a_student": "ابحث على طالب ...",
+  "add_student_successfully": "تم اضافة الطالب بنجاح !",
+  "add_teacher_successfully": "تم اضافة المدرس بنجاح !",
+  "image_required": "ضع صورة",
+  "please_select_an_image": "من فضلك ضع صورة",
+  "ok": "تم",
+  "take_photo": "خذ صورة",
+  "choose_from_the_gallery": "اختار من المعرض",
+  "upload_user_image": "حمل صورة المستخدم"
 
 
 

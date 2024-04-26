@@ -1,5 +1,7 @@
 import 'dart:io';
+import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/helper/extentions.dart';
+import '../../../../../core/shared_widgets/success_widget.dart';
 import '../../../../../core/theming/image_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -60,46 +62,6 @@ class _TextFormFieldFromAddTeacherState extends State<TextFormFieldFromAddTeache
           fullNameWidget(context),
           nationalIdWidget(context),
           emailWidget(context),
-          // Text(
-          //   S.of(context).subject,
-          //   style: TextStyles.font16SemiBoldBlack,
-          // ),
-          // verticalSpacing(10),
-          // AppTextFormField(
-          //   fillColorFromBackground: ColorsManager.mainWhite,
-          //   enabledBorder: OutlineInputBorder(
-          //     borderRadius: BorderRadius.circular(16.sp),
-          //     borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
-          //   ),
-          //   hintText: S.of(context).enter_the_teacher_subject,
-          //   validator: (value) {
-          //     if (value == null || value.isEmpty) {
-          //       return 'Please enter teacher subject';
-          //     }
-          //     return null; // Return null if the input is valid
-          //   },
-          // ),
-          // verticalSpacing(20),
-          // Text(
-          //   S.of(context).class_code,
-          //   style: TextStyles.font16SemiBoldBlack,
-          // ),
-          // verticalSpacing(10),
-          // AppTextFormField(
-          //   fillColorFromBackground: ColorsManager.mainWhite,
-          //   enabledBorder: OutlineInputBorder(
-          //     borderRadius: BorderRadius.circular(16.sp),
-          //     borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
-          //   ),
-          //   hintText: S.of(context).enter_the_teacher_class,
-          //   validator: (value) {
-          //     if (value == null || value.isEmpty) {
-          //       return 'Please enter teacher class code';
-          //     }
-          //     return null; // Return null if the input is valid
-          //   },
-          // ),
-          // verticalSpacing(20),
           uploadImageWidget(context),
           verticalSpacing(40),
           addTeacherButton(context),
@@ -130,7 +92,14 @@ class _TextFormFieldFromAddTeacherState extends State<TextFormFieldFromAddTeache
                   );
                 },
                 success: (data) {
-
+                  showSuccessDialog(
+                      onPressed: (){
+                        context.pop();
+                        context.pushNamed(Routes.homeManagerPage,arguments: widget.token);
+                      },
+                      context,
+                      text: S.of(context).add_teacher,
+                      contentText: S.of(context).add_teacher_successfully);
                 },
                 error: (error) {
                   return AlertDialog(
@@ -200,7 +169,7 @@ class _TextFormFieldFromAddTeacherState extends State<TextFormFieldFromAddTeache
           children: <Widget>[
             ListTile(
               leading: const Icon(Icons.camera_alt),
-              title: const Text('Take Photo'),
+              title:  Text(S.of(context).take_photo),
               onTap: () {
                 Navigator.pop(context);
                 captureImageFromCamera(); // Call method to capture image from camera
@@ -208,7 +177,7 @@ class _TextFormFieldFromAddTeacherState extends State<TextFormFieldFromAddTeache
             ),
             ListTile(
               leading: const Icon(Icons.photo_library),
-              title: const Text('Choose from Gallery'),
+              title:  Text(S.of(context).choose_from_the_gallery),
               onTap: () {
                 Navigator.pop(context);
                 selectImageFromGallery(); // Call method to select image from gallery
@@ -327,14 +296,14 @@ class _TextFormFieldFromAddTeacherState extends State<TextFormFieldFromAddTeache
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text("Image Required"),
-            content: const Text("Please select an image to proceed."),
+            title:  Text(S.of(context).image_required),
+            content:  Text(S.of(context).please_select_an_image),
             actions: [
               TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: const Text("OK"),
+                child:  Text(S.of(context).ok),
               ),
             ],
           ),

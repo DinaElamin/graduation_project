@@ -1,12 +1,6 @@
-import 'dart:io';
-
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/shared_widgets/appBar_widget.dart';
-
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../generated/l10n.dart';
 import '../widgets/text_form_fiels_from_add_student.dart';
