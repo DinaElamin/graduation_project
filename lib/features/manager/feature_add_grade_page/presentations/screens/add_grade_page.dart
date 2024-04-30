@@ -68,7 +68,7 @@ class _AddGradePageState extends State<AddGradePage> {
       hintText: S.of(context).add_grade,
       validator: (value) {
         if (value == null || value.isEmpty) {
-          return 'Please enter a grade';
+          return S.of(context).please_enter_grade;
         }
         return null; // Return null if the input is valid
       },

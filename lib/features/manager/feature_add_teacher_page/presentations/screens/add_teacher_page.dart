@@ -19,7 +19,7 @@ final String token;
               child: Column(
                 children: [
                   verticalSpacing(10),
-                   TextFormFieldFromAddTeacher(token: token),
+                   AddTeacherContantPage(token: token),
 
                 ],
               )),

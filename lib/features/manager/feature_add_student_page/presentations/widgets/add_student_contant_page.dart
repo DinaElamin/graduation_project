@@ -2,16 +2,15 @@ import 'dart:io';
 
 import 'package:ablexa/core/Routing/routers.dart';
 import 'package:ablexa/core/helper/extentions.dart';
-import 'package:ablexa/features/manager/feature_add_student_page/logic/add_student_cubit/add_student_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../../core/shared_widgets/success_widget.dart';
 import '../../../../../core/theming/image_manager.dart';
-import '../../logic/add_student_cubit/add_student_state.dart';
+import '../../logic/cubits/add_student_cubit/add_student_cubit.dart';
+import '../../logic/cubits/add_student_cubit/add_student_state.dart';
 import 'drop_down_grade.dart';
-import 'termid_drop_down.dart';
+import 'semester_drop_down.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,26 +19,19 @@ import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
-class TextFormFieldFromAddStudent extends StatefulWidget {
-  const TextFormFieldFromAddStudent({
+class AddStudentContantPage extends StatefulWidget {
+  const AddStudentContantPage({
     Key? key, required this.token,
   }) : super(key: key);
 final String token;
   @override
-  State<TextFormFieldFromAddStudent> createState() => _TextFormFieldFromAddStudentState();
+  State<AddStudentContantPage> createState() => _AddStudentContantPageState();
 }
 
-class _TextFormFieldFromAddStudentState extends State<TextFormFieldFromAddStudent> {
-  TextEditingController fullNameController = TextEditingController();
+class _AddStudentContantPageState extends State<AddStudentContantPage> {
 
-  TextEditingController emailController = TextEditingController();
-
-  TextEditingController nationalIdController = TextEditingController();
-
-  TextEditingController imageController = TextEditingController();
  late int termId;
   late int pClassId;
-  final formKey = GlobalKey<FormState>();
   File? imageFile; // Change to File type
 
 
@@ -63,7 +55,7 @@ class _TextFormFieldFromAddStudentState extends State<TextFormFieldFromAddStuden
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: formKey,
+      key:  context.read<AddStudentCubit>().formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -84,8 +76,8 @@ class _TextFormFieldFromAddStudentState extends State<TextFormFieldFromAddStuden
                });
                },
            ),
-          TermIdDropDown(
-            onTermIdSelected: (selectedTermId) {
+          SemesterDropDown(
+            onSemesterSelected: (selectedTermId) {
               setState(() {
                 try {
                   termId = int.parse(selectedTermId); // Parse the String to int
@@ -178,7 +170,7 @@ class _TextFormFieldFromAddStudentState extends State<TextFormFieldFromAddStuden
             ),
             verticalSpacing(10),
             AppTextFormField(
-              controller: emailController,
+              controller:  context.read<AddStudentCubit>().emailController,
               fillColorFromBackground: ColorsManager.mainWhite,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16.sp),
@@ -208,7 +200,8 @@ class _TextFormFieldFromAddStudentState extends State<TextFormFieldFromAddStuden
             ),
             verticalSpacing(10),
             AppTextFormField(
-              controller: nationalIdController,
+              textInputType: TextInputType.number,
+              controller:  context.read<AddStudentCubit>().nationalIdController,
               fillColorFromBackground: ColorsManager.mainWhite,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16.sp),
@@ -217,7 +210,9 @@ class _TextFormFieldFromAddStudentState extends State<TextFormFieldFromAddStuden
               hintText: S.of(context).enter_national_id,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter national ID';
+                  return 'Please enter a national ID';
+                } else if (value.length != 14) { // Check for exactly 14 digits
+                  return 'National ID must be 14 digits';
                 }
                 return null; // Return null if the input is valid
               },
@@ -237,7 +232,7 @@ class _TextFormFieldFromAddStudentState extends State<TextFormFieldFromAddStuden
             ),
             verticalSpacing(10),
             AppTextFormField(
-              controller: fullNameController,
+              controller:  context.read<AddStudentCubit>().fullNameController,
               fillColorFromBackground: ColorsManager.mainWhite,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16.sp),
@@ -256,15 +251,15 @@ class _TextFormFieldFromAddStudentState extends State<TextFormFieldFromAddStuden
         );
   }
   void validateThenDoAddStudent(BuildContext context) {
-    if (formKey.currentState!.validate()) {
+    if (context.read<AddStudentCubit>().formKey.currentState!.validate()) {
       // Check if imageFile is not null before proceeding
       if (imageFile != null) {
         // Send the data to the AddTeacherCubit for processing
         context.read<AddStudentCubit>().emitAddStudentStates(
           widget.token,
-          Name: fullNameController.text,
-          Email: emailController.text,
-          NationalNum: nationalIdController.text,
+          Name:  context.read<AddStudentCubit>().fullNameController.text,
+          Email: context.read<AddStudentCubit>().emailController.text,
+          NationalNum:  context.read<AddStudentCubit>().nationalIdController.text,
           Image: imageFile!, // Use the selected imageFile
           TermId: termId,
           PClassId: pClassId,

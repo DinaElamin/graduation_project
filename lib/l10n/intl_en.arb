@@ -99,6 +99,8 @@
  "ok": "Ok",
  "take_photo": "Take Photo",
  "choose_from_the_gallery": "Choose From The Gallery",
- "upload_user_image": "Upload user Image"
+ "upload_user_image": "Upload user Image",
+ "edit": "Edit",
+ "please_enter_grade": "Please Enter Grade"
 
 }

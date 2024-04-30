@@ -58,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete_garde": MessageLookupByLibrary.simpleMessage("Delete Grade ? "),
         "did_not_receive_code":
             MessageLookupByLibrary.simpleMessage("I didn\'t receive a code !"),
+        "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "email_hint_text": MessageLookupByLibrary.simpleMessage(
             "Enter your email or phone number"),
@@ -116,6 +117,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone_number": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "please_check_your_email":
             MessageLookupByLibrary.simpleMessage("please check your email"),
+        "please_enter_grade":
+            MessageLookupByLibrary.simpleMessage("Please Enter Grade"),
         "please_select_an_image": MessageLookupByLibrary.simpleMessage(
             "Please select an image to proceed."),
         "privacy_policy":

@@ -1,3 +1,4 @@
+import 'package:ablexa/features/manager/feature_home_manager_page/presentations/widgets/teacher_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -8,7 +9,6 @@ import '../../../../../generated/l10n.dart';
 import '../../data/models/get_all_teacher_model/get_all_teacher_model.dart';
 import '../../logic/cubits/get_all_teacher_cubit/login_cubit/get_all_teacher_cubit.dart';
 import '../../logic/cubits/get_all_teacher_cubit/login_cubit/get_all_teacher_state.dart';
-import 'card_information.dart';
 
 class TeachersListView extends StatefulWidget {
   const TeachersListView({Key? key, required this.token}) : super(key: key);
@@ -78,7 +78,7 @@ class _TeachersListViewState extends State<TeachersListView> {
                     physics: const AlwaysScrollableScrollPhysics(),
                     itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.all(5.0),
-                      child: CardInformation(
+                      child: TeacherCard(
                         token: widget.token,
                         id: getAllTeacherModel[index].id.toString(),
                         type: "Teacher",
@@ -93,7 +93,7 @@ class _TeachersListViewState extends State<TeachersListView> {
                     physics: const AlwaysScrollableScrollPhysics(),
                     itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.all(5.0),
-                      child: CardInformation(
+                      child: TeacherCard(
                         token: widget.token,
                         id: getAllTeacherModel[index].id.toString(),
                         type: "Teacher",

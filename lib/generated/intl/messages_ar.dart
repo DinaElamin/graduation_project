@@ -57,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete_garde": MessageLookupByLibrary.simpleMessage("مسح الصف ؟"),
         "did_not_receive_code":
             MessageLookupByLibrary.simpleMessage("لم أتلقَ رمزًا!"),
+        "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "email_hint_text": MessageLookupByLibrary.simpleMessage(
             "أدخل بريدك الإلكتروني أو رقم هاتفك"),
@@ -113,6 +114,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "phone_number": MessageLookupByLibrary.simpleMessage("رقم الجوال"),
         "please_check_your_email": MessageLookupByLibrary.simpleMessage(
             "يرجى التحقق من بريدك الإلكتروني"),
+        "please_enter_grade":
+            MessageLookupByLibrary.simpleMessage("من فضلك ادخل الدرجة"),
         "please_select_an_image":
             MessageLookupByLibrary.simpleMessage("من فضلك ضع صورة"),
         "privacy_policy":

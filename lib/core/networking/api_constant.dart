@@ -11,6 +11,7 @@ class ApiConstant {
  static const String addTeacher = "api/User/addteacher";
  static const String addStudent ="api/User/addStudent";
  static const String deleteUser = "api/User/deleteuser";
+ static const String getAllSemester = "api/Term/getallSemester";
 }
 
 class ApiErrors {

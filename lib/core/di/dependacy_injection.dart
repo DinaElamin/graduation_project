@@ -1,4 +1,6 @@
 import 'package:ablexa/features/manager/feature_add_student_page/data/repos/add_student_repo/add_student_repo.dart';
+import 'package:ablexa/features/manager/feature_add_student_page/data/repos/get_all_semester_repo/get_all_semester_repo.dart';
+import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/get_all_semester_cubit/get_all_semester_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/data/repos/delete_user_repo/delete_user_repo.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
 
@@ -8,7 +10,7 @@ import '../../features/feature_login_page/data/repos/login_repo/login_repo.dart'
 import '../../features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
 import '../../features/feature_verify_code_page/data/repos/verify_code_repo/verify_code_repo.dart';
 import '../../features/feature_verify_code_page/logic/cubits/verify_code_cubit/verify_code_cubit.dart';
-import '../../features/manager/feature_add_student_page/logic/add_student_cubit/add_student_cubit.dart';
+import '../../features/manager/feature_add_student_page/logic/cubits/add_student_cubit/add_student_cubit.dart';
 import '../../features/manager/feature_add_teacher_page/data/repos/add_teacher_repo/add_teacher_repo.dart';
 import '../../features/manager/feature_add_teacher_page/logic/cubits/add_teacher_cubit/add_teacher_cubit.dart';
 import '../../features/manager/feature_get_all_student_by_id_page/data/repos/get_all_student_by_class_id_repo/get_all_student_by_class_id_repo.dart';
@@ -64,4 +66,7 @@ final getIt = GetIt.instance;
   // delete user
   getIt.registerLazySingleton<DeleteUserRepo>(() => DeleteUserRepo(getIt()));
   getIt.registerFactory<DeleteUserCubit>(() => DeleteUserCubit(getIt()));
+  // get all semester
+  getIt.registerLazySingleton<GetAllSemesterRepo>(() => GetAllSemesterRepo(getIt()));
+  getIt.registerFactory<GetAllSemesterDataCubit>(() => GetAllSemesterDataCubit(getIt()));
  }

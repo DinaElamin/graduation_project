@@ -46,7 +46,7 @@ class _GetAllStudentByIdState extends State<GetAllStudentByIdListView> {
                   padding: const EdgeInsets.all(5.0),
                   child:  CardInformation(
                     type: "Student",
-                    image: "file:///Images/${getAllStudentsByIdModel[index].image!.toString()}",
+                    image: getAllStudentsByIdModel[index].image!.toString(),
                     name:getAllStudentsByIdModel[index].name.toString(),
                   )
               ),

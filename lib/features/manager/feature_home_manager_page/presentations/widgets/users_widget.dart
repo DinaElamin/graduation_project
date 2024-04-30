@@ -64,7 +64,7 @@ final String token;
                     // Add your TabBarView children here
                     TeachersListView(token: token),
                     StudentsListView(token: token),
-                    ClassCardListView(),
+                    const ClassCardListView(),
                   ],
                 ),
               ),

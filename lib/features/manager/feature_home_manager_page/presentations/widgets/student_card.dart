@@ -10,15 +10,17 @@ import '../../../../../core/theming/image_manager.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
-class CardInformation extends StatelessWidget {
-  final String name, type, image,id,token;
 
-  const CardInformation({
-    Key? key,
-    required this.name,
-    required this.type,
-    required this.image, required this.id, required this.token,
-  }) : super(key: key);
+class StudentCard extends StatelessWidget {
+  final String name, type, image, id, token;
+  const StudentCard(
+      {Key? key,
+      required this.name,
+      required this.type,
+      required this.image,
+      required this.id,
+      required this.token})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +35,9 @@ class CardInformation extends StatelessWidget {
         children: [
           Row(
             children: [
-              SizedBox(
-                  width: 50.r,
-                   height: 50.r,
-
-                  child: Image.asset(ImageManager.defaultImageProfile)),
+              CircleAvatar(
+                  radius: 25.sp,
+                  backgroundImage: NetworkImage(image)),
               horizontalSpacing(10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,7 +47,8 @@ class CardInformation extends StatelessWidget {
                   verticalSpacing(10),
                   Text(
                     type,
-                    style: TextStyles.font14MediumLightBlack.copyWith(fontSize: 12.sp),
+                    style: TextStyles.font14MediumLightBlack
+                        .copyWith(fontSize: 12.sp),
                   ),
                 ],
               ),
@@ -67,22 +68,25 @@ class CardInformation extends StatelessWidget {
             itemBuilder: (BuildContext context) => [
               PopupMenuItem(
                 onTap: () {
-
                   context.pushNamed(Routes.studentProfilePage);
                 },
                 value: 'view_profile',
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                   child: Text(S.of(context).view_profile),
                 ),
               ),
               PopupMenuItem(
-                onTap: (){
-                  context.read<DeleteUserCubit>().emitDeleteUserStates(token: token,userId: id);
+                onTap: () {
+                  context
+                      .read<DeleteUserCubit>()
+                      .emitDeleteUserStates(token: token, userId: id);
                 },
                 value: 'delete',
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                   child: Text(S.of(context).delete),
                 ),
               ),

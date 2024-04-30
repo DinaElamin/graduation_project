@@ -25,7 +25,6 @@ class TextFormFieldProfileStudent extends StatelessWidget {
           ),
           verticalSpacing(10),
           AppTextFormField(
-            suffixIcon: Image.asset(ImageManager.editIcon),
             hintText: "Qassem Shaban",
             validator: (p0) {},
           ),
@@ -36,7 +35,6 @@ class TextFormFieldProfileStudent extends StatelessWidget {
           ),
           verticalSpacing(10),
           AppTextFormField(
-            suffixIcon: Image.asset(ImageManager.editIcon),
             hintText: "QassemShaban@gmail.com",
             validator: (p0) {},
           ),
@@ -47,7 +45,6 @@ class TextFormFieldProfileStudent extends StatelessWidget {
           ),
           verticalSpacing(10),
           AppTextFormField(
-            suffixIcon: Image.asset(ImageManager.editIcon),
             hintText: "20011122241259",
             validator: (p0) {},
           ),
@@ -58,7 +55,6 @@ class TextFormFieldProfileStudent extends StatelessWidget {
           ),
           verticalSpacing(10),
           AppTextFormField(
-            suffixIcon: Image.asset(ImageManager.editIcon),
             hintText: "20011122241259",
             validator: (p0) {},
           ),

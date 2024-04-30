@@ -1059,6 +1059,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Edit`
+  String get edit {
+    return Intl.message(
+      'Edit',
+      name: 'edit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Grade`
+  String get please_enter_grade {
+    return Intl.message(
+      'Please Enter Grade',
+      name: 'please_enter_grade',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

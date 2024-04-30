@@ -238,7 +238,7 @@ class _ApiService implements ApiService {
     String nationalNum,
     File image,
     int PClassId,
-    int TermId,
+    int YearId,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -269,8 +269,8 @@ class _ApiService implements ApiService {
       PClassId.toString(),
     ));
     _data.fields.add(MapEntry(
-      'TermId',
-      TermId.toString(),
+      'YearId',
+      YearId.toString(),
     ));
     final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
       method: 'POST',
@@ -290,6 +290,36 @@ class _ApiService implements ApiService {
           baseUrl,
         ))));
     final value = _result.data;
+    return value;
+  }
+
+  @override
+  Future<List<GetAllSemesterModel>> getAllSemesterData() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio
+        .fetch<List<dynamic>>(_setStreamType<List<GetAllSemesterModel>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'api/Term/getallSemester',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    var value = _result.data!
+        .map((dynamic i) =>
+            GetAllSemesterModel.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 

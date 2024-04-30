@@ -15,23 +15,17 @@ import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 import '../../logic/cubits/add_teacher_cubit/add_teacher_cubit.dart';
 import '../../logic/cubits/add_teacher_cubit/add_teacher_state.dart';
-class TextFormFieldFromAddTeacher extends StatefulWidget {
-  const TextFormFieldFromAddTeacher({
+class AddTeacherContantPage extends StatefulWidget {
+  const AddTeacherContantPage({
     Key? key, required this.token,
   }) : super(key: key);
 final String token;
   @override
-  State<TextFormFieldFromAddTeacher> createState() => _TextFormFieldFromAddTeacherState();
+  State<AddTeacherContantPage> createState() => _AddTeacherContantPageState();
 }
 
-class _TextFormFieldFromAddTeacherState extends State<TextFormFieldFromAddTeacher> {
-  final formKey = GlobalKey<FormState>();
-  TextEditingController fullNameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController nationalIdController = TextEditingController();
-  TextEditingController imageController = TextEditingController();
+class _AddTeacherContantPageState extends State<AddTeacherContantPage> {
   File? imageFile; // Change to File type
-
   final ImagePicker _imagePicker = ImagePicker();
   Future<void> captureImageFromCamera() async {
     final XFile? image = await _imagePicker.pickImage(source: ImageSource.camera);
@@ -54,7 +48,7 @@ class _TextFormFieldFromAddTeacherState extends State<TextFormFieldFromAddTeache
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: formKey,
+      key: context.read<AddTeacherCubit>().formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -201,7 +195,7 @@ class _TextFormFieldFromAddTeacherState extends State<TextFormFieldFromAddTeache
             ),
             verticalSpacing(10),
             AppTextFormField(
-              controller: emailController,
+              controller: context.read<AddTeacherCubit>().emailController,
               fillColorFromBackground: ColorsManager.mainWhite,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16.sp),
@@ -232,7 +226,7 @@ class _TextFormFieldFromAddTeacherState extends State<TextFormFieldFromAddTeache
             ),
             verticalSpacing(10),
             AppTextFormField(
-              controller: nationalIdController,
+              controller: context.read<AddTeacherCubit>().nationalIdController,
               fillColorFromBackground: ColorsManager.mainWhite,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16.sp),
@@ -262,7 +256,7 @@ class _TextFormFieldFromAddTeacherState extends State<TextFormFieldFromAddTeache
             ),
             verticalSpacing(10),
             AppTextFormField(
-              controller: fullNameController,
+              controller: context.read<AddTeacherCubit>().fullNameController,
               fillColorFromBackground: ColorsManager.mainWhite,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(16.sp),
@@ -281,15 +275,15 @@ class _TextFormFieldFromAddTeacherState extends State<TextFormFieldFromAddTeache
         );
   }
   void validateThenDoAddTeacher(BuildContext context) {
-    if (formKey.currentState!.validate()) {
+    if ( context.read<AddTeacherCubit>().formKey.currentState!.validate()) {
       // Check if imageFile is not null before proceeding
       if (imageFile != null) {
         // Send the data to the AddTeacherCubit for processing
         context.read<AddTeacherCubit>().emitAddTeacherStates(
          widget.token,
-          Name: fullNameController.text,
-          Email: emailController.text,
-          NationalNum: nationalIdController.text,
+          Name: context.read<AddTeacherCubit>().fullNameController.text,
+          Email: context.read<AddTeacherCubit>().emailController.text,
+          NationalNum: context.read<AddTeacherCubit>().nationalIdController.text,
           Image: imageFile!, // Use the selected imageFile
         );
       } else {

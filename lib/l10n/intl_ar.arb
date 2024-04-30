@@ -98,8 +98,9 @@
   "ok": "تم",
   "take_photo": "خذ صورة",
   "choose_from_the_gallery": "اختار من المعرض",
-  "upload_user_image": "حمل صورة المستخدم"
-
+  "upload_user_image": "حمل صورة المستخدم",
+  "edit": "تعديل",
+  "please_enter_grade": "من فضلك ادخل الدرجة"
 
 
 }
