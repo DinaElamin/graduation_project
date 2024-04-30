@@ -1,22 +1,22 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../data/repos/get_all_semester_repo/get_all_semester_repo.dart';
-import 'get_all_semester_state.dart';
+import '../../../data/repos/get_all_year_repo/get_all_year_repo.dart';
+import 'get_all_year_state.dart';
 
-class GetAllSemesterDataCubit extends Cubit<GetAllSemesterDataState> {
-  final GetAllSemesterRepo getAllSemesterRepo;
-  GetAllSemesterDataCubit(this.getAllSemesterRepo) : super(const GetAllSemesterDataState.initial());
+class GetAllYearDataCubit extends Cubit<GetAllYearDataState> {
+  final GetAllYearRepo getAllYearRepo;
+  GetAllYearDataCubit(this.getAllYearRepo) : super(const GetAllYearDataState.initial());
 
-  void emitAllSemesterStates() async {
-    emit(const GetAllSemesterDataState.loading());
-    final response = await getAllSemesterRepo.getAllSemesterData();
+  void emitAllYearStates() async {
+    emit(const GetAllYearDataState.loading());
+    final response = await getAllYearRepo.getAllYearData();
 
     response.when(
-      success: (getAllSemesterData) {
-        emit(GetAllSemesterDataState.success(getAllSemesterData));
+      success: (getAllYearData) {
+        emit(GetAllYearDataState.success(getAllYearData));
       },
       failure: (error) {
-        emit(GetAllSemesterDataState.error(error: error.apiErrorModel.errorMessage ?? ''));
+        emit(GetAllYearDataState.error(error: error.apiErrorModel.errorMessage ?? ''));
       },
     );
   }

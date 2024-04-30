@@ -1,11 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'get_all_semester_state.freezed.dart';
+part 'get_all_year_state.freezed.dart';
 @freezed
-abstract class GetAllSemesterDataState<T> with _$GetAllSemesterDataState<T> {
-  const factory GetAllSemesterDataState.initial() = _Initial;
-  const factory GetAllSemesterDataState.loading() = Loading;
-  const factory GetAllSemesterDataState.success(T data) = Success<T>;
-  const factory GetAllSemesterDataState.error({required String error}) = Error;
+abstract class GetAllYearDataState<T> with _$GetAllYearDataState<T> {
+  const factory GetAllYearDataState.initial() = _Initial;
+  const factory GetAllYearDataState.loading() = Loading;
+  const factory GetAllYearDataState.success(T data) = Success<T>;
+  const factory GetAllYearDataState.error({required String error}) = Error;
 
 }

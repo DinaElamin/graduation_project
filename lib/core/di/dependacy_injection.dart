@@ -1,6 +1,6 @@
 import 'package:ablexa/features/manager/feature_add_student_page/data/repos/add_student_repo/add_student_repo.dart';
-import 'package:ablexa/features/manager/feature_add_student_page/data/repos/get_all_semester_repo/get_all_semester_repo.dart';
-import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/get_all_semester_cubit/get_all_semester_cubit.dart';
+import 'package:ablexa/features/manager/feature_add_student_page/data/repos/get_all_year_repo/get_all_year_repo.dart';
+import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/get_all_semester_cubit/get_all_year_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/data/repos/delete_user_repo/delete_user_repo.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
 
@@ -67,6 +67,6 @@ final getIt = GetIt.instance;
   getIt.registerLazySingleton<DeleteUserRepo>(() => DeleteUserRepo(getIt()));
   getIt.registerFactory<DeleteUserCubit>(() => DeleteUserCubit(getIt()));
   // get all semester
-  getIt.registerLazySingleton<GetAllSemesterRepo>(() => GetAllSemesterRepo(getIt()));
-  getIt.registerFactory<GetAllSemesterDataCubit>(() => GetAllSemesterDataCubit(getIt()));
+  getIt.registerLazySingleton<GetAllYearRepo>(() => GetAllYearRepo(getIt()));
+  getIt.registerFactory<GetAllYearDataCubit>(() => GetAllYearDataCubit(getIt()));
  }

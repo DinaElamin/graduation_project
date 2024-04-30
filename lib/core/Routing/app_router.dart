@@ -1,4 +1,4 @@
-import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/get_all_semester_cubit/get_all_semester_cubit.dart';
+import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/get_all_semester_cubit/get_all_year_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
 import '../../features/feature_change_password_page/logic/cubits/change_password_cubit/change_password_cubit.dart';
 import '../../features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
@@ -140,7 +140,7 @@ class AppRouter {
 
             ),
             BlocProvider(
-              create: (context) => getIt<GetAllSemesterDataCubit>(),
+              create: (context) => getIt<GetAllYearDataCubit>(),
 
             ),
             BlocProvider(

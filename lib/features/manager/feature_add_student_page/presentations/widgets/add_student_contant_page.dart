@@ -10,7 +10,7 @@ import '../../../../../core/theming/image_manager.dart';
 import '../../logic/cubits/add_student_cubit/add_student_cubit.dart';
 import '../../logic/cubits/add_student_cubit/add_student_state.dart';
 import 'drop_down_grade.dart';
-import 'semester_drop_down.dart';
+import 'year_drop_down.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -76,7 +76,7 @@ class _AddStudentContantPageState extends State<AddStudentContantPage> {
                });
                },
            ),
-          SemesterDropDown(
+          YearDropDown(
             onSemesterSelected: (selectedTermId) {
               setState(() {
                 try {
