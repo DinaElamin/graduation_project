@@ -1,4 +1,4 @@
-import 'package:ablexa/features/manager/feature_add_student_page/data/models/get_all_semester_model/get_all_semester_model.dart';
+import 'package:ablexa/features/manager/feature_add_student_page/data/models/get_all_semester_model/get_all_year_model.dart';
 import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/get_all_semester_cubit/get_all_year_cubit.dart';
 import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/get_all_semester_cubit/get_all_year_state.dart';
 import '../../../../../core/theming/colors.dart';
@@ -47,10 +47,10 @@ class _YearDropDownState extends State<YearDropDown> {
             );
           },
           success: (data) {
-            final List<GetAllSemesterModel> getAllSemesterModel = data;
+            final List<GetAllYearModel> getAllSemesterModel = data;
             // Extract names from the model and update the dropdown items list
             List<OptionItem> dropListItems = getAllSemesterModel.map((model) {
-              return OptionItem(id: model.id.toString(), title: model.termName ?? '');
+              return OptionItem(id: model.id.toString(), title: model.name ?? '');
             }).toList();
 
             return Padding(

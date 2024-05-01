@@ -1,20 +1,19 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'get_all_semester_model.dart';
+part of 'get_all_year_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-GetAllSemesterModel _$GetAllSemesterModelFromJson(Map<String, dynamic> json) =>
-    GetAllSemesterModel(
+GetAllYearModel _$GetAllYearModelFromJson(Map<String, dynamic> json) =>
+    GetAllYearModel(
       id: json['id'] as int?,
-      termName: json['termName'] as String?,
+      name: json['name'] as String?,
     );
 
-Map<String, dynamic> _$GetAllSemesterModelToJson(
-        GetAllSemesterModel instance) =>
+Map<String, dynamic> _$GetAllYearModelToJson(GetAllYearModel instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'termName': instance.termName,
+      'name': instance.name,
     };

@@ -5,7 +5,7 @@ import 'package:ablexa/features/manager/feature_home_manager_page/data/models/de
 import '../../features/feature_change_password_page/data/models/change_password_model/change_password_model.dart';
 import '../../features/feature_verify_code_page/data/models/verify_code_model/request/verify_code_request_model.dart';
 import '../../features/feature_verify_code_page/data/models/verify_code_model/response/verify_code_response_model.dart';
-import '../../features/manager/feature_add_student_page/data/models/get_all_semester_model/get_all_semester_model.dart';
+import '../../features/manager/feature_add_student_page/data/models/get_all_semester_model/get_all_year_model.dart';
 import '../../features/manager/feature_home_manager_page/data/models/get_all_student_model/get_all_student_model.dart';
 import '../../features/manager/feature_home_manager_page/data/models/get_all_teacher_model/get_all_teacher_model.dart';
 import 'package:dio/dio.dart' hide Headers;
@@ -87,9 +87,12 @@ abstract class ApiService {
       @Part(name: "PClassId") int PClassId,
       @Part(name: "YearId") int YearId,
       );
-  // get all semester
-  @GET(ApiConstant.getAllSemester)
-  Future<List<GetAllSemesterModel>> getAllSemesterData();
+  // get all year
+  @GET(ApiConstant.getAllYear)
+  Future<List<GetAllYearModel>> getAllYearData();
+  // // get all semester
+  // @GET(ApiConstant.getAllSemester)
+  // Future<List<GetAllSemesterModel>> getAllSemesterData();
   // get All teacher
   @GET(ApiConstant.getAllTeacherData)
   Future<List<GetAllTeacherModel>> getAllTeacherData();
