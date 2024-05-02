@@ -152,11 +152,25 @@ class AppRouter {
       case Routes.addTeacherPage:
         final String token = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-              create: (context) => getIt<AddTeacherCubit>(),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<GetAllClassesDataCubit>(),
+
+              ),
+              BlocProvider(
+                create: (context) => getIt<GetAllYearDataCubit>(),
+
+              ),
+              BlocProvider(
+                  create: (context) => getIt<AddTeacherCubit>(),
+                 ),
+
+            ],
               child: AddTeacherPage(
                 token: token,
-              )),
+              ),
+          )
         );
       // add student from manager
       case Routes.addGradePage:

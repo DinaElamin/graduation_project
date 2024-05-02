@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/shared_widgets/appBar_widget.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../generated/l10n.dart';
-import '../widgets/text_form_fiels_from_add_teacher.dart';
+import '../widgets/add_teacher_contant.dart';
 
 class AddTeacherPage extends StatelessWidget {
   const AddTeacherPage({super.key, required this.token});

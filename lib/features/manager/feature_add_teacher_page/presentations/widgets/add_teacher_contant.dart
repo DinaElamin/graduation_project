@@ -1,4 +1,7 @@
 import 'dart:io';
+import 'package:ablexa/features/manager/feature_add_teacher_page/presentations/widgets/class_drop_down.dart';
+import 'package:ablexa/features/manager/feature_add_teacher_page/presentations/widgets/subject_drop_down.dart';
+
 import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/helper/extentions.dart';
 import '../../../../../core/shared_widgets/success_widget.dart';
@@ -23,7 +26,8 @@ final String token;
   @override
   State<AddTeacherContantPage> createState() => _AddTeacherContantPageState();
 }
-
+late int pClassId;
+late int pSubjectId;
 class _AddTeacherContantPageState extends State<AddTeacherContantPage> {
   File? imageFile; // Change to File type
   final ImagePicker _imagePicker = ImagePicker();
@@ -57,9 +61,30 @@ class _AddTeacherContantPageState extends State<AddTeacherContantPage> {
           nationalIdWidget(context),
           emailWidget(context),
           uploadImageWidget(context),
-          verticalSpacing(40),
+          ClassDropDown(
+            onClassSelected: (classId) {
+            setState(() {
+              try {
+                pClassId = int.parse(classId); // Parse the String to int
+              } catch (e) {
+                print("Error parsing classId to int: $e");
+                // Handle the error as needed
+              }
+            });
+          },),
+          SubjectDropDown(onSemesterSelected: (subjectId) {
+            setState(() {
+              try {
+                pSubjectId = int.parse(subjectId); // Parse the String to int
+              } catch (e) {
+                print("Error parsing classId to int: $e");
+                // Handle the error as needed
+              }
+            });
+          },),
           addTeacherButton(context),
           verticalSpacing(20),
+
         ],
       ),
     );
@@ -146,7 +171,7 @@ class _AddTeacherContantPageState extends State<AddTeacherContantPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Upload user Image", style: TextStyles.font20BoldBlack),
+            Text(S.of(context).update_user_image, style: TextStyles.font20BoldBlack),
             Image.asset(ImageManager.uploadImageIcon),
           ],
         ),

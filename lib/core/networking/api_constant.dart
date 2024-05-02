@@ -13,6 +13,7 @@ class ApiConstant {
  static const String deleteUser = "api/User/deleteuser";
  static const String getAllSemester = "api/Term/getallSemester";
  static const String getAllYear = "api/Year/getallyears";
+ static const String getAllMaterials = "api/defaultMaterial/getallmaterials";
 }
 
 class ApiErrors {

@@ -1,35 +1,37 @@
-import 'package:ablexa/features/manager/feature_add_student_page/data/models/get_all_semester_model/get_all_year_model.dart';
-import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/get_all_semester_cubit/get_all_year_cubit.dart';
-import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/get_all_semester_cubit/get_all_year_state.dart';
 import '../../../../../core/theming/colors.dart';
 import 'package:dropdown_model_list/drop_down/model.dart';
 import 'package:dropdown_model_list/drop_down/select_drop_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../../core/theming/styles.dart';
-class YearDropDown extends StatefulWidget {
-  const YearDropDown({Key? key, required this.onSemesterSelected}) : super(key: key);
-  final void Function(String) onSemesterSelected; // Callback function to handle selected grade
+import '../../../feature_home_manager_page/data/models/get_all_classes_model/get_all_classes_model.dart';
+import '../../../feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_cubit.dart';
+import '../../../feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_state.dart';
+
+class ClassDropDown extends StatefulWidget {
+  const ClassDropDown({Key? key, required this.onClassSelected}) : super(key: key);
+  final void Function(String) onClassSelected; // Callback function to handle selected grade
 
   @override
-  State<YearDropDown> createState() => _YearDropDownState();
+  State<ClassDropDown> createState() => _ClassDropDownState();
 }
 
-class _YearDropDownState extends State<YearDropDown> {
+class _ClassDropDownState extends State<ClassDropDown> {
   // Initialize the selected option item
-  OptionItem optionItemSelected = OptionItem(title: "Select Year");
+  OptionItem optionItemSelected = OptionItem(title: "Class Code");
 
   @override
   void initState() {
     super.initState();
     // Fetch data from the Cubit when the widget is first created
-    context.read<GetAllYearDataCubit>().emitAllYearStates();
+    context.read<GetAllClassesDataCubit>().emitAllClassesStates();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GetAllYearDataCubit, GetAllYearDataState>(
+    return BlocBuilder<GetAllClassesDataCubit, GetAllClassesDataState>(
       builder: (context, state) {
         return state.when(
           initial: () {
@@ -47,10 +49,10 @@ class _YearDropDownState extends State<YearDropDown> {
             );
           },
           success: (data) {
-            final List<GetAllYearModel> getAllSemesterModel = data;
+            final List<GetAllClassesModel> getAllClassesModel = data;
             // Extract names from the model and update the dropdown items list
-            List<OptionItem> dropListItems = getAllSemesterModel.map((model) {
-              return OptionItem(id: model.id.toString(), title: model.name ?? '');
+            List<OptionItem> dropListItems = getAllClassesModel.map((model) {
+              return OptionItem(id: model.classId.toString(), title: model.className ?? '');
             }).toList();
 
             return Padding(
@@ -81,7 +83,7 @@ class _YearDropDownState extends State<YearDropDown> {
                       optionItemSelected = optionItem;
                       setState(() {
                         optionItemSelected = optionItem;
-                        widget.onSemesterSelected(optionItem.id.toString()); // Pass the selected ID to the callback function
+                        widget.onClassSelected(optionItem.id.toString()); // Pass the selected ID to the callback function
                       });
                     },
                   )
