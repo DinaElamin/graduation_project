@@ -34,7 +34,7 @@ class CardInformation extends StatelessWidget {
                   width: 50.r,
                    height: 50.r,
 
-                  child: Image.asset(ImageManager.defaultImageProfile)),
+                  child: Image.network(image)),
               horizontalSpacing(10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
