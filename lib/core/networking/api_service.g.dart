@@ -184,6 +184,8 @@ class _ApiService implements ApiService {
     String email,
     String nationalNum,
     File image,
+    String SubjectName,
+    List<int> AssignClassId,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -209,6 +211,16 @@ class _ApiService implements ApiService {
         filename: image.path.split(Platform.pathSeparator).last,
       ),
     ));
+    _data.fields.add(MapEntry(
+      'SubjectName',
+      SubjectName,
+    ));
+    _data.files.add(MapEntry(
+        'AssignClassId',
+        MultipartFile.fromBytes(
+          AssignClassId,
+          filename: null,
+        )));
     final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
       method: 'POST',
       headers: _headers,

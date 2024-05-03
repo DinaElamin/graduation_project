@@ -75,6 +75,8 @@ abstract class ApiService {
       @Part(name: "Email") String email,
       @Part(name: "NationalNum") String nationalNum,
       @Part(name: "Image") File image,
+      @Part(name: "SubjectName") String SubjectName,
+      @Part(name: "AssignClassId") List<int> AssignClassId,
       );
   // add Student
   @POST(ApiConstant.addStudent)

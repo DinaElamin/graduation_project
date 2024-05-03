@@ -1,37 +1,35 @@
+import 'package:ablexa/features/manager/feature_add_teacher_page/data/models/get_all_materail_model/get_all-matrial_model.dart';
+import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_state.dart';
 import '../../../../../core/theming/colors.dart';
 import 'package:dropdown_model_list/drop_down/model.dart';
 import 'package:dropdown_model_list/drop_down/select_drop_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../../core/theming/styles.dart';
-import '../../../feature_home_manager_page/data/models/get_all_classes_model/get_all_classes_model.dart';
-import '../../../feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_cubit.dart';
-import '../../../feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_state.dart';
-
-class ClassDropDown extends StatefulWidget {
-  const ClassDropDown({Key? key, required this.onClassSelected}) : super(key: key);
-  final void Function(String) onClassSelected; // Callback function to handle selected grade
+import '../../logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
+class SubjectsDropDown extends StatefulWidget {
+  const SubjectsDropDown({Key? key, required this.onSemesterSelected}) : super(key: key);
+  final void Function(String) onSemesterSelected; // Callback function to handle selected grade
 
   @override
-  State<ClassDropDown> createState() => _ClassDropDownState();
+  State<SubjectsDropDown> createState() => _SubjectsDropDownState();
 }
 
-class _ClassDropDownState extends State<ClassDropDown> {
+class _SubjectsDropDownState extends State<SubjectsDropDown> {
   // Initialize the selected option item
-  OptionItem optionItemSelected = OptionItem(title: "Class Code");
+  OptionItem optionItemSelected = OptionItem(title: "Subject");
 
   @override
   void initState() {
     super.initState();
     // Fetch data from the Cubit when the widget is first created
-    context.read<GetAllClassesDataCubit>().emitAllClassesStates();
+    context.read<GetAllMaterialDataCubit>().emitAllMaterialStates();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GetAllClassesDataCubit, GetAllClassesDataState>(
+    return BlocBuilder<GetAllMaterialDataCubit, GetAllMaterialDataState>(
       builder: (context, state) {
         return state.when(
           initial: () {
@@ -49,10 +47,12 @@ class _ClassDropDownState extends State<ClassDropDown> {
             );
           },
           success: (data) {
-            final List<GetAllClassesModel> getAllClassesModel = data;
+            final List<GetAllMaterialModel> getAllMaterialModel = data;
             // Extract names from the model and update the dropdown items list
-            List<OptionItem> dropListItems = getAllClassesModel.map((model) {
-              return OptionItem(id: model.classId.toString(), title: model.className ?? '');
+            List<OptionItem> dropListItems = getAllMaterialModel.map((model) {
+              return OptionItem(
+
+                  title: model.subject_Name ?? '');
             }).toList();
 
             return Padding(
@@ -83,7 +83,7 @@ class _ClassDropDownState extends State<ClassDropDown> {
                       optionItemSelected = optionItem;
                       setState(() {
                         optionItemSelected = optionItem;
-                        widget.onClassSelected(optionItem.id.toString()); // Pass the selected ID to the callback function
+                        widget.onSemesterSelected(optionItem.title.toString()); // Pass the selected ID to the callback function
                       });
                     },
                   )
