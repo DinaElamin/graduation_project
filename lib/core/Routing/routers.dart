@@ -26,4 +26,5 @@ class Routes {
   static const subjectDetailsPage = "/SubjectDetailsPage";
   static const changeProfilePage ="/changeProfilePage";
   static const getAllStudentByClassIdPage = "/getAllStudentByClassIdPage";
+  static const editStudentProfilePage ="/studentEditProfile";
 }

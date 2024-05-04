@@ -1,6 +1,7 @@
 import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/get_all_semester_cubit/get_all_year_cubit.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
+import 'package:ablexa/features/manager/feature_student_edit_profile_page/presentations/screens/student_edit_profile_page.dart';
 import '../../features/feature_change_password_page/logic/cubits/change_password_cubit/change_password_cubit.dart';
 import '../../features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
 import '../../features/feature_verify_code_page/logic/cubits/verify_code_cubit/verify_code_cubit.dart';
@@ -120,6 +121,32 @@ class AppRouter {
         final String token = settings.arguments as String;
         return MaterialPageRoute(
           builder: (context) => ProfileManagerPage(token: token),
+        );
+    // student edit profile
+      case Routes.editStudentProfilePage:
+        final args = settings.arguments as Map<String, dynamic>;
+        final String nameStudent = args['name'];
+        final String image = args['image'];
+        final String email = args['email'];
+        return MaterialPageRoute(
+          builder: (context) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => getIt<GetAllClassesDataCubit>(),
+
+                ),
+                BlocProvider(
+                  create: (context) => getIt<GetAllYearDataCubit>(),
+
+                ),
+                BlocProvider(
+                  create: (context) => getIt<GetAllStudentByClassIdCubit>(),
+
+                ),
+              ],
+              child:  StudentEditProfilePage(
+                email: email,
+                nameStudent: nameStudent,image: image,)),
         );
       // student profile
       case Routes.studentProfilePage:

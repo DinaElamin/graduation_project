@@ -8,18 +8,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
+
 class ClassesDropDown extends StatefulWidget {
   const ClassesDropDown({Key? key, required this.onSubjectsSelected}) : super(key: key);
-  final void Function(List<String>) onSubjectsSelected;
+  final void Function(List<int>) onSubjectsSelected;
+
   @override
   State<ClassesDropDown> createState() => _ClassesDropDownState();
 }
 
 class _ClassesDropDownState extends State<ClassesDropDown> {
-  int? selectedValue;
-  late List<GetAllClassesModel> getAllClassesModel;
-  late Map<String, int> nameToIdMap;
-  late List<int> selectedClassIds = []; // Track selected class IDs
+  List<int> selectedClassIds = []; // Track selected class IDs
 
   @override
   void initState() {
@@ -37,18 +36,14 @@ class _ClassesDropDownState extends State<ClassesDropDown> {
             builder: (context, state) {
               return state.when(
                 success: (data) {
-                  getAllClassesModel = data;
-                  nameToIdMap = Map.fromEntries(
-                    getAllClassesModel.map((item) => MapEntry(item.className.toString(), item.classId!)),
-                  );
-
+                  List<GetAllClassesModel> getAllClassesModel = data;
                   return Column(
                     children: [
                       IntrinsicWidth(
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton2<String>(
                             isExpanded: true,
-                            hint:  Row(
+                            hint: Row(
                               children: [
                                 Expanded(
                                   child: Text(
@@ -61,30 +56,35 @@ class _ClassesDropDownState extends State<ClassesDropDown> {
                                 ),
                               ],
                             ),
-                            items: getAllClassesModel.map((item) { // Use getAllClassesModel directly
+                            items: getAllClassesModel.map((item) {
                               return DropdownMenuItem<String>(
-                                value: item.classId.toString(), // Use classId as value
+                                value: item.classId.toString(),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      item.className.toString(), // Display className in the dropdown
+                                      item.className.toString(),
                                       style: TextStyles.font16SemiBoldBlack.copyWith(
-                                        color: ColorsManager.mainBlack, // Adjust text color if needed
+                                        color: ColorsManager.mainBlack,
                                       ),
                                       overflow: TextOverflow.ellipsis,
                                     ),
                                     Container(
                                       width: 25.w,
                                       height: 25.h,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         shape: BoxShape.circle,
-                                        color: ColorsManager.greenColor,
+                                        color: selectedClassIds.contains(item.classId)
+                                            ? ColorsManager.greenColor
+                                            : Colors.transparent, // Change color based on selection
                                       ),
-                                      child: Center(child: Icon(
-                                        size: 18.sp,
-
-                                        Icons.add,color: ColorsManager.mainWhite,)),
+                                      child: Center(
+                                        child: Icon(
+                                          size: 18.sp,
+                                          Icons.add,
+                                          color: ColorsManager.mainWhite,
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -92,10 +92,16 @@ class _ClassesDropDownState extends State<ClassesDropDown> {
                             }).toList(),
                             onChanged: (String? value) {
                               setState(() {
-                                selectedValue = int.parse(value!); // Parse value back to int
-                                selectedClassIds = [selectedValue!]; // Update selected class IDs list
-                                List<String> selectedClassIdsAsString = selectedClassIds.map((id) => id.toString()).toList(); // Convert to List<String>
-                                widget.onSubjectsSelected(selectedClassIdsAsString); // Pass the updated list of strings to the callback
+                                int selectedValue = int.parse(value!);
+
+                                // Toggle selection
+                                if (selectedClassIds.contains(selectedValue)) {
+                                  selectedClassIds.remove(selectedValue);
+                                } else {
+                                  selectedClassIds.add(selectedValue);
+                                }
+
+                                widget.onSubjectsSelected(selectedClassIds); // Pass updated list directly
                               });
                             },
                             buttonStyleData: ButtonStyleData(
@@ -136,14 +142,11 @@ class _ClassesDropDownState extends State<ClassesDropDown> {
                               height: 40.h,
                               padding: EdgeInsets.only(left: 14.w, right: 14.w),
                             ),
-
                           ),
                         ),
                       ),
-
                     ],
                   );
-
                 },
                 loading: () => const CircularProgressIndicator(),
                 error: (error) => Text('Error: $error'),
@@ -156,4 +159,3 @@ class _ClassesDropDownState extends State<ClassesDropDown> {
     );
   }
 }
-

@@ -55,8 +55,19 @@ abstract class ApiService {
       @Header("Authorization") String token,
       @Path("userId") String userId,
       );
-
-
+// edit profile student
+  @POST(ApiConstant.editStudentProfile)
+  @MultiPart()
+  Future editStudentProfile(
+      @Header("Authorization") String token,
+      @Path("userId") String userId,
+      @Part(name: "Name") String Name,
+      @Part(name: "Email") String Email,
+      @Part(name: "NationalNum") String NationalNum,
+      @Part(name: "Image") File Image,
+      @Part(name: "PClassId") int PClassId,
+      @Part(name: "YearId") int YearId
+      );
   // change password page
   @POST("${ApiConstant.changePassword}/{email}")
   @Headers(<String, dynamic>{
@@ -71,12 +82,12 @@ abstract class ApiService {
   @MultiPart()
   Future addTeacher(
       @Header("Authorization") String token,
-      @Part(name: "Name") String name,
-      @Part(name: "Email") String email,
-      @Part(name: "NationalNum") String nationalNum,
-      @Part(name: "Image") File image,
+      @Part(name: "Name") String Name,
+      @Part(name: "Email") String Email,
+      @Part(name: "NationalNum") String NationalNum,
+      @Part(name: "Image") File Image,
       @Part(name: "SubjectName") String SubjectName,
-      @Part(name: "AssignClassId") List<int> AssignClassId,
+      @Part(name: "AssignClassId") List<int> AssignClassId
       );
   // add Student
   @POST(ApiConstant.addStudent)

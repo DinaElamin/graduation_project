@@ -86,6 +86,7 @@ class _StudentsListViewState extends State<StudentsListView> {
                     itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: StudentCard(
+                        email: getAllStudentModel[index].email.toString(),
                         token: widget.token,
                         id: getAllStudentModel[index].id.toString(),
                         type: "Student",
@@ -102,6 +103,7 @@ class _StudentsListViewState extends State<StudentsListView> {
                     itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.all(5.0),
                       child: StudentCard(
+                        email: getAllStudentModel[index].email.toString(),
                         token: widget.token,
                         id: getAllStudentModel[index].id.toString(),
                         type: "Student",

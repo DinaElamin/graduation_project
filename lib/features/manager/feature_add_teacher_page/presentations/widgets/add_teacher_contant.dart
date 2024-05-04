@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:ablexa/features/manager/feature_add_teacher_page/presentations/widgets/subjects_drop_down.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/presentations/widgets/add_teacher_text_FormField_Widgets.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/presentations/widgets/upload_image_widget.dart';
@@ -24,6 +23,7 @@ class AddTeacherContantPage extends StatefulWidget {
 
 List<int> selectedClassIds = [];
 late String subjectName;
+late String className;
 File? imageFile;
 
 class _AddTeacherContantPageState extends State<AddTeacherContantPage> {
@@ -45,12 +45,12 @@ class _AddTeacherContantPageState extends State<AddTeacherContantPage> {
           ClassesDropDown(
             onSubjectsSelected: (classes) {
               setState(() {
-                List<String> selectedClassIdsAsString =
-                    classes.map((id) => id.toString()).toList();
-                print("Selected class IDs: $selectedClassIdsAsString");
+                selectedClassIds = classes;
+                print("Selected class IDs: $selectedClassIds");
               });
             },
           ),
+
           SubjectsDropDown(onSemesterSelected: (subject) {
             setState(() {
               subjectName = subject;

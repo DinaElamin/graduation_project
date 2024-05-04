@@ -12,14 +12,14 @@ import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 
 class StudentCard extends StatelessWidget {
-  final String name, type, image, id, token;
+  final String name, type, image, id, token,email;
   const StudentCard(
       {Key? key,
       required this.name,
       required this.type,
       required this.image,
       required this.id,
-      required this.token})
+      required this.token, required this.email})
       : super(key: key);
 
   @override
@@ -68,7 +68,12 @@ class StudentCard extends StatelessWidget {
             itemBuilder: (BuildContext context) => [
               PopupMenuItem(
                 onTap: () {
-                  context.pushNamed(Routes.studentProfilePage);
+                  context.pushNamed(Routes.editStudentProfilePage,arguments: {
+                    'name':name,
+                    'image':image,
+                    'id':id,
+                    'email':email
+                  });
                 },
                 value: 'view_profile',
                 child: Padding(

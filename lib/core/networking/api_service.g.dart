@@ -146,6 +146,70 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<dynamic> editStudentProfile(
+    String token,
+    String userId,
+    String Name,
+    String Email,
+    String NationalNum,
+    File Image,
+    int PClassId,
+    int YearId,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = FormData();
+    _data.fields.add(MapEntry(
+      'Name',
+      Name,
+    ));
+    _data.fields.add(MapEntry(
+      'Email',
+      Email,
+    ));
+    _data.fields.add(MapEntry(
+      'NationalNum',
+      NationalNum,
+    ));
+    _data.files.add(MapEntry(
+      'Image',
+      MultipartFile.fromFileSync(
+        Image.path,
+        filename: Image.path.split(Platform.pathSeparator).last,
+      ),
+    ));
+    _data.fields.add(MapEntry(
+      'PClassId',
+      PClassId.toString(),
+    ));
+    _data.fields.add(MapEntry(
+      'YearId',
+      YearId.toString(),
+    ));
+    final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'multipart/form-data',
+    )
+        .compose(
+          _dio.options,
+          'api/User/editstudent',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+    final value = _result.data;
+    return value;
+  }
+
+  @override
   Future<dynamic> changePassword(
     String email,
     ChangePasswordRequestModel changePasswordRequestModel,
@@ -180,10 +244,10 @@ class _ApiService implements ApiService {
   @override
   Future<dynamic> addTeacher(
     String token,
-    String name,
-    String email,
-    String nationalNum,
-    File image,
+    String Name,
+    String Email,
+    String NationalNum,
+    File Image,
     String SubjectName,
     List<int> AssignClassId,
   ) async {
@@ -194,21 +258,21 @@ class _ApiService implements ApiService {
     final _data = FormData();
     _data.fields.add(MapEntry(
       'Name',
-      name,
+      Name,
     ));
     _data.fields.add(MapEntry(
       'Email',
-      email,
+      Email,
     ));
     _data.fields.add(MapEntry(
       'NationalNum',
-      nationalNum,
+      NationalNum,
     ));
     _data.files.add(MapEntry(
       'Image',
       MultipartFile.fromFileSync(
-        image.path,
-        filename: image.path.split(Platform.pathSeparator).last,
+        Image.path,
+        filename: Image.path.split(Platform.pathSeparator).last,
       ),
     ));
     _data.fields.add(MapEntry(

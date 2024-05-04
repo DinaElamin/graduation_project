@@ -14,6 +14,7 @@ class ApiConstant {
  static const String getAllSemester = "api/Term/getallSemester";
  static const String getAllYear = "api/Year/getallyears";
  static const String getAllMaterials = "api/defaultMaterial/getallmaterials";
+ static const String editStudentProfile = "api/User/editstudent";
 }
 
 class ApiErrors {
