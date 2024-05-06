@@ -16,6 +16,7 @@ class TeacherCard extends StatelessWidget {
   const TeacherCard({
     Key? key,
     required this.name,
+
     required this.type,
     required this.image, required this.id, required this.token
   }) : super(key: key);

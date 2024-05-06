@@ -990,6 +990,16 @@ class S {
     );
   }
 
+  /// `edit Student Successfully !`
+  String get edit_student_successfully {
+    return Intl.message(
+      'edit Student Successfully !',
+      name: 'edit_student_successfully',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add Teacher Successfully !`
   String get add_teacher_successfully {
     return Intl.message(

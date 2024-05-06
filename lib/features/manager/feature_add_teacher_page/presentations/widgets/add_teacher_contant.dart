@@ -35,7 +35,7 @@ class _AddTeacherContantPageState extends State<AddTeacherContantPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-         const AddTeacherTextFormFieldWidgets(),
+          const AddTeacherTextFormFieldWidgets(),
           UploadImageFileWidget(onImageSelected: (file) {
             setState(() {
               imageFile = file;
@@ -50,26 +50,23 @@ class _AddTeacherContantPageState extends State<AddTeacherContantPage> {
               });
             },
           ),
-
           SubjectsDropDown(onSemesterSelected: (subject) {
             setState(() {
               subjectName = subject;
               print("the subject choose is :$subject");
             });
           }),
-          AddTeacherButton(token: widget.token,
-          onPressedFunction: () {
-            validateThenDoAddTeacher(context);
-          },
+          AddTeacherButton(
+            token: widget.token,
+            onPressedFunction: () {
+              validateThenDoAddTeacher(context);
+            },
           ),
           verticalSpacing(20),
         ],
       ),
     );
   }
-
-
-
 
   void validateThenDoAddTeacher(BuildContext context) {
     if (context.read<AddTeacherCubit>().formKey.currentState!.validate()) {

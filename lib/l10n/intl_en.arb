@@ -93,6 +93,7 @@
  "change_profile": "Change Profile",
  "find_a_student": "Find a student ...",
  "add_student_successfully": "Add Student Successfully !",
+ "edit_student_successfully": "edit Student Successfully !",
  "add_teacher_successfully": "Add Teacher Successfully !",
  "image_required": "Image Required",
  "please_select_an_image":"Please select an image to proceed.",

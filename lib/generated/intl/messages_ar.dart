@@ -58,6 +58,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "did_not_receive_code":
             MessageLookupByLibrary.simpleMessage("لم أتلقَ رمزًا!"),
         "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
+        "edit_student_successfully":
+            MessageLookupByLibrary.simpleMessage("تم تعديل الطالب بنجاح !"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "email_hint_text": MessageLookupByLibrary.simpleMessage(
             "أدخل بريدك الإلكتروني أو رقم هاتفك"),

@@ -6,14 +6,27 @@ import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
+
 class ImageAndNameProfileStudent extends StatefulWidget {
-  const ImageAndNameProfileStudent({super.key, required this.name, required this.image});
-final String name,image;
+  const ImageAndNameProfileStudent({
+    Key? key,
+    required this.name,
+    required this.image,
+    required this.onImageSelected,
+  }) : super(key: key);
+
+  final String name, image;
+  final void Function(File? imageFile) onImageSelected;
+
   @override
-  State<ImageAndNameProfileStudent> createState() => _ImageAndNameProfileStudentState();
+  State<ImageAndNameProfileStudent> createState() =>
+      _ImageAndNameProfileStudentState();
 }
-File? _imageFile;
-class _ImageAndNameProfileStudentState extends State<ImageAndNameProfileStudent> {
+
+class _ImageAndNameProfileStudentState
+    extends State<ImageAndNameProfileStudent> {
+  File? _imageFile;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,7 +35,10 @@ class _ImageAndNameProfileStudentState extends State<ImageAndNameProfileStudent>
       children: [
         imageProfile(),
         verticalSpacing(10),
-        Text(widget.name,style: TextStyles.font16SemiBoldBlack,)
+        Text(
+          widget.name,
+          style: TextStyles.font16SemiBoldBlack,
+        ),
       ],
     );
   }
@@ -65,7 +81,6 @@ class _ImageAndNameProfileStudentState extends State<ImageAndNameProfileStudent>
     );
   }
 
-
   Future<void> _chooseImage() async {
     showDialog(
       context: context,
@@ -83,7 +98,8 @@ class _ImageAndNameProfileStudentState extends State<ImageAndNameProfileStudent>
                   final pickedImage = await ImagePicker().pickImage(
                     source: ImageSource.camera,
                   );
-                  _setImageFile(pickedImage == null ? null : File(pickedImage.path));
+                  _setImageFile(
+                      pickedImage == null ? null : File(pickedImage.path));
                 },
               ),
               ListTile(
@@ -94,7 +110,8 @@ class _ImageAndNameProfileStudentState extends State<ImageAndNameProfileStudent>
                   final pickedImage = await ImagePicker().pickImage(
                     source: ImageSource.gallery,
                   );
-                  _setImageFile(pickedImage == null ? null : File(pickedImage.path));
+                  _setImageFile(
+                      pickedImage == null ? null : File(pickedImage.path));
                 },
               ),
             ],
@@ -108,6 +125,8 @@ class _ImageAndNameProfileStudentState extends State<ImageAndNameProfileStudent>
     if (pickedImage != null) {
       setState(() {
         _imageFile = pickedImage;
+        widget.onImageSelected(
+            _imageFile); // Pass the selected image to the parent widget
       });
     }
   }

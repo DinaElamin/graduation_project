@@ -189,14 +189,14 @@ class _ApiService implements ApiService {
       YearId.toString(),
     ));
     final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
-      method: 'POST',
+      method: 'PUT',
       headers: _headers,
       extra: _extra,
       contentType: 'multipart/form-data',
     )
         .compose(
           _dio.options,
-          'api/User/editstudent',
+          'api/User/editstudent/${userId}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -249,7 +249,7 @@ class _ApiService implements ApiService {
     String NationalNum,
     File Image,
     String SubjectName,
-    List<int> AssignClassId,
+    List<int> assignClassId,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -282,7 +282,7 @@ class _ApiService implements ApiService {
     _data.files.add(MapEntry(
         'AssignClassId',
         MultipartFile.fromBytes(
-          AssignClassId,
+          assignClassId,
           filename: null,
         )));
     final _result = await _dio.fetch(_setStreamType<dynamic>(Options(

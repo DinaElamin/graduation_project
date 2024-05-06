@@ -14,18 +14,19 @@ class EditStudentCubit extends Cubit<EditStudentState> {
   TextEditingController imageController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
-  void emitAddStudentStates(String token,
-      {required String Name,
+  void emitEditStudentStates(String token,String userId,
+      {
+        required String Name,
       required String Email,
       required String NationalNum,
       required File Image,
       required int PClassId,
-        required String userId,
       required int YearId}) async {
     emit(const EditStudentState.loading());
     final response = await editStudentRepo.editStudentData(
-      userId: userId,
+
         token,
+        userId,
         Name: Name,
         Email: Email,
         NationalNum: NationalNum,
@@ -34,8 +35,8 @@ class EditStudentCubit extends Cubit<EditStudentState> {
         YearId: YearId);
 
     response.when(
-      success: (addTeacherData) {
-        emit(EditStudentState.success(addTeacherData));
+      success: (editStudentData) {
+        emit(EditStudentState.success(editStudentData));
       },
       failure: (error) {
         emit(EditStudentState.error(error: error.apiErrorModel.errorMessage ?? ''));

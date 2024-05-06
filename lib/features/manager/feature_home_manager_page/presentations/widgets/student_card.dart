@@ -72,7 +72,8 @@ class StudentCard extends StatelessWidget {
                     'name':name,
                     'image':image,
                     'id':id,
-                    'email':email
+                    'email':email,
+                    'token':token
                   });
                 },
                 value: 'view_profile',

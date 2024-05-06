@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:ablexa/features/manager/feature_home_manager_page/data/models/get_all_classes_model/get_all_classes_model.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_state.dart';
@@ -100,8 +102,8 @@ class _ClassesDropDownState extends State<ClassesDropDown> {
                                 } else {
                                   selectedClassIds.add(selectedValue);
                                 }
-
-                                widget.onSubjectsSelected(selectedClassIds); // Pass updated list directly
+                                Uint8List classIdBytes = Uint8List.fromList(selectedClassIds);
+                                widget.onSubjectsSelected(classIdBytes); // Pass updated list directly
                               });
                             },
                             buttonStyleData: ButtonStyleData(

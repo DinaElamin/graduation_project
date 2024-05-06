@@ -5,6 +5,8 @@ import 'package:ablexa/features/manager/feature_add_teacher_page/data/repos/get_
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/data/repos/delete_user_repo/delete_user_repo.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
+import 'package:ablexa/features/manager/feature_student_edit_profile_page/data/repos/edit_student_profile_repo.dart';
+import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/edit_student_cubit/edit_student_cubit.dart';
 
 import '../../features/feature_change_password_page/data/repos/change_password_repo/change_password_repo.dart';
 import '../../features/feature_change_password_page/logic/cubits/change_password_cubit/change_password_cubit.dart';
@@ -74,4 +76,7 @@ final getIt = GetIt.instance;
   // get all material
   getIt.registerLazySingleton<GetAllMaterialRepo>(() => GetAllMaterialRepo(getIt()));
   getIt.registerFactory<GetAllMaterialDataCubit>(() => GetAllMaterialDataCubit(getIt()));
+  // edit student
+  getIt.registerLazySingleton<EditStudentRepo>(() => EditStudentRepo(getIt()));
+  getIt.registerFactory<EditStudentCubit>(() => EditStudentCubit(getIt()));
  }

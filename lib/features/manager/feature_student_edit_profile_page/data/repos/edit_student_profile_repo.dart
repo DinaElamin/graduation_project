@@ -6,9 +6,10 @@ import '../../../../../../core/networking/api_service.dart';
 class EditStudentRepo {
   final ApiService _apiService;
   EditStudentRepo(this._apiService);
-  Future<ApiResult> editStudentData(String token,
-      {required String Name,
-      required String userId,
+  Future<ApiResult> editStudentData(
+      String token,String userId,
+      {
+        required String Name,
       required String Email,
       required String NationalNum,
       required File Image,
