@@ -69,11 +69,9 @@ class StudentCard extends StatelessWidget {
               PopupMenuItem(
                 onTap: () {
                   context.pushNamed(Routes.editStudentProfilePage,arguments: {
-                    'name':name,
-                    'image':image,
                     'id':id,
-                    'email':email,
-                    'token':token
+                    'token':token,
+                    'image':image
                   });
                 },
                 value: 'view_profile',

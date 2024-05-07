@@ -1,7 +1,7 @@
 import 'dart:io';
-import '../../../../../../core/networking/api_error_handler.dart';
-import '../../../../../../core/networking/api_result.dart';
-import '../../../../../../core/networking/api_service.dart';
+import '../../../../../../../core/networking/api_error_handler.dart';
+import '../../../../../../../core/networking/api_result.dart';
+import '../../../../../../../core/networking/api_service.dart';
 
 class EditStudentRepo {
   final ApiService _apiService;

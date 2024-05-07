@@ -5,7 +5,8 @@ import 'package:ablexa/features/manager/feature_add_teacher_page/data/repos/get_
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/data/repos/delete_user_repo/delete_user_repo.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
-import 'package:ablexa/features/manager/feature_student_edit_profile_page/data/repos/edit_student_profile_repo.dart';
+import 'package:ablexa/features/manager/feature_student_edit_profile_page/data/repos/edit_student_profile_repo/edit_student_profile_repo.dart';
+import 'package:ablexa/features/manager/feature_student_edit_profile_page/data/repos/get_student_by_id_repo/get_student_by_id.dart';
 import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/edit_student_cubit/edit_student_cubit.dart';
 
 import '../../features/feature_change_password_page/data/repos/change_password_repo/change_password_repo.dart';
@@ -29,6 +30,7 @@ import '../../features/feature_verify_code_page/data/repos/verify_pin_code_repo/
 import '../../features/feature_verify_code_page/logic/cubits/verify_pin_code_cubit/verify_pin_code_cubit.dart';
 import '../../features/manager/feature_home_manager_page/data/repos/get_all_student_repo/get_all_student_repo.dart';
 import '../../features/manager/feature_home_manager_page/logic/cubits/get_all_student_cubit/get_all_student_cubit/get_all_student_cubit.dart';
+import '../../features/manager/feature_student_edit_profile_page/logic/cubits/get_students_by_id_cubit/get_students_by_id_cubit.dart';
 import '../networking/api_service.dart';
 import '../networking/dio_factory.dart';
 final getIt = GetIt.instance;
@@ -79,4 +81,7 @@ final getIt = GetIt.instance;
   // edit student
   getIt.registerLazySingleton<EditStudentRepo>(() => EditStudentRepo(getIt()));
   getIt.registerFactory<EditStudentCubit>(() => EditStudentCubit(getIt()));
+  // get student by id
+  getIt.registerLazySingleton<GetStudentByIdRepo>(() => GetStudentByIdRepo(getIt()));
+  getIt.registerFactory<GetStudentByIdCubit>(() => GetStudentByIdCubit(getIt()));
  }

@@ -2,6 +2,7 @@ import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/ge
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
 import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/edit_student_cubit/edit_student_cubit.dart';
+import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/get_students_by_id_cubit/get_students_by_id_cubit.dart';
 import 'package:ablexa/features/manager/feature_student_edit_profile_page/presentations/screens/student_edit_profile_page.dart';
 import '../../features/feature_change_password_page/logic/cubits/change_password_cubit/change_password_cubit.dart';
 import '../../features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
@@ -126,11 +127,10 @@ class AppRouter {
     // student edit profile
       case Routes.editStudentProfilePage:
         final args = settings.arguments as Map<String, dynamic>;
-        final String nameStudent = args['name'];
-        final String image = args['image'];
-        final String email = args['email'];
+
         final String id = args['id'];
         final String token = args['token'];
+        final String image = args['image'];
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
               providers: [
@@ -143,19 +143,16 @@ class AppRouter {
 
                 ),
                 BlocProvider(
-                  create: (context) => getIt<GetAllStudentByClassIdCubit>(),
+                  create: (context) => getIt<GetStudentByIdCubit>(),
 
                 ),
                 BlocProvider(
                   create: (context) => getIt<EditStudentCubit>(),
 
                 ),
+
               ],
-              child:  StudentEditProfilePage(
-                id: id,
-                token: token,
-                email: email,
-                nameStudent: nameStudent,image: image,)),
+              child:  StudentEditProfilePage(token: token,id: id,image: image,)),
         );
       // student profile
       case Routes.studentProfilePage:

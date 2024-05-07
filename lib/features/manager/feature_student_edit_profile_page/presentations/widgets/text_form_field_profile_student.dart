@@ -11,9 +11,9 @@ class TextFormFieldProfileStudent extends StatefulWidget {
   const TextFormFieldProfileStudent({
     super.key,
     required this.nameStudent,
-    required this.email,
+    required this.email, required this.nationalNumber,
   });
-  final String nameStudent, email;
+  final String nameStudent, email,nationalNumber;
   @override
   State<TextFormFieldProfileStudent> createState() =>
       _TextFormFieldProfileStudentState();
@@ -33,7 +33,7 @@ class _TextFormFieldProfileStudentState
     // Set default values to controllers
     fullNameController.text = widget.nameStudent;
     emailController.text = widget.email;
-    nationalIdController.text = "20011122241259";
+    nationalIdController.text =widget.nationalNumber;
   }
 
   @override
