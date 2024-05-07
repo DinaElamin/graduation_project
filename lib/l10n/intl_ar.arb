@@ -101,5 +101,9 @@
   "upload_user_image": "حمل صورة المستخدم",
   "edit": "تعديل",
   "please_enter_grade": "من فضلك ادخل الدرجة",
-  "edit_student_successfully": "تم تعديل الطالب بنجاح !"
+  "edit_student_successfully": "تم تعديل الطالب بنجاح !",
+  "enter_name_warning": "يرجى إدخال اسمك",
+  "enter_email_warning": "يرجى إدخال عنوان بريد إلكتروني صحيح",
+  "invalid_email_warning": "يرجى إدخال عنوان بريد إلكتروني صحيح",
+  "enter_national_id_warning": "يرجى إدخال الرقم الوطني"
 }

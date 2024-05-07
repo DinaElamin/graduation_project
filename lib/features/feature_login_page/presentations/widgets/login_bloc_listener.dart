@@ -31,12 +31,18 @@ class _SignInBlocListenerState extends State<LoginBlocListener> {
               ),),
               );
             },
-            success: (loginResponse){
-              loginResponseModel = loginResponse;
+            success: (data){
+            final  LoginResponseModel loginResponseModel = data;
 
               context.pop();
               if(loginResponseModel.roleName! == "Manager" ) {
-                context.pushNamed(Routes.homeManagerPage,arguments: "Bearer ${loginResponseModel.token}");
+                context.pushNamed(Routes.homeManagerPage, arguments: {
+                'token':"Bearer ${loginResponseModel.token}",
+                'nameManager':loginResponseModel.username.toString(),
+                'emailManager':loginResponseModel.email.toString(),
+                'phoneNumberManager':loginResponseModel.nationalNum.toString(),
+                'imageManager':loginResponseModel.photo.toString(),
+                });
               }
               else if(loginResponseModel.roleName! == "Teacher"){
                 context.pushNamed(Routes.teacherHomePage,arguments: "Bearer ${loginResponseModel.token}");

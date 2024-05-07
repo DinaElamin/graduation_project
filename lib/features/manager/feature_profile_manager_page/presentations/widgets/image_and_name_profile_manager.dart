@@ -4,14 +4,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 
 import '../../../../../core/theming/colors.dart';
-import '../../../../../core/theming/image_manager.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 
 class ImageAndNameProfile extends StatefulWidget {
-  const ImageAndNameProfile({Key? key}) : super(key: key);
-
+  const ImageAndNameProfile({Key? key, required this.nameManager, required this.imageManager}) : super(key: key);
+  final String nameManager,imageManager;
   @override
   _ImageAndNameProfileState createState() => _ImageAndNameProfileState();
 }
@@ -28,7 +27,7 @@ class _ImageAndNameProfileState extends State<ImageAndNameProfile> {
         imageProfile(),
         verticalSpacing(10),
         Text(
-          "Qassem Shaban",
+          widget.nameManager,
           style: TextStyles.font16SemiBoldBlack,
         ),
       ],
@@ -47,7 +46,8 @@ class _ImageAndNameProfileState extends State<ImageAndNameProfile> {
               radius: 38.sp,
               backgroundImage: _imageFile != null
                   ? FileImage(_imageFile!)
-                  : const AssetImage(ImageManager.defaultImageProfile) as ImageProvider,
+                  : NetworkImage(widget.imageManager) as ImageProvider<Object>,
+              // Explicitly specify the type as ImageProvider<Object>
             ),
             Positioned(
               bottom: -1.h,
@@ -72,6 +72,8 @@ class _ImageAndNameProfileState extends State<ImageAndNameProfile> {
       ),
     );
   }
+
+
 
   Future<void> _chooseImage() async {
     showDialog(

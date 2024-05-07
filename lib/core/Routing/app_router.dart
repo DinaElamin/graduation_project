@@ -101,33 +101,57 @@ class AppRouter {
         );
       //home Manager Page
       case Routes.homeManagerPage:
-        final String token = settings.arguments as String;
+        final args = settings.arguments as Map<String, dynamic>;
+        final String token = args['token'];
+        final String emailManager = args['emailManager'];
+        final String nameManager = args['nameManager'];
+        final String phoneNumberManager = args['phoneNumberManager'];
+        final String imageManager = args['imageManager'];
         return MaterialPageRoute(
-          builder: (context) => MultiBlocProvider(providers: [
-            BlocProvider(
-              create: (context) => getIt<GetAllStudentDataCubit>(),
-            ),
-            BlocProvider(
-              create: (context) => getIt<DeleteUserCubit>(),
-            ),
-            BlocProvider(
-              create: (context) => getIt<GetAllTeacherDataCubit>(),
-            ),
-            BlocProvider(
-              create: (context) => getIt<GetAllClassesDataCubit>(),
-            ),
-            BlocProvider(
-              create: (context) => getIt<GetStudentByIdCubit>(),
-            ),
-          ], child: HomeManagerPage(token: token)),
+          builder: (context) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => getIt<GetAllStudentDataCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt<DeleteUserCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt<GetAllTeacherDataCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt<GetAllClassesDataCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt<GetStudentByIdCubit>(),
+                ),
+              ],
+              child: HomeManagerPage(
+                token: token,
+                emailManager: emailManager,
+                imageManager: imageManager,
+                nameManager: nameManager,
+                nationalId: phoneNumberManager,
+              )),
         );
       // manager profile
       case Routes.managerProfilePage:
-        final String token = settings.arguments as String;
+        final args = settings.arguments as Map<String, dynamic>;
+        final String token = args['token'];
+        final String emailManager = args['emailManager'];
+        final String nameManager = args['nameManager'];
+        final String nationalId = args['nationalId'];
+        final String imageManager = args['imageManager'];
+
         return MaterialPageRoute(
-          builder: (context) => ProfileManagerPage(token: token),
+          builder: (context) => ProfileManagerPage(
+            token: token,
+            emailManager: emailManager,
+            imageManager: imageManager,
+            nameManager: nameManager,
+            nationalId: nationalId,),
         );
-    // student edit profile
+      // student edit profile
       case Routes.editStudentProfilePage:
         final args = settings.arguments as Map<String, dynamic>;
 
@@ -136,37 +160,35 @@ class AppRouter {
         final String image = args['image'];
         final String name = args['name'];
         final int yearId = args['yearId'];
-        final String nationalNumber = args['nationalNumber'];
-        final int classId=args['classId'];
+        final String nationalId = args['nationalId'];
+        final int classId = args['classId'];
         final String email = args['email'];
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
               providers: [
                 BlocProvider(
                   create: (context) => getIt<GetAllClassesDataCubit>(),
-
                 ),
                 BlocProvider(
                   create: (context) => getIt<GetAllYearDataCubit>(),
-
                 ),
                 BlocProvider(
                   create: (context) => getIt<GetStudentByIdCubit>(),
-
                 ),
                 BlocProvider(
                   create: (context) => getIt<EditStudentCubit>(),
-
                 ),
-
               ],
-              child:  StudentEditProfilePage(
+              child: StudentEditProfilePage(
                 classId: classId,
                 email: email,
-                nationalNumber: nationalNumber,
+                nationalId: nationalId,
                 name: name,
                 yearId: yearId,
-                token: token,id: id,image: image,)),
+                token: token,
+                id: id,
+                image: image,
+              )),
         );
       // student profile
       case Routes.studentProfilePage:
@@ -182,44 +204,42 @@ class AppRouter {
       case Routes.addStudentPage:
         final String token = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => MultiBlocProvider(providers: [
-            BlocProvider(
-              create: (context) => getIt<GetAllClassesDataCubit>(),
-
-            ),
-            BlocProvider(
-              create: (context) => getIt<GetAllYearDataCubit>(),
-
-            ),
-            BlocProvider(
-              create: (context) => getIt<AddStudentCubit>(),
-            ),
-          ], child:  AddStudentPage(token: token,)),
+          builder: (context) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => getIt<GetAllClassesDataCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt<GetAllYearDataCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt<AddStudentCubit>(),
+                ),
+              ],
+              child: AddStudentPage(
+                token: token,
+              )),
         );
       // add teacher from manager
       case Routes.addTeacherPage:
         final String token = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) => MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                create: (context) => getIt<GetAllClassesDataCubit>(),
-
-              ),
-              BlocProvider(
-                create: (context) => getIt<GetAllMaterialDataCubit>(),
-
-              ),
-              BlocProvider(
-                  create: (context) => getIt<AddTeacherCubit>(),
-                 ),
-
-            ],
-              child: AddTeacherPage(
-                token: token,
-              ),
-          )
-        );
+            builder: (context) => MultiBlocProvider(
+                  providers: [
+                    BlocProvider(
+                      create: (context) => getIt<GetAllClassesDataCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) => getIt<GetAllMaterialDataCubit>(),
+                    ),
+                    BlocProvider(
+                      create: (context) => getIt<AddTeacherCubit>(),
+                    ),
+                  ],
+                  child: AddTeacherPage(
+                    token: token,
+                  ),
+                ));
       // add student from manager
       case Routes.addGradePage:
         return MaterialPageRoute(

@@ -26,13 +26,13 @@ class StudentEditProfilePage extends StatefulWidget {
     required this.id,
     required this.image,
     required this.name,
-    required this.nationalNumber,
+    required this.nationalId,
     required this.yearId,
     required this.classId,
     required this.email,
   }) : super(key: key);
 
-  final String token, id, image, name, email, nationalNumber;
+  final String token, id, image, name, email, nationalId;
   final int classId, yearId;
 
   @override
@@ -55,7 +55,7 @@ class _StudentEditProfilePageState extends State<StudentEditProfilePage> {
     classId = widget.classId;
     nameStudent = widget.name;
     emailStudent = widget.email;
-    nationalNumberStudent = widget.nationalNumber;
+    nationalNumberStudent = widget.nationalId;
   }
 
   @override
@@ -191,7 +191,7 @@ class _StudentEditProfilePageState extends State<StudentEditProfilePage> {
   void validateThenDoEditStudent(BuildContext context) {
     if (context.read<EditStudentCubit>().formKey.currentState!.validate()) {
       // Use a default image if imageFile is null (i.e., user did not select an image)
-      final File selectedImage = imageFile ?? File('path_to_default_image');
+      final File selectedImage = imageFile ?? File(widget.image);
 
       context.read<EditStudentCubit>().emitEditStudentStates(
         widget.id,

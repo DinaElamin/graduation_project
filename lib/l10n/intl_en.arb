@@ -102,6 +102,10 @@
  "choose_from_the_gallery": "Choose From The Gallery",
  "upload_user_image": "Upload user Image",
  "edit": "Edit",
- "please_enter_grade": "Please Enter Grade"
+ "please_enter_grade": "Please Enter Grade",
+ "enter_name_warning": "Please enter your name",
+ "enter_email_warning": "Please enter a valid email address",
+ "invalid_email_warning": "Please enter a valid email address",
+ "enter_national_id_warning": "Please enter your national ID"
 
 }

@@ -1089,6 +1089,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Please enter your name`
+  String get enter_name_warning {
+    return Intl.message(
+      'Please enter your name',
+      name: 'enter_name_warning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid email address`
+  String get enter_email_warning {
+    return Intl.message(
+      'Please enter a valid email address',
+      name: 'enter_email_warning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid email address`
+  String get invalid_email_warning {
+    return Intl.message(
+      'Please enter a valid email address',
+      name: 'invalid_email_warning',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter your national ID`
+  String get enter_national_id_warning {
+    return Intl.message(
+      'Please enter your national ID',
+      name: 'enter_national_id_warning',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

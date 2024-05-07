@@ -67,12 +67,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "enter_class_code":
             MessageLookupByLibrary.simpleMessage("Enter Class Code"),
         "enter_email": MessageLookupByLibrary.simpleMessage("Enter Email"),
+        "enter_email_warning": MessageLookupByLibrary.simpleMessage(
+            "Please enter a valid email address"),
         "enter_exam_name":
             MessageLookupByLibrary.simpleMessage("Enter Exam Name"),
         "enter_full_name":
             MessageLookupByLibrary.simpleMessage("Enter Full Name"),
+        "enter_name_warning":
+            MessageLookupByLibrary.simpleMessage("Please enter your name"),
         "enter_national_id":
             MessageLookupByLibrary.simpleMessage("Enter National ID"),
+        "enter_national_id_warning": MessageLookupByLibrary.simpleMessage(
+            "Please enter your national ID"),
         "enter_new_password":
             MessageLookupByLibrary.simpleMessage("Enter New Password"),
         "enter_subject_id":
@@ -96,6 +102,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "help": MessageLookupByLibrary.simpleMessage("Help"),
         "image_required":
             MessageLookupByLibrary.simpleMessage("Image Required"),
+        "invalid_email_warning": MessageLookupByLibrary.simpleMessage(
+            "Please enter a valid email address"),
         "landing_text1":
             MessageLookupByLibrary.simpleMessage("Your School  App"),
         "landing_text2":

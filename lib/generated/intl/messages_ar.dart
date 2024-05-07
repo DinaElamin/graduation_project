@@ -67,12 +67,18 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("أدخل رمز الصف"),
         "enter_email":
             MessageLookupByLibrary.simpleMessage("أدخل البريد الإلكتروني"),
+        "enter_email_warning": MessageLookupByLibrary.simpleMessage(
+            "يرجى إدخال عنوان بريد إلكتروني صحيح"),
         "enter_exam_name":
             MessageLookupByLibrary.simpleMessage("أدخل اسم الامتحان"),
         "enter_full_name":
             MessageLookupByLibrary.simpleMessage("أدخل الاسم الكامل"),
+        "enter_name_warning":
+            MessageLookupByLibrary.simpleMessage("يرجى إدخال اسمك"),
         "enter_national_id":
             MessageLookupByLibrary.simpleMessage("أدخل الرقم القومي"),
+        "enter_national_id_warning":
+            MessageLookupByLibrary.simpleMessage("يرجى إدخال الرقم الوطني"),
         "enter_new_password":
             MessageLookupByLibrary.simpleMessage("أدخل كلمة المرور الجديدة"),
         "enter_subject_id":
@@ -95,6 +101,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "grades": MessageLookupByLibrary.simpleMessage("المواد"),
         "help": MessageLookupByLibrary.simpleMessage("المساعدة"),
         "image_required": MessageLookupByLibrary.simpleMessage("ضع صورة"),
+        "invalid_email_warning": MessageLookupByLibrary.simpleMessage(
+            "يرجى إدخال عنوان بريد إلكتروني صحيح"),
         "landing_text1": MessageLookupByLibrary.simpleMessage("تطبيق مدرستك"),
         "landing_text2":
             MessageLookupByLibrary.simpleMessage("جلب المدرسة إليك"),

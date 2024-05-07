@@ -11,7 +11,6 @@ class EditStudentCubit extends Cubit<EditStudentState> {
   TextEditingController fullNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController nationalIdController = TextEditingController();
-  TextEditingController imageController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
   void emitEditStudentStates(String token,String userId,

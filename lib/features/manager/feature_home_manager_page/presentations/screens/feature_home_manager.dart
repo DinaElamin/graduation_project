@@ -10,8 +10,8 @@ import '../../../../../generated/l10n.dart';
 import '../widgets/users_widget.dart';
 
 class HomeManagerPage extends StatefulWidget {
-  const HomeManagerPage({Key? key, required this.token}) : super(key: key);
-final String token;
+  const HomeManagerPage({Key? key, required this.token, required this.imageManager, required this.nameManager, required this.emailManager, required this.nationalId}) : super(key: key);
+final String token,imageManager,nameManager,emailManager,nationalId;
   @override
   State<HomeManagerPage> createState() => _HomeManagerPageState();
 }
@@ -57,7 +57,13 @@ class _HomeManagerPageState extends State<HomeManagerPage> with TickerProviderSt
                       itemBuilder: (BuildContext context) => [
                         PopupMenuItem(
                           onTap: () {
-                            context.pushNamed(Routes.managerProfilePage,arguments: widget.token);
+                            context.pushNamed(Routes.managerProfilePage,arguments: {
+                              'token':widget.token,
+                              'nameManager':widget.nameManager,
+                              'emailManager':widget.emailManager,
+                              'nationalId':widget.nationalId,
+                              'imageManager':widget.imageManager
+                            });
                           },
                           value: 'my_profile',
                           child: SizedBox(
