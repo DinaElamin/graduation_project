@@ -1,6 +1,7 @@
+import 'package:ablexa/core/theming/image_manager.dart';
+
 import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/helper/extentions.dart';
-import '../../../../../core/shared_widgets/app_text_feild.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
@@ -33,25 +34,18 @@ class _HomeManagerPageState extends State<HomeManagerPage> with TickerProviderSt
         body: SingleChildScrollView(
           child: Column(
             children: [
-              verticalSpacing(20),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15.w), // Updated padding
+              Container(
+                decoration: BoxDecoration(color: ColorsManager.mainColor),
                 child: Row(
+
                   children: [
-                    Expanded(
-                      child: AppTextFormField(
-                        contentPadding: const EdgeInsets.all(0),
-                        fillColorFromBackground: ColorsManager.mainWhite,
-                        borderRadius: 16.sp,
-                        prefixIcon: const Icon(Icons.search),
-                        hintText: S.of(context).search,
-                        validator: (value) {
-                          // Your validation logic here
-                          return null; // Return null for valid input
-                        },
-                      ),
-                    ),
-                    horizontalSpacing(20),
+                   Padding(
+                     padding: const EdgeInsets.all(8.0),
+                     child: Image.asset(ImageManager.logoApp,height: 50.sp,width: 50.sp),
+                   ),
+                    horizontalSpacing(50.sp),
+                    Center(child: Text("Home Page",style: TextStyles.font20BoldWhite,)),
+                    horizontalSpacing(90.sp),
                     PopupMenuButton<String>(
                       offset: const Offset(0, 40), // Offset to position menu under the icon
                       itemBuilder: (BuildContext context) => [
@@ -101,7 +95,7 @@ class _HomeManagerPageState extends State<HomeManagerPage> with TickerProviderSt
                           print('Settings selected');
                         }
                       },
-                      icon: const Icon(Icons.settings), // Use Flutter's built-in Icon widget
+                      icon:  Image.asset(ImageManager.settingWhite), // Use Flutter's built-in Icon widget
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16), // Set border radius to 16
                       ),
