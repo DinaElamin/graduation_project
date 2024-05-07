@@ -1,6 +1,4 @@
-import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/edit_student_cubit/edit_student_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/shared_widgets/app_text_feild.dart';
 import '../../../../../core/theming/spacing.dart';
@@ -9,36 +7,37 @@ import '../../../../../generated/l10n.dart';
 
 class TextFormFieldProfileStudent extends StatefulWidget {
   const TextFormFieldProfileStudent({
-    super.key,
+    Key? key,
     required this.nameStudent,
-    required this.email, required this.nationalNumber,
-  });
-  final String nameStudent, email,nationalNumber;
+    required this.email,
+    required this.nationalNumber,
+    required this.onTextChanged, // Callback function to pass text data
+  }) : super(key: key);
+
+  final String nameStudent, email, nationalNumber;
+  final void Function(String fullName, String email, String nationalId) onTextChanged; // Callback function
+
   @override
   State<TextFormFieldProfileStudent> createState() =>
       _TextFormFieldProfileStudentState();
 }
 
-
-
 class _TextFormFieldProfileStudentState
     extends State<TextFormFieldProfileStudent> {
-  final TextEditingController fullNameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController nationalIdController = TextEditingController();
+  late TextEditingController fullNameController;
+  late TextEditingController emailController;
+  late TextEditingController nationalIdController;
 
   @override
   void initState() {
     super.initState();
-    // Set default values to controllers
-    fullNameController.text = widget.nameStudent;
-    emailController.text = widget.email;
-    nationalIdController.text =widget.nationalNumber;
+    fullNameController = TextEditingController(text: widget.nameStudent);
+    emailController = TextEditingController(text: widget.email);
+    nationalIdController = TextEditingController(text: widget.nationalNumber);
   }
 
   @override
   void dispose() {
-    // Dispose controllers
     fullNameController.dispose();
     emailController.dispose();
     nationalIdController.dispose();
@@ -48,8 +47,7 @@ class _TextFormFieldProfileStudentState
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-      EdgeInsets.only(left: 20.w, right: 20.w, bottom: 20.h, top: 20.h),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 20.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -62,7 +60,19 @@ class _TextFormFieldProfileStudentState
           AppTextFormField(
             controller: fullNameController,
             hintText: widget.nameStudent,
-            validator: (p0) {},
+            validator: (value) {
+              if (value!.isEmpty) {
+                return S.of(context).full_name;
+              }
+              return null;
+            },
+            onChange: (value) {
+              widget.onTextChanged(
+                value,
+                emailController.text,
+                nationalIdController.text,
+              );
+            },
           ),
           verticalSpacing(10),
           Text(
@@ -73,7 +83,19 @@ class _TextFormFieldProfileStudentState
           AppTextFormField(
             controller: emailController,
             hintText: widget.email,
-            validator: (p0) {},
+            validator: (value) {
+              if (value!.isEmpty) {
+                return S.of(context).email;
+              }
+              return null;
+            },
+            onChange: (value) {
+              widget.onTextChanged(
+                fullNameController.text,
+                value,
+                nationalIdController.text,
+              );
+            },
           ),
           verticalSpacing(10),
           Text(
@@ -83,8 +105,20 @@ class _TextFormFieldProfileStudentState
           verticalSpacing(10),
           AppTextFormField(
             controller: nationalIdController,
-            hintText: "20011122241259",
-            validator: (p0) {},
+            hintText: widget.nationalNumber,
+            validator: (value) {
+              if (value!.isEmpty) {
+                return S.of(context).national_iD;
+              }
+              return null;
+            },
+            onChange: (value) {
+              widget.onTextChanged(
+                fullNameController.text,
+                emailController.text,
+                value,
+              );
+            },
           ),
           verticalSpacing(10),
         ],
@@ -92,4 +126,3 @@ class _TextFormFieldProfileStudentState
     );
   }
 }
-

@@ -116,6 +116,9 @@ class AppRouter {
             BlocProvider(
               create: (context) => getIt<GetAllClassesDataCubit>(),
             ),
+            BlocProvider(
+              create: (context) => getIt<GetStudentByIdCubit>(),
+            ),
           ], child: HomeManagerPage(token: token)),
         );
       // manager profile
@@ -131,6 +134,11 @@ class AppRouter {
         final String id = args['id'];
         final String token = args['token'];
         final String image = args['image'];
+        final String name = args['name'];
+        final int yearId = args['yearId'];
+        final String nationalNumber = args['nationalNumber'];
+        final int classId=args['classId'];
+        final String email = args['email'];
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
               providers: [
@@ -152,7 +160,13 @@ class AppRouter {
                 ),
 
               ],
-              child:  StudentEditProfilePage(token: token,id: id,image: image,)),
+              child:  StudentEditProfilePage(
+                classId: classId,
+                email: email,
+                nationalNumber: nationalNumber,
+                name: name,
+                yearId: yearId,
+                token: token,id: id,image: image,)),
         );
       // student profile
       case Routes.studentProfilePage:

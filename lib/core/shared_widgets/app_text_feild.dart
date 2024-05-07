@@ -19,6 +19,7 @@ class AppTextFormField extends StatelessWidget {
   final int? maxLines;
   final Color? fillColorFromBackground;
   final Function(String)? onFieldSubmitted;
+  final Function(String)? onChange;
   const AppTextFormField(
       {super.key,
       required this.hintText,
@@ -29,11 +30,13 @@ class AppTextFormField extends StatelessWidget {
       this.contentPadding,
       required this.validator,
       this.controller,
-      this.textInputType, this.prefixIcon, this.borderRadius, this.maxLines, this.fillColorFromBackground, this.onFieldSubmitted});
+      this.textInputType, this.prefixIcon, this.borderRadius, this.maxLines, this.fillColorFromBackground, this.onFieldSubmitted, this.onChange});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+onChanged:
+  onChange,
 
       onFieldSubmitted: (value) {
         onFieldSubmitted?.call(value);

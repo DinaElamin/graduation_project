@@ -54,8 +54,8 @@ class _ImageAndNameProfileStudentState
             CircleAvatar(
               radius: 38.sp,
               backgroundImage: _imageFile != null
-                  ? FileImage(_imageFile!)
-                  : NetworkImage(widget.image) as ImageProvider, // Cast to ImageProvider
+                  ? FileImage(_imageFile!) as ImageProvider<Object>?
+                  : NetworkImage(widget.image) as ImageProvider<Object>?,
             ),
             Positioned(
               bottom: -1.h,
@@ -80,6 +80,7 @@ class _ImageAndNameProfileStudentState
       ),
     );
   }
+
 
 
 
@@ -122,14 +123,14 @@ class _ImageAndNameProfileStudentState
       },
     );
   }
-
   void _setImageFile(File? pickedImage) {
-    if (pickedImage != null) {
-      setState(() {
-        _imageFile = pickedImage;
-        widget.onImageSelected(
-            _imageFile); // Pass the selected image to the parent widget
-      });
-    }
+    setState(() {
+      _imageFile = pickedImage ?? File(widget.image); // Use the pickedImage if not null, otherwise use the default image
+      widget.onImageSelected(_imageFile); // Pass the selected image to the parent widget
+    });
   }
-}
+
+
+
+  }
+

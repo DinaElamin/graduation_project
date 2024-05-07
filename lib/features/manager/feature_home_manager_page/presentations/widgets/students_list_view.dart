@@ -52,7 +52,7 @@ class _StudentsListViewState extends State<StudentsListView> {
             return Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.all(20.0),
                   child: SearchTextFormField(
 
                     validator: (value) {

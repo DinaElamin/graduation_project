@@ -1,9 +1,7 @@
 import 'dart:io';
-
 import 'package:ablexa/core/helper/extentions.dart';
 import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/edit_student_cubit/edit_student_cubit.dart';
 import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/edit_student_cubit/edit_student_state.dart';
-import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/get_students_by_id_cubit/get_students_by_id_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,34 +12,54 @@ import '../../../../../core/shared_widgets/success_widget.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
-import '../../data/models/get_student_by_id_model/get_student_by_id_model.dart';
-import '../../logic/cubits/get_students_by_id_cubit/get_students_by_id_cubit.dart';
 import '../widgets/drop_down_grade_edit_profile.dart';
 import '../widgets/image_and_name_profile_student.dart';
 import '../widgets/text_form_field_profile_student.dart';
 import '../widgets/year_drop_down_edit_profile.dart';
 
+
+
 class StudentEditProfilePage extends StatefulWidget {
-  const StudentEditProfilePage(
-      {super.key, required this.token, required this.id, required this.image});
-  final String token, id,image;
+  const StudentEditProfilePage({
+    Key? key,
+    required this.token,
+    required this.id,
+    required this.image,
+    required this.name,
+    required this.nationalNumber,
+    required this.yearId,
+    required this.classId,
+    required this.email,
+  }) : super(key: key);
+
+  final String token, id, image, name, email, nationalNumber;
+  final int classId, yearId;
 
   @override
   State<StudentEditProfilePage> createState() => _StudentEditProfilePageState();
 }
 
-File? imageFile;
-late int yearId;
-late int classId;
-
 class _StudentEditProfilePageState extends State<StudentEditProfilePage> {
+  late File? imageFile;
+  late int yearId;
+  late int classId;
+  late String nameStudent;
+  late String emailStudent;
+  late String nationalNumberStudent;
 
   @override
+  void initState() {
+    super.initState();
+    imageFile = File(widget.image);
+    yearId = widget.yearId;
+    classId = widget.classId;
+    nameStudent = widget.name;
+    emailStudent = widget.email;
+    nationalNumberStudent = widget.nationalNumber;
+  }
 
+  @override
   Widget build(BuildContext context) {
-    setState(() {
-      context.read<GetStudentByIdCubit>().emitAllStudentsByClassId(studentId: widget.id);
-    });
     return Scaffold(
       body: ListView(
         children: [
@@ -50,97 +68,51 @@ class _StudentEditProfilePageState extends State<StudentEditProfilePage> {
           ),
           Form(
             key: context.read<EditStudentCubit>().formKey,
-            child: BlocBuilder<GetStudentByIdCubit, GetStudentByIdState>(
-              builder: (context, state) {
-                return state.when(
-                  initial: () {
-                    return const Center(
-                      child: CircularProgressIndicator(
-                        color: ColorsManager.mainColor,
-                      ),
-                    );
+            child: Column(
+              children: [
+                ImageAndNameProfileStudent(
+                  onImageSelected: (file) {
+                    setState(() {
+                      imageFile = file;
+                    });
                   },
-                  loading: () {
-                    return const Center(
-                      child: CircularProgressIndicator(
-                        color: ColorsManager.mainColor,
-                      ),
-                    );
+                  name: widget.name,
+                  image: widget.image,
+                ),
+                TextFormFieldProfileStudent(
+                  onTextChanged: (fullName, email, nationalId) {
+                    nameStudent = fullName;
+                    emailStudent = email;
+                    nationalNumberStudent = nationalId;
                   },
-                  success: (data) {
-                    final GetStudentByIdModel getStudentByIdModel = data;
-                    return Column(
-                      children: [
-                        ImageAndNameProfileStudent(
-                          onImageSelected: (file) {
-                            setState(() {
-                              imageFile = file;
-                            });
-                          },
-                          name: getStudentByIdModel.name.toString(),
-                          image: widget.image,
-                        ),
-                        TextFormFieldProfileStudent(
-                          nameStudent: getStudentByIdModel.name.toString(),
-                          email: getStudentByIdModel.email.toString(),
-                          nationalNumber:
-                              getStudentByIdModel.nationalNumber.toString(),
-                        ),
-                        EditProfileGradeDropDown(
-                          onGradeSelected: (idYear) {
-                            setState(() {
-                              try {
-                                yearId = int.parse(
-                                    idYear); // Parse the String to int
-                              } catch (e) {
-                                print("Error parsing gradeId to int: $e");
-                                // Handle the error as needed
-                              }
-                            });
-                          },
-                        ),
-                        EditProfileYearDropDown(
-                          onSemesterSelected: (idClass) {
-                            setState(() {
-                              try {
-                                classId = int.parse(
-                                    idClass); // Parse the String to int
-                              } catch (e) {
-                                print("Error parsing termId to int: $e");
-                                // Handle the error as needed
-                              }
-                            });
-                          },
-                        ),
-                        editStudentButtonWidget(context),
-                      ],
-                    );
+                  nameStudent: nameStudent,
+                  email: emailStudent,
+                  nationalNumber: nationalNumberStudent,
+                ),
+                EditProfileGradeDropDown(
+                  onGradeSelected: (idYear) {
+                    setState(() {
+                      try {
+                        yearId = int.parse(idYear);
+                      } catch (e) {
+                        print("Error parsing gradeId to int: $e");
+                      }
+                    });
                   },
-                  error: (error) {
-                    return AlertDialog(
-                      content: Text(
-                        error,
-                        style: TextStyles.font14MediumLightBlack,
-                      ),
-                      actions: [
-                        TextButton(
-                            onPressed: () {
-                              context.pop();
-                            },
-                            child: Text(
-                              'Got It ',
-                              style: TextStyles.font20BoldBlack,
-                            )),
-                      ],
-                      icon: const Icon(
-                        Icons.error,
-                        color: Colors.red,
-                        size: 32,
-                      ),
-                    );
+                ),
+                EditProfileYearDropDown(
+                  onSemesterSelected: (idClass) {
+                    setState(() {
+                      try {
+                        classId = int.parse(idClass);
+                      } catch (e) {
+                        print("Error parsing termId to int: $e");
+                      }
+                    });
                   },
-                );
-              },
+                ),
+                editStudentButtonWidget(context),
+              ],
             ),
           ),
         ],
@@ -150,7 +122,7 @@ class _StudentEditProfilePageState extends State<StudentEditProfilePage> {
 
   Padding editStudentButtonWidget(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(left: 50.w, right: 50.w),
+      padding: EdgeInsets.symmetric(horizontal: 50.w),
       child: BlocListener<EditStudentCubit, EditStudentState>(
         listener: (context, state) {
           state.when(
@@ -169,13 +141,15 @@ class _StudentEditProfilePageState extends State<StudentEditProfilePage> {
               );
             },
             success: (data) {
-              showSuccessDialog(onPressed: () {
-                context.pop();
-                context.pushNamed(Routes.homeManagerPage,
-                    arguments: widget.token);
-              }, context,
-                  text: S.of(context).save_change,
-                  contentText: S.of(context).edit_student_successfully);
+              showSuccessDialog(
+                onPressed: () {
+                  context.pop();
+                  context.pushNamed(Routes.homeManagerPage, arguments: widget.token);
+                },
+                context,
+                text: S.of(context).save_change,
+                contentText: S.of(context).edit_student_successfully,
+              );
             },
             error: (error) {
               return AlertDialog(
@@ -185,13 +159,14 @@ class _StudentEditProfilePageState extends State<StudentEditProfilePage> {
                 ),
                 actions: [
                   TextButton(
-                      onPressed: () {
-                        context.pop();
-                      },
-                      child: Text(
-                        'Got It ',
-                        style: TextStyles.font20BoldBlack,
-                      )),
+                    onPressed: () {
+                      context.pop();
+                    },
+                    child: Text(
+                      'Got It ',
+                      style: TextStyles.font20BoldBlack,
+                    ),
+                  ),
                 ],
                 icon: const Icon(
                   Icons.error,
@@ -203,50 +178,31 @@ class _StudentEditProfilePageState extends State<StudentEditProfilePage> {
           );
         },
         child: AppTextButton(
-            buttonHeight: 60.h,
-            textButton: S.of(context).save_change,
-            onPressed: () {
-              validateThenDoEditStudent(context);
-            }),
+          buttonHeight: 60.h,
+          textButton: S.of(context).save_change,
+          onPressed: () {
+            validateThenDoEditStudent(context);
+          },
+        ),
       ),
     );
   }
 
   void validateThenDoEditStudent(BuildContext context) {
     if (context.read<EditStudentCubit>().formKey.currentState!.validate()) {
-      // Check if imageFile is not null before proceeding
-      if (imageFile != null) {
-        // Send the data to the AddTeacherCubit for processing
-        context.read<EditStudentCubit>().emitEditStudentStates(
-              widget.id,
-              widget.token,
+      // Use a default image if imageFile is null (i.e., user did not select an image)
+      final File selectedImage = imageFile ?? File('path_to_default_image');
 
-              Name: context.read<EditStudentCubit>().fullNameController.text,
-              Email: context.read<EditStudentCubit>().emailController.text,
-              NationalNum:
-                  context.read<EditStudentCubit>().nationalIdController.text,
-              Image: imageFile!, // Use the selected imageFile
-              YearId: yearId,
-
-              PClassId: classId,
-            );
-      } else {
-        showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: Text(S.of(context).image_required),
-            content: Text(S.of(context).please_select_an_image),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text(S.of(context).ok),
-              ),
-            ],
-          ),
-        );
-      }
+      context.read<EditStudentCubit>().emitEditStudentStates(
+        widget.id,
+        widget.token,
+        Name: nameStudent,
+        Email: emailStudent,
+        NationalNum: nationalNumberStudent,
+        Image: selectedImage,
+        YearId: yearId,
+        PClassId: classId,
+      );
     } else {
       // Validation failed
       print("Validation failed. Please check the form fields.");
