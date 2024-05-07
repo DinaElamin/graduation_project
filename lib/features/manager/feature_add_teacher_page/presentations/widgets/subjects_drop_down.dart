@@ -1,4 +1,4 @@
-import 'package:ablexa/features/manager/feature_add_teacher_page/data/models/get_all_materail_model/get_all-matrial_model.dart';
+import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_state.dart';
 import '../../../../../core/theming/colors.dart';
 import 'package:dropdown_model_list/drop_down/model.dart';
@@ -7,10 +7,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/theming/styles.dart';
-import '../../logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
+import '../../data/models/get_all_materail_model/get_all-matrial_model.dart';
+
 class SubjectsDropDown extends StatefulWidget {
-  const SubjectsDropDown({Key? key, required this.onSemesterSelected}) : super(key: key);
-  final void Function(String) onSemesterSelected; // Callback function to handle selected grade
+  const SubjectsDropDown({Key? key, required this.onSubjectSelected}) : super(key: key);
+  final void Function(String) onSubjectSelected; // Callback function to handle selected grade
 
   @override
   State<SubjectsDropDown> createState() => _SubjectsDropDownState();
@@ -18,7 +19,7 @@ class SubjectsDropDown extends StatefulWidget {
 
 class _SubjectsDropDownState extends State<SubjectsDropDown> {
   // Initialize the selected option item
-  OptionItem optionItemSelected = OptionItem(title: "Subject");
+  OptionItem optionItemSelected = OptionItem(title: "Subjects");
 
   @override
   void initState() {
@@ -47,14 +48,12 @@ class _SubjectsDropDownState extends State<SubjectsDropDown> {
             );
           },
           success: (data) {
+
             final List<GetAllMaterialModel> getAllMaterialModel = data;
-            // Extract names from the model and update the dropdown items list
             List<OptionItem> dropListItems = getAllMaterialModel.map((model) {
               return OptionItem(
-
                   title: model.subject_Name ?? '');
             }).toList();
-
             return Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Column(
@@ -83,7 +82,7 @@ class _SubjectsDropDownState extends State<SubjectsDropDown> {
                       optionItemSelected = optionItem;
                       setState(() {
                         optionItemSelected = optionItem;
-                        widget.onSemesterSelected(optionItem.title.toString()); // Pass the selected ID to the callback function
+                        widget.onSubjectSelected(optionItem.id.toString()); // Pass the selected ID to the callback function
                       });
                     },
                   )

@@ -247,9 +247,9 @@ class _ApiService implements ApiService {
     String Name,
     String Email,
     String NationalNum,
-    File Image,
     String SubjectName,
     List<int> assignClassId,
+    File Image,
   ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
@@ -268,13 +268,6 @@ class _ApiService implements ApiService {
       'NationalNum',
       NationalNum,
     ));
-    _data.files.add(MapEntry(
-      'Image',
-      MultipartFile.fromFileSync(
-        Image.path,
-        filename: Image.path.split(Platform.pathSeparator).last,
-      ),
-    ));
     _data.fields.add(MapEntry(
       'SubjectName',
       SubjectName,
@@ -285,6 +278,13 @@ class _ApiService implements ApiService {
           assignClassId,
           filename: null,
         )));
+    _data.files.add(MapEntry(
+      'Image',
+      MultipartFile.fromFileSync(
+        Image.path,
+        filename: Image.path.split(Platform.pathSeparator).last,
+      ),
+    ));
     final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
       method: 'POST',
       headers: _headers,

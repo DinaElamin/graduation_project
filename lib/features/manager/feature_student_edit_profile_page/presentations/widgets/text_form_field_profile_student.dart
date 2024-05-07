@@ -23,11 +23,33 @@ class TextFormFieldProfileStudent extends StatefulWidget {
 
 class _TextFormFieldProfileStudentState
     extends State<TextFormFieldProfileStudent> {
+  final TextEditingController fullNameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController nationalIdController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    // Set default values to controllers
+    fullNameController.text = widget.nameStudent;
+    emailController.text = widget.email;
+    nationalIdController.text = "20011122241259";
+  }
+
+  @override
+  void dispose() {
+    // Dispose controllers
+    fullNameController.dispose();
+    emailController.dispose();
+    nationalIdController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding:
-          EdgeInsets.only(left: 20.w, right: 20.w, bottom: 20.h, top: 20.h),
+      EdgeInsets.only(left: 20.w, right: 20.w, bottom: 20.h, top: 20.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -38,7 +60,7 @@ class _TextFormFieldProfileStudentState
           ),
           verticalSpacing(10),
           AppTextFormField(
-            controller: context.read<EditStudentCubit>().fullNameController,
+            controller: fullNameController,
             hintText: widget.nameStudent,
             validator: (p0) {},
           ),
@@ -49,7 +71,7 @@ class _TextFormFieldProfileStudentState
           ),
           verticalSpacing(10),
           AppTextFormField(
-           controller:  context.read<EditStudentCubit>().emailController,
+            controller: emailController,
             hintText: widget.email,
             validator: (p0) {},
           ),
@@ -60,7 +82,7 @@ class _TextFormFieldProfileStudentState
           ),
           verticalSpacing(10),
           AppTextFormField(
-            controller:  context.read<EditStudentCubit>().nationalIdController,
+            controller: nationalIdController,
             hintText: "20011122241259",
             validator: (p0) {},
           ),
@@ -70,3 +92,4 @@ class _TextFormFieldProfileStudentState
     );
   }
 }
+

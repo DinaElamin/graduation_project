@@ -83,9 +83,9 @@ abstract class ApiService {
       @Part(name: "Name") String Name,
       @Part(name: "Email") String Email,
       @Part(name: "NationalNum") String NationalNum,
-      @Part(name: "Image") File Image,
       @Part(name: "SubjectName") String SubjectName,
       @Part(name: "AssignClassId") List<int> assignClassId, // Use the parameter directly
+      @Part(name: "Image") File Image,
       );
 
   // add Student

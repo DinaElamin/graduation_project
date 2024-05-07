@@ -1,22 +1,18 @@
 import 'dart:io';
-
 import 'package:ablexa/core/Routing/routers.dart';
 import 'package:ablexa/core/helper/extentions.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 import '../../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../../core/shared_widgets/success_widget.dart';
-import '../../../../../core/theming/image_manager.dart';
+import '../../../feature_add_teacher_page/presentations/widgets/upload_image_widget.dart';
 import '../../logic/cubits/add_student_cubit/add_student_cubit.dart';
 import '../../logic/cubits/add_student_cubit/add_student_state.dart';
+import 'add_student_text_form_field.dart';
 import 'drop_down_grade.dart';
 import 'year_drop_down.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../../core/shared_widgets/app_text_feild.dart';
 import '../../../../../core/theming/colors.dart';
-import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 class AddStudentContantPage extends StatefulWidget {
@@ -33,25 +29,6 @@ class _AddStudentContantPageState extends State<AddStudentContantPage> {
  late int termId;
   late int pClassId;
   File? imageFile; // Change to File type
-
-
-  final ImagePicker _imagePicker = ImagePicker();
-  Future<void> captureImageFromCamera() async {
-    final XFile? image = await _imagePicker.pickImage(source: ImageSource.camera);
-    if (image != null) {
-      setState(() {
-        imageFile = File(image.path);
-      });
-    }
-  }
-  Future<void> selectImageFromGallery() async {
-    final XFile? image = await _imagePicker.pickImage(source: ImageSource.gallery);
-    if (image != null) {
-      setState(() {
-        imageFile = File(image.path);
-      });
-    }
-  }
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -60,10 +37,12 @@ class _AddStudentContantPageState extends State<AddStudentContantPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          fullNameWidget(context),
-          nationalNumberWidget(context),
-          emailWidget(context),
-          uploadImageWidget(context),
+          const AddStudentTextFormField(),
+          UploadImageFileWidget(onImageSelected: (file) {
+            setState(() {
+              imageFile = file;
+            });
+          }),
            GradeDropDown(
              onGradeSelected: (gradeId) {
                setState(() {
@@ -159,97 +138,6 @@ class _AddStudentContantPageState extends State<AddStudentContantPage> {
         );
   }
 
-  Column emailWidget(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              S.of(context).email,
-              style: TextStyles.font16SemiBoldBlack,
-            ),
-            verticalSpacing(10),
-            AppTextFormField(
-              controller:  context.read<AddStudentCubit>().emailController,
-              fillColorFromBackground: ColorsManager.mainWhite,
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16.sp),
-                borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
-              ),
-              hintText: S.of(context).enter_email,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter email';
-                }
-                // Add email format validation here if needed
-                return null; // Return null if the input is valid
-              },
-            ),
-            verticalSpacing(20),
-          ],
-        );
-  }
-  Column nationalNumberWidget(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              S.of(context).national_iD,
-              style: TextStyles.font16SemiBoldBlack,
-            ),
-            verticalSpacing(10),
-            AppTextFormField(
-              textInputType: TextInputType.number,
-              controller:  context.read<AddStudentCubit>().nationalIdController,
-              fillColorFromBackground: ColorsManager.mainWhite,
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16.sp),
-                borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
-              ),
-              hintText: S.of(context).enter_national_id,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter a national ID';
-                } else if (value.length != 14) { // Check for exactly 14 digits
-                  return 'National ID must be 14 digits';
-                }
-                return null; // Return null if the input is valid
-              },
-            ),
-            verticalSpacing(20),
-          ],
-        );
-  }
-  Column fullNameWidget(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              S.of(context).full_name,
-              style: TextStyles.font16SemiBoldBlack,
-            ),
-            verticalSpacing(10),
-            AppTextFormField(
-              controller:  context.read<AddStudentCubit>().fullNameController,
-              fillColorFromBackground: ColorsManager.mainWhite,
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(16.sp),
-                borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
-              ),
-              hintText: S.of(context).enter_full_name,
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter full name';
-                }
-                return null; // Return null if the input is valid
-              },
-            ),
-            verticalSpacing(20),
-          ],
-        );
-  }
   void validateThenDoAddStudent(BuildContext context) {
     if (context.read<AddStudentCubit>().formKey.currentState!.validate()) {
       // Check if imageFile is not null before proceeding
@@ -285,56 +173,5 @@ class _AddStudentContantPageState extends State<AddStudentContantPage> {
       // Validation failed
       print("Validation failed. Please check the form fields.");
     }
-  }
-  Container uploadImageWidget(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 10.sp),
-      height: 60.h,
-      decoration: BoxDecoration(
-        color: ColorsManager.lightGrey,
-        shape: BoxShape.rectangle,
-        borderRadius: BorderRadius.circular(16.sp),
-      ),
-      child: GestureDetector(
-        onTap: () {
-          showImagePickerBottomSheet(context);
-        },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(S.of(context).upload_user_image, style: TextStyles.font20BoldBlack),
-            Image.asset(ImageManager.uploadImageIcon),
-          ],
-        ),
-      ),
-    );
-  }
-  void showImagePickerBottomSheet(BuildContext context) {
-    showModalBottomSheet(
-      context: context,
-      builder: (BuildContext context) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            ListTile(
-              leading: const Icon(Icons.camera_alt),
-              title:  Text(S.of(context).take_photo),
-              onTap: () {
-                Navigator.pop(context);
-                captureImageFromCamera(); // Call method to capture image from camera
-              },
-            ),
-            ListTile(
-              leading: const Icon(Icons.photo_library),
-              title:  Text(S.of(context).choose_from_the_gallery),
-              onTap: () {
-                Navigator.pop(context);
-                selectImageFromGallery(); // Call method to select image from gallery
-              },
-            ),
-          ],
-        );
-      },
-    );
   }
 }

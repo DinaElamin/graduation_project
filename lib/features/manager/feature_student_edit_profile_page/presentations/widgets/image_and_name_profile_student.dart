@@ -55,7 +55,7 @@ class _ImageAndNameProfileStudentState
               radius: 38.sp,
               backgroundImage: _imageFile != null
                   ? FileImage(_imageFile!)
-                  : Image.network(widget.image).image,
+                  : NetworkImage(widget.image) as ImageProvider, // Cast to ImageProvider
             ),
             Positioned(
               bottom: -1.h,
@@ -80,6 +80,8 @@ class _ImageAndNameProfileStudentState
       ),
     );
   }
+
+
 
   Future<void> _chooseImage() async {
     showDialog(

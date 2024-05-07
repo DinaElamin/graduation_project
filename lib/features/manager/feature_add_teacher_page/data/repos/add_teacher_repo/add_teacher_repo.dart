@@ -9,7 +9,7 @@ class AddTeacherRepo {
   Future<ApiResult> addTeacherData(String token,
       {required String Name,required String Email,required String NationalNum,required File Image,required String SubjectName,required List<int> AssignClassId }) async{
     try{
-      final response = await _apiService.addTeacher(token,Name,Email,NationalNum,Image,SubjectName,AssignClassId);
+      final response = await _apiService.addTeacher(token,Name,Email,NationalNum,SubjectName,AssignClassId,Image);
       return ApiResult.success(response);
     }catch(error){
       return ApiResult.failure(ErrorHandler.handle(error));

@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'package:ablexa/features/manager/feature_add_teacher_page/presentations/widgets/subjects_drop_down.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/presentations/widgets/add_teacher_text_FormField_Widgets.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/presentations/widgets/upload_image_widget.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +8,7 @@ import '../../../../../generated/l10n.dart';
 import '../../logic/cubits/add_teacher_cubit/add_teacher_cubit.dart';
 import 'add_teacher_button.dart';
 import 'classes_drop_down.dart';
+import 'subjects_drop_down.dart';
 
 class AddTeacherContantPage extends StatefulWidget {
   const AddTeacherContantPage({
@@ -41,7 +41,14 @@ class _AddTeacherContantPageState extends State<AddTeacherContantPage> {
               imageFile = file;
             });
           }),
-          verticalSpacing(20),
+          SubjectsDropDown(
+              onSubjectSelected: (subject) {
+            setState(() {
+              subjectName = subject;
+              print("the subject choose is :$subject");
+            });
+          }),
+
           ClassesDropDown(
             onSubjectsSelected: (classes) {
               setState(() {
@@ -50,12 +57,7 @@ class _AddTeacherContantPageState extends State<AddTeacherContantPage> {
               });
             },
           ),
-          SubjectsDropDown(onSemesterSelected: (subject) {
-            setState(() {
-              subjectName = subject;
-              print("the subject choose is :$subject");
-            });
-          }),
+          verticalSpacing(20),
           AddTeacherButton(
             token: widget.token,
             onPressedFunction: () {

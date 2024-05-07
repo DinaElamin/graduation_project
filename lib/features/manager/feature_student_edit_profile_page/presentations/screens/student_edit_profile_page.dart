@@ -11,7 +11,6 @@ import '../../../../../core/shared_widgets/appBar_widget.dart';
 import '../../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../../core/shared_widgets/success_widget.dart';
 import '../../../../../core/theming/colors.dart';
-import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 import '../widgets/drop_down_grade_edit_profile.dart';
@@ -44,11 +43,7 @@ class _StudentEditProfilePageState extends State<StudentEditProfilePage> {
       body: ListView(
         children: [
           AppBarWidget(
-              pageName: S.of(context).student_profile,
-              widget: Text(
-                S.of(context).edit,
-                style: TextStyles.font16SemiBoldBlack,
-              )),
+              pageName: S.of(context).student_profile,),
           Form(
             key: context.read<EditStudentCubit>().formKey,
             child: Column(
@@ -88,7 +83,6 @@ class _StudentEditProfilePageState extends State<StudentEditProfilePage> {
                     });
                   },
                 ),
-                verticalSpacing(40),
                 editStudentButtonWidget(context),
               ],
             ),
@@ -154,7 +148,7 @@ class _StudentEditProfilePageState extends State<StudentEditProfilePage> {
         },
         child: AppTextButton(
             buttonHeight: 60.h,
-            textButton: S.of(context).add_student, onPressed: (){
+            textButton: S.of(context).save_change, onPressed: (){
           validateThenDoEditStudent(context);
         }),
       ),
