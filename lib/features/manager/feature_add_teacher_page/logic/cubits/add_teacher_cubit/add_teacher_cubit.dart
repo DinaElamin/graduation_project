@@ -15,7 +15,7 @@ class AddTeacherCubit extends Cubit<AddTeacherState> {
   final formKey = GlobalKey<FormState>();
 
   void emitAddTeacherStates(String token,
-      {required String Name,required String Email,required String NationalNum,required File Image,required String SubjectName,required List<int> AssignClassId}) async {
+      {required String Name,required String Email,required String NationalNum,required File Image,required String SubjectName,required List<String> AssignClassId}) async {
     emit(const AddTeacherState.loading());
     final response = await addTeacherRepo.addTeacherData(token,Name: Name,Email: Email,NationalNum: NationalNum,Image: Image,AssignClassId: AssignClassId,SubjectName: SubjectName);
 

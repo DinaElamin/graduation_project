@@ -2,8 +2,6 @@ import 'package:ablexa/core/helper/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../../core/shared_widgets/success_widget.dart';
 import '../../../../../core/theming/colors.dart';
@@ -44,8 +42,7 @@ class _AddTeacherButtonState extends State<AddTeacherButton> {
             success: (data) {
               showSuccessDialog(onPressed: () {
                 context.pop();
-                context.pushNamed(Routes.homeManagerPage,
-                    arguments: widget.token);
+
               }, context,
                   text: S.of(context).add_teacher,
                   contentText: S.of(context).add_teacher_successfully);

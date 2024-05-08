@@ -248,7 +248,7 @@ class _ApiService implements ApiService {
     String Email,
     String NationalNum,
     String SubjectName,
-    List<int> assignClassId,
+    List<String> assignClassId,
     File Image,
   ) async {
     final _extra = <String, dynamic>{};
@@ -272,12 +272,9 @@ class _ApiService implements ApiService {
       'SubjectName',
       SubjectName,
     ));
-    _data.files.add(MapEntry(
-        'AssignClassId',
-        MultipartFile.fromBytes(
-          assignClassId,
-          filename: null,
-        )));
+    assignClassId.forEach((i) {
+      _data.fields.add(MapEntry('AssignClassId', i));
+    });
     _data.files.add(MapEntry(
       'Image',
       MultipartFile.fromFileSync(

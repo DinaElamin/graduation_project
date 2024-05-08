@@ -21,7 +21,7 @@ class AddTeacherContantPage extends StatefulWidget {
   State<AddTeacherContantPage> createState() => _AddTeacherContantPageState();
 }
 
-List<int> selectedClassIds = [];
+List<String> selectedClassIds = [];
 late String subjectName;
 late String className;
 File? imageFile;

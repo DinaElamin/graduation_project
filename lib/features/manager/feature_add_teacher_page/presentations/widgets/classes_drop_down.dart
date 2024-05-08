@@ -12,14 +12,14 @@ import '../../../../../features/manager/feature_home_manager_page/data/models/ge
 
 class ClassesDropDown extends StatefulWidget {
   const ClassesDropDown({Key? key, required this.onSubjectsSelected}) : super(key: key);
-  final void Function(List<int>) onSubjectsSelected;
+  final void Function(List<String>) onSubjectsSelected;
 
   @override
   State<ClassesDropDown> createState() => _ClassesDropDownState();
 }
 
 class _ClassesDropDownState extends State<ClassesDropDown> {
-  List<int> selectedClassIds = []; // Track selected class IDs
+  List<String> selectedClassIds = []; // Track selected class IDs
 
   @override
   void initState() {
@@ -91,7 +91,7 @@ class _ClassesDropDownState extends State<ClassesDropDown> {
                         }).toList(),
                         onChanged: (String? value) {
                           setState(() {
-                            int selectedValue = int.parse(value!);
+                            String selectedValue = value!;
 
                             // Toggle selection
                             if (selectedClassIds.contains(selectedValue)) {
