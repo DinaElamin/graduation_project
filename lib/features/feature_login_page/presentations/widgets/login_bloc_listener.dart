@@ -45,10 +45,17 @@ class _SignInBlocListenerState extends State<LoginBlocListener> {
                 });
               }
               else if(loginResponseModel.roleName! == "Teacher"){
-                context.pushNamed(Routes.teacherHomePage,arguments: "Bearer ${loginResponseModel.token}");
+                context.pushNamed(Routes.teacherHomePage,
+                    arguments:{
+                  'token': "Bearer ${loginResponseModel.token}",
+                      'token': "Bearer ${loginResponseModel.token}",
+                      'nameTeacher':loginResponseModel.username.toString(),
+                      'emailTeacher':loginResponseModel.email.toString(),
+                      'imageTeacher':loginResponseModel.photo.toString()
+                    });
               }
               else {
-                context.pushNamed(Routes.teacherHomePage,arguments:"Bearer ${loginResponseModel.token}");
+                context.pushNamed(Routes.studentExamsPage);
               }
             },
             error:(error){

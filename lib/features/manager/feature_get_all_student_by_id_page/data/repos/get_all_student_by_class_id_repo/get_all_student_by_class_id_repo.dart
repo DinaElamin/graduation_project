@@ -13,4 +13,13 @@ class GetAllStudentsByClassIdRepo {
       return ApiResult.failure(ErrorHandler.handle(error));
     }
   }
+  Future<ApiResult<List<GetAllStudentsByClassIdModel>>> searchStudentByName(String name,int classId) async {
+    try {
+      final allStudents = await _apiService.getAllStudentsByClassId(classId);
+      final searchedStudents = allStudents.where((student) => student.name!.contains(name)).toList();
+      return ApiResult.success(searchedStudents);
+    } catch (error) {
+      return ApiResult.failure(ErrorHandler.handle(error));
+    }
+  }
 }

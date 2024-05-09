@@ -1129,6 +1129,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Home Page`
+  String get home_page {
+    return Intl.message(
+      'Home Page',
+      name: 'home_page',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

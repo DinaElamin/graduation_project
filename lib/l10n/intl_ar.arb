@@ -105,5 +105,7 @@
   "enter_name_warning": "يرجى إدخال اسمك",
   "enter_email_warning": "يرجى إدخال عنوان بريد إلكتروني صحيح",
   "invalid_email_warning": "يرجى إدخال عنوان بريد إلكتروني صحيح",
-  "enter_national_id_warning": "يرجى إدخال الرقم الوطني"
+  "enter_national_id_warning": "يرجى إدخال الرقم الوطني",
+  "home_page": "الصفحة الرئيسية"
+
 }

@@ -261,19 +261,60 @@ class AppRouter {
         );
       // teacher home
       case Routes.teacherHomePage:
+        final args = settings.arguments as Map<String, dynamic>;
+        final String token = args['token'];
+        final String imageTeacher = args['imageTeacher'];
+        final String nameTeacher = args['nameTeacher'];
+        final String emailTeacher = args['emailTeacher'];
+
         return MaterialPageRoute(
-          builder: (context) => const TeacherHome(),
+          builder: (context) =>  MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<GetAllClassesDataCubit>(),
+              ),
+
+            ],
+            child: TeacherHome(
+              token: token,
+              nameTeacher: nameTeacher,
+              emailTeacher: emailTeacher,
+              imageTeacher: imageTeacher,
+            ),
+          ),
         );
       // students Page
       case Routes.studentsPage:
-        final String gradeName = settings.arguments as String;
+        final args = settings.arguments as Map<String, dynamic>;
+        final String className = args['className'];
+        final int classId = args['classId'];
         return MaterialPageRoute(
-          builder: (context) => StudentsPage(gradeName: gradeName),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<GetAllStudentByClassIdCubit>(),
+              ),
+            ],
+            child: StudentsPage(
+                 classId: classId,
+                className: className,
+               ),
+          ),
         );
       // teacher profile page
       case Routes.teacherProfilePage:
+        final args = settings.arguments as Map<String, dynamic>;
+        final String token = args['token'];
+        final String imageTeacher = args['imageTeacher'];
+        final String nameTeacher = args['nameTeacher'];
+        final String emailTeacher = args['emailTeacher'];
         return MaterialPageRoute(
-          builder: (context) => const ProfileTeacherPage(),
+          builder: (context) =>  ProfileTeacherPage(
+            token: token,
+            nameTeacher: nameTeacher,
+            emailTeacher: emailTeacher,
+            imageTeacher: imageTeacher,
+          ),
         );
       // add Exam page
       case Routes.addExamPage:

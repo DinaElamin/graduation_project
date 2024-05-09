@@ -100,6 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "grade_details": MessageLookupByLibrary.simpleMessage("تفاصيل الصف"),
         "grades": MessageLookupByLibrary.simpleMessage("المواد"),
         "help": MessageLookupByLibrary.simpleMessage("المساعدة"),
+        "home_page": MessageLookupByLibrary.simpleMessage("الصفحة الرئيسية"),
         "image_required": MessageLookupByLibrary.simpleMessage("ضع صورة"),
         "invalid_email_warning": MessageLookupByLibrary.simpleMessage(
             "يرجى إدخال عنوان بريد إلكتروني صحيح"),

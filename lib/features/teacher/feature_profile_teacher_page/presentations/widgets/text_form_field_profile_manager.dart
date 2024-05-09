@@ -2,11 +2,9 @@
 import '../../../../../core/helper/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../../core/shared_widgets/app_text_feild.dart';
-import '../../../../../core/theming/image_manager.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
@@ -29,7 +27,6 @@ class TextFormFieldProfileManager extends StatelessWidget {
           ),
           verticalSpacing(10),
           AppTextFormField(
-            suffixIcon: Image.asset(ImageManager.editIcon),
             hintText: "Qassem Shaban",
             validator: (p0) {},
           ),
@@ -40,7 +37,6 @@ class TextFormFieldProfileManager extends StatelessWidget {
           ),
           verticalSpacing(10),
           AppTextFormField(
-            suffixIcon: Image.asset(ImageManager.editIcon),
             hintText: "QassemShaban@gmail.com",
             validator: (p0) {},
           ),
@@ -51,7 +47,6 @@ class TextFormFieldProfileManager extends StatelessWidget {
           ),
           verticalSpacing(10),
           AppTextFormField(
-            suffixIcon: Image.asset(ImageManager.editIcon),
             hintText: "0102256486",
             validator: (p0) {},
           ),
@@ -62,7 +57,6 @@ class TextFormFieldProfileManager extends StatelessWidget {
           ),
           verticalSpacing(10),
           AppTextFormField(
-            suffixIcon: Image.asset(ImageManager.editIcon),
             hintText: "Science , Math",
             validator: (p0) {},
           ),
@@ -73,7 +67,6 @@ class TextFormFieldProfileManager extends StatelessWidget {
           ),
           verticalSpacing(10),
           AppTextFormField(
-            suffixIcon: Image.asset(ImageManager.editIcon),
             hintText: "Grade1 , Grade2",
             validator: (p0) {},
           ),
@@ -81,7 +74,6 @@ class TextFormFieldProfileManager extends StatelessWidget {
           Padding(
             padding:  EdgeInsets.only(left: 50.w,right: 50.w),
             child: AppTextButton(
-
                 textButton: S.of(context).add_exam, onPressed: (){
                   context.pushNamed(Routes.addExamPage);
             }),

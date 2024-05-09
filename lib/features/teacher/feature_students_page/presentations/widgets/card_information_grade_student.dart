@@ -34,7 +34,7 @@ class CardInformationGradeStudents extends StatelessWidget {
           children: [
             Row(
               children: [
-                Image.asset(image),
+               CircleAvatar( backgroundImage: NetworkImage(image)),
                 horizontalSpacing(10),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

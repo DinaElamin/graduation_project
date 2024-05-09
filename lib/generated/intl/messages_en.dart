@@ -100,6 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "grade_details": MessageLookupByLibrary.simpleMessage("Grade Details"),
         "grades": MessageLookupByLibrary.simpleMessage("Grades"),
         "help": MessageLookupByLibrary.simpleMessage("Help"),
+        "home_page": MessageLookupByLibrary.simpleMessage("Home Page"),
         "image_required":
             MessageLookupByLibrary.simpleMessage("Image Required"),
         "invalid_email_warning": MessageLookupByLibrary.simpleMessage(
