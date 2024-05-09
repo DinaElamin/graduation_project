@@ -266,6 +266,7 @@ class AppRouter {
         final String imageTeacher = args['imageTeacher'];
         final String nameTeacher = args['nameTeacher'];
         final String emailTeacher = args['emailTeacher'];
+        final String nationalNumber = args['nationalNumber'];
 
         return MaterialPageRoute(
           builder: (context) =>  MultiBlocProvider(
@@ -276,6 +277,7 @@ class AppRouter {
 
             ],
             child: TeacherHome(
+              nationalNumber: nationalNumber,
               token: token,
               nameTeacher: nameTeacher,
               emailTeacher: emailTeacher,
@@ -304,13 +306,13 @@ class AppRouter {
       // teacher profile page
       case Routes.teacherProfilePage:
         final args = settings.arguments as Map<String, dynamic>;
-        final String token = args['token'];
         final String imageTeacher = args['imageTeacher'];
         final String nameTeacher = args['nameTeacher'];
         final String emailTeacher = args['emailTeacher'];
+        final String nationalNumber = args['nationalNumber'];
         return MaterialPageRoute(
           builder: (context) =>  ProfileTeacherPage(
-            token: token,
+            nationalNumber: nationalNumber,
             nameTeacher: nameTeacher,
             emailTeacher: emailTeacher,
             imageTeacher: imageTeacher,

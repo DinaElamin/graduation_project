@@ -48,10 +48,10 @@ class _SignInBlocListenerState extends State<LoginBlocListener> {
                 context.pushNamed(Routes.teacherHomePage,
                     arguments:{
                   'token': "Bearer ${loginResponseModel.token}",
-                      'token': "Bearer ${loginResponseModel.token}",
                       'nameTeacher':loginResponseModel.username.toString(),
                       'emailTeacher':loginResponseModel.email.toString(),
-                      'imageTeacher':loginResponseModel.photo.toString()
+                      'imageTeacher':loginResponseModel.photo.toString(),
+                      'nationalNumber':loginResponseModel.nationalNum.toString(),
                     });
               }
               else {

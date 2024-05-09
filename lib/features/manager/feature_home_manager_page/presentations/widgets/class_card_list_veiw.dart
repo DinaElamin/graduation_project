@@ -39,7 +39,7 @@ class _ClassCardListViewState extends State<ClassCardListView> {
         final List<GetAllClassesModel> getAllClassesModel =data;
             return ListView.builder(
               shrinkWrap: true,
-              physics: const AlwaysScrollableScrollPhysics(),
+              physics: NeverScrollableScrollPhysics(),
               itemCount: getAllClassesModel.length, // Example itemCount, replace with your actual data length
               itemBuilder: (context, index) {
                 return GestureDetector(
@@ -47,7 +47,10 @@ class _ClassCardListViewState extends State<ClassCardListView> {
                     setState(() {
                       // Update the selected index
                       selectedIndex = index;
-                      context.pushNamed(Routes.getAllStudentByClassIdPage,arguments: getAllClassesModel[index].classId);
+                      context.pushNamed(Routes.studentsPage, arguments: {
+                        'className': getAllClassesModel[index].className,
+                        'classId':getAllClassesModel[index].classId
+                      });
                     });
                   },
                   child: Container(

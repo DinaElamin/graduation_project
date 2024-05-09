@@ -46,7 +46,7 @@ class _ImageAndNameProfileTeacherState extends State<ImageAndNameProfileTeacher>
               radius: 38.sp,
               backgroundImage: _imageFile != null
                   ? FileImage(_imageFile!)
-                  : Image.network(widget.imageTeacher) as ImageProvider,
+                  : NetworkImage(widget.imageTeacher) as ImageProvider,
             ),
             Positioned(
               bottom: -1.h,

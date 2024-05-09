@@ -10,9 +10,9 @@ import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 class TextFormFieldProfileManager extends StatelessWidget {
   const TextFormFieldProfileManager({
-    super.key,
+    super.key, required this.nameTeacher, required this.emailTeacher, required this.nationalNumber,
   });
-
+final String nameTeacher,emailTeacher,nationalNumber;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,7 +27,7 @@ class TextFormFieldProfileManager extends StatelessWidget {
           ),
           verticalSpacing(10),
           AppTextFormField(
-            hintText: "Qassem Shaban",
+            hintText: nameTeacher,
             validator: (p0) {},
           ),
           verticalSpacing(10),
@@ -37,17 +37,17 @@ class TextFormFieldProfileManager extends StatelessWidget {
           ),
           verticalSpacing(10),
           AppTextFormField(
-            hintText: "QassemShaban@gmail.com",
+            hintText: emailTeacher,
             validator: (p0) {},
           ),
           verticalSpacing(10),
           Text(
-            S.of(context).phone_number,
+            S.of(context).national_iD,
             style: TextStyles.font16SemiBoldBlack,
           ),
           verticalSpacing(10),
           AppTextFormField(
-            hintText: "0102256486",
+            hintText: nationalNumber,
             validator: (p0) {},
           ),
           verticalSpacing(10),
