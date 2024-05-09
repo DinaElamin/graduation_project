@@ -15,10 +15,10 @@ class EditProfileGradeDropDown extends StatefulWidget {
   final void Function(String) onGradeSelected; // Callback function to handle selected grade
 
   @override
-  State<EditProfileGradeDropDown> createState() => _EditProfileGradeDropDownState();
+  State<EditProfileGradeDropDown> createState() => _EditProfileClassDropDownState();
 }
 
-class _EditProfileGradeDropDownState extends State<EditProfileGradeDropDown> {
+class _EditProfileClassDropDownState extends State<EditProfileGradeDropDown> {
   // Initialize the selected option item
   OptionItem optionItemSelected = OptionItem(title: "Class");
 
@@ -81,7 +81,7 @@ class _EditProfileGradeDropDownState extends State<EditProfileGradeDropDown> {
                     optionItemSelected = optionItem;
                     setState(() {
                       optionItemSelected = optionItem;
-                      widget.onGradeSelected(optionItem.id.toString()); // Pass the selected ID to the callback function
+                      widget.onGradeSelected(optionItem.id.toString());// Pass the selected ID to the callback function
                     });
                   },
                 )

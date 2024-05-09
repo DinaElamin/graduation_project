@@ -5,14 +5,13 @@ import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/shared_widgets/appBar_widget.dart';
 import '../../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../../core/shared_widgets/success_widget.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
-import '../widgets/drop_down_grade_edit_profile.dart';
+import '../widgets/drop_down_class_edit_profile.dart';
 import '../widgets/image_and_name_profile_student.dart';
 import '../widgets/text_form_field_profile_student.dart';
 import '../widgets/year_drop_down_edit_profile.dart';
@@ -144,7 +143,7 @@ class _StudentEditProfilePageState extends State<StudentEditProfilePage> {
               showSuccessDialog(
                 onPressed: () {
                   context.pop();
-                  context.pushNamed(Routes.homeManagerPage, arguments: widget.token);
+
                 },
                 context,
                 text: S.of(context).save_change,

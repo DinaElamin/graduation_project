@@ -11,8 +11,8 @@ import '../../../../../generated/l10n.dart';
 import '../widgets/users_widget.dart';
 
 class HomeManagerPage extends StatefulWidget {
-  const HomeManagerPage({Key? key, required this.token, required this.imageManager, required this.nameManager, required this.emailManager, required this.nationalId}) : super(key: key);
-final String token,imageManager,nameManager,emailManager,nationalId;
+  const HomeManagerPage({Key? key, required this.token, required this.imageManager, required this.nameManager, required this.emailManager, required this.nationalNumber}) : super(key: key);
+final String token,imageManager,nameManager,emailManager,nationalNumber;
   @override
   State<HomeManagerPage> createState() => _HomeManagerPageState();
 }
@@ -55,7 +55,7 @@ class _HomeManagerPageState extends State<HomeManagerPage> with TickerProviderSt
                               'token':widget.token,
                               'nameManager':widget.nameManager,
                               'emailManager':widget.emailManager,
-                              'nationalId':widget.nationalId,
+                              'nationalNumber':widget.nationalNumber,
                               'imageManager':widget.imageManager
                             });
                           },

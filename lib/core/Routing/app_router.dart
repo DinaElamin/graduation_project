@@ -131,7 +131,7 @@ class AppRouter {
                 emailManager: emailManager,
                 imageManager: imageManager,
                 nameManager: nameManager,
-                nationalId: phoneNumberManager,
+                nationalNumber: phoneNumberManager,
               )),
         );
       // manager profile
@@ -140,7 +140,7 @@ class AppRouter {
         final String token = args['token'];
         final String emailManager = args['emailManager'];
         final String nameManager = args['nameManager'];
-        final String nationalId = args['nationalId'];
+        final String nationalNumber = args['nationalNumber'];
         final String imageManager = args['imageManager'];
 
         return MaterialPageRoute(
@@ -149,7 +149,7 @@ class AppRouter {
             emailManager: emailManager,
             imageManager: imageManager,
             nameManager: nameManager,
-            nationalId: nationalId,),
+            nationalId: nationalNumber,),
         );
       // student edit profile
       case Routes.editStudentProfilePage:
@@ -160,7 +160,7 @@ class AppRouter {
         final String image = args['image'];
         final String name = args['name'];
         final int yearId = args['yearId'];
-        final String nationalId = args['nationalId'];
+        final String nationalNumber = args['nationalNumber'];
         final int classId = args['classId'];
         final String email = args['email'];
         return MaterialPageRoute(
@@ -182,7 +182,7 @@ class AppRouter {
               child: StudentEditProfilePage(
                 classId: classId,
                 email: email,
-                nationalId: nationalId,
+                nationalId: nationalNumber,
                 name: name,
                 yearId: yearId,
                 token: token,
