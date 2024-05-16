@@ -1,6 +1,7 @@
 import 'package:ablexa/features/manager/feature_add_grade_page/logic/cubits/add_year_cubit/add_year_cubit.dart';
 import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/get_all_semester_cubit/get_all_year_cubit.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
+import 'package:ablexa/features/manager/feature_edit_profile_teacher_page/presentations/screens/edit_profile_teacher.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
 import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/edit_student_cubit/edit_student_cubit.dart';
 import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/get_students_by_id_cubit/get_students_by_id_cubit.dart';
@@ -326,6 +327,25 @@ class AppRouter {
                  classId: classId,
                 className: className,
                ),
+          ),
+        );
+    // teacher profile page
+      case Routes.editTeacherProfilePage:
+        final args = settings.arguments as Map<String, dynamic>;
+        final String token = args['token'];
+        final String imageTeacher = args['imageTeacher'];
+        final String nameTeacher = args['nameTeacher'];
+        final String emailTeacher = args['emailTeacher'];
+        final String nationalNumber = args['nationalNumber'];
+        final String TeacherId = args['TeacherId'];
+        return MaterialPageRoute(
+          builder: (context) =>  EditProfileTeacherPage(
+            teacherId: TeacherId,
+            token: token,
+            nationalNumber: nationalNumber,
+            nameTeacher: nameTeacher,
+            emailTeacher: emailTeacher,
+            imageTeacher: imageTeacher,
           ),
         );
       // teacher profile page

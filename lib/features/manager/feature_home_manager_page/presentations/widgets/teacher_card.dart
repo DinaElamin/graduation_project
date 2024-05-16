@@ -11,13 +11,13 @@ import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 class TeacherCard extends StatelessWidget {
-  final String name, type, image,id,token,email,nationalNumber;
+  final String name, type, image,id,token,email,nationalNumber,TeacherId;
 
   const TeacherCard({
     Key? key,
     required this.name,
     required this.type,
-    required this.image, required this.id, required this.token, required this.email, required this.nationalNumber
+    required this.image, required this.id, required this.token, required this.email, required this.nationalNumber, required this.TeacherId
   }) : super(key: key);
 
   @override
@@ -66,12 +66,13 @@ class TeacherCard extends StatelessWidget {
               PopupMenuItem(
                 onTap: () {
 
-                      context.pushNamed(Routes.teacherProfilePage,arguments: {
+                      context.pushNamed(Routes.editTeacherProfilePage,arguments: {
                         'token':token,
                         'nameTeacher':name,
                         'emailTeacher':email,
                         'nationalNumber':nationalNumber,
-                        'imageTeacher':image
+                        'imageTeacher':image,
+                        'TeacherId':TeacherId,
                       });
                 },
                 value: 'view_profile',

@@ -67,6 +67,18 @@ abstract class ApiService {
       @Part(name: "PClassId") int PClassId,
       @Part(name: "YearId") int YearId
       );
+  // edit teacher student
+  @PUT("${ApiConstant.editTeacherProfile}/{userId}")
+  @MultiPart()
+  Future editTeacherProfile(
+      @Header("Authorization") String token,
+      @Path("userId") String userId,
+      @Part(name: "Name") String Name,
+      @Part(name: "Email") String Email,
+      @Part(name: "NationalNum") String NationalNum,
+      @Part(name: "Image") File Image,
+      @Part(name: "AssignClassId") List<String> AssignClassId,
+      );
   // add year
   @PUT(ApiConstant.addYear)
   @MultiPart()
