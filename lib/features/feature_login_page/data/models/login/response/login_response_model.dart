@@ -10,7 +10,7 @@ class LoginResponseModel {
   String? username;
   String? nationalNum;
   String? photo;
-  String? classId;
+  int? classId;
   String? roleName;
 
   LoginResponseModel(

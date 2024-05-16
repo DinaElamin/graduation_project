@@ -10,9 +10,9 @@ import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 class TextFormFieldProfileManager extends StatelessWidget {
   const TextFormFieldProfileManager({
-    super.key, required this.nameTeacher, required this.emailTeacher, required this.nationalNumber,
+    super.key, required this.nameTeacher, required this.emailTeacher, required this.nationalNumber, required this.token, required this.teacherId,
   });
-final String nameTeacher,emailTeacher,nationalNumber;
+final String nameTeacher,emailTeacher,nationalNumber,token,teacherId;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -75,7 +75,10 @@ final String nameTeacher,emailTeacher,nationalNumber;
             padding:  EdgeInsets.only(left: 50.w,right: 50.w),
             child: AppTextButton(
                 textButton: S.of(context).add_exam, onPressed: (){
-                  context.pushNamed(Routes.addExamPage);
+                  context.pushNamed(Routes.addExamPage,arguments: {
+                    'token':token,
+                    'TeacherId':teacherId,
+                  });
             }),
           )
         ],

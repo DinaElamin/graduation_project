@@ -42,17 +42,20 @@ class _AddTeacherContantPageState extends State<AddTeacherContantPage> {
             });
           }),
           SubjectsDropDown(
-              onSubjectSelected: (subject) {
-            setState(() {
-              subjectName = subject;
-              print("the subject choose is :$subject");
-            });
-          }),
+            onSubjectSelected: (subject) {
+              setState(() {
+                subjectName = subject;
+                print("the subject choose is :$subject");
+              });
+            },
+          ),
+
 
           ClassesDropDown(
             onSubjectsSelected: (classes) {
               setState(() {
                 selectedClassIds = classes;
+                print("classes $classes");
                 print("Selected class IDs: $selectedClassIds");
               });
             },

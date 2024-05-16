@@ -1,7 +1,7 @@
 import '../../../../../../core/networking/api_error_handler.dart';
 import '../../../../../../core/networking/api_result.dart';
 import '../../../../../../core/networking/api_service.dart';
-import '../../models/get_student_by_id_model/get_student_by_id_model.dart';
+import '../../models/get_student_by_id_model.dart';
 class GetStudentByIdRepo {
   final ApiService _apiService;
   GetStudentByIdRepo(this._apiService);

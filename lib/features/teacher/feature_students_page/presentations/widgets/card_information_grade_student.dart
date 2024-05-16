@@ -1,8 +1,5 @@
-import '../../../../../core/helper/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
@@ -21,7 +18,9 @@ class CardInformationGradeStudents extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.pushNamed(Routes.studentExamsPage,arguments: 1);
+        // context.pushNamed(Routes.studentExamsPage,arguments: {
+        //
+        // });
       },
       child: Container(
         padding: const EdgeInsets.all(10),

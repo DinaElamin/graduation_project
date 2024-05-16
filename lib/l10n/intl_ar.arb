@@ -106,6 +106,10 @@
   "enter_email_warning": "يرجى إدخال عنوان بريد إلكتروني صحيح",
   "invalid_email_warning": "يرجى إدخال عنوان بريد إلكتروني صحيح",
   "enter_national_id_warning": "يرجى إدخال الرقم الوطني",
-  "home_page": "الصفحة الرئيسية"
+  "home_page": "الصفحة الرئيسية",
+  "index_of_grade": "رقم السنة",
+  "please_inter_index": "من فضلك ادخل الرقم"
+
+
 
 }

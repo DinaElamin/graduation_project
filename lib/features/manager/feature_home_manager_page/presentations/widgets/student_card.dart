@@ -1,6 +1,5 @@
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/helper/extentions.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,7 @@ import '../../../../../core/theming/image_manager.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../feature_student_edit_profile_page/data/models/get_student_by_id_model/get_student_by_id_model.dart';
+import '../../../feature_student_edit_profile_page/data/models/get_student_by_id_model.dart';
 import '../../../feature_student_edit_profile_page/logic/cubits/get_students_by_id_cubit/get_students_by_id_cubit.dart';
 import '../../../feature_student_edit_profile_page/logic/cubits/get_students_by_id_cubit/get_students_by_id_state.dart';
 

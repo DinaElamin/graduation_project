@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../../core/shared_widgets/app_text_feild.dart';
-import '../../../../../core/theming/image_manager.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 class TextFormFieldProfileStudent extends StatelessWidget {
   const TextFormFieldProfileStudent({
-    super.key,
+    super.key, required this.nameStudent, required this.emailStudent, required this.nationalIdStudent, required this.classId,
   });
-
+final String nameStudent,emailStudent,nationalIdStudent;
+final int classId;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,7 +24,7 @@ class TextFormFieldProfileStudent extends StatelessWidget {
           ),
           verticalSpacing(10),
           AppTextFormField(
-            hintText: "Qassem Shaban",
+            hintText: nameStudent,
             validator: (p0) {},
           ),
           verticalSpacing(10),
@@ -35,7 +34,7 @@ class TextFormFieldProfileStudent extends StatelessWidget {
           ),
           verticalSpacing(10),
           AppTextFormField(
-            hintText: "QassemShaban@gmail.com",
+            hintText:emailStudent,
             validator: (p0) {},
           ),
           verticalSpacing(10),
@@ -45,7 +44,7 @@ class TextFormFieldProfileStudent extends StatelessWidget {
           ),
           verticalSpacing(10),
           AppTextFormField(
-            hintText: "20011122241259",
+            hintText: nationalIdStudent,
             validator: (p0) {},
           ),
           verticalSpacing(10),
@@ -55,7 +54,7 @@ class TextFormFieldProfileStudent extends StatelessWidget {
           ),
           verticalSpacing(10),
           AppTextFormField(
-            hintText: "20011122241259",
+            hintText: classId.toString(),
             validator: (p0) {},
           ),
           verticalSpacing(10),

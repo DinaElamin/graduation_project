@@ -1139,6 +1139,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Index Of Grade`
+  String get index_of_grade {
+    return Intl.message(
+      'Index Of Grade',
+      name: 'index_of_grade',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Inter Index`
+  String get please_inter_index {
+    return Intl.message(
+      'Please Inter Index',
+      name: 'please_inter_index',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

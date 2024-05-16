@@ -1,3 +1,5 @@
+import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
+import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -6,32 +8,30 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../../features/manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_cubit.dart';
-import '../../../../../features/manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_state.dart';
 import '../../../../../features/manager/feature_home_manager_page/data/models/get_all_classes_model/get_all_classes_model.dart';
 
-class ClassesDropDown extends StatefulWidget {
-  const ClassesDropDown({Key? key, required this.onSubjectsSelected}) : super(key: key);
+class SemesterTwoWidget extends StatefulWidget {
+  const SemesterTwoWidget({Key? key, required this.onSubjectsSelected}) : super(key: key);
   final void Function(List<String>) onSubjectsSelected;
 
   @override
-  State<ClassesDropDown> createState() => _ClassesDropDownState();
+  State<SemesterTwoWidget> createState() => _SemesterTwoWidgetState();
 }
 
-class _ClassesDropDownState extends State<ClassesDropDown> {
+class _SemesterTwoWidgetState extends State<SemesterTwoWidget> {
   List<String> selectedClassIds = []; // Track selected class IDs
 
   @override
   void initState() {
     super.initState();
     // Fetch data from the Cubit when the widget is first created
-    context.read<GetAllClassesDataCubit>().emitAllClassesStates();
+    context.read<GetAllMaterialDataCubit>().emitAllMaterialStates();
   }
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: BlocBuilder<GetAllClassesDataCubit, GetAllClassesDataState>(
+      child: BlocBuilder<GetAllMaterialDataCubit, GetAllMaterialDataState>(
         builder: (context, state) {
           return state.when(
             success: (data) {
@@ -93,13 +93,11 @@ class _ClassesDropDownState extends State<ClassesDropDown> {
                           setState(() {
                             String selectedValue = value!;
 
-                            // Check if the class ID is already in the selected list
-                            if (!selectedClassIds.contains(selectedValue)) {
-                              // Add the class ID to the selected list
-                              selectedClassIds.add(selectedValue);
-                            } else {
-                              // Remove the class ID from the selected list
+                            // Toggle selection
+                            if (selectedClassIds.contains(selectedValue)) {
                               selectedClassIds.remove(selectedValue);
+                            } else {
+                              selectedClassIds.add(selectedValue);
                             }
                             widget.onSubjectsSelected(selectedClassIds);
                           });

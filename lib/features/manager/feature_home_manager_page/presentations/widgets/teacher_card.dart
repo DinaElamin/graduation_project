@@ -11,14 +11,13 @@ import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 class TeacherCard extends StatelessWidget {
-  final String name, type, image,id,token;
+  final String name, type, image,id,token,email,nationalNumber;
 
   const TeacherCard({
     Key? key,
     required this.name,
-
     required this.type,
-    required this.image, required this.id, required this.token
+    required this.image, required this.id, required this.token, required this.email, required this.nationalNumber
   }) : super(key: key);
 
   @override
@@ -67,7 +66,13 @@ class TeacherCard extends StatelessWidget {
               PopupMenuItem(
                 onTap: () {
 
-                      context.pushNamed(Routes.teacherProfilePage);
+                      context.pushNamed(Routes.teacherProfilePage,arguments: {
+                        'token':token,
+                        'nameTeacher':name,
+                        'emailTeacher':email,
+                        'nationalNumber':nationalNumber,
+                        'imageTeacher':image
+                      });
                 },
                 value: 'view_profile',
                 child: Padding(
@@ -78,6 +83,8 @@ class TeacherCard extends StatelessWidget {
               PopupMenuItem(
                 onTap: (){
                   context.read<DeleteUserCubit>().emitDeleteUserStates(token: token,userId: id);
+
+
                 },
                 value: 'delete',
                 child: Padding(

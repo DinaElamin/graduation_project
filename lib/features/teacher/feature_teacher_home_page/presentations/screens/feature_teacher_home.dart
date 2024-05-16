@@ -14,8 +14,8 @@ import '../widgets/profile_and_setting_widget.dart';
 import '../widgets/teacher_classes.dart';
 
 class TeacherHome extends StatefulWidget {
-  const TeacherHome({super.key, required this.nameTeacher, required this.emailTeacher, required this.imageTeacher, required this.token, required this.nationalNumber});
-  final String nameTeacher,emailTeacher,imageTeacher,token,nationalNumber;
+  const TeacherHome({super.key, required this.nameTeacher, required this.emailTeacher, required this.imageTeacher, required this.token, required this.nationalNumber, required this.TeacherId});
+  final String nameTeacher,emailTeacher,imageTeacher,token,nationalNumber,TeacherId;
 
   @override
   State<TeacherHome> createState() => _TeacherHomeState();
@@ -49,6 +49,8 @@ class _TeacherHomeState extends State<TeacherHome> {
                   PopupMenuItem(
                     onTap: () {
                       context.pushNamed(Routes.teacherProfilePage,arguments: {
+                        'TeacherId':widget.TeacherId,
+                        'token':widget.token,
                         'nameTeacher':widget.nameTeacher,
                         'emailTeacher':widget.emailTeacher,
                         'imageTeacher':widget.imageTeacher,

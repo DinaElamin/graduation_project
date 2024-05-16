@@ -102,6 +102,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "help": MessageLookupByLibrary.simpleMessage("المساعدة"),
         "home_page": MessageLookupByLibrary.simpleMessage("الصفحة الرئيسية"),
         "image_required": MessageLookupByLibrary.simpleMessage("ضع صورة"),
+        "index_of_grade": MessageLookupByLibrary.simpleMessage("رقم السنة"),
         "invalid_email_warning": MessageLookupByLibrary.simpleMessage(
             "يرجى إدخال عنوان بريد إلكتروني صحيح"),
         "landing_text1": MessageLookupByLibrary.simpleMessage("تطبيق مدرستك"),
@@ -127,6 +128,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "يرجى التحقق من بريدك الإلكتروني"),
         "please_enter_grade":
             MessageLookupByLibrary.simpleMessage("من فضلك ادخل الدرجة"),
+        "please_inter_index":
+            MessageLookupByLibrary.simpleMessage("من فضلك ادخل الرقم"),
         "please_select_an_image":
             MessageLookupByLibrary.simpleMessage("من فضلك ضع صورة"),
         "privacy_policy":

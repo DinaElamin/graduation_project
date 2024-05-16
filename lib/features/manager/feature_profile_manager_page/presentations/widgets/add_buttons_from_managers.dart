@@ -72,7 +72,7 @@ class _AddButtonsFromManagerState extends State<AddButtonsFromManager> {
                   isTeacherButtonPressed = false;
                   isGradeButtonPressed = true;
                 });
-                context.pushNamed(Routes.addGradePage);
+                context.pushNamed(Routes.addGradePage,arguments: widget.token);
               },
               isPressed: isGradeButtonPressed,
             ),

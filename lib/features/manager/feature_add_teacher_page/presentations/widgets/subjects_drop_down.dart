@@ -1,4 +1,4 @@
-import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
+import 'package:ablexa/features/manager/feature_add_teacher_page/data/models/get_all_materail_model/get_all-matrial_model.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_state.dart';
 import '../../../../../core/theming/colors.dart';
 import 'package:dropdown_model_list/drop_down/model.dart';
@@ -7,19 +7,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/theming/styles.dart';
-import '../../data/models/get_all_materail_model/get_all-matrial_model.dart';
-
+import '../../logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
 class SubjectsDropDown extends StatefulWidget {
   const SubjectsDropDown({Key? key, required this.onSubjectSelected}) : super(key: key);
   final void Function(String) onSubjectSelected; // Callback function to handle selected grade
 
   @override
-  State<SubjectsDropDown> createState() => _SubjectsDropDownState();
+  State<SubjectsDropDown> createState() => _SubjectDropDownState();
 }
 
-class _SubjectsDropDownState extends State<SubjectsDropDown> {
+class _SubjectDropDownState extends State<SubjectsDropDown> {
   // Initialize the selected option item
-  OptionItem optionItemSelected = OptionItem(title: "Subjects");
+  OptionItem optionItemSelected = OptionItem(title: "Subject");
 
   @override
   void initState() {
@@ -48,12 +47,12 @@ class _SubjectsDropDownState extends State<SubjectsDropDown> {
             );
           },
           success: (data) {
-
             final List<GetAllMaterialModel> getAllMaterialModel = data;
+            // Extract names from the model and update the dropdown items list
             List<OptionItem> dropListItems = getAllMaterialModel.map((model) {
-              return OptionItem(
-                  title: model.subject_Name ?? '');
+              return OptionItem(id: "1", title: model.subject_Name ?? '');
             }).toList();
+
             return Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Column(
@@ -90,32 +89,37 @@ class _SubjectsDropDownState extends State<SubjectsDropDown> {
               ),
             );
           },
-          error: (error) {
-            return AlertDialog(
-              content: Text(
-                error.toString(),
-                style: TextStyles.font14MediumLightBlack,
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text(
-                    'Got It',
-                    style: TextStyles.font20BoldBlack,
-                  ),
-                ),
-              ],
-              icon: const Icon(
-                Icons.error,
-                color: Colors.red,
-                size: 32,
-              ),
-            );
-          },
+            error: (error) {
+              return setupErrorState(context, error);
+            }
         );
       },
     );
   }
+  Widget setupErrorState(BuildContext context, String error) {
+    return AlertDialog(
+      content: Text(
+        error,
+        style: TextStyles.font14MediumLightBlack,
+      ),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop(); // Close the AlertDialog
+          },
+          child: Text(
+            'Got It ',
+            style: TextStyles.font20BoldBlack,
+          ),
+        ),
+      ],
+      icon: const Icon(
+        Icons.error,
+        color: Colors.red,
+        size: 32,
+      ),
+    );
+  }
+
+
 }

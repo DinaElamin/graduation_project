@@ -1,4 +1,6 @@
+import 'package:ablexa/features/teacher/feature_add_exam_page/logic/cubits/add_exam_cubit/add_exam_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/shared_widgets/app_text_feild.dart';
@@ -20,6 +22,8 @@ class AddExamTextFormFields extends StatelessWidget {
         Text(S.of(context).exam_name, style: TextStyles.font20BoldBlack),
         verticalSpacing(10),
         AppTextFormField(
+          controller:  context.read<AddExamCubit>().examNameController,
+          textInputType: TextInputType.text,
           fillColorFromBackground: ColorsManager.mainWhite,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.sp),
@@ -34,9 +38,11 @@ class AddExamTextFormFields extends StatelessWidget {
           },
         ),
         verticalSpacing(20),
-        Text(S.of(context).class_code, style: TextStyles.font20BoldBlack),
+        Text(S.of(context).grade, style: TextStyles.font20BoldBlack),
         verticalSpacing(10),
         AppTextFormField(
+          controller:  context.read<AddExamCubit>().examGradeController,
+          textInputType: TextInputType.number,
           fillColorFromBackground: ColorsManager.mainWhite,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.sp),
@@ -45,7 +51,7 @@ class AddExamTextFormFields extends StatelessWidget {
           hintText: S.of(context).enter_class_code,
           validator: (value) {
             if (value == null || value.isEmpty) {
-              return 'Please enter a class code';
+              return 'Please enter a grade';
             }
             return null;
           },
@@ -54,6 +60,8 @@ class AddExamTextFormFields extends StatelessWidget {
         Text(S.of(context).subject_id, style: TextStyles.font20BoldBlack),
         verticalSpacing(10),
         AppTextFormField(
+          controller: context.read<AddExamCubit>().subjectIdController,
+          textInputType: TextInputType.number,
           fillColorFromBackground: ColorsManager.mainWhite,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.sp),

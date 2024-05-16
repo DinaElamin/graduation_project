@@ -16,7 +16,7 @@ LoginResponseModel _$LoginResponseModelFromJson(Map<String, dynamic> json) =>
       username: json['username'] as String?,
       nationalNum: json['nationalNum'] as String?,
       photo: json['photo'] as String?,
-      classId: json['classId'] as String?,
+      classId: json['classId'] as int?,
       roleName: json['roleName'] as String?,
     );
 

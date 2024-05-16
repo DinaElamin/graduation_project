@@ -7,6 +7,7 @@ import '../../../../../core/helper/extentions.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../data/models/login/response/login_response_model.dart';
+
 class LoginBlocListener extends StatefulWidget {
   const LoginBlocListener({super.key});
 
@@ -19,68 +20,83 @@ class _SignInBlocListenerState extends State<LoginBlocListener> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<LoginCubit,LoginState>(
+    return BlocListener<LoginCubit, LoginState>(
       child: const SizedBox.shrink(),
-      listenWhen: (previous, current) => current is Loading || current is Success || current is Error,
+      listenWhen: (previous, current) =>
+          current is Loading || current is Success || current is Error,
       listener: (context, state) {
-        state.whenOrNull(
-            loading: (){
-              showDialog(context: context, builder:
-                  (context) => const Center(child: CircularProgressIndicator(
+        state.whenOrNull(loading: () {
+          showDialog(
+            context: context,
+            builder: (context) => const Center(
+              child: CircularProgressIndicator(
                 color: ColorsManager.mainColor,
-              ),),
-              );
-            },
-            success: (data){
-            final  LoginResponseModel loginResponseModel = data;
+              ),
+            ),
+          );
+        }, success: (data) {
+          final LoginResponseModel loginResponseModel = data;
 
-              context.pop();
-              if(loginResponseModel.roleName! == "Manager" ) {
-                context.pushNamed(Routes.homeManagerPage, arguments: {
-                'token':"Bearer ${loginResponseModel.token}",
-                'nameManager':loginResponseModel.username.toString(),
-                'emailManager':loginResponseModel.email.toString(),
-                'phoneNumberManager':loginResponseModel.nationalNum.toString(),
-                'imageManager':loginResponseModel.photo.toString(),
-                });
-              }
-              else if(loginResponseModel.roleName! == "Teacher"){
-                context.pushNamed(Routes.teacherHomePage,
-                    arguments:{
-                  'token': "Bearer ${loginResponseModel.token}",
-                      'nameTeacher':loginResponseModel.username.toString(),
-                      'emailTeacher':loginResponseModel.email.toString(),
-                      'imageTeacher':loginResponseModel.photo.toString(),
-                      'nationalNumber':loginResponseModel.nationalNum.toString(),
-                    });
-              }
-              else {
-                context.pushNamed(Routes.studentExamsPage);
-              }
-            },
-            error:(error){
-
-              setupErrorState(context, error);
-            } );
-      },);
+          context.pop();
+          if (loginResponseModel.roleName! == "Manager") {
+            context.pushNamed(Routes.homeManagerPage, arguments: {
+              'token': "Bearer ${loginResponseModel.token}",
+              'nameManager': loginResponseModel.username.toString(),
+              'emailManager': loginResponseModel.email.toString(),
+              'phoneNumberManager': loginResponseModel.nationalNum.toString(),
+              'imageManager': loginResponseModel.photo.toString(),
+            });
+          } else if (loginResponseModel.roleName! == "Teacher") {
+            context.pushNamed(Routes.teacherHomePage, arguments: {
+              'token': "Bearer ${loginResponseModel.token}",
+              'nameTeacher': loginResponseModel.username.toString(),
+              'emailTeacher': loginResponseModel.email.toString(),
+              'imageTeacher': loginResponseModel.photo.toString(),
+              'nationalNumber': loginResponseModel.nationalNum.toString(),
+              'TeacherId': loginResponseModel.id.toString(),
+            });
+          } else if (loginResponseModel.roleName! == "Student") {
+            context.pushNamed(Routes.studentExamsPage, arguments: {
+              'token': "Bearer ${loginResponseModel.token}",
+              'nationalIdStudent': loginResponseModel.nationalNum.toString(),
+              'classId': loginResponseModel.classId,
+              'nameStudent': loginResponseModel.username.toString(),
+              'emailStudent': loginResponseModel.email.toString(),
+              'imageStudent': loginResponseModel.photo.toString()
+            });
+          }
+        }, error: (error) {
+          setupErrorState(context, error);
+        });
+      },
+    );
   }
 
   void setupErrorState(BuildContext context, String error) {
     context.pop();
-    showDialog(context: context,
+    showDialog(
+      context: context,
       builder: (context) => AlertDialog(
-        content: Text(error,
+        content: Text(
+          error,
           style: TextStyles.font14MediumLightBlack,
         ),
         actions: [
-          TextButton(onPressed: (){
-            context.pop();
-          }, child: Text('Got It ',style: TextStyles.font20BoldBlack,)),
+          TextButton(
+              onPressed: () {
+                context.pop();
+              },
+              child: Text(
+                'Got It ',
+                style: TextStyles.font20BoldBlack,
+              )),
         ],
-        icon: const Icon(Icons.error,
+        icon: const Icon(
+          Icons.error,
           color: Colors.red,
           size: 32,
         ),
-      ),);
+      ),
+    );
   }
 }

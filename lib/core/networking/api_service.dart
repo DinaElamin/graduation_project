@@ -14,7 +14,7 @@ import '../../features/feature_verify_code_page/data/models/verify_pin_code_mode
 import '../../features/feature_verify_code_page/data/models/verify_pin_code_model/response/verify_code_pin_response_model.dart';
 import '../../features/manager/feature_get_all_student_by_id_page/data/model/get_all_student_by_id_model/get_all_student_by_id_model.dart';
 import '../../features/manager/feature_home_manager_page/data/models/get_all_classes_model/get_all_classes_model.dart';
-import '../../features/manager/feature_student_edit_profile_page/data/models/get_student_by_id_model/get_student_by_id_model.dart';
+import '../../features/manager/feature_student_edit_profile_page/data/models/get_student_by_id_model.dart';
 import 'api_constant.dart';
 import 'package:retrofit/retrofit.dart';
 part 'api_service.g.dart';
@@ -67,6 +67,16 @@ abstract class ApiService {
       @Part(name: "PClassId") int PClassId,
       @Part(name: "YearId") int YearId
       );
+  // add year
+  @PUT(ApiConstant.addYear)
+  @MultiPart()
+  Future addYear(
+      @Header("Authorization") String token,
+      @Part(name: "Index") int Index,
+      @Part(name: "YearName") String YearName,
+      @Part(name: "FirstSemesterMaterial") List<String> FirstSemesterMaterial,
+      @Part(name: "SecondSemesterMaterial") List<String> SecondSemesterMaterial,
+      );
   // change password page
   @POST("${ApiConstant.changePassword}/{email}")
   @Headers(<String, dynamic>{
@@ -88,7 +98,19 @@ abstract class ApiService {
       @Part(name: "AssignClassId") List<String> assignClassId, // Use the parameter directly
       @Part(name: "Image") File Image,
       );
-
+  // add exam
+  @POST(ApiConstant.addExam)
+  @Headers(<String, dynamic>{
+    'Content-Type': 'application/json',
+  })
+  Future addExam(
+      @Header("Authorization") String token,
+      @Query("TeacherId") String TeacherId,
+      @Part(name: "Name") String Name,
+      @Part(name: "Exam_Grade") int Exam_Grade,
+      @Part(name: "MaterialId") int MaterialId,
+      @Part(name: "Image") File Image,
+      );
   // add Student
   @POST(ApiConstant.addStudent)
   @MultiPart()

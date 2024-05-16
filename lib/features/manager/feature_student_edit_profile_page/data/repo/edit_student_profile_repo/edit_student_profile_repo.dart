@@ -10,11 +10,11 @@ class EditStudentRepo {
       String token,String userId,
       {
         required String Name,
-      required String Email,
-      required String NationalNum,
-      required File Image,
-      required int YearId,
-      required int PClassId}) async {
+        required String Email,
+        required String NationalNum,
+        required File Image,
+        required int YearId,
+        required int PClassId}) async {
     try {
       final response = await _apiService.editStudentProfile(
           userId, token, Name, Email, NationalNum, Image, YearId, PClassId);

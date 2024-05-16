@@ -2,15 +2,13 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
-
 import '../../../../../core/theming/colors.dart';
-import '../../../../../core/theming/image_manager.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 class ImageAndNameProfileStudent extends StatefulWidget {
-  const ImageAndNameProfileStudent({super.key});
-
+  const ImageAndNameProfileStudent({super.key, required this.nameStudent, required this.imageStudent});
+final String nameStudent,imageStudent;
   @override
   State<ImageAndNameProfileStudent> createState() => _ImageAndNameProfileStudentState();
 }
@@ -24,7 +22,7 @@ class _ImageAndNameProfileStudentState extends State<ImageAndNameProfileStudent>
       children: [
         imageProfile(),
         verticalSpacing(10),
-        Text("Qassem Shaban",style: TextStyles.font16SemiBoldBlack,)
+        Text(widget.nameStudent,style: TextStyles.font16SemiBoldBlack,)
       ],
     );
   }
@@ -41,7 +39,7 @@ class _ImageAndNameProfileStudentState extends State<ImageAndNameProfileStudent>
               radius: 38.sp,
               backgroundImage: _imageFile != null
                   ? FileImage(_imageFile!)
-                  : const AssetImage(ImageManager.defaultImageProfile) as ImageProvider,
+                  : NetworkImage(widget.imageStudent) as ImageProvider,
             ),
             Positioned(
               bottom: -1.h,

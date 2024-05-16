@@ -1,8 +1,7 @@
 import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../data/repos/edit_student_profile_repo/edit_student_profile_repo.dart';
+import '../../../data/repo/edit_student_profile_repo/edit_student_profile_repo.dart';
 import 'edit_student_state.dart';
 
 class EditStudentCubit extends Cubit<EditStudentState> {

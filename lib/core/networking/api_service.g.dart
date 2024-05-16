@@ -210,6 +210,54 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<dynamic> addYear(
+    String token,
+    int Index,
+    String YearName,
+    List<String> FirstSemesterMaterial,
+    List<String> SecondSemesterMaterial,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = FormData();
+    _data.fields.add(MapEntry(
+      'Index',
+      Index.toString(),
+    ));
+    _data.fields.add(MapEntry(
+      'YearName',
+      YearName,
+    ));
+    FirstSemesterMaterial.forEach((i) {
+      _data.fields.add(MapEntry('FirstSemesterMaterial', i));
+    });
+    SecondSemesterMaterial.forEach((i) {
+      _data.fields.add(MapEntry('SecondSemesterMaterial', i));
+    });
+    final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'multipart/form-data',
+    )
+        .compose(
+          _dio.options,
+          'api/Year/addyear',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+    final value = _result.data;
+    return value;
+  }
+
+  @override
   Future<dynamic> changePassword(
     String email,
     ChangePasswordRequestModel changePasswordRequestModel,
@@ -291,6 +339,63 @@ class _ApiService implements ApiService {
         .compose(
           _dio.options,
           'api/User/addteacher',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+    final value = _result.data;
+    return value;
+  }
+
+  @override
+  Future<dynamic> addExam(
+    String token,
+    String TeacherId,
+    String Name,
+    int Exam_Grade,
+    int MaterialId,
+    File Image,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'TeacherId': TeacherId};
+    final _headers = <String, dynamic>{
+      r'Content-Type': 'application/json',
+      r'Authorization': token,
+    };
+    _headers.removeWhere((k, v) => v == null);
+    final _data = FormData();
+    _data.fields.add(MapEntry(
+      'Name',
+      Name,
+    ));
+    _data.fields.add(MapEntry(
+      'Exam_Grade',
+      Exam_Grade.toString(),
+    ));
+    _data.fields.add(MapEntry(
+      'MaterialId',
+      MaterialId.toString(),
+    ));
+    _data.files.add(MapEntry(
+      'Image',
+      MultipartFile.fromFileSync(
+        Image.path,
+        filename: Image.path.split(Platform.pathSeparator).last,
+      ),
+    ));
+    final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'application/json',
+    )
+        .compose(
+          _dio.options,
+          'api/Exam/addexams',
           queryParameters: queryParameters,
           data: _data,
         )

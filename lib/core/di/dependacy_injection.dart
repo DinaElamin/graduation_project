@@ -1,3 +1,5 @@
+import 'package:ablexa/features/manager/feature_add_grade_page/data/repos/add_year_repo/add_year_repo.dart';
+import 'package:ablexa/features/manager/feature_add_grade_page/logic/cubits/add_year_cubit/add_year_cubit.dart';
 import 'package:ablexa/features/manager/feature_add_student_page/data/repos/add_student_repo/add_student_repo.dart';
 import 'package:ablexa/features/manager/feature_add_student_page/data/repos/get_all_year_repo/get_all_year_repo.dart';
 import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/get_all_semester_cubit/get_all_year_cubit.dart';
@@ -5,10 +7,9 @@ import 'package:ablexa/features/manager/feature_add_teacher_page/data/repos/get_
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/data/repos/delete_user_repo/delete_user_repo.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
-import 'package:ablexa/features/manager/feature_student_edit_profile_page/data/repos/edit_student_profile_repo/edit_student_profile_repo.dart';
-import 'package:ablexa/features/manager/feature_student_edit_profile_page/data/repos/get_student_by_id_repo/get_student_by_id.dart';
 import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/edit_student_cubit/edit_student_cubit.dart';
-
+import 'package:ablexa/features/teacher/feature_add_exam_page/data/repos/add_exam_repo/add_exam_repo.dart';
+import 'package:ablexa/features/teacher/feature_add_exam_page/logic/cubits/add_exam_cubit/add_exam_cubit.dart';
 import '../../features/feature_change_password_page/data/repos/change_password_repo/change_password_repo.dart';
 import '../../features/feature_change_password_page/logic/cubits/change_password_cubit/change_password_cubit.dart';
 import '../../features/feature_login_page/data/repos/login_repo/login_repo.dart';
@@ -30,6 +31,8 @@ import '../../features/feature_verify_code_page/data/repos/verify_pin_code_repo/
 import '../../features/feature_verify_code_page/logic/cubits/verify_pin_code_cubit/verify_pin_code_cubit.dart';
 import '../../features/manager/feature_home_manager_page/data/repos/get_all_student_repo/get_all_student_repo.dart';
 import '../../features/manager/feature_home_manager_page/logic/cubits/get_all_student_cubit/get_all_student_cubit/get_all_student_cubit.dart';
+import '../../features/manager/feature_student_edit_profile_page/data/repo/edit_student_profile_repo/edit_student_profile_repo.dart';
+import '../../features/manager/feature_student_edit_profile_page/data/repo/get_student_by_id_repo/get_student_by_id_repo.dart';
 import '../../features/manager/feature_student_edit_profile_page/logic/cubits/get_students_by_id_cubit/get_students_by_id_cubit.dart';
 import '../networking/api_service.dart';
 import '../networking/dio_factory.dart';
@@ -84,4 +87,10 @@ final getIt = GetIt.instance;
   // get student by id
   getIt.registerLazySingleton<GetStudentByIdRepo>(() => GetStudentByIdRepo(getIt()));
   getIt.registerFactory<GetStudentByIdCubit>(() => GetStudentByIdCubit(getIt()));
+  // add year cubit
+  getIt.registerLazySingleton<AddYearRepo>(() => AddYearRepo(getIt()));
+  getIt.registerFactory<AddYearCubit>(() => AddYearCubit(getIt()));
+  // add exam cubit
+  getIt.registerLazySingleton<AddExamRepo>(() => AddExamRepo(getIt()));
+  getIt.registerFactory<AddExamCubit>(() => AddExamCubit(getIt()));
  }

@@ -103,6 +103,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "home_page": MessageLookupByLibrary.simpleMessage("Home Page"),
         "image_required":
             MessageLookupByLibrary.simpleMessage("Image Required"),
+        "index_of_grade":
+            MessageLookupByLibrary.simpleMessage("Index Of Grade"),
         "invalid_email_warning": MessageLookupByLibrary.simpleMessage(
             "Please enter a valid email address"),
         "landing_text1":
@@ -130,6 +132,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("please check your email"),
         "please_enter_grade":
             MessageLookupByLibrary.simpleMessage("Please Enter Grade"),
+        "please_inter_index":
+            MessageLookupByLibrary.simpleMessage("Please Inter Index"),
         "please_select_an_image": MessageLookupByLibrary.simpleMessage(
             "Please select an image to proceed."),
         "privacy_policy":
