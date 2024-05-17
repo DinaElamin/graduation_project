@@ -7,14 +7,15 @@ class AddYearRepo {
   AddYearRepo(this._apiService);
   Future<ApiResult> addYear(
     String token, {
-    required int Index,
-    required String YearName,
+        required String YearName,
+
+        required int Index,
     required List<String> FirstSemesterMaterial,
     required List<String> SecondSemesterMaterial,
   }) async {
     try {
       final response = await _apiService.addYear(
-          token, Index, YearName, FirstSemesterMaterial, SecondSemesterMaterial);
+          token, YearName,  Index,FirstSemesterMaterial, SecondSemesterMaterial);
       return ApiResult.success(response);
     } catch (error) {
       return ApiResult.failure(ErrorHandler.handle(error));

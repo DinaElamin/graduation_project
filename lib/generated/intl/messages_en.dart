@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "about_us": MessageLookupByLibrary.simpleMessage("About Us"),
         "add_exam": MessageLookupByLibrary.simpleMessage("Add Exam"),
         "add_grade": MessageLookupByLibrary.simpleMessage("Add Grade"),
+        "add_grade_name":
+            MessageLookupByLibrary.simpleMessage("Add Grade Name"),
         "add_student": MessageLookupByLibrary.simpleMessage("Add Student"),
         "add_student_successfully":
             MessageLookupByLibrary.simpleMessage("Add Student Successfully !"),
@@ -60,7 +62,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("I didn\'t receive a code !"),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "edit_student_successfully":
-            MessageLookupByLibrary.simpleMessage("edit Student Successfully !"),
+            MessageLookupByLibrary.simpleMessage("edit Grade Successfully !"),
+        "edit_teacher": MessageLookupByLibrary.simpleMessage("Edit Teacher"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "email_hint_text": MessageLookupByLibrary.simpleMessage(
             "Enter your email or phone number"),
@@ -96,7 +99,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "full_name": MessageLookupByLibrary.simpleMessage("Full Name"),
         "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
         "get_started": MessageLookupByLibrary.simpleMessage("Get Started"),
-        "grade": MessageLookupByLibrary.simpleMessage("Grade"),
+        "grade": MessageLookupByLibrary.simpleMessage("Grade Name"),
         "grade_details": MessageLookupByLibrary.simpleMessage("Grade Details"),
         "grades": MessageLookupByLibrary.simpleMessage("Grades"),
         "help": MessageLookupByLibrary.simpleMessage("Help"),

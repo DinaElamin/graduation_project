@@ -146,6 +146,36 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<dynamic> deleteGrade(
+    String token,
+    int yearId,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
+      method: 'DELETE',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'api/Year/deleteyear/${yearId}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+    final value = _result.data;
+    return value;
+  }
+
+  @override
   Future<dynamic> editStudentProfile(
     String token,
     String userId,
@@ -217,6 +247,7 @@ class _ApiService implements ApiService {
     String Email,
     String NationalNum,
     File Image,
+    String SubjectName,
     List<String> AssignClassId,
   ) async {
     final _extra = <String, dynamic>{};
@@ -242,6 +273,10 @@ class _ApiService implements ApiService {
         Image.path,
         filename: Image.path.split(Platform.pathSeparator).last,
       ),
+    ));
+    _data.fields.add(MapEntry(
+      'SubjectName',
+      SubjectName,
     ));
     AssignClassId.forEach((i) {
       _data.fields.add(MapEntry('AssignClassId', i));
@@ -270,8 +305,8 @@ class _ApiService implements ApiService {
   @override
   Future<dynamic> addYear(
     String token,
-    int Index,
     String YearName,
+    int Index,
     List<String> FirstSemesterMaterial,
     List<String> SecondSemesterMaterial,
   ) async {
@@ -281,12 +316,12 @@ class _ApiService implements ApiService {
     _headers.removeWhere((k, v) => v == null);
     final _data = FormData();
     _data.fields.add(MapEntry(
-      'Index',
-      Index.toString(),
-    ));
-    _data.fields.add(MapEntry(
       'YearName',
       YearName,
+    ));
+    _data.fields.add(MapEntry(
+      'Index',
+      Index.toString(),
     ));
     FirstSemesterMaterial.forEach((i) {
       _data.fields.add(MapEntry('FirstSemesterMaterial', i));
@@ -295,7 +330,7 @@ class _ApiService implements ApiService {
       _data.fields.add(MapEntry('SecondSemesterMaterial', i));
     });
     final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
-      method: 'PUT',
+      method: 'POST',
       headers: _headers,
       extra: _extra,
       contentType: 'multipart/form-data',

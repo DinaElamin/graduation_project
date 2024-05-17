@@ -140,6 +140,16 @@ class S {
     );
   }
 
+  /// `Add Grade Name`
+  String get add_grade_name {
+    return Intl.message(
+      'Add Grade Name',
+      name: 'add_grade_name',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Enter Your Name`
   String get name_hint_text {
     return Intl.message(
@@ -670,10 +680,10 @@ class S {
     );
   }
 
-  /// `Grade`
+  /// `Grade Name`
   String get grade {
     return Intl.message(
-      'Grade',
+      'Grade Name',
       name: 'grade',
       desc: '',
       args: [],
@@ -990,10 +1000,10 @@ class S {
     );
   }
 
-  /// `edit Student Successfully !`
+  /// `edit Grade Successfully !`
   String get edit_student_successfully {
     return Intl.message(
-      'edit Student Successfully !',
+      'edit Grade Successfully !',
       name: 'edit_student_successfully',
       desc: '',
       args: [],
@@ -1155,6 +1165,16 @@ class S {
     return Intl.message(
       'Please Inter Index',
       name: 'please_inter_index',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Teacher`
+  String get edit_teacher {
+    return Intl.message(
+      'Edit Teacher',
+      name: 'edit_teacher',
       desc: '',
       args: [],
     );

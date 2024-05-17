@@ -5,6 +5,10 @@ import 'package:ablexa/features/manager/feature_add_student_page/data/repos/get_
 import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/get_all_semester_cubit/get_all_year_cubit.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/data/repos/get_all_matrial_repo/get_all_matrial_repo.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
+import 'package:ablexa/features/manager/feature_edit_profile_teacher_page/data/repos/edit_teacher_profile_repo.dart';
+import 'package:ablexa/features/manager/feature_edit_profile_teacher_page/logic/cubits/edit_teacher_cubit/edit_teacher_cubit.dart';
+import 'package:ablexa/features/manager/feature_grades_page/data/repos/delete_grade_repo/delete_grade_repo.dart';
+import 'package:ablexa/features/manager/feature_grades_page/logic/cubits/delete_grade_cubit/delete_grade_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/data/repos/delete_user_repo/delete_user_repo.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
 import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/edit_student_cubit/edit_student_cubit.dart';
@@ -75,6 +79,9 @@ final getIt = GetIt.instance;
   // delete user
   getIt.registerLazySingleton<DeleteUserRepo>(() => DeleteUserRepo(getIt()));
   getIt.registerFactory<DeleteUserCubit>(() => DeleteUserCubit(getIt()));
+  // delete grade
+  getIt.registerLazySingleton<DeleteGradeRepo>(() => DeleteGradeRepo(getIt()));
+  getIt.registerFactory<DeleteGradeCubit>(() => DeleteGradeCubit(getIt()));
   // get all semester
   getIt.registerLazySingleton<GetAllYearRepo>(() => GetAllYearRepo(getIt()));
   getIt.registerFactory<GetAllYearDataCubit>(() => GetAllYearDataCubit(getIt()));
@@ -93,4 +100,7 @@ final getIt = GetIt.instance;
   // add exam cubit
   getIt.registerLazySingleton<AddExamRepo>(() => AddExamRepo(getIt()));
   getIt.registerFactory<AddExamCubit>(() => AddExamCubit(getIt()));
+  // edit teacher cubit
+  getIt.registerLazySingleton<EditTeacherRepo>(() => EditTeacherRepo(getIt()));
+  getIt.registerFactory<EditTeacherCubit>(() => EditTeacherCubit(getIt()));
  }

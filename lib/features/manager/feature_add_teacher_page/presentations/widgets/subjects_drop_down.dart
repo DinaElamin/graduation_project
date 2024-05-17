@@ -50,7 +50,7 @@ class _SubjectDropDownState extends State<SubjectsDropDown> {
             final List<GetAllMaterialModel> getAllMaterialModel = data;
             // Extract names from the model and update the dropdown items list
             List<OptionItem> dropListItems = getAllMaterialModel.map((model) {
-              return OptionItem(id: "1", title: model.subject_Name ?? '');
+              return OptionItem(id: model.id.toString(), title: model.subject_Name ?? '');
             }).toList();
 
             return Padding(

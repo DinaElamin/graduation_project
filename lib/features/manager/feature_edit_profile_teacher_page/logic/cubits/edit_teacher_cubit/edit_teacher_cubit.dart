@@ -5,9 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'edit_teacher_state.dart';
 
-class EditStudentCubit extends Cubit<EditTeacherState> {
+class EditTeacherCubit extends Cubit<EditTeacherState> {
   final EditTeacherRepo editTeacherRepo;
-  EditStudentCubit(this.editTeacherRepo) : super(const EditTeacherState.initial());
+  EditTeacherCubit(this.editTeacherRepo) : super(const EditTeacherState.initial());
   TextEditingController fullNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController nationalIdController = TextEditingController();
@@ -20,6 +20,7 @@ class EditStudentCubit extends Cubit<EditTeacherState> {
       required String NationalNum,
       required File Image,
       required List<String> AssignClassId,
+        required String SubjectName,
       }) async {
     emit(const EditTeacherState.loading());
     final response = await editTeacherRepo.editTeacherData(
@@ -29,7 +30,8 @@ class EditStudentCubit extends Cubit<EditTeacherState> {
         Email: Email,
         NationalNum: NationalNum,
         Image: Image,
-    AssignClassId: AssignClassId
+    AssignClassId: AssignClassId,
+      SubjectName:SubjectName
     );
 
     response.when(

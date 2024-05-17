@@ -25,6 +25,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "about_us": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
         "add_exam": MessageLookupByLibrary.simpleMessage("إضافة امتحان"),
         "add_grade": MessageLookupByLibrary.simpleMessage("اضافة صف"),
+        "add_grade_name":
+            MessageLookupByLibrary.simpleMessage("ادخل اسم المادة"),
         "add_student": MessageLookupByLibrary.simpleMessage("اضافة طالب"),
         "add_student_successfully":
             MessageLookupByLibrary.simpleMessage("تم اضافة الطالب بنجاح !"),
@@ -59,7 +61,9 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لم أتلقَ رمزًا!"),
         "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
         "edit_student_successfully":
-            MessageLookupByLibrary.simpleMessage("تم تعديل الطالب بنجاح !"),
+            MessageLookupByLibrary.simpleMessage("تم اضافة الامتحان بنجاح !"),
+        "edit_teacher":
+            MessageLookupByLibrary.simpleMessage("تعديل صفحة المدرس"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),
         "email_hint_text": MessageLookupByLibrary.simpleMessage(
             "أدخل بريدك الإلكتروني أو رقم هاتفك"),

@@ -1,4 +1,6 @@
 
+import 'package:ablexa/features/manager/feature_grades_page/logic/cubits/delete_grade_cubit/delete_grade_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/helper/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,13 +11,12 @@ import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 
 class GradeWidget extends StatelessWidget {
-  final String gradeName;
-  final VoidCallback deleteAction;
+  final String gradeName,token;
+  final int yearId;
 
   const GradeWidget({
     required this.gradeName,
-    required this.deleteAction,
-    Key? key,
+    Key? key, required this.token, required this.yearId,
   }) : super(key: key);
 
   @override
@@ -64,8 +65,8 @@ onTap: () {
             children: [
               TextButton(
                 onPressed: () {
+                  context.read<DeleteGradeCubit>().emitDeleteGradeStates(token: token, yearId: yearId);
                   Navigator.of(context).pop(true);
-                  deleteAction();
                 },
                 child: Container(
                   height: 30.h,
@@ -106,4 +107,5 @@ onTap: () {
       },
     );
   }
+
 }

@@ -1,7 +1,9 @@
 import 'package:ablexa/features/manager/feature_add_grade_page/logic/cubits/add_year_cubit/add_year_cubit.dart';
 import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/get_all_semester_cubit/get_all_year_cubit.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
+import 'package:ablexa/features/manager/feature_edit_profile_teacher_page/logic/cubits/edit_teacher_cubit/edit_teacher_cubit.dart';
 import 'package:ablexa/features/manager/feature_edit_profile_teacher_page/presentations/screens/edit_profile_teacher.dart';
+import 'package:ablexa/features/manager/feature_grades_page/logic/cubits/delete_grade_cubit/delete_grade_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
 import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/edit_student_cubit/edit_student_cubit.dart';
 import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/get_students_by_id_cubit/get_students_by_id_cubit.dart';
@@ -69,6 +71,7 @@ class AppRouter {
           builder: (context) => const ForgetPasswordPage(),
         );
       // VerifyCodePage
+
       case Routes.verifyCodePage:
         final String email = settings.arguments as String;
         return MaterialPageRoute(
@@ -152,7 +155,8 @@ class AppRouter {
             emailManager: emailManager,
             imageManager: imageManager,
             nameManager: nameManager,
-            nationalId: nationalNumber,),
+            nationalId: nationalNumber,
+          ),
         );
       // student edit profile
       case Routes.editStudentProfilePage:
@@ -200,9 +204,9 @@ class AppRouter {
         final String nameStudent = args['nameStudent'];
         final String emailStudent = args['emailStudent'];
         final String nationalIdStudent = args['nationalIdStudent'];
-        final int classId =args['classId'];
+        final int classId = args['classId'];
         return MaterialPageRoute(
-          builder: (context) =>  StudentProfilePage(
+          builder: (context) => StudentProfilePage(
             nationalIdStudent: nationalIdStudent,
             classId: classId,
             emailStudent: emailStudent,
@@ -259,10 +263,14 @@ class AppRouter {
       case Routes.addGradePage:
         final String token = settings.arguments as String;
         return MaterialPageRoute(
-          builder: (context) =>  MultiBlocProvider(
+          builder: (context) => MultiBlocProvider(
             providers: [
-              BlocProvider( create: (context) => getIt<AddYearCubit>(),),
-              BlocProvider( create: (context) => getIt<GetAllMaterialDataCubit>(),),
+              BlocProvider(
+                create: (context) => getIt<AddYearCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<GetAllMaterialDataCubit>(),
+              ),
             ],
             child: AddGradePage(
               token: token,
@@ -270,12 +278,22 @@ class AppRouter {
           ),
         );
       // grade page
-      case Routes.gradePage:
-        final Map<String, String> args =
-            settings.arguments as Map<String, String>;
-        final String gradeName = args['gradeText']!;
+      case Routes.gradesPage:
+        final args = settings.arguments as Map<String, dynamic>;
+        final String token = args['token'];
         return MaterialPageRoute(
-          builder: (context) => GradesPage(gradeName: gradeName),
+          builder: (context) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => getIt<GetAllYearDataCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt<DeleteGradeCubit>(),
+                ),
+              ],
+              child: GradesPage(
+                token: token,
+              )),
         );
       // grade Details page
       case Routes.gradeDetailsPage:
@@ -294,12 +312,11 @@ class AppRouter {
         final String TeacherId = args['TeacherId'];
 
         return MaterialPageRoute(
-          builder: (context) =>  MultiBlocProvider(
+          builder: (context) => MultiBlocProvider(
             providers: [
               BlocProvider(
                 create: (context) => getIt<GetAllClassesDataCubit>(),
               ),
-
             ],
             child: TeacherHome(
               TeacherId: TeacherId,
@@ -324,28 +341,33 @@ class AppRouter {
               ),
             ],
             child: StudentsPage(
-                 classId: classId,
-                className: className,
-               ),
+              classId: classId,
+              className: className,
+            ),
           ),
         );
-    // teacher profile page
+      // teacher profile page
       case Routes.editTeacherProfilePage:
         final args = settings.arguments as Map<String, dynamic>;
         final String token = args['token'];
-        final String imageTeacher = args['imageTeacher'];
-        final String nameTeacher = args['nameTeacher'];
-        final String emailTeacher = args['emailTeacher'];
-        final String nationalNumber = args['nationalNumber'];
         final String TeacherId = args['TeacherId'];
         return MaterialPageRoute(
-          builder: (context) =>  EditProfileTeacherPage(
-            teacherId: TeacherId,
-            token: token,
-            nationalNumber: nationalNumber,
-            nameTeacher: nameTeacher,
-            emailTeacher: emailTeacher,
-            imageTeacher: imageTeacher,
+          builder: (context) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => getIt<GetAllClassesDataCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<GetAllMaterialDataCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<EditTeacherCubit>(),
+              ),
+            ],
+            child: EditTeacherProfilePage(
+              token: token,
+              userId: TeacherId,
+            ),
           ),
         );
       // teacher profile page
@@ -358,7 +380,7 @@ class AppRouter {
         final String nationalNumber = args['nationalNumber'];
         final String TeacherId = args['TeacherId'];
         return MaterialPageRoute(
-          builder: (context) =>  ProfileTeacherPage(
+          builder: (context) => ProfileTeacherPage(
             teacherId: TeacherId,
             token: token,
             nationalNumber: nationalNumber,
@@ -375,7 +397,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => BlocProvider(
               create: (context) => getIt<AddExamCubit>(),
-              child:  AddExamPage(
+              child: AddExamPage(
                 TeacherId: teacherId,
                 token: token,
               )),
@@ -392,9 +414,9 @@ class AppRouter {
         final String nameStudent = args['nameStudent'];
         final String emailStudent = args['emailStudent'];
         final String nationalIdStudent = args['nationalIdStudent'];
-        final int classId =args['classId'];
+        final int classId = args['classId'];
         return MaterialPageRoute(
-          builder: (context) =>  StudentExamsPage(
+          builder: (context) => StudentExamsPage(
             classId: classId,
             nationalIdStudent: nationalIdStudent,
             imageStudent: imageStudent,

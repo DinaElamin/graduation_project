@@ -13,10 +13,11 @@ class EditTeacherRepo {
         required String Email,
         required String NationalNum,
         required File Image,
+        required String SubjectName,
         required List<String> AssignClassId}) async {
     try {
       final response = await _apiService.editTeacherProfile(
-          userId, token, Name, Email, NationalNum, Image, AssignClassId);
+          userId, token, Name, Email, NationalNum, Image,SubjectName, AssignClassId);
       return ApiResult.success(response);
     } catch (error) {
       return ApiResult.failure(ErrorHandler.handle(error));

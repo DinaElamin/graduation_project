@@ -8,6 +8,7 @@
  "full_name": "Full Name",
  "email": "Email",
  "password": "Password",
+ "add_grade_name": "Add Grade Name",
  "name_hint_text": "Enter Your Name",
  "email_hint_text": "Enter your email or phone number",
  "password_hint_text": "Enter your password",
@@ -61,7 +62,7 @@
  "enter_the_teacher_class": "enter the teacher's class",
  "class_code": "Class Code",
  "update_user_image": "Update User Image",
- "grade": "Grade",
+ "grade": "Grade Name",
  "subject": "Subject",
  "choose_the_subject": "Choose the Subject",
  "semester_two": "Semester Two",
@@ -94,6 +95,7 @@
  "find_a_student": "Find a student ...",
  "add_student_successfully": "Add Student Successfully !",
  "edit_student_successfully": "edit Student Successfully !",
+ "edit_student_successfully": "edit Grade Successfully !",
  "add_teacher_successfully": "Add Teacher Successfully !",
  "image_required": "Image Required",
  "please_select_an_image":"Please select an image to proceed.",
@@ -109,6 +111,7 @@
  "enter_national_id_warning": "Please enter your national ID",
  "home_page": "Home Page",
  "index_of_grade": "Index Of Grade",
- "please_inter_index": "Please Inter Index"
+ "please_inter_index": "Please Inter Index",
+ "edit_teacher": "Edit Teacher"
 
 }

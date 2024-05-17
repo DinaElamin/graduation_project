@@ -1,14 +1,13 @@
+import 'package:ablexa/features/manager/feature_add_teacher_page/data/models/get_all_materail_model/get_all-matrial_model.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
-import '../../../../../features/manager/feature_home_manager_page/data/models/get_all_classes_model/get_all_classes_model.dart';
 
 class SemesterOneWidget extends StatefulWidget {
   const SemesterOneWidget({Key? key, required this.onSubjectsSelected}) : super(key: key);
@@ -19,7 +18,7 @@ class SemesterOneWidget extends StatefulWidget {
 }
 
 class _SemesterOneWidgetState extends State<SemesterOneWidget> {
-  List<String> selectedClassIds = []; // Track selected class IDs
+  List<String> selectedSubjects = []; // Track selected subjects
 
   @override
   void initState() {
@@ -35,7 +34,7 @@ class _SemesterOneWidgetState extends State<SemesterOneWidget> {
         builder: (context, state) {
           return state.when(
             success: (data) {
-              List<GetAllClassesModel> getAllClassesModel = data;
+              List<GetAllMaterialModel> getAllMaterialModel = data;
               return Column(
                 children: [
                   IntrinsicWidth(
@@ -55,14 +54,14 @@ class _SemesterOneWidgetState extends State<SemesterOneWidget> {
                             ),
                           ],
                         ),
-                        items: getAllClassesModel.map((item) {
+                        items: getAllMaterialModel.map((item) {
                           return DropdownMenuItem<String>(
-                            value: item.classId.toString(),
+                            value: item.subject_Name.toString(), // Use subject name as value
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text(
-                                  item.className.toString(),
+                                  item.subject_Name.toString(),
                                   style: TextStyles.font16SemiBoldBlack.copyWith(
                                     color: ColorsManager.mainBlack,
                                   ),
@@ -71,11 +70,10 @@ class _SemesterOneWidgetState extends State<SemesterOneWidget> {
                                 Container(
                                   width: 25.w,
                                   height: 25.h,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: selectedClassIds.contains(item.classId)
-                                        ? ColorsManager.greenColor
-                                        : Colors.transparent, // Change color based on selection
+                                    color:  ColorsManager.greenColor
+
                                   ),
                                   child: Center(
                                     child: Icon(
@@ -91,15 +89,16 @@ class _SemesterOneWidgetState extends State<SemesterOneWidget> {
                         }).toList(),
                         onChanged: (String? value) {
                           setState(() {
-                            String selectedValue = value!;
-
-                            // Toggle selection
-                            if (selectedClassIds.contains(selectedValue)) {
-                              selectedClassIds.remove(selectedValue);
-                            } else {
-                              selectedClassIds.add(selectedValue);
+                            if (value != null) {
+                              // Toggle selection using subject name
+                              if (selectedSubjects.contains(value)) {
+                                selectedSubjects.remove(value); // Remove if already selected
+                              } else {
+                                selectedSubjects.add(value); // Add if not selected
+                              }
+                              // Pass the updated list of selected subjects back to the parent widget
+                              widget.onSubjectsSelected(selectedSubjects);
                             }
-                            widget.onSubjectsSelected(selectedClassIds);
                           });
                         },
                         buttonStyleData: ButtonStyleData(

@@ -12,25 +12,25 @@ class AddYearCubit extends Cubit<AddYearState> {
 
   void emitAddYearStates(
     String token, {
-    required int Index,
     required String YearName,
+    required int Index,
     required List<String> FirstSemesterMaterial,
     required List<String> SecondSemesterMaterial,
   }) async {
     emit(const AddYearState.loading());
     final response = await addYearRepo.addYear(token,
+        YearName: YearName,
         Index: Index,
         FirstSemesterMaterial: FirstSemesterMaterial,
         SecondSemesterMaterial: SecondSemesterMaterial,
-        YearName: YearName);
+       );
 
     response.when(
       success: (addYearData) {
         emit(AddYearState.success(addYearData));
       },
       failure: (error) {
-        emit(AddYearState.error(
-            error: error.apiErrorModel.errorMessage ?? ''));
+        emit(AddYearState.error(error: error.apiErrorModel.errorMessage ?? ''));
       },
     );
   }

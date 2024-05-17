@@ -54,6 +54,12 @@ abstract class ApiService {
       @Header("Authorization") String token,
       @Path("userId") String userId,
       );
+  // delete grade
+  @DELETE("${ApiConstant.deleteGrade}/{yearId}")
+  Future deleteGrade(
+      @Header("Authorization") String token,
+      @Path("yearId") int yearId,
+      );
 // edit profile student
   @PUT("${ApiConstant.editStudentProfile}/{userId}")
   @MultiPart()
@@ -77,15 +83,16 @@ abstract class ApiService {
       @Part(name: "Email") String Email,
       @Part(name: "NationalNum") String NationalNum,
       @Part(name: "Image") File Image,
+      @Part(name: "SubjectName") String SubjectName,
       @Part(name: "AssignClassId") List<String> AssignClassId,
       );
   // add year
-  @PUT(ApiConstant.addYear)
+  @POST(ApiConstant.addYear)
   @MultiPart()
   Future addYear(
       @Header("Authorization") String token,
-      @Part(name: "Index") int Index,
       @Part(name: "YearName") String YearName,
+      @Part(name: "Index") int Index,
       @Part(name: "FirstSemesterMaterial") List<String> FirstSemesterMaterial,
       @Part(name: "SecondSemesterMaterial") List<String> SecondSemesterMaterial,
       );
