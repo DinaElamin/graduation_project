@@ -1,6 +1,8 @@
+import 'package:ablexa/core/di/dependacy_injection.dart';
 import 'package:ablexa/features/manager/feature_add_student_page/data/models/get_all_semester_model/get_all_year_model.dart';
 import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/get_all_semester_cubit/get_all_year_cubit.dart';
 import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/get_all_semester_cubit/get_all_year_state.dart';
+import 'package:ablexa/features/manager/feature_grades_page/logic/cubits/delete_grade_cubit/delete_grade_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/helper/extentions.dart';
@@ -20,15 +22,19 @@ class GradesPage extends StatefulWidget {
 
 class _GradesPageState extends State<GradesPage> {
   @override
+  void initState() {
+    super.initState();
+    // Trigger the cubit's method when the widget is initialized
+    context.read<GetAllYearDataCubit>().emitAllYearStates();
+  }
+  @override
   Widget build(BuildContext context) {
-    setState(() {
-      context.read<GetAllYearDataCubit>().emitAllYearStates();
-    });
+
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         backgroundColor: ColorsManager.mainColor,
         onPressed: () {
-          context.pushNamed(Routes.addGradePage,arguments: widget.token);
+          context.pushNamed(Routes.addGradePage, arguments: widget.token);
         },
         child: const Icon(Icons.add, color: ColorsManager.mainWhite),
       ),

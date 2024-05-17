@@ -119,9 +119,7 @@ class _StudentCardState extends State<StudentCard> {
                       ),
                       PopupMenuItem(
                         onTap: () {
-                          context
-                              .read<DeleteUserCubit>()
-                              .emitDeleteUserStates(token: widget.token, userId: widget.id);
+                          _showDeleteConfirmationDialog(context);
                         },
                         value: 'delete',
                         child: Padding(
@@ -165,6 +163,69 @@ class _StudentCardState extends State<StudentCard> {
               ),
             );
           },
+        );
+      },
+    );
+  }
+  Future<void> _showDeleteConfirmationDialog(BuildContext context) async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape:
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          title: Text(
+            S.of(context).delete_garde,
+            textAlign: TextAlign.center,
+          ),
+          content: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextButton(
+                onPressed: () {
+                  context.read<DeleteUserCubit>()
+                      .emitDeleteUserStates(token: widget.token, userId: widget.id);
+                  Navigator.of(context).pop(true);
+                },
+                child: Container(
+                  height: 30.h,
+                  width: 60.w,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                        color: ColorsManager.mainBlack.withOpacity(0.3)),
+                  ),
+                  child: Center(
+                    child: Text(
+                      S.of(context).delete,
+                      style: TextStyles.font12RegularPurple
+                          .copyWith(color: Colors.red),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(width: 10.w), // Add spacing between buttons
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: Container(
+                  height: 30.h,
+                  width: 60.w,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                        color: ColorsManager.mainBlack.withOpacity(0.3)),
+                  ),
+                  child: Center(
+                    child: Text(
+                      S.of(context).cancel,
+                      style: TextStyles.font12RegularPurple
+                          .copyWith(color: ColorsManager.mainBlack),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         );
       },
     );

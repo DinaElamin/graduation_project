@@ -13,7 +13,7 @@ class Routes {
   static const addStudentPage = "/addStudentPage";
   static const addTeacherPage = "/addTeacherPage";
   static const addGradePage = "/addGradePage";
-  static const gradePage= "/gradePage";
+  static const gradesPage= "/gradesPage";
   static const gradeDetailsPage = "/gradeDetailsPage";
   static const teacherHomePage =  "/teacherHomePage";
   static const studentsPage = "/studentsPage";
@@ -28,5 +28,5 @@ class Routes {
   static const getAllStudentByClassIdPage = "/getAllStudentByClassIdPage";
   static const editStudentProfilePage ="/studentEditProfile";
   static const editTeacherProfilePage ="/editTeacherProfilePage";
-  static const gradesPage = "/gradesPage";
+
 }
