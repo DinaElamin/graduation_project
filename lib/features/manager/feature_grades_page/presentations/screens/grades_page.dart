@@ -62,10 +62,13 @@ class _GradesPageState extends State<GradesPage> {
             final List<GetAllYearModel> getAllYearModel = data;
             return ListView.builder(
               itemCount: getAllYearModel.length,
-              itemBuilder: (context, index) => GradeWidget(
-                token: widget.token,
-                yearId: getAllYearModel[index].id!,
-                gradeName: getAllYearModel[index].name.toString(),
+              itemBuilder: (context, index) => BlocProvider(
+                create: (context) => getIt<DeleteGradeCubit>(),
+                child: GradeWidget(
+                  token: widget.token,
+                  yearId: getAllYearModel[index].id!,
+                  gradeName: getAllYearModel[index].name.toString(),
+                ),
               ),
             );
           }, error: (error) {

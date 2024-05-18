@@ -271,6 +271,9 @@ class AppRouter {
               BlocProvider(
                 create: (context) => getIt<GetAllMaterialDataCubit>(),
               ),
+              BlocProvider(
+                create: (context) => getIt<DeleteGradeCubit>(),
+              ),
             ],
             child: AddGradePage(
               token: token,
@@ -287,9 +290,7 @@ class AppRouter {
                 BlocProvider(
                   create: (context) => getIt<GetAllYearDataCubit>(),
                 ),
-                BlocProvider(
-                  create: (context) => getIt<DeleteGradeCubit>(),
-                ),
+
               ],
               child: GradesPage(
                 token: token,

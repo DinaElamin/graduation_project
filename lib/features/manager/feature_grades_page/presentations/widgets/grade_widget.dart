@@ -1,3 +1,4 @@
+import 'package:ablexa/core/di/dependacy_injection.dart';
 import 'package:ablexa/features/manager/feature_grades_page/logic/cubits/delete_grade_cubit/delete_grade_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/helper/extentions.dart';
@@ -39,7 +40,9 @@ class GradeWidget extends StatelessWidget {
             trailing: IconButton(
               icon: const Icon(Icons.delete, color: ColorsManager.mainWhite),
               onPressed: () {
-                _showDeleteConfirmationDialog(context);
+                context
+                    .read<DeleteGradeCubit>()
+                    .emitDeleteGradeStates(token: token, yearId: yearId);
               },
             ),
           ),
@@ -53,8 +56,7 @@ class GradeWidget extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           title: Text(
             S.of(context).delete_garde,
             textAlign: TextAlign.center,
@@ -64,9 +66,8 @@ class GradeWidget extends StatelessWidget {
             children: [
               TextButton(
                 onPressed: () {
-                  context
-                      .read<DeleteGradeCubit>()
-                      .emitDeleteGradeStates(token: token, yearId: yearId);
+                  // Use context.read to access the DeleteGradeCubit instance
+                  context.read<DeleteGradeCubit>().emitDeleteGradeStates(token: token, yearId: yearId);
                   Navigator.of(context).pop(true);
                 },
                 child: Container(
@@ -80,8 +81,7 @@ class GradeWidget extends StatelessWidget {
                   child: Center(
                     child: Text(
                       S.of(context).delete,
-                      style: TextStyles.font12RegularPurple
-                          .copyWith(color: Colors.red),
+                      style: TextStyles.font12RegularPurple.copyWith(color: Colors.red),
                     ),
                   ),
                 ),
@@ -100,8 +100,7 @@ class GradeWidget extends StatelessWidget {
                   child: Center(
                     child: Text(
                       S.of(context).cancel,
-                      style: TextStyles.font12RegularPurple
-                          .copyWith(color: ColorsManager.mainBlack),
+                      style: TextStyles.font12RegularPurple.copyWith(color: ColorsManager.mainBlack),
                     ),
                   ),
                 ),
@@ -112,4 +111,5 @@ class GradeWidget extends StatelessWidget {
       },
     );
   }
+
 }
