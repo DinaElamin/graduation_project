@@ -24,6 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "about_us": MessageLookupByLibrary.simpleMessage("معلومات عنا"),
         "add_exam": MessageLookupByLibrary.simpleMessage("إضافة امتحان"),
+        "add_exam_successfully":
+            MessageLookupByLibrary.simpleMessage("تم اضافة امتحان بنجاح !"),
         "add_grade": MessageLookupByLibrary.simpleMessage("اضافة صف"),
         "add_grade_name":
             MessageLookupByLibrary.simpleMessage("ادخل اسم المادة"),
@@ -61,7 +63,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لم أتلقَ رمزًا!"),
         "edit": MessageLookupByLibrary.simpleMessage("تعديل"),
         "edit_student_successfully":
-            MessageLookupByLibrary.simpleMessage("تم اضافة الامتحان بنجاح !"),
+            MessageLookupByLibrary.simpleMessage("تم تعديل الطالب بنجاح !"),
         "edit_teacher":
             MessageLookupByLibrary.simpleMessage("تعديل صفحة المدرس"),
         "email": MessageLookupByLibrary.simpleMessage("البريد الإلكتروني"),

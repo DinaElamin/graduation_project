@@ -1000,11 +1000,21 @@ class S {
     );
   }
 
-  /// `edit Grade Successfully !`
+  /// `edit Student Successfully !`
   String get edit_student_successfully {
     return Intl.message(
-      'edit Grade Successfully !',
+      'edit Student Successfully !',
       name: 'edit_student_successfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `edit Grade Successfully !`
+  String get edit_grade_successfully {
+    return Intl.message(
+      'edit Grade Successfully !',
+      name: 'edit_grade_successfully',
       desc: '',
       args: [],
     );
@@ -1015,6 +1025,16 @@ class S {
     return Intl.message(
       'Add Teacher Successfully !',
       name: 'add_teacher_successfully',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Exam Successfully !`
+  String get add_exam_successfully {
+    return Intl.message(
+      'Add Exam Successfully !',
+      name: 'add_exam_successfully',
       desc: '',
       args: [],
     );

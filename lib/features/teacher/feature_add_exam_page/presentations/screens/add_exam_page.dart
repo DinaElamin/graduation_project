@@ -1,7 +1,7 @@
 import 'package:ablexa/features/teacher/feature_add_exam_page/logic/cubits/add_exam_cubit/add_exam_cubit.dart';
+import 'package:ablexa/features/teacher/feature_add_exam_page/presentations/widgets/add_exam_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/shared_widgets/appBar_widget.dart';
-import '../../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../generated/l10n.dart';
 import '../../../../manager/feature_add_teacher_page/presentations/widgets/add_teacher_contant.dart';
@@ -44,10 +44,12 @@ class _AddExamPageState extends State<AddExamPage> {
                   verticalSpacing(20),
                   Padding(
                     padding:  EdgeInsets.only(left: 50.w,right: 50.w),
-                    child: AppTextButton(textButton: S.of(context).add_exam, onPressed: (){
-                      validateThenDoAddExam(context);
-
-                    }),
+                    child:   AddExamButton(
+                      token: widget.token,
+                      onPressedFunction: () {
+                        validateThenDoAddExam(context);
+                      },
+                    ),
                   )
 
                 ],

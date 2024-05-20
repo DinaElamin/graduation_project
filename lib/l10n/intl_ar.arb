@@ -111,5 +111,6 @@
   "index_of_grade": "رقم السنة",
   "please_inter_index": "من فضلك ادخل الرقم",
   "edit_teacher": "تعديل صفحة المدرس",
-  "edit_student_successfully": "تم اضافة الامتحان بنجاح !"
+  "edit_exam_successfully": "تم تعديل الامتحان بنجاح !",
+  "add_exam_successfully": "تم اضافة امتحان بنجاح !"
 }
