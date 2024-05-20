@@ -98,7 +98,6 @@ class _AddStudentContantPageState extends State<AddStudentContantPage> {
                   showSuccessDialog(
                     onPressed: (){
                       context.pop();
-                      context.pushNamed(Routes.homeManagerPage,arguments: widget.token);
                     },
                       context,
                       text: S.of(context).add_student,

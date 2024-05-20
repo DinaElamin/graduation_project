@@ -53,6 +53,7 @@ class _SubjectDropDownState extends State<SubjectsDropDown> {
               return OptionItem(id: model.id.toString(), title: model.subject_Name ?? '');
             }).toList();
 
+
             return Padding(
               padding: const EdgeInsets.only(top: 20),
               child: Column(
@@ -78,12 +79,12 @@ class _SubjectDropDownState extends State<SubjectsDropDown> {
                     ),
                     hintColorTitle: ColorsManager.mainWhite,
                     onOptionSelected: (optionItem) {
-                      optionItemSelected = optionItem;
                       setState(() {
                         optionItemSelected = optionItem;
-                        widget.onSubjectSelected(optionItem.id.toString()); // Pass the selected ID to the callback function
+                        widget.onSubjectSelected(optionItem.title); // Pass the selected subjectName to the callback function
                       });
                     },
+
                   )
                 ],
               ),
