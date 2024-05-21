@@ -23,6 +23,8 @@ import '../../features/feature_verify_code_page/logic/cubits/verify_code_cubit/v
 import '../../features/manager/feature_add_student_page/logic/cubits/add_student_cubit/add_student_cubit.dart';
 import '../../features/manager/feature_add_teacher_page/data/repos/add_teacher_repo/add_teacher_repo.dart';
 import '../../features/manager/feature_add_teacher_page/logic/cubits/add_teacher_cubit/add_teacher_cubit.dart';
+import '../../features/manager/feature_garde_details_page/data/repos/add_class_repo/add_class_repo.dart';
+import '../../features/manager/feature_garde_details_page/logic/cubits/add_class_cubit/add_class_cubit.dart';
 import '../../features/manager/feature_get_all_student_by_id_page/data/repos/get_all_student_by_class_id_repo/get_all_student_by_class_id_repo.dart';
 import '../../features/manager/feature_get_all_student_by_id_page/logic/get_all_students_by_class_id_cubit/get_all_students_by_class_id_cubit.dart';
 import '../../features/manager/feature_home_manager_page/data/repos/get_all_classes_repo/get_all_classes_repo.dart';
@@ -103,4 +105,8 @@ final getIt = GetIt.instance;
   // edit teacher cubit
   getIt.registerLazySingleton<EditTeacherRepo>(() => EditTeacherRepo(getIt()));
   getIt.registerFactory<EditTeacherCubit>(() => EditTeacherCubit(getIt()));
+  // add class cubit
+  getIt.registerLazySingleton<AddClassRepo>(() => AddClassRepo(getIt()));
+  getIt.registerFactory<AddClassCubit>(() => AddClassCubit(getIt()));
+
  }

@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../generated/l10n.dart';
-import 'apperence_widget.dart';
 import 'attendence_widget.dart';
 import 'behaviors_widget.dart';
 import 'exam_widget.dart';
@@ -19,7 +18,7 @@ class StudentInformationsWidget extends StatelessWidget {
       children: [
         DefaultTabController(
           initialIndex: 1  ,
-          length: 4, // Match the number of tabs
+          length: 3, // Match the number of tabs
           child: Column(
             children: <Widget>[
               ButtonsTabBar(
@@ -44,7 +43,6 @@ class StudentInformationsWidget extends StatelessWidget {
                 tabs: [
                   Tab(text: S.of(context).attendence),
                   Tab(text: S.of(context).exams),
-                  Tab(text: S.of(context).appearance),
                   Tab(text: S.of(context).behaviors),
                 ],
               ),
@@ -55,7 +53,6 @@ class StudentInformationsWidget extends StatelessWidget {
                     // Add your TabBarView children here
                     AttendenceWidget(),
                     ExamWidget(),
-                    AppearanceWidget(),
                     BehaviorsWidget(), // Adjust as needed
                   ],
                 ),

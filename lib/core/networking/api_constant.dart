@@ -20,6 +20,8 @@ class ApiConstant {
  static const String addExam = "api/Exam/addexams";
  static const String deleteGrade = "api/Year/deleteyear";
  static const String editTeacherProfile ="api/User/editTeacher";
+ static const String addClass = "api/PClass";
+ static const String addMaterialGrade ="api/Material/addMaterialGrade";
 }
 
 class ApiErrors {

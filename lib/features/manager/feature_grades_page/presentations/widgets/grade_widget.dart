@@ -28,7 +28,11 @@ class GradeWidget extends StatelessWidget {
           EdgeInsets.only(left: 20.w, right: 20.w, top: 10.h, bottom: 10.h),
       child: GestureDetector(
         onTap: () {
-          context.pushNamed(Routes.gradeDetailsPage, arguments: gradeName);
+          context.pushNamed(Routes.gradeDetailsPage, arguments: {
+            'token':token,
+            'materialid':yearId,
+            'gradeName':gradeName
+          });
         },
         child: Container(
           height: 70.h,

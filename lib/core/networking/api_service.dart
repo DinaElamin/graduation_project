@@ -105,6 +105,27 @@ abstract class ApiService {
     @Path("email") String email,
     @Body() ChangePasswordRequestModel changePasswordRequestModel,
   );
+
+
+  // add material grade
+  @POST("${ApiConstant.addMaterialGrade}/{materialid}")
+  @Headers(<String, dynamic>{
+    'Content-Type': 'application/json',
+  })
+  Future addMaterialGrade(
+      @Header("Authorization") String token,
+      @Path("materialid") int materialid,
+      @Part(name: "M_grade") int M_grade,
+      );
+  // add class
+  @POST(ApiConstant.addClass)
+  @Headers(<String, dynamic>{
+    'Content-Type': 'application/json',
+  })
+  Future addClass(
+      @Header("Authorization") String token,
+      @Part(name: "name") String name,
+      );
   // add Teacher
   @POST(ApiConstant.addTeacher)
   @MultiPart()

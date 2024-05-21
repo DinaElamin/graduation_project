@@ -14,6 +14,7 @@ import '../../features/feature_login_page/logic/cubits/login_cubit/login_cubit/l
 import '../../features/feature_verify_code_page/logic/cubits/verify_code_cubit/verify_code_cubit.dart';
 import '../../features/feature_verify_code_page/logic/cubits/verify_pin_code_cubit/verify_pin_code_cubit.dart';
 import '../../features/manager/feature_add_student_page/logic/cubits/add_student_cubit/add_student_cubit.dart';
+import '../../features/manager/feature_garde_details_page/logic/cubits/add_class_cubit/add_class_cubit.dart';
 import '../../features/manager/feature_get_all_student_by_id_page/logic/get_all_students_by_class_id_cubit/get_all_students_by_class_id_cubit.dart';
 import '../../features/manager/feature_get_all_student_by_id_page/presentation/screens/get_all_student_by_id.dart';
 import '../../features/manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_cubit.dart';
@@ -290,7 +291,6 @@ class AppRouter {
                 BlocProvider(
                   create: (context) => getIt<GetAllYearDataCubit>(),
                 ),
-
               ],
               child: GradesPage(
                 token: token,
@@ -298,9 +298,28 @@ class AppRouter {
         );
       // grade Details page
       case Routes.gradeDetailsPage:
-        final String gradeName = settings.arguments as String;
+        final args = settings.arguments as Map<String, dynamic>;
+        final String token = args['token'];
+        final String gradeName = args['gradeName'];
+        final int materialid = args['materialid'];
+
         return MaterialPageRoute(
-          builder: (context) => GradeDetailsPage(gradeName: gradeName),
+          builder: (context) => MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) => getIt<GetAllMaterialDataCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt<AddClassCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt<DeleteGradeCubit>(),
+                ),
+              ],
+              child: GradeDetailsPage(
+                  token: token,
+                  materialid: materialid,
+                  gradeName: gradeName)),
         );
       // teacher home
       case Routes.teacherHomePage:
