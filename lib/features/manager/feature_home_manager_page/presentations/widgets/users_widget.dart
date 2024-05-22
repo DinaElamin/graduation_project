@@ -1,3 +1,4 @@
+import 'grades_list_view.dart';
 import 'students_list_view.dart';
 import 'teachers_list_view.dart';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
@@ -29,7 +30,7 @@ final String token;
         verticalSpacing(20),
         DefaultTabController(
           animationDuration: const Duration(milliseconds: 30),
-          length: 3,
+          length: 4,
           child: Column(
             children: <Widget>[
               ButtonsTabBar(
@@ -55,6 +56,7 @@ final String token;
                   Tab(text: S.of(context).teachers),
                   Tab(text: S.of(context).students),
                   Tab(text: S.of(context).classes),
+                  Tab(text: S.of(context).grades,),
                 ],
               ),
               SizedBox(
@@ -65,6 +67,7 @@ final String token;
                     TeachersListView(token: token),
                     StudentsListView(token: token),
                     const ClassCardListView(),
+                    GradesListView(token: token),
                   ],
                 ),
               ),

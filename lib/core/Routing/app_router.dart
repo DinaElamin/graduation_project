@@ -134,6 +134,9 @@ class AppRouter {
                 BlocProvider(
                   create: (context) => getIt<GetStudentByIdCubit>(),
                 ),
+                BlocProvider(
+                  create: (context) => getIt<GetAllYearDataCubit>(),
+                ),
               ],
               child: HomeManagerPage(
                 token: token,

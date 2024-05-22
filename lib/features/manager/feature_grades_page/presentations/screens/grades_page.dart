@@ -44,7 +44,8 @@ class _GradesPageState extends State<GradesPage> {
         backgroundColor: ColorsManager.mainWhite,
         foregroundColor: ColorsManager.mainBlack,
       ),
-      body: BlocBuilder<GetAllYearDataCubit, GetAllYearDataState>(
+      body:
+      BlocBuilder<GetAllYearDataCubit, GetAllYearDataState>(
         builder: (context, state) {
           return state.when(initial: () {
             return const Center(
