@@ -6,9 +6,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/shared_widgets/appBar_widget.dart';
+import '../../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../../core/shared_widgets/setup_error.dart';
 import '../../../../../core/shared_widgets/success_widget.dart';
 import '../../../../../core/theming/styles.dart';
+import '../../../../../generated/l10n.dart';
 import '../../../feature_garde_details_page/logic/cubits/add_material_degree_cubit/add_material_degree_cubit.dart';
 
 class AddDegreeFromMaterial extends StatefulWidget {
@@ -131,7 +133,6 @@ class _AddDegreeFromMaterialState extends State<AddDegreeFromMaterial> {
       builder: (BuildContext dialogContext) {
         final addMaterialGradeCubit =
         context.read<AddMaterialGradeCubit>();
-
         return AlertDialog(
           title: Text(
             'Enter Degree From ${widget.gradeName}',
@@ -145,44 +146,31 @@ class _AddDegreeFromMaterialState extends State<AddDegreeFromMaterial> {
             },
           ),
           actions: <Widget>[
-            TextButton(
-              child: Text('Cancel'),
-              onPressed: () {
-                Navigator.of(dialogContext).pop();
-              },
-            ),
-            TextButton(
-              child: Text('Save'),
-              onPressed: () {
-                addMaterialGradeCubit.emitAddMaterialDegreeStates(
-                  widget.token,
-                  materialid: widget.materialid,
-                  M_grade: int.parse(enteredDegree),
-                );
-                Navigator.of(dialogContext).pop();
-              },
-            ),
+            AppTextButton(
+                buttonHeight: 25.r,
+                buttonWidth: 60.r,
+                textButton: "Save", onPressed: (){
+              addMaterialGradeCubit.emitAddMaterialDegreeStates(
+                widget.token,
+                materialid: widget.materialid,
+                M_grade: int.parse(enteredDegree),
+              );
+              Navigator.of(dialogContext).pop();
+            }),
+            verticalSpacing(10),
+            AppTextButton(
+                buttonHeight: 25.r,
+                buttonWidth: 60.r,
+                textButton: S.of(context).cancel, onPressed: (){
+              Navigator.of(dialogContext).pop();
+            }),
+
           ],
+       
         );
       },
     );
   }
 
-  // void _showSuccessDialog(BuildContext context) {
-  //   showDialog(
-  //     context: context,
-  //     builder: (context) => AlertDialog(
-  //       title: Text('Success'),
-  //       content: Text('Degree added successfully!'),
-  //       actions: [
-  //         TextButton(
-  //           onPressed: () {
-  //             Navigator.of(context).pop();
-  //           },
-  //           child: Text('OK'),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
+
 }

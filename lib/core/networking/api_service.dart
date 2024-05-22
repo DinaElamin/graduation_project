@@ -124,7 +124,7 @@ abstract class ApiService {
   })
   Future addClass(
       @Header("Authorization") String token,
-      @Part(name: "name") String name,
+      @Field() String name,
       );
   // add Teacher
   @POST(ApiConstant.addTeacher)
@@ -140,9 +140,7 @@ abstract class ApiService {
       );
   // add exam
   @POST(ApiConstant.addExam)
-  @Headers(<String, dynamic>{
-    'Content-Type': 'application/json',
-  })
+  @MultiPart()
   Future addExam(
       @Header("Authorization") String token,
       @Query("TeacherId") String TeacherId,

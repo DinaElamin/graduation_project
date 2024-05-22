@@ -1,10 +1,13 @@
 import 'package:ablexa/core/helper/extentions.dart';
+import 'package:ablexa/core/shared_widgets/app_elevated_button.dart';
 import 'package:ablexa/core/shared_widgets/app_text_feild.dart';
 import 'package:ablexa/features/manager/feature_garde_details_page/logic/cubits/add_class_cubit/add_class_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/shared_widgets/appBar_widget.dart';
+import '../../../../../core/shared_widgets/setup_error.dart';
+import '../../../../../core/shared_widgets/success_widget.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
@@ -29,8 +32,6 @@ class GradeDetailsPage extends StatefulWidget {
 }
 
 class _GradeDetailsPageState extends State<GradeDetailsPage> {
-  bool _isAddingClass =
-      false; // Track whether the user is adding a class or not
   String _className = ''; // Store the entered class name
 
   @override
@@ -38,34 +39,68 @@ class _GradeDetailsPageState extends State<GradeDetailsPage> {
     return Scaffold(
       body: ListView(
         children: [
-          AppBarWidget(
-            pageName: S.of(context).grade_details,
-            widget:  Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: 20.w,
-                  height: 20.h,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: ColorsManager.mainColor,
-                  ),
-                  child: const Center(
-                    child: Icon(
-                      Icons.add,
-                      size: 10,
-                      color: ColorsManager.mainWhite,
+          BlocListener<AddClassCubit, AddClassState>(
+            child:   AppBarWidget(
+              pageName: S.of(context).grade_details,
+              widget: GestureDetector(
+                onTap: () {
+                  _showAddClassDialog(context);
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 20.w,
+                      height: 20.h,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: ColorsManager.mainColor,
+                      ),
+                      child: const Center(
+                        child: Icon(
+                          Icons.add,
+                          size: 10,
+                          color: ColorsManager.mainWhite,
+                        ),
+                      ),
                     ),
-                  ),
+                    horizontalSpacing(10),
+                    Text(
+                      "Add Class",
+                      style: TextStyles.font20BoldBlack,
+                    ),
+                  ],
                 ),
-                horizontalSpacing(10),
-                Text(
-                  "Add Class",
-                  style: TextStyles.font20BoldBlack,
-                ),
-              ],
+              ),
             ),
+            listener: (context, state) {
+              state.whenOrNull(
+                loading: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) => const Center(
+                      child: CircularProgressIndicator(
+                        color: ColorsManager.mainColor,
+                      ),
+                    ),
+                  );
+                },
+                success: (data) {
+                  Navigator.of(context).pop(); // Close the loading dialog
+                  showSuccessDialog(context,
+                      text: "Success",
+                      contentText: "The Class Added Success !",
+                      onPressed: (){
+                        context.pop();
+                      }
+                  ); // Show the success dialog
+                },
+                error: (error) {
+                  setupErrorState(context, error); // Show the error dialog
+                },
+              );
+            },
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -78,102 +113,20 @@ class _GradeDetailsPageState extends State<GradeDetailsPage> {
                   widget.gradeName,
                   style: TextStyles.font20BoldBlack,
                 ),
-
                 verticalSpacing(10),
-                 SemesterOneWidgetGradeDetails(
+                SemesterOneWidgetGradeDetails(
                   token: widget.token,
                   semesterName: "Semester One",
                   gradeName: widget.gradeName,
                   yearId: widget.materialid,
                 ),
                 verticalSpacing(50),
-                 SemesterTwoWidgetGradeDetails(
-                   token: widget.token,
-                   semesterName: "Semester Two",
-                   gradeName: widget.gradeName,
-                   yearId: widget.materialid,
+                SemesterTwoWidgetGradeDetails(
+                  token: widget.token,
+                  semesterName: "Semester Two",
+                  gradeName: widget.gradeName,
+                  yearId: widget.materialid,
                 ),
-                verticalSpacing(50),
-                _isAddingClass
-                    ? Padding(
-                        padding: EdgeInsets.only(bottom: 20.h),
-                        child: AppTextFormField(
-                          textInputType: TextInputType.text,
-                          hintText: 'Enter class name',
-                          validator: (p0) {},
-                          onChange: (value) {
-                            _className = value; // Store the entered class name
-                          },
-                        ),
-                      )
-                    : GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            _isAddingClass = true;
-                          });
-                        },
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Container(
-                              width: 20.w,
-                              height: 20.h,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: ColorsManager.mainColor,
-                              ),
-                              child: const Center(
-                                child: Icon(
-                                  Icons.add,
-                                  size: 10,
-                                  color: ColorsManager.mainWhite,
-                                ),
-                              ),
-                            ),
-                            horizontalSpacing(10),
-                            Text(
-                              "Add Class",
-                              style: TextStyles.font20BoldBlack,
-                            ),
-                          ],
-                        ),
-                      ),
-                if (_isAddingClass)
-                  BlocListener<AddClassCubit, AddClassState>(
-                    listener: (context, state) {
-                      state.whenOrNull(
-                        loading: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) => const Center(
-                              child: CircularProgressIndicator(
-                                color: ColorsManager.mainColor,
-                              ),
-                            ),
-                          );
-                        },
-                        success: (data) {
-                          Navigator.of(context).pop();
-                        },
-                        error: (error) {
-                          setupErrorState(context, error);
-                        },
-                      );
-                    },
-                    child: ElevatedButton(
-                      onPressed: () {
-                        // Pass the entered class name to the AddClassCubit
-                        context
-                            .read<AddClassCubit>()
-                            .emitAddClassStates(widget.token, name: _className);
-                        setState(() {
-                          _isAddingClass = false;
-                        });
-                      },
-                      child: Text('Save Class'),
-                    ),
-                  )
               ],
             ),
           )
@@ -182,31 +135,52 @@ class _GradeDetailsPageState extends State<GradeDetailsPage> {
     );
   }
 
-  void setupErrorState(BuildContext context, String error) {
-    context.pop();
-    showDialog(
+  Future<void> _showAddClassDialog(BuildContext context) async {
+    return showDialog<void>(
       context: context,
-      builder: (context) => AlertDialog(
-        content: Text(
-          error,
-          style: TextStyles.font14MediumLightBlack,
-        ),
-        actions: [
-          TextButton(
-              onPressed: () {
-                context.pop();
-              },
-              child: Text(
-                'Got It ',
-                style: TextStyles.font20BoldBlack,
-              )),
-        ],
-        icon: const Icon(
-          Icons.error,
-          color: Colors.red,
-          size: 32,
-        ),
-      ),
+      builder: (BuildContext dialogContext) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          title: Text('Add Class',style: TextStyles.font20BoldBlack),
+          content:AppTextFormField(
+            validator: (value) {
+              if (value!.isEmpty) {
+                return 'Class name is required';
+              }
+              return null; // Return null if the input is valid
+            },
+            onChange: (value) {
+              _className = value;
+            },
+            hintText: 'Enter the class name',
+          ),
+
+
+          actions: <Widget>[
+            AppTextButton(
+                buttonHeight: 25.r,
+                buttonWidth: 60.r,
+                textButton: "Add", onPressed: (){
+              context.read<AddClassCubit>().emitAddClassStates(
+                  widget.token,
+                  name: _className
+              );
+              Navigator.of(dialogContext).pop();
+            }),
+            verticalSpacing(10),
+
+            AppTextButton(
+                buttonHeight: 25.r,
+                buttonWidth: 60.r,
+                textButton: S.of(context).cancel, onPressed: (){
+              Navigator.of(dialogContext).pop();
+            }),
+
+
+          ],
+        );
+      },
     );
   }
 }
+
