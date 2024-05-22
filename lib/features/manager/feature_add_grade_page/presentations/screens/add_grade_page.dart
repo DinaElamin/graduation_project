@@ -107,10 +107,7 @@ Padding saveButton(BuildContext context) {
             showSuccessDialog(
                 onPressed: (){
                   context.pop();
-                 context.pushNamed(Routes.gradesPage,arguments: {
-                   'token':widget.token,
-                 });
-                },
+                  },
                 context,
                 text: S.of(context).add_grade,
                 contentText: S.of(context).add_student_successfully);
