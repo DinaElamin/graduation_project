@@ -1,3 +1,4 @@
+import 'package:ablexa/core/helper/extentions.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/data/models/get_all_materail_model/get_all-matrial_model.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_state.dart';
@@ -6,14 +7,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 
 class SemesterOneWidgetGradeDetails extends StatefulWidget {
-  const SemesterOneWidgetGradeDetails({Key? key, required this.token, required this.yearId}) : super(key: key);
+  const SemesterOneWidgetGradeDetails({Key? key, required this.token, required this.yearId, required this.semesterName,  required this.gradeName}) : super(key: key);
 final String token;
 final int yearId;
+final String semesterName,gradeName;
 
   @override
   State<SemesterOneWidgetGradeDetails> createState() => _SemesterOneWidgetState();
@@ -48,7 +51,7 @@ class _SemesterOneWidgetState extends State<SemesterOneWidgetGradeDetails> {
                           children: [
                             Expanded(
                               child: Text(
-                                S.of(context).class_code,
+                                S.of(context).semester_one,
                                 style: TextStyles.font16SemiBoldBlack.copyWith(
                                   color: ColorsManager.mainWhite,
                                 ),
@@ -63,12 +66,24 @@ class _SemesterOneWidgetState extends State<SemesterOneWidgetGradeDetails> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
-                                  item.subject_Name.toString(),
-                                  style: TextStyles.font16SemiBoldBlack.copyWith(
-                                    color: ColorsManager.mainBlack,
+                                GestureDetector(
+                                  onTap:(){
+                                    context.pushNamed(Routes.addDegreeFromMaterial,arguments: {
+                                      'gradeName':widget.gradeName,
+                                      'materialName':widget.yearId,
+                                      'semesterName':widget.semesterName,
+                                      'token':widget.token,
+                                      'materialid':widget.yearId
+                                    });
+
+                                  },
+                                  child: Text(
+                                    item.subject_Name.toString(),
+                                    style: TextStyles.font16SemiBoldBlack.copyWith(
+                                      color: ColorsManager.mainBlack,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
                                   ),
-                                  overflow: TextOverflow.ellipsis,
                                 ),
                                 GestureDetector(
                                   onTap:(){

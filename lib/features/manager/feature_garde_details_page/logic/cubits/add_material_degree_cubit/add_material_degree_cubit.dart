@@ -6,13 +6,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'add_material_degree_state.dart';
 
 
-class AddClassCubit extends Cubit<AddMaterialDegreeState> {
+class AddMaterialGradeCubit extends Cubit<AddMaterialDegreeState> {
   final AddMaterialDegreeRepo addMaterialDegreeRepo;
-  AddClassCubit(this.addMaterialDegreeRepo) : super(const AddMaterialDegreeState.initial());
+  AddMaterialGradeCubit(this.addMaterialDegreeRepo) : super(const AddMaterialDegreeState.initial());
 
   final formKey = GlobalKey<FormState>();
 
-  void emitAddClassDegreeStates(
+  void emitAddMaterialDegreeStates(
     String token, {
     required int materialid,
         required int M_grade,

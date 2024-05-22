@@ -40,6 +40,32 @@ class _GradeDetailsPageState extends State<GradeDetailsPage> {
         children: [
           AppBarWidget(
             pageName: S.of(context).grade_details,
+            widget:  Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  width: 20.w,
+                  height: 20.h,
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: ColorsManager.mainColor,
+                  ),
+                  child: const Center(
+                    child: Icon(
+                      Icons.add,
+                      size: 10,
+                      color: ColorsManager.mainWhite,
+                    ),
+                  ),
+                ),
+                horizontalSpacing(10),
+                Text(
+                  "Add Class",
+                  style: TextStyles.font20BoldBlack,
+                ),
+              ],
+            ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -52,19 +78,21 @@ class _GradeDetailsPageState extends State<GradeDetailsPage> {
                   widget.gradeName,
                   style: TextStyles.font20BoldBlack,
                 ),
-                verticalSpacing(50),
-                Text(S.of(context).semester_one_subject,
-                    style: TextStyles.font16SemiBoldBlack),
+
                 verticalSpacing(10),
                  SemesterOneWidgetGradeDetails(
                   token: widget.token,
+                  semesterName: "Semester One",
+                  gradeName: widget.gradeName,
                   yearId: widget.materialid,
                 ),
                 verticalSpacing(50),
-                Text(S.of(context).semester_two_subject,
-                    style: TextStyles.font16SemiBoldBlack),
-                verticalSpacing(10),
-                const SemesterTwoWidgetGradeDetails(),
+                 SemesterTwoWidgetGradeDetails(
+                   token: widget.token,
+                   semesterName: "Semester Two",
+                   gradeName: widget.gradeName,
+                   yearId: widget.materialid,
+                ),
                 verticalSpacing(50),
                 _isAddingClass
                     ? Padding(

@@ -1,3 +1,4 @@
+import 'package:ablexa/core/helper/extentions.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/data/models/get_all_materail_model/get_all-matrial_model.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_state.dart';
@@ -5,14 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
+import '../../../feature_grades_page/logic/cubits/delete_grade_cubit/delete_grade_cubit.dart';
 
 class SemesterTwoWidgetGradeDetails extends StatefulWidget {
-  const SemesterTwoWidgetGradeDetails({Key? key}) : super(key: key);
-
-
+  const SemesterTwoWidgetGradeDetails({Key? key, required this.token, required this.yearId, required this.semesterName, required this.gradeName}) : super(key: key);
+  final String token;
+  final int yearId;
+  final String semesterName,gradeName;
   @override
   State<SemesterTwoWidgetGradeDetails> createState() => _SemesterTwoWidgetGradeDetailsState();
 }
@@ -60,26 +64,41 @@ class _SemesterTwoWidgetGradeDetailsState extends State<SemesterTwoWidgetGradeDe
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
-                                  item.subject_Name.toString(),
-                                  style: TextStyles.font16SemiBoldBlack.copyWith(
-                                    color: ColorsManager.mainBlack,
+                                GestureDetector(
+                                  onTap:(){
+                                    context.pushNamed(Routes.addDegreeFromMaterial,arguments: {
+                                      'gradeName':widget.gradeName,
+                                      'materialName':widget.yearId,
+                                      'semesterName':widget.semesterName
+                                    });
+                                  },
+                                  child: Text(
+                                    item.subject_Name.toString(),
+                                    style: TextStyles.font16SemiBoldBlack.copyWith(
+                                      color: ColorsManager.mainBlack,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
                                   ),
-                                  overflow: TextOverflow.ellipsis,
                                 ),
-                                Container(
-                                  width: 25.w,
-                                  height: 25.h,
-                                  decoration: const BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      color:  ColorsManager.redColor
-                                  ),
-                                  child: Center(
-                                    child: Icon(
-                                        Icons.minimize_rounded,
-                                        size: 10.sp,
-                                        color:ColorsManager.mainWhite
-                                      // Change icon color based on selection
+                                GestureDetector(
+                                  onTap:(){
+                                    context.read<DeleteGradeCubit>().emitDeleteGradeStates(token: widget.token, yearId: widget.yearId);
+
+                                  },
+                                  child: Container(
+                                    width: 25.w,
+                                    height: 25.h,
+                                    decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color:  ColorsManager.redColor
+                                    ),
+                                    child: Center(
+                                      child: Icon(
+                                          Icons.minimize_rounded,
+                                          size: 10.sp,
+                                          color:ColorsManager.mainWhite
+                                        // Change icon color based on selection
+                                      ),
                                     ),
                                   ),
                                 ),

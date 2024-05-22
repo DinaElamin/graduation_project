@@ -3,6 +3,7 @@ import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/ge
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
 import 'package:ablexa/features/manager/feature_edit_profile_teacher_page/logic/cubits/edit_teacher_cubit/edit_teacher_cubit.dart';
 import 'package:ablexa/features/manager/feature_edit_profile_teacher_page/presentations/screens/edit_profile_teacher.dart';
+import 'package:ablexa/features/manager/feature_garde_details_page/logic/cubits/add_material_degree_cubit/add_material_degree_cubit.dart';
 import 'package:ablexa/features/manager/feature_grades_page/logic/cubits/delete_grade_cubit/delete_grade_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
 import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/edit_student_cubit/edit_student_cubit.dart';
@@ -13,6 +14,7 @@ import '../../features/feature_change_password_page/logic/cubits/change_password
 import '../../features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
 import '../../features/feature_verify_code_page/logic/cubits/verify_code_cubit/verify_code_cubit.dart';
 import '../../features/feature_verify_code_page/logic/cubits/verify_pin_code_cubit/verify_pin_code_cubit.dart';
+import '../../features/manager/feature_add_degree_page/presentations/screens/add_degree_from_material.dart';
 import '../../features/manager/feature_add_student_page/logic/cubits/add_student_cubit/add_student_cubit.dart';
 import '../../features/manager/feature_garde_details_page/logic/cubits/add_class_cubit/add_class_cubit.dart';
 import '../../features/manager/feature_get_all_student_by_id_page/logic/get_all_students_by_class_id_cubit/get_all_students_by_class_id_cubit.dart';
@@ -465,6 +467,24 @@ class AppRouter {
       case Routes.resetPasswordPage:
         return MaterialPageRoute(
           builder: (context) => const ResetPassword(),
+        );
+      case Routes.addDegreeFromMaterial:
+        final args = settings.arguments as Map<String, dynamic>;
+        final String gradeName = args['gradeName'];
+        final String semesterName = args['semesterName'];
+        final int materialid = args['materialid'];
+        final String token = args['token'];
+        return MaterialPageRoute(
+          builder: (context) =>  BlocProvider(
+            create: (context) => getIt<AddMaterialGradeCubit>(),
+            child: AddDegreeFromMaterial(
+token: token,
+              materialid: materialid,
+              gradeName: gradeName,
+              semesterName: semesterName,
+
+            ),
+          ),
         );
       default:
         return MaterialPageRoute(

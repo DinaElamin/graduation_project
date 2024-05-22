@@ -28,5 +28,6 @@ class Routes {
   static const getAllStudentByClassIdPage = "/getAllStudentByClassIdPage";
   static const editStudentProfilePage ="/studentEditProfile";
   static const editTeacherProfilePage ="/editTeacherProfilePage";
+  static const addDegreeFromMaterial = "/addDegreeFromMaterial";
 
 }
