@@ -322,9 +322,7 @@ class AppRouter {
                 ),
               ],
               child: GradeDetailsPage(
-                  token: token,
-                  materialid: materialid,
-                  gradeName: gradeName)),
+                  token: token, materialid: materialid, gradeName: gradeName)),
         );
       // teacher home
       case Routes.teacherHomePage:
@@ -475,17 +473,16 @@ class AppRouter {
         final args = settings.arguments as Map<String, dynamic>;
         final String gradeName = args['gradeName'];
         final String semesterName = args['semesterName'];
-        final int materialid = args['materialid'];
         final String token = args['token'];
+        final String subjectName = args['subjectName'];
         return MaterialPageRoute(
-          builder: (context) =>  BlocProvider(
+          builder: (context) => BlocProvider(
             create: (context) => getIt<AddMaterialGradeCubit>(),
             child: AddDegreeFromMaterial(
-token: token,
-              materialid: materialid,
+              subjectName: subjectName,
+              token: token,
               gradeName: gradeName,
               semesterName: semesterName,
-
             ),
           ),
         );

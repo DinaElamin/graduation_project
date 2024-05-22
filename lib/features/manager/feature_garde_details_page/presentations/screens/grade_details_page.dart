@@ -122,9 +122,9 @@ class _GradeDetailsPageState extends State<GradeDetailsPage> {
                 ),
                 verticalSpacing(50),
                 SemesterTwoWidgetGradeDetails(
+                  gradeName: widget.gradeName,
                   token: widget.token,
                   semesterName: "Semester Two",
-                  gradeName: widget.gradeName,
                   yearId: widget.materialid,
                 ),
               ],

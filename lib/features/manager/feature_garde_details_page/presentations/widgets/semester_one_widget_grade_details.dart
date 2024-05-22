@@ -68,13 +68,15 @@ class _SemesterOneWidgetState extends State<SemesterOneWidgetGradeDetails> {
                               children: [
                                 GestureDetector(
                                   onTap:(){
-                                    context.pushNamed(Routes.addDegreeFromMaterial,arguments: {
-                                      'gradeName':widget.gradeName,
-                                      'materialName':widget.yearId,
-                                      'semesterName':widget.semesterName,
-                                      'token':widget.token,
-                                      'materialid':widget.yearId
-                                    });
+                                    context.pushNamed(
+                                        Routes.addDegreeFromMaterial,
+                                        arguments: {
+                                          'token': widget.token,
+                                          'gradeName': widget.gradeName,
+
+                                          'semesterName': widget.semesterName,
+                                          'subjectName': item.subject_Name.toString()
+                                        });
 
                                   },
                                   child: Text(

@@ -19,11 +19,12 @@ class AddDegreeFromMaterial extends StatefulWidget {
     required this.gradeName,
     required this.semesterName,
     required this.token,
-    required this.materialid,
+    required this.materialId,
+    required this.subjectName,
   }) : super(key: key);
 
-  final String gradeName, semesterName, token;
-  final int materialid;
+  final String gradeName, semesterName, token,subjectName;
+  final int materialId;
 
   @override
   _AddDegreeFromMaterialState createState() => _AddDegreeFromMaterialState();
@@ -83,7 +84,7 @@ class _AddDegreeFromMaterialState extends State<AddDegreeFromMaterial> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              widget.gradeName,
+              widget.subjectName,
               style: TextStyles.font16SemiBoldBlack,
             ),
             BlocListener<AddMaterialGradeCubit, AddMaterialDegreeState>(
@@ -135,7 +136,7 @@ class _AddDegreeFromMaterialState extends State<AddDegreeFromMaterial> {
         context.read<AddMaterialGradeCubit>();
         return AlertDialog(
           title: Text(
-            'Enter Degree From ${widget.gradeName}',
+            'Enter Degree From ${widget.subjectName}',
           ),
           content: TextField(
             decoration: InputDecoration(hintText: 'Degree'),
@@ -152,7 +153,7 @@ class _AddDegreeFromMaterialState extends State<AddDegreeFromMaterial> {
                 textButton: "Save", onPressed: (){
               addMaterialGradeCubit.emitAddMaterialDegreeStates(
                 widget.token,
-                materialid: widget.materialid,
+                materialid: widget.materialId,
                 M_grade: int.parse(enteredDegree),
               );
               Navigator.of(dialogContext).pop();

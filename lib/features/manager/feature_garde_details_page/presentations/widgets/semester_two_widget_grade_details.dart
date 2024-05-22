@@ -13,15 +13,23 @@ import '../../../../../generated/l10n.dart';
 import '../../../feature_grades_page/logic/cubits/delete_grade_cubit/delete_grade_cubit.dart';
 
 class SemesterTwoWidgetGradeDetails extends StatefulWidget {
-  const SemesterTwoWidgetGradeDetails({Key? key, required this.token, required this.yearId, required this.semesterName, required this.gradeName}) : super(key: key);
+  const SemesterTwoWidgetGradeDetails(
+      {Key? key,
+      required this.token,
+      required this.yearId,
+      required this.semesterName,
+      required this.gradeName})
+      : super(key: key);
   final String token;
   final int yearId;
-  final String semesterName,gradeName;
+  final String semesterName, gradeName;
   @override
-  State<SemesterTwoWidgetGradeDetails> createState() => _SemesterTwoWidgetGradeDetailsState();
+  State<SemesterTwoWidgetGradeDetails> createState() =>
+      _SemesterTwoWidgetGradeDetailsState();
 }
 
-class _SemesterTwoWidgetGradeDetailsState extends State<SemesterTwoWidgetGradeDetails> {
+class _SemesterTwoWidgetGradeDetailsState
+    extends State<SemesterTwoWidgetGradeDetails> {
   List<String> selectedSubjects = []; // Track selected subjects
 
   @override
@@ -60,45 +68,51 @@ class _SemesterTwoWidgetGradeDetailsState extends State<SemesterTwoWidgetGradeDe
                         ),
                         items: getAllMaterialModel.map((item) {
                           return DropdownMenuItem<String>(
-                            value: item.subject_Name.toString(), // Use subject name as value
+                            value: item.subject_Name
+                                .toString(), // Use subject name as value
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 GestureDetector(
-                                  onTap:(){
-                                    context.pushNamed(Routes.addDegreeFromMaterial,arguments: {
-                                      'gradeName':widget.gradeName,
-                                      'materialName':widget.yearId,
-                                      'semesterName':widget.semesterName
-                                    });
+                                  onTap: () {
+                                    context.pushNamed(
+                                        Routes.addDegreeFromMaterial,
+                                        arguments: {
+                                          'token': widget.token,
+                                          'gradeName': widget.gradeName,
+                                          'semesterName': widget.semesterName,
+                                          'subjectName': item.subject_Name.toString()
+                                        });
                                   },
                                   child: Text(
                                     item.subject_Name.toString(),
-                                    style: TextStyles.font16SemiBoldBlack.copyWith(
+                                    style:
+                                        TextStyles.font16SemiBoldBlack.copyWith(
                                       color: ColorsManager.mainBlack,
                                     ),
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
                                 GestureDetector(
-                                  onTap:(){
-                                    context.read<DeleteGradeCubit>().emitDeleteGradeStates(token: widget.token, yearId: widget.yearId);
-
+                                  onTap: () {
+                                    context
+                                        .read<DeleteGradeCubit>()
+                                        .emitDeleteGradeStates(
+                                            token: widget.token,
+                                            yearId: widget.yearId);
                                   },
                                   child: Container(
                                     width: 25.w,
                                     height: 25.h,
                                     decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
-                                        color:  ColorsManager.redColor
-                                    ),
+                                        color: ColorsManager.redColor),
                                     child: Center(
-                                      child: Icon(
-                                          Icons.minimize_rounded,
+                                      child: Icon(Icons.minimize_rounded,
                                           size: 10.sp,
-                                          color:ColorsManager.mainWhite
-                                        // Change icon color based on selection
-                                      ),
+                                          color: ColorsManager.mainWhite
+                                          // Change icon color based on selection
+                                          ),
                                     ),
                                   ),
                                 ),
@@ -111,15 +125,16 @@ class _SemesterTwoWidgetGradeDetailsState extends State<SemesterTwoWidgetGradeDe
                             if (value != null) {
                               // Toggle selection using subject name
                               if (selectedSubjects.contains(value)) {
-                                selectedSubjects.remove(value); // Remove if already selected
+                                selectedSubjects.remove(
+                                    value); // Remove if already selected
                               } else {
-                                selectedSubjects.add(value); // Add if not selected
+                                selectedSubjects
+                                    .add(value); // Add if not selected
                               }
                               // Pass the updated list of selected subjects back to the parent widget
                             }
                           });
                         },
-
                         buttonStyleData: ButtonStyleData(
                           width: 400.w,
                           height: 60.h,
@@ -151,7 +166,8 @@ class _SemesterTwoWidgetGradeDetailsState extends State<SemesterTwoWidgetGradeDe
                           scrollbarTheme: ScrollbarThemeData(
                             radius: const Radius.circular(40),
                             thickness: MaterialStateProperty.all<double>(6),
-                            thumbVisibility: MaterialStateProperty.all<bool>(true),
+                            thumbVisibility:
+                                MaterialStateProperty.all<bool>(true),
                           ),
                         ),
                         menuItemStyleData: MenuItemStyleData(
