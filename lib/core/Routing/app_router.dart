@@ -4,6 +4,7 @@ import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/ge
 import 'package:ablexa/features/manager/feature_edit_profile_teacher_page/logic/cubits/edit_teacher_cubit/edit_teacher_cubit.dart';
 import 'package:ablexa/features/manager/feature_edit_profile_teacher_page/presentations/screens/edit_profile_teacher.dart';
 import 'package:ablexa/features/manager/feature_garde_details_page/logic/cubits/add_material_degree_cubit/add_material_degree_cubit.dart';
+import 'package:ablexa/features/manager/feature_garde_details_page/logic/cubits/get_all_material_by_term_id_cubit/get_all_material_by_term_id_cubit.dart';
 import 'package:ablexa/features/manager/feature_grades_page/logic/cubits/delete_grade_cubit/delete_grade_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
 import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/edit_student_cubit/edit_student_cubit.dart';
@@ -313,7 +314,7 @@ class AppRouter {
           builder: (context) => MultiBlocProvider(
               providers: [
                 BlocProvider(
-                  create: (context) => getIt<GetAllMaterialDataCubit>(),
+                  create: (context) => getIt<GetAllMaterialByTermIdCubit>(),
                 ),
                 BlocProvider(
                   create: (context) => getIt<AddClassCubit>(),

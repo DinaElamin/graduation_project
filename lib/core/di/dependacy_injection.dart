@@ -8,8 +8,10 @@ import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/ge
 import 'package:ablexa/features/manager/feature_edit_profile_teacher_page/data/repos/edit_teacher_profile_repo.dart';
 import 'package:ablexa/features/manager/feature_edit_profile_teacher_page/logic/cubits/edit_teacher_cubit/edit_teacher_cubit.dart';
 import 'package:ablexa/features/manager/feature_garde_details_page/data/repos/add_material_grade_repo/add_material_degree_repo.dart';
+import 'package:ablexa/features/manager/feature_garde_details_page/data/repos/get_all_material_by_term_id_repo/get_all_material_by_term_id_repo.dart';
 import 'package:ablexa/features/manager/feature_garde_details_page/data/repos/get_semester_by_year_id_repo/get_semester_by_year_id_repo.dart';
 import 'package:ablexa/features/manager/feature_garde_details_page/logic/cubits/add_material_degree_cubit/add_material_degree_cubit.dart';
+import 'package:ablexa/features/manager/feature_garde_details_page/logic/cubits/get_all_material_by_term_id_cubit/get_all_material_by_term_id_cubit.dart';
 import 'package:ablexa/features/manager/feature_grades_page/data/repos/delete_grade_repo/delete_grade_repo.dart';
 import 'package:ablexa/features/manager/feature_grades_page/logic/cubits/delete_grade_cubit/delete_grade_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/data/repos/delete_user_repo/delete_user_repo.dart';
@@ -118,4 +120,7 @@ final getIt = GetIt.instance;
   //add material degree
   getIt.registerLazySingleton<GetSemesterByIdRepo>(() => GetSemesterByIdRepo(getIt()));
   getIt.registerFactory<GetSemesterByIdCubit>(() => GetSemesterByIdCubit(getIt()));
+  //get all material by termId
+  getIt.registerLazySingleton<GetAllMaterialByTermIdRepo>(() => GetAllMaterialByTermIdRepo(getIt()));
+  getIt.registerFactory<GetAllMaterialByTermIdCubit>(() => GetAllMaterialByTermIdCubit(getIt()));
  }

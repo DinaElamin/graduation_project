@@ -1,7 +1,7 @@
 import 'package:ablexa/core/helper/extentions.dart';
 import 'package:ablexa/core/shared_widgets/app_elevated_button.dart';
 import 'package:ablexa/core/shared_widgets/app_text_feild.dart';
-import 'package:ablexa/features/manager/feature_garde_details_page/data/models/get_semester_by_year_id_model.dart';
+import 'package:ablexa/features/manager/feature_garde_details_page/data/models/get_semester_by_term_id_model/get_semester_by_year_id_model.dart';
 import 'package:ablexa/features/manager/feature_garde_details_page/logic/cubits/add_class_cubit/add_class_cubit.dart';
 import 'package:ablexa/features/manager/feature_garde_details_page/logic/cubits/get_semester_by_year_id_cubit/get_semester_by_year_id_cubit.dart';
 import 'package:ablexa/features/manager/feature_garde_details_page/logic/cubits/get_semester_by_year_id_cubit/get_semester_by_year_id_state.dart';
@@ -15,7 +15,7 @@ import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 import '../../logic/cubits/add_class_cubit/add_class_state.dart';
-import '../widgets/semester_one_widget_grade_details.dart';
+import '../widgets/semester_widget.dart';
 
 class GradeDetailsPage extends StatefulWidget {
   const GradeDetailsPage({
@@ -73,6 +73,7 @@ class _GradeDetailsPageState extends State<GradeDetailsPage> {
                   itemBuilder: (context, index) => Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: SemesterWidget(
+                      semesterId: getSemesterByYearIdModel[index].id,
                       token: widget.token,
                       semesterName: getSemesterByYearIdModel[index].termName,
                       gradeName: widget.gradeName,
