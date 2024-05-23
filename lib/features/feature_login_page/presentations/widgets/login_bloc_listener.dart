@@ -45,6 +45,7 @@ class _SignInBlocListenerState extends State<LoginBlocListener> {
               'emailManager': loginResponseModel.email.toString(),
               'phoneNumberManager': loginResponseModel.nationalNum.toString(),
               'imageManager': loginResponseModel.photo.toString(),
+              'roleName':loginResponseModel.roleName,
             });
           } else if (loginResponseModel.roleName! == "Teacher") {
             context.pushNamed(Routes.teacherHomePage, arguments: {
@@ -54,6 +55,8 @@ class _SignInBlocListenerState extends State<LoginBlocListener> {
               'imageTeacher': loginResponseModel.photo.toString(),
               'nationalNumber': loginResponseModel.nationalNum.toString(),
               'TeacherId': loginResponseModel.id.toString(),
+              'subjectNameTeacher':"math",
+              'roleName':loginResponseModel.roleName,
             });
           } else if (loginResponseModel.roleName! == "Student") {
             context.pushNamed(Routes.studentExamsPage, arguments: {
@@ -62,7 +65,8 @@ class _SignInBlocListenerState extends State<LoginBlocListener> {
               'classId': loginResponseModel.classId,
               'nameStudent': loginResponseModel.username.toString(),
               'emailStudent': loginResponseModel.email.toString(),
-              'imageStudent': loginResponseModel.photo.toString()
+              'imageStudent': loginResponseModel.photo.toString(),
+              'roleName':loginResponseModel.roleName,
             });
           }
         }, error: (error) {

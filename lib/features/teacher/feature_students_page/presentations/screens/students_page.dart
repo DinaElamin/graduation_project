@@ -9,8 +9,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../widgets/card_list_view_for_students_garde.dart';
 
 class StudentsPage extends StatefulWidget {
-  const StudentsPage({super.key, required this.className, required this.classId});
-  final String className;
+  const StudentsPage(
+      {super.key, required this.className, required this.classId, required this.subjectNameTeacher, required this.roleName});
+  final String className,subjectNameTeacher,roleName;
   final int classId;
 
   @override
@@ -18,26 +19,24 @@ class StudentsPage extends StatefulWidget {
 }
 
 class _StudentsPageState extends State<StudentsPage> {
-
-
-
-
   @override
   Widget build(BuildContext context) {
     setState(() {
-      context.read<GetAllStudentByClassIdCubit>().emitAllStudentsByClassId(classId: widget.classId);
+      context
+          .read<GetAllStudentByClassIdCubit>()
+          .emitAllStudentsByClassId(classId: widget.classId);
     });
     return Scaffold(
       appBar: AppBar(
           leading: const BackButton(
             color: ColorsManager.mainBlack,
           ),
-          title:Text( S.of(context).students,style: TextStyles.font20BoldBlack),
+          title:
+              Text(S.of(context).students, style: TextStyles.font20BoldBlack),
           backgroundColor: ColorsManager.mainWhite),
       backgroundColor: ColorsManager.grey,
       body: ListView(
         children: [
-
           SingleChildScrollView(
             child: Padding(
               padding: EdgeInsets.only(left: 20.w, right: 20.w),
@@ -46,9 +45,10 @@ class _StudentsPageState extends State<StudentsPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   verticalSpacing(10),
-                  GradeStudents(gradeName: widget.className
-
-                  ),
+                  GradeStudents(
+                    roleName: widget.roleName,
+                      subjectNameTeacher:widget.subjectNameTeacher,
+                      gradeName: widget.className,classId: widget.classId),
                 ],
               ),
             ),

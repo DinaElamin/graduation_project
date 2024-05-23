@@ -14,8 +14,8 @@ import '../widgets/profile_and_setting_widget.dart';
 import '../widgets/teacher_classes.dart';
 
 class TeacherHome extends StatefulWidget {
-  const TeacherHome({super.key, required this.nameTeacher, required this.emailTeacher, required this.imageTeacher, required this.token, required this.nationalNumber, required this.TeacherId});
-  final String nameTeacher,emailTeacher,imageTeacher,token,nationalNumber,TeacherId;
+  const TeacherHome({super.key, required this.nameTeacher, required this.emailTeacher, required this.imageTeacher, required this.token, required this.nationalNumber, required this.TeacherId, required this.subjectNameTeacher, required this.roleName});
+  final String nameTeacher,emailTeacher,imageTeacher,token,nationalNumber,TeacherId,subjectNameTeacher,roleName;
 
   @override
   State<TeacherHome> createState() => _TeacherHomeState();
@@ -54,7 +54,7 @@ class _TeacherHomeState extends State<TeacherHome> {
                         'nameTeacher':widget.nameTeacher,
                         'emailTeacher':widget.emailTeacher,
                         'imageTeacher':widget.imageTeacher,
-                        'nationalNumber':widget.nationalNumber
+                        'nationalNumber':widget.nationalNumber,
                       });
                     },
                     value: 'my_profile',
@@ -113,7 +113,10 @@ class _TeacherHomeState extends State<TeacherHome> {
                     style: TextStyles.font20BoldBlack,
                   ),
                   verticalSpacing(10),
-                  const TeacherClasses(),
+                   TeacherClasses(
+                     roleName: widget.roleName,
+                      subjectNameTeacher:widget.subjectNameTeacher
+                  ),
                 ],
               ),
               verticalSpacing(20),

@@ -8,8 +8,8 @@ import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 
 class ExamWidget extends StatelessWidget {
-  const ExamWidget({Key? key}) : super(key: key);
-
+  const ExamWidget({Key? key, required this.subjectNameTeacher, required this.roleName}) : super(key: key);
+final String subjectNameTeacher,roleName;
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -26,10 +26,11 @@ class ExamWidget extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("English", style: TextStyles.font20BoldBlack),
+                Text("Subjects ", style: TextStyles.font20BoldBlack),
                 Text(
                   "Total grades",
-                  style: TextStyles.font14MediumLightBlack.copyWith(fontSize: 16.sp),
+                  style: TextStyles.font14MediumLightBlack
+                      .copyWith(fontSize: 16.sp),
                 ),
               ],
             ),
@@ -39,19 +40,25 @@ class ExamWidget extends StatelessWidget {
         SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
-                height: 140.h,
-                child: ListView.builder(
-                  itemCount: 1,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemBuilder: (context, index) => examInformationWidget(
-                    context,
-                  subjectName: "Science",
-                    totalDegree: "40/60",
-                  ),
-                ),
-              ),
+              roleName == 'Teacher'
+                  ? examInformationWidget(
+                      context,
+                      subjectName: subjectNameTeacher,
+                      totalDegree: "40/60",
+                    )
+                  : ListView.builder(
+                      itemCount: 2,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) => Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: examInformationWidget(
+                          context,
+                          subjectName: "Science",
+                          totalDegree: "40/60",
+                        ),
+                      ),
+                    ),
             ],
           ),
         ),
@@ -59,10 +66,11 @@ class ExamWidget extends StatelessWidget {
     );
   }
 
-  GestureDetector examInformationWidget(BuildContext context, {required String subjectName, required String totalDegree}) {
+  GestureDetector examInformationWidget(BuildContext context,
+      {required String subjectName, required String totalDegree}) {
     return GestureDetector(
       onTap: () {
-        context.pushNamed(Routes.subjectDetailsPage,arguments: subjectName);
+        context.pushNamed(Routes.subjectDetailsPage, arguments: subjectName);
       },
       child: SizedBox(
         height: 70.h,
@@ -83,5 +91,3 @@ class ExamWidget extends StatelessWidget {
     );
   }
 }
-
-

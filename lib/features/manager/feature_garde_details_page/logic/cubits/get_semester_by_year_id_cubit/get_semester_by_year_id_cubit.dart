@@ -1,37 +1,24 @@
-import '../../../../data/repos/login_repo/login_repo.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:ablexa/features/manager/feature_garde_details_page/data/repos/get_semester_by_year_id_repo/get_semester_by_year_id_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../data/models/login/request/login_request_model.dart';
-import 'login_state.dart';
+import 'get_semester_by_year_id_state.dart';
 
-class LoginCubit extends Cubit<LoginState> {
-  final LoginRepo loginRepo;
-  LoginCubit(this.loginRepo) : super(const LoginState.initial());
+class GetSemesterByIdCubit extends Cubit<GetSemesterByIdState> {
+  final GetSemesterByIdRepo getSemesterByIdRepo;
+  GetSemesterByIdCubit(this.getSemesterByIdRepo) : super(const GetSemesterByIdState.initial());
 
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
-
-  void emitLoginInStates() async {
-    emit(const LoginState.loading());
-    final response = await loginRepo.login(LoginRequestModel(
-      email: emailController.text,
-      password: passwordController.text,
-    ));
+  void emitGetSemesterByYearIdStates({required int yearId}) async {
+    emit(const GetSemesterByIdState.loading());
+    final response = await getSemesterByIdRepo.getSemesterByYearId(
+       yearId: yearId);
 
     response.when(
-      success: (loginResponse) {
-        emit(LoginState.success(loginResponse));
+      success: (getSemesterByYearId) {
+        emit(GetSemesterByIdState.success(getSemesterByYearId));
       },
       failure: (error) {
-        emit(LoginState.error(error: error.apiErrorModel.errorMessage.toString()));
+        emit(GetSemesterByIdState.error(error: error.apiErrorModel.errorMessage.toString()));
       },
     );
   }
-  @override
-  Future<void> close() {
-    emailController.dispose();
-    passwordController.dispose();
-    return super.close();
-  }
+
 }

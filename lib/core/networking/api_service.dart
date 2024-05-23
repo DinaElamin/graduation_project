@@ -5,6 +5,7 @@ import '../../features/feature_verify_code_page/data/models/verify_code_model/re
 import '../../features/feature_verify_code_page/data/models/verify_code_model/response/verify_code_response_model.dart';
 import '../../features/manager/feature_add_student_page/data/models/get_all_semester_model/get_all_year_model.dart';
 import '../../features/manager/feature_add_teacher_page/data/models/get_all_materail_model/get_all-matrial_model.dart';
+import '../../features/manager/feature_garde_details_page/data/models/get_semester_by_year_id_model.dart';
 import '../../features/manager/feature_home_manager_page/data/models/get_all_student_model/get_all_student_model.dart';
 import '../../features/manager/feature_home_manager_page/data/models/get_all_teacher_model/get_all_teacher_model.dart';
 import 'package:dio/dio.dart' hide Headers;
@@ -173,6 +174,11 @@ abstract class ApiService {
   // get All teacher
   @GET(ApiConstant.getAllTeacherData)
   Future<List<GetAllTeacherModel>> getAllTeacherData();
+// get semester by year id
+  @GET("${ApiConstant.getSemesterByYearId}/{yearId}")
+  Future<List<GetSemesterByYearIdModel>> getSemesterByYearId(
+      @Path("yearId") int yearId
+      );
   // getAllStudent Page
   @GET(ApiConstant.getAllStudentData)
   Future<List<GetAllStudentModel>> getAllStudentData();

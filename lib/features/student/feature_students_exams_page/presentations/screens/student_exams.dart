@@ -1,3 +1,4 @@
+
 import '../../../../../core/helper/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,13 +10,15 @@ import '../../../../../generated/l10n.dart';
 import '../widgets/students_information_widget.dart';
 
 class StudentExamsPage extends StatelessWidget {
-  const StudentExamsPage({super.key, required this.nameStudent, required this.emailStudent, required this.imageStudent, required this.nationalIdStudent, required this.classId});
-final String nameStudent,emailStudent,imageStudent,nationalIdStudent;
+  const StudentExamsPage({super.key, required this.nameStudent, required this.emailStudent, required this.imageStudent, required this.nationalIdStudent, required this.classId, required this.subjectNameTeacher, required this.roleName});
+final String nameStudent,emailStudent,imageStudent,nationalIdStudent,subjectNameTeacher,roleName;
 final int classId;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: roleName =='Teacher'?
+      AppBar(
           leading: const BackButton(
             color: ColorsManager.mainBlack,
           ),
@@ -30,7 +33,69 @@ final int classId;
               color: ColorsManager.mainBlack,
             ),
           ],
-          backgroundColor: ColorsManager.mainWhite),
+          backgroundColor: ColorsManager.mainWhite):
+
+      AppBar(
+      backgroundColor: ColorsManager.mainColor, // Change color to your preference
+      title: Row(
+        children: [
+          Image.asset(
+            'assets/logo_app.png', // Replace with your logo path
+            height: 30,
+            width: 30,
+          ),
+          const SizedBox(width: 10),
+          const Text(
+            "Student Home",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+          ),
+        ],
+      ),
+      actions: [
+        PopupMenuButton<String>(
+          offset: const Offset(0, 40),
+          itemBuilder: (BuildContext context) => [
+            PopupMenuItem(
+              onTap: () {
+                context.pushNamed(Routes.studentProfilePage,arguments: {
+                  'nameStudent':nameStudent,
+                  'emailStudent':emailStudent,
+                  'nationalIdStudent':nationalIdStudent,
+                  'imageStudent':imageStudent,
+                  'classId':classId
+                });
+              },
+              value: 'my_profile',
+              child: const Row(
+                children: [
+                  Icon(Icons.person_outline_sharp),
+                  SizedBox(width: 5),
+                  Text('My Profile'),
+                ],
+              ),
+            ),
+            PopupMenuItem(
+              onTap: () {
+                context.pushNamed(Routes.settingPage);
+              },
+              value: 'settings',
+              child: const Row(
+                children: [
+                  Icon(Icons.settings),
+                  SizedBox(width: 5),
+                  Text('Settings'),
+                ],
+              ),
+            ),
+          ],
+          icon: const Icon(Icons.settings),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+        ),
+        const SizedBox(width: 10),
+      ],
+    ),
       body: ListView(children: [
         verticalSpacing(20),
         Padding(
@@ -74,7 +139,10 @@ final int classId;
                 ),
               ),
               verticalSpacing(20),
-              const StudentInformationsWidget(),
+               StudentInformationsWidget(
+                 roleName: roleName,
+                 subjectNameTeacher: subjectNameTeacher,
+               ),
             ],
           ),
         )

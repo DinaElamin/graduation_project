@@ -8,8 +8,8 @@ import 'behaviors_widget.dart';
 import 'exam_widget.dart';
 
 class StudentInformationsWidget extends StatelessWidget {
-  const StudentInformationsWidget({Key? key});
-
+  const StudentInformationsWidget({Key? key, required this.subjectNameTeacher, required this.roleName});
+final String subjectNameTeacher,roleName;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -48,11 +48,14 @@ class StudentInformationsWidget extends StatelessWidget {
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.7, // Adjust height as needed
-                child: const TabBarView(
+                child:  TabBarView(
                   children: [
                     // Add your TabBarView children here
                     AttendenceWidget(),
-                    ExamWidget(),
+                    ExamWidget(
+                      roleName: roleName,
+                      subjectNameTeacher: subjectNameTeacher,
+                    ),
                     BehaviorsWidget(), // Adjust as needed
                   ],
                 ),

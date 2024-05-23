@@ -10,19 +10,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
-import '../../../../../generated/l10n.dart';
 
-class SemesterOneWidgetGradeDetails extends StatefulWidget {
-  const SemesterOneWidgetGradeDetails({Key? key, required this.token, required this.yearId, required this.semesterName,  required this.gradeName}) : super(key: key);
+class SemesterWidget extends StatefulWidget {
+  const SemesterWidget({Key? key, required this.token, required this.yearId, required this.semesterName,  required this.gradeName}) : super(key: key);
 final String token;
 final int yearId;
 final String semesterName,gradeName;
 
   @override
-  State<SemesterOneWidgetGradeDetails> createState() => _SemesterOneWidgetState();
+  State<SemesterWidget> createState() => _SemesterOneWidgetState();
 }
 
-class _SemesterOneWidgetState extends State<SemesterOneWidgetGradeDetails> {
+class _SemesterOneWidgetState extends State<SemesterWidget> {
 
 
   @override
@@ -51,7 +50,7 @@ class _SemesterOneWidgetState extends State<SemesterOneWidgetGradeDetails> {
                           children: [
                             Expanded(
                               child: Text(
-                                S.of(context).semester_one,
+                                widget.semesterName,
                                 style: TextStyles.font16SemiBoldBlack.copyWith(
                                   color: ColorsManager.mainWhite,
                                 ),
@@ -73,7 +72,6 @@ class _SemesterOneWidgetState extends State<SemesterOneWidgetGradeDetails> {
                                         arguments: {
                                           'token': widget.token,
                                           'gradeName': widget.gradeName,
-
                                           'semesterName': widget.semesterName,
                                           'subjectName': item.subject_Name.toString()
                                         });

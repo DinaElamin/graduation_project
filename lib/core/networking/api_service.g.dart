@@ -677,7 +677,7 @@ class _ApiService implements ApiService {
     )
             .compose(
               _dio.options,
-              'api/defaultMaterial/getallmaterials',
+              'api/defaultMaterial/getallmaterialsNamesAndIds',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -719,6 +719,36 @@ class _ApiService implements ApiService {
     var value = _result.data!
         .map((dynamic i) =>
             GetAllTeacherModel.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
+  Future<List<GetSemesterByYearIdModel>> getSemesterByYearId(int yearId) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<List<dynamic>>(
+        _setStreamType<List<GetSemesterByYearIdModel>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'api/Term/getSemesterbyYear/${yearId}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    var value = _result.data!
+        .map((dynamic i) =>
+            GetSemesterByYearIdModel.fromJson(i as Map<String, dynamic>))
         .toList();
     return value;
   }
