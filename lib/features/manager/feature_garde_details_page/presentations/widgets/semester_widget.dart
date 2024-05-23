@@ -73,7 +73,8 @@ class _SemesterOneWidgetState extends State<SemesterWidget> {
                                           'token': widget.token,
                                           'gradeName': widget.gradeName,
                                           'semesterName': widget.semesterName,
-                                          'subjectName': item.name.toString()
+                                          'subjectName': item.name.toString(),
+                                          'subjectId':item.id,
                                         });
 
                                   },

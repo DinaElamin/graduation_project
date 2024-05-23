@@ -19,12 +19,12 @@ class AddDegreeFromMaterial extends StatefulWidget {
     required this.gradeName,
     required this.semesterName,
     required this.token,
-    required this.materialId,
+    required this.subjectId,
     required this.subjectName,
   }) : super(key: key);
 
   final String gradeName, semesterName, token,subjectName;
-  final int materialId;
+  final int subjectId;
 
   @override
   _AddDegreeFromMaterialState createState() => _AddDegreeFromMaterialState();
@@ -153,7 +153,7 @@ class _AddDegreeFromMaterialState extends State<AddDegreeFromMaterial> {
                 textButton: "Save", onPressed: (){
               addMaterialGradeCubit.emitAddMaterialDegreeStates(
                 widget.token,
-                materialid: widget.materialId,
+                materialid: widget.subjectId,
                 M_grade: int.parse(enteredDegree),
               );
               Navigator.of(dialogContext).pop();

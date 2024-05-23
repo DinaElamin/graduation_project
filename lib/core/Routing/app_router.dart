@@ -489,7 +489,7 @@ class AppRouter {
         final args = settings.arguments as Map<String, dynamic>;
         final String gradeName = args['gradeName'];
         final String semesterName = args['semesterName'];
-        final int materialId = args['materialid'];
+        final int subjectId = args['subjectId'];
         final String token = args['token'];
         final String subjectName = args['subjectName'];
         return MaterialPageRoute(
@@ -498,7 +498,7 @@ class AppRouter {
             child: AddDegreeFromMaterial(
               subjectName: subjectName,
               token: token,
-              materialId: materialId,
+              subjectId: subjectId,
               gradeName: gradeName,
               semesterName: semesterName,
             ),
