@@ -62,52 +62,49 @@ class _SemesterOneWidgetState extends State<SemesterWidget> {
                         items: getAllMaterialByTermIdModel.map((item) {
                           return DropdownMenuItem<String>(
                             value: item.name.toString(), // Use subject name as value
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                GestureDetector(
-                                  onTap:(){
-                                    context.pushNamed(
-                                        Routes.addDegreeFromMaterial,
-                                        arguments: {
-                                          'token': widget.token,
-                                          'gradeName': widget.gradeName,
-                                          'semesterName': widget.semesterName,
-                                          'subjectName': item.name.toString(),
-                                          'subjectId':item.id,
-                                        });
-
-                                  },
-                                  child: Text(
+                            child: GestureDetector(
+                              onTap: (){
+                                context.pushNamed(
+                                    Routes.addDegreeFromMaterial,
+                                    arguments: {
+                                      'token': widget.token,
+                                      'gradeName': widget.gradeName,
+                                      'termId':widget.semesterId,
+                                    });
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
                                     item.name.toString(),
                                     style: TextStyles.font16SemiBoldBlack.copyWith(
                                       color: ColorsManager.mainBlack,
                                     ),
                                     overflow: TextOverflow.ellipsis,
                                   ),
-                                ),
-                                GestureDetector(
-                                  onTap:(){
-                                    context.read<DeleteGradeCubit>().emitDeleteGradeStates(token: widget.token, yearId: widget.yearId);
-                                  },
-                                  child: Container(
-                                    width: 25.w,
-                                    height: 25.h,
-                                    decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color:  ColorsManager.redColor
-                                    ),
-                                    child: Center(
-                                      child: Icon(
-                                          Icons.minimize_rounded,
-                                          size: 10.sp,
-                                          color:ColorsManager.mainWhite
-                                        // Change icon color based on selection
+                                  GestureDetector(
+                                    onTap:(){
+                                      context.read<DeleteGradeCubit>().emitDeleteGradeStates(token: widget.token, yearId: widget.yearId);
+                                    },
+                                    child: Container(
+                                      width: 25.w,
+                                      height: 25.h,
+                                      decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color:  ColorsManager.redColor
+                                      ),
+                                      child: Center(
+                                        child: Icon(
+                                            Icons.minimize_rounded,
+                                            size: 10.sp,
+                                            color:ColorsManager.mainWhite
+                                          // Change icon color based on selection
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           );
                         }).toList(),

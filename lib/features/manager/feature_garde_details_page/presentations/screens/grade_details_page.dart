@@ -8,6 +8,7 @@ import 'package:ablexa/features/manager/feature_garde_details_page/logic/cubits/
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/shared_widgets/appBar_widget.dart';
 import '../../../../../core/shared_widgets/success_widget.dart';
 import '../../../../../core/theming/colors.dart';
@@ -57,41 +58,41 @@ class _GradeDetailsPageState extends State<GradeDetailsPage> {
 
   BlocBuilder<GetSemesterByIdCubit, GetSemesterByIdState<dynamic>> semesterCubit() {
     return BlocBuilder<GetSemesterByIdCubit, GetSemesterByIdState>(
-            builder: (context, state) {
-              return state.when(loading: () {
-                return const Center(
-                  child: CircularProgressIndicator(
-                    color: ColorsManager.mainColor,
-                  ),
-                );
-              }, success: (data) {
-                final List<GetSemesterByYearIdModel>
-                    getSemesterByYearIdModel = data;
-                return ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: getSemesterByYearIdModel.length,
-                  itemBuilder: (context, index) => Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SemesterWidget(
-                      semesterId: getSemesterByYearIdModel[index].id,
-                      token: widget.token,
-                      semesterName: getSemesterByYearIdModel[index].termName,
-                      gradeName: widget.gradeName,
-                      yearId: widget.materialid,
-                    ),
-                  ),
-                );
-              }, error: (error) {
-                return setupErrorState(context, error);
-              }, initial: () {
-                return const Center(
-                  child: CircularProgressIndicator(
-                    color: ColorsManager.mainColor,
-                  ),
-                );
-              });
-            },
+      builder: (context, state) {
+        return state.when(loading: () {
+          return const Center(
+            child: CircularProgressIndicator(
+              color: ColorsManager.mainColor,
+            ),
           );
+        }, success: (data) {
+          final List<GetSemesterByYearIdModel>
+          getSemesterByYearIdModel = data;
+          return ListView.builder(
+            shrinkWrap: true,
+            itemCount: getSemesterByYearIdModel.length,
+            itemBuilder: (context, index) => Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SemesterWidget(
+                semesterId: getSemesterByYearIdModel[index].id,
+                token: widget.token,
+                semesterName: getSemesterByYearIdModel[index].termName,
+                gradeName: widget.gradeName,
+                yearId: widget.materialid,
+              ),
+            ),
+          );
+        }, error: (error) {
+          return setupErrorState(context, error);
+        }, initial: () {
+          return const Center(
+            child: CircularProgressIndicator(
+              color: ColorsManager.mainColor,
+            ),
+          );
+        });
+      },
+    );
   }
 
   BlocListener<AddClassCubit, AddClassState<dynamic>> addClassCubitWidget(

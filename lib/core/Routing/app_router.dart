@@ -488,19 +488,20 @@ class AppRouter {
       case Routes.addDegreeFromMaterial:
         final args = settings.arguments as Map<String, dynamic>;
         final String gradeName = args['gradeName'];
-        final String semesterName = args['semesterName'];
-        final int subjectId = args['subjectId'];
         final String token = args['token'];
-        final String subjectName = args['subjectName'];
+        final int termId = args['termId'];
         return MaterialPageRoute(
-          builder: (context) => BlocProvider(
-            create: (context) => getIt<AddMaterialGradeCubit>(),
+          builder: (context) => MultiBlocProvider(
+            providers: [
+    BlocProvider(
+    create: (context) => getIt<AddMaterialGradeCubit>(),),
+    BlocProvider(
+    create: (context) => getIt<GetAllMaterialByTermIdCubit>(),),
+            ],
             child: AddDegreeFromMaterial(
-              subjectName: subjectName,
+              termId: termId,
               token: token,
-              subjectId: subjectId,
               gradeName: gradeName,
-              semesterName: semesterName,
             ),
           ),
         );
