@@ -110,7 +110,7 @@ Padding saveButton(BuildContext context) {
                   },
                 context,
                 text: S.of(context).add_grade,
-                contentText: S.of(context).add_student_successfully);
+                contentText: "Add Grade Successfully !!");
           },
             error: (error) {
               setupErrorState(context, error);
@@ -119,7 +119,7 @@ Padding saveButton(BuildContext context) {
       },
       child: AppTextButton(
           buttonHeight: 60.h,
-          textButton: S.of(context).add_student, onPressed: (){
+          textButton: S.of(context).add_grade, onPressed: (){
         validateThenDoAddGrade(context);
       }),
     ),

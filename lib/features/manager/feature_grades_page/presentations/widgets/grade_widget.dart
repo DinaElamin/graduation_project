@@ -1,16 +1,18 @@
-import 'package:ablexa/core/di/dependacy_injection.dart';
-import 'package:ablexa/features/manager/feature_grades_page/logic/cubits/delete_grade_cubit/delete_grade_cubit.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../../core/helper/extentions.dart';
+import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/get_all_semester_cubit/get_all_year_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ablexa/core/helper/extentions.dart';
+import 'package:ablexa/core/theming/colors.dart';
+import 'package:ablexa/core/theming/styles.dart';
+import 'package:ablexa/core/Routing/routers.dart';
+import 'package:ablexa/features/manager/feature_grades_page/logic/cubits/delete_grade_cubit/delete_grade_cubit.dart';
+import 'package:ablexa/generated/l10n.dart';
 
-import '../../../../../core/Routing/routers.dart';
-import '../../../../../core/theming/colors.dart';
-import '../../../../../core/theming/styles.dart';
-import '../../../../../generated/l10n.dart';
+import '../../../../../core/shared_widgets/app_elevated_button.dart';
+import '../../../../../core/theming/spacing.dart';
 
-class GradeWidget extends StatelessWidget {
+class GradeWidget extends StatefulWidget {
   final String gradeName, token;
   final int yearId;
 
@@ -22,31 +24,68 @@ class GradeWidget extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<GradeWidget> createState() => _GradeWidgetState();
+}
+
+class _GradeWidgetState extends State<GradeWidget> {
+  @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          EdgeInsets.only(left: 20.w, right: 20.w, top: 10.h, bottom: 10.h),
+      padding: EdgeInsets.only(left: 20.w, right: 20.w, top: 10.h, bottom: 10.h),
       child: GestureDetector(
         onTap: () {
           context.pushNamed(Routes.gradeDetailsPage, arguments: {
-            'token':token,
-            'materialid':yearId,
-            'gradeName':gradeName
+            'token': widget.token,
+            'gradeName': widget.gradeName,
+            'materialid':widget.yearId,
           });
         },
         child: Container(
           height: 70.h,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: ColorsManager.mainColor),
+            borderRadius: BorderRadius.circular(8),
+            color: ColorsManager.mainColor,
+          ),
           child: ListTile(
-            title: Text(gradeName, style: TextStyles.font18SemiBoldWhite),
+            title: Text(widget.gradeName, style: TextStyles.font18SemiBoldWhite),
             trailing: IconButton(
               icon: const Icon(Icons.delete, color: ColorsManager.mainWhite),
               onPressed: () {
-                context
-                    .read<DeleteGradeCubit>()
-                    .emitDeleteGradeStates(token: token, yearId: yearId);
+                showDialog<void>(
+                    context: context,
+                    builder: (BuildContext dialogContext) {
+                  final deleteGradeGradeCubit = context
+                      .read<DeleteGradeCubit>();
+                  return AlertDialog(
+                    content: Text("Delete Grade ?? ",style: TextStyles.font20BoldBlack,),
+                    actions: <Widget>[
+                      AppTextButton(
+                          buttonHeight: 25.r,
+                          buttonWidth: 60.r,
+                          textButton: "Delete",
+                          onPressed: () {
+                            deleteGradeGradeCubit
+                                .emitDeleteGradeStates(
+                              token: widget.token,yearId: widget.yearId);
+                            Navigator.of(dialogContext)
+                                .pop();
+                            setState(() {
+                              context.read<GetAllYearDataCubit>().emitAllYearStates();
+                            });
+                          }),
+                      verticalSpacing(10),
+                      AppTextButton(
+                          buttonHeight: 25.r,
+                          buttonWidth: 60.r,
+                          textButton:
+                          S.of(context).cancel,
+                          onPressed: () {
+                            Navigator.of(dialogContext)
+                                .pop();
+                          }),
+                    ],
+                  );
+                });
               },
             ),
           ),
@@ -54,66 +93,4 @@ class GradeWidget extends StatelessWidget {
       ),
     );
   }
-
-  Future<void> _showDeleteConfirmationDialog(BuildContext context) async {
-    return showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-          title: Text(
-            S.of(context).delete_garde,
-            textAlign: TextAlign.center,
-          ),
-          content: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextButton(
-                onPressed: () {
-                  // Use context.read to access the DeleteGradeCubit instance
-                  context.read<DeleteGradeCubit>().emitDeleteGradeStates(token: token, yearId: yearId);
-                  Navigator.of(context).pop(true);
-                },
-                child: Container(
-                  height: 30.h,
-                  width: 60.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(
-                        color: ColorsManager.mainBlack.withOpacity(0.3)),
-                  ),
-                  child: Center(
-                    child: Text(
-                      S.of(context).delete,
-                      style: TextStyles.font12RegularPurple.copyWith(color: Colors.red),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(width: 10.w), // Add spacing between buttons
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(false),
-                child: Container(
-                  height: 30.h,
-                  width: 60.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(
-                        color: ColorsManager.mainBlack.withOpacity(0.3)),
-                  ),
-                  child: Center(
-                    child: Text(
-                      S.of(context).cancel,
-                      style: TextStyles.font12RegularPurple.copyWith(color: ColorsManager.mainBlack),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
-      },
-    );
-  }
-
 }

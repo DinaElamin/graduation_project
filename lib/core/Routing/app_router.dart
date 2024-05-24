@@ -490,6 +490,7 @@ class AppRouter {
         final String gradeName = args['gradeName'];
         final String token = args['token'];
         final int termId = args['termId'];
+        final String semesterName = args['semesterName'];
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
             providers: [
@@ -499,6 +500,7 @@ class AppRouter {
     create: (context) => getIt<GetAllMaterialByTermIdCubit>(),),
             ],
             child: AddDegreeFromMaterial(
+              semesterName: semesterName,
               termId: termId,
               token: token,
               gradeName: gradeName,

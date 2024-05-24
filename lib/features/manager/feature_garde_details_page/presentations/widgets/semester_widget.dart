@@ -1,7 +1,4 @@
 import 'package:ablexa/core/helper/extentions.dart';
-import 'package:ablexa/features/manager/feature_garde_details_page/logic/cubits/get_all_material_by_term_id_cubit/get_all_material_by_term_id_cubit.dart';
-import 'package:ablexa/features/manager/feature_garde_details_page/logic/cubits/get_all_material_by_term_id_cubit/get_all_material_by_term_id_state.dart';
-import 'package:ablexa/features/manager/feature_grades_page/logic/cubits/delete_grade_cubit/delete_grade_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
@@ -10,6 +7,9 @@ import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../data/models/get_all_material_by_term_id_model/get_all_material_by_term_id_model.dart';
+import 'package:ablexa/features/manager/feature_garde_details_page/logic/cubits/get_all_material_by_term_id_cubit/get_all_material_by_term_id_cubit.dart';
+import 'package:ablexa/features/manager/feature_garde_details_page/logic/cubits/get_all_material_by_term_id_cubit/get_all_material_by_term_id_state.dart';
+import 'package:ablexa/features/manager/feature_grades_page/logic/cubits/delete_grade_cubit/delete_grade_cubit.dart';
 
 class SemesterWidget extends StatefulWidget {
   const SemesterWidget({Key? key, required this.token, required this.yearId, required this.semesterName,  required this.gradeName, required this.semesterId}) : super(key: key);
@@ -23,7 +23,7 @@ final String semesterName,gradeName;
 
 class _SemesterOneWidgetState extends State<SemesterWidget> {
 
-
+  final GlobalKey _dropdownKey = GlobalKey();
   @override
   void initState() {
     super.initState();
@@ -43,6 +43,7 @@ class _SemesterOneWidgetState extends State<SemesterWidget> {
               return Column(
                 children: [
                   IntrinsicWidth(
+                    key: _dropdownKey, // Assign the key to the dropdown
                     child: DropdownButtonHideUnderline(
                       child: DropdownButton2<String>(
                         isExpanded: true,

@@ -1,40 +1,38 @@
-import 'package:ablexa/features/manager/feature_add_teacher_page/data/models/get_all_materail_model/get_all-matrial_model.dart';
-import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
-import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_state.dart';
+import 'package:ablexa/core/helper/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
-import '../../../../../generated/l10n.dart';
+import '../../data/models/get_all_material_by_term_id_model/get_all_material_by_term_id_model.dart';
+import 'package:ablexa/features/manager/feature_garde_details_page/logic/cubits/get_all_material_by_term_id_cubit/get_all_material_by_term_id_cubit.dart';
+import 'package:ablexa/features/manager/feature_garde_details_page/logic/cubits/get_all_material_by_term_id_cubit/get_all_material_by_term_id_state.dart';
+import 'package:ablexa/features/manager/feature_grades_page/logic/cubits/delete_grade_cubit/delete_grade_cubit.dart';
 
-class SemesterOneWidget extends StatefulWidget {
-  const SemesterOneWidget({Key? key, required this.onSubjectsSelected}) : super(key: key);
-  final void Function(List<String>) onSubjectsSelected;
+class SemesterTwoWidgetByTermId extends StatefulWidget {
+  const SemesterTwoWidgetByTermId({Key? key, required this.token, required this.yearId, required this.semesterName,  required this.gradeName, required this.semesterId}) : super(key: key);
+  final String token;
+  final int yearId,semesterId;
+  final String semesterName,gradeName;
 
   @override
-  State<SemesterOneWidget> createState() => _SemesterOneWidgetState();
+  State<SemesterTwoWidgetByTermId> createState() => _SemesterOneWidgetState();
 }
 
-class _SemesterOneWidgetState extends State<SemesterOneWidget> {
-  List<String> selectedSubjects = []; // Track selected subjects
+class _SemesterOneWidgetState extends State<SemesterTwoWidgetByTermId> {
 
-  @override
-  void initState() {
-    super.initState();
-    // Fetch data from the Cubit when the widget is first created
-    context.read<GetAllMaterialDataCubit>().emitAllMaterialStates();
-  }
 
   @override
   Widget build(BuildContext context) {
+
     return Center(
-      child: BlocBuilder<GetAllMaterialDataCubit, GetAllMaterialDataState>(
+      child: BlocBuilder<GetAllMaterialByTermIdCubit, GetAllMaterialByTermIdState>(
         builder: (context, state) {
           return state.when(
             success: (data) {
-              List<GetAllMaterialModel> getAllMaterialModel = data;
+              List<GetAllMaterialByTermIdModel> getAllMaterialByTermIdModel = data;
               return Column(
                 children: [
                   IntrinsicWidth(
@@ -45,7 +43,7 @@ class _SemesterOneWidgetState extends State<SemesterOneWidget> {
                           children: [
                             Expanded(
                               child: Text(
-                                S.of(context).semester_one,
+                                widget.semesterName,
                                 style: TextStyles.font16SemiBoldBlack.copyWith(
                                   color: ColorsManager.mainWhite,
                                 ),
@@ -54,51 +52,62 @@ class _SemesterOneWidgetState extends State<SemesterOneWidget> {
                             ),
                           ],
                         ),
-                        items: getAllMaterialModel.map((item) {
+                        items: getAllMaterialByTermIdModel.map((item) {
                           return DropdownMenuItem<String>(
-                            value: item.subject_Name.toString(), // Use subject name as value
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  item.subject_Name.toString(),
-                                  style: TextStyles.font16SemiBoldBlack.copyWith(
-                                    color: ColorsManager.mainBlack,
+                            value: item.name.toString(), // Use item id as value
+                            child: GestureDetector(
+                              onTap: (){
+                                context.pushNamed(
+                                  Routes.addDegreeFromMaterial,
+                                  arguments: {
+                                    'token': widget.token,
+                                    'gradeName': widget.gradeName,
+                                    'termId': widget.semesterId,
+                                  },
+                                );
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    item.name.toString(),
+                                    style: TextStyles.font16SemiBoldBlack.copyWith(
+                                      color: ColorsManager.mainBlack,
+                                    ),
+                                    overflow: TextOverflow.ellipsis,
                                   ),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                Container(
-                                  width: 25.w,
-                                  height: 25.h,
-                                  decoration: const BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color:  ColorsManager.greenColor
-
-                                  ),
-                                  child: Center(
-                                    child: Icon(
-                                      Icons.add,
-                                      size: 18.sp,
-                                      color: ColorsManager.mainWhite,
+                                  GestureDetector(
+                                    onTap:(){
+                                      context.read<DeleteGradeCubit>().
+                                      emitDeleteGradeStates(token: widget.token,
+                                          yearId: item.id);
+                                    },
+                                    child: Container(
+                                      width: 25.w,
+                                      height: 25.h,
+                                      decoration: const BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color:  ColorsManager.redColor
+                                      ),
+                                      child: Center(
+                                        child: Icon(
+                                            Icons.minimize_rounded,
+                                            size: 10.sp,
+                                            color:ColorsManager.mainWhite
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           );
                         }).toList(),
+
                         onChanged: (String? value) {
                           setState(() {
-                            if (value != null) {
-                              // Toggle selection using subject name
-                              if (selectedSubjects.contains(value)) {
-                                selectedSubjects.remove(value); // Remove if already selected
-                              } else {
-                                selectedSubjects.add(value); // Add if not selected
-                              }
-                              // Pass the updated list of selected subjects back to the parent widget
-                              widget.onSubjectsSelected(selectedSubjects);
-                            }
+                            context.read<GetAllMaterialByTermIdCubit>().emitGetAllMaterialByTermIdStates(termId: widget.semesterId);
+
                           });
                         },
                         buttonStyleData: ButtonStyleData(

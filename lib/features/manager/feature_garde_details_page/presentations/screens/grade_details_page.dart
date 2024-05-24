@@ -16,8 +16,7 @@ import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 import '../../logic/cubits/add_class_cubit/add_class_state.dart';
-import '../widgets/semester_widget.dart';
-
+import '../widgets/semester_one_subject_list_widget.dart';
 class GradeDetailsPage extends StatefulWidget {
   const GradeDetailsPage({
     Key? key,
@@ -35,6 +34,7 @@ class GradeDetailsPage extends StatefulWidget {
 
 class _GradeDetailsPageState extends State<GradeDetailsPage> {
   String _className = ''; // Store the entered class name
+  bool _showSemesterOneSubjects = true; // Track which semester to show
 
   @override
   Widget build(BuildContext context) {
@@ -59,38 +59,145 @@ class _GradeDetailsPageState extends State<GradeDetailsPage> {
   BlocBuilder<GetSemesterByIdCubit, GetSemesterByIdState<dynamic>> semesterCubit() {
     return BlocBuilder<GetSemesterByIdCubit, GetSemesterByIdState>(
       builder: (context, state) {
-        return state.when(loading: () {
-          return const Center(
-            child: CircularProgressIndicator(
-              color: ColorsManager.mainColor,
-            ),
-          );
-        }, success: (data) {
-          final List<GetSemesterByYearIdModel>
-          getSemesterByYearIdModel = data;
-          return ListView.builder(
-            shrinkWrap: true,
-            itemCount: getSemesterByYearIdModel.length,
-            itemBuilder: (context, index) => Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SemesterWidget(
-                semesterId: getSemesterByYearIdModel[index].id,
-                token: widget.token,
-                semesterName: getSemesterByYearIdModel[index].termName,
-                gradeName: widget.gradeName,
-                yearId: widget.materialid,
+        return state.when(
+          loading: () {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: ColorsManager.mainColor,
               ),
-            ),
-          );
-        }, error: (error) {
-          return setupErrorState(context, error);
-        }, initial: () {
-          return const Center(
-            child: CircularProgressIndicator(
-              color: ColorsManager.mainColor,
-            ),
-          );
-        });
+            );
+          },
+          success: (data) {
+            final List<GetSemesterByYearIdModel> getSemesterByYearIdModel = data;
+
+            return Column(
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _showSemesterOneSubjects = true;
+                    });
+                  },
+                  child: Container(
+                    height: 50.sp,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: _showSemesterOneSubjects
+                          ? ColorsManager.mainColor
+                          : ColorsManager.grey, // Adjust the color based on active semester
+                    ),
+                    child: Center(
+                      child: Text(
+                        getSemesterByYearIdModel[0].termName,
+                        style: TextStyle(
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.bold,
+                          color: _showSemesterOneSubjects
+                              ? ColorsManager.mainWhite
+                              : Colors.black, // Adjust the color based on active semester
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                if (_showSemesterOneSubjects) // Only show "Show All Subjects" text if displaying subjects
+                  GestureDetector(
+                    onTap: () {
+                      context.pushNamed(
+                          Routes.addDegreeFromMaterial,
+                          arguments: {
+                            'token': widget.token,
+                            'gradeName': widget.gradeName,
+                            'termId':getSemesterByYearIdModel[0].id,
+                            'semesterName':getSemesterByYearIdModel[1].termName
+                          });
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        'Show All Subjects', // Text to show all subjects for Semester One
+                        style: TextStyles.font20BoldBlack.copyWith(decoration: TextDecoration.underline)
+                      ),
+                    ),
+                  ),
+                if (_showSemesterOneSubjects) // Only show Semester One subjects if active
+                  SemesterOneSubjectListWidget(
+                    yearId: widget.materialid,
+                    semesterId: getSemesterByYearIdModel[0].id,
+                    token: widget.token,
+                  ),
+                verticalSpacing(20),
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      _showSemesterOneSubjects = false;
+                    });
+                  },
+                  child: Container(
+                    height: 50.sp,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: !_showSemesterOneSubjects
+                          ? ColorsManager.mainColor
+                          : ColorsManager.grey, // Adjust the color based on active semester
+                    ),
+                    child: Center(
+                      child: Text(
+                        getSemesterByYearIdModel[1].termName,
+                        style: TextStyle(
+                          fontSize: 20.sp,
+                          fontWeight: FontWeight.bold,
+                          color: !_showSemesterOneSubjects
+                              ? ColorsManager.mainWhite
+                              : Colors.black, // Adjust the color based on active semester
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                if (!_showSemesterOneSubjects) // Only show "Show All Subjects" text if displaying subjects
+                  GestureDetector(
+                    onTap: () {
+                      context.pushNamed(
+                          Routes.addDegreeFromMaterial,
+                          arguments: {
+                            'token': widget.token,
+                            'gradeName': widget.gradeName,
+                            'termId':getSemesterByYearIdModel[1].id,
+                            'semesterName':getSemesterByYearIdModel[1].termName
+                          });
+                    },
+                    child:Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                          'Show All Subjects', // Text to show all subjects for Semester One
+                          style: TextStyles.font20BoldBlack.copyWith(decoration: TextDecoration.underline)
+                      ),
+                    ),
+                  ),
+                if (!_showSemesterOneSubjects) // Only show Semester Two subjects if active
+                  SemesterOneSubjectListWidget(
+                    yearId: widget.materialid,
+                    semesterId: getSemesterByYearIdModel[1].id,
+                    token: widget.token,
+                  ),
+              ],
+            );
+
+          },
+          error: (error) {
+            return setupErrorState(context, error);
+          },
+          initial: () {
+            return const Center(
+              child: CircularProgressIndicator(
+                color: ColorsManager.mainColor,
+              ),
+            );
+          },
+        );
       },
     );
   }
@@ -149,8 +256,8 @@ class _GradeDetailsPageState extends State<GradeDetailsPage> {
             showSuccessDialog(context,
                 text: "Success",
                 contentText: "The Class Added Success !", onPressed: () {
-              context.pop();
-            }); // Show the success dialog
+                  context.pop();
+                }); // Show the success dialog
           },
           error: (error) {
             setupErrorState(context, error); // Show the error dialog
@@ -194,8 +301,7 @@ class _GradeDetailsPageState extends State<GradeDetailsPage> {
       context: context,
       builder: (BuildContext dialogContext) {
         return AlertDialog(
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
           title: Text('Add Class', style: TextStyles.font20BoldBlack),
           content: AppTextFormField(
             validator: (value) {
@@ -215,9 +321,7 @@ class _GradeDetailsPageState extends State<GradeDetailsPage> {
                 buttonWidth: 60.r,
                 textButton: "Add",
                 onPressed: () {
-                  context
-                      .read<AddClassCubit>()
-                      .emitAddClassStates(widget.token, name: _className);
+                  context.read<AddClassCubit>().emitAddClassStates(widget.token, name: _className);
                   Navigator.of(dialogContext).pop();
                 }),
             verticalSpacing(10),
@@ -234,3 +338,4 @@ class _GradeDetailsPageState extends State<GradeDetailsPage> {
     );
   }
 }
+
