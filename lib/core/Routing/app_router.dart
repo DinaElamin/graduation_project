@@ -385,6 +385,10 @@ class AppRouter {
       case Routes.editTeacherProfilePage:
         final args = settings.arguments as Map<String, dynamic>;
         final String token = args['token'];
+        final String imageTeacher = args['imageTeacher'];
+        final String nameTeacher = args['nameTeacher'];
+        final String emailTeacher = args['emailTeacher'];
+        final String nationalNumber = args['nationalNumber'];
         final String TeacherId = args['TeacherId'];
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
@@ -399,9 +403,15 @@ class AppRouter {
                 create: (context) => getIt<EditTeacherCubit>(),
               ),
             ],
-            child: EditTeacherProfilePage(
+            child: TeacherEditProfilePage(
+              teacherId: TeacherId,
               token: token,
-              userId: TeacherId,
+              nationalNumber: nationalNumber,
+              nameTeacher: nameTeacher,
+              emailTeacher: emailTeacher,
+              imageTeacher: imageTeacher,
+
+
             ),
           ),
         );

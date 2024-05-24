@@ -74,11 +74,8 @@ final String nameTeacher,emailTeacher,nationalNumber,token,teacherId;
           Padding(
             padding:  EdgeInsets.only(left: 50.w,right: 50.w),
             child: AppTextButton(
-                textButton: S.of(context).add_exam, onPressed: (){
-                  context.pushNamed(Routes.addExamPage,arguments: {
-                    'token':token,
-                    'TeacherId':teacherId,
-                  });
+                textButton: S.of(context).edit_teacher, onPressed: (){
+
             }),
           )
         ],
