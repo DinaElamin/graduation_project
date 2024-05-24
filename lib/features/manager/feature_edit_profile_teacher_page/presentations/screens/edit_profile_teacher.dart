@@ -42,50 +42,50 @@ class _TeacherEditProfilePageState extends State<TeacherEditProfilePage> {
           EditTeacherButton(
             token: widget.token,
             onPressedFunction: () {
-              validateThenDoAddTeacher(context);
+              // validateThenDoAddTeacher(context);
             },
           ),
         ],
       ),
     );
   }
-  void validateThenDoAddTeacher(BuildContext context) {
-    if (context.read<EditTeacherCubit>().formKey.currentState!.validate()) {
-      // Check if imageFile is not null before proceeding
-
-        context.read<EditTeacherCubit>().emitEditTeacherStates(
-          widget.teacherId,
-          widget.token,
-          Name: context.read<EditTeacherCubit>().fullNameController.text,
-          Email: context.read<EditTeacherCubit>().emailController.text,
-          NationalNum:
-          context.read<EditTeacherCubit>().nationalIdController.text,
-          Image: imageFile!,
-          SubjectName: subjectName,
-          AssignClassId: selectedClassIds,
-        );
-      } else {
-        showDialog(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: Text(S.of(context).image_required),
-            content: Text(S.of(context).please_select_an_image),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: Text(S.of(context).ok),
-              ),
-            ],
-          ),
-        );
-      }
-    } else {
-      // Validation failed
-      print("Validation failed. Please check the form fields.");
-    }
-  }
+  // void validateThenDoAddTeacher(BuildContext context) {
+  //   if (context.read<EditTeacherCubit>().formKey.currentState!.validate()) {
+  //     // Check if imageFile is not null before proceeding
+  //
+  //       context.read<EditTeacherCubit>().emitEditTeacherStates(
+  //         widget.teacherId,
+  //         widget.token,
+  //         Name: context.read<EditTeacherCubit>().fullNameController.text,
+  //         Email: context.read<EditTeacherCubit>().emailController.text,
+  //         NationalNum:
+  //         context.read<EditTeacherCubit>().nationalIdController.text,
+  //         Image: imageFile!,
+  //         SubjectName: subjectName,
+  //         AssignClassId: selectedClassIds,
+  //       );
+  //     } else {
+  //       showDialog(
+  //         context: context,
+  //         builder: (context) => AlertDialog(
+  //           title: Text(S.of(context).image_required),
+  //           content: Text(S.of(context).please_select_an_image),
+  //           actions: [
+  //             TextButton(
+  //               onPressed: () {
+  //                 Navigator.pop(context);
+  //               },
+  //               child: Text(S.of(context).ok),
+  //             ),
+  //           ],
+  //         ),
+  //       );
+  //     }
+  //   } else {
+  //     // Validation failed
+  //     print("Validation failed. Please check the form fields.");
+  //   }
+//  }
 
 }
 
