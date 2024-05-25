@@ -708,7 +708,7 @@ class _ApiService implements ApiService {
     )
             .compose(
               _dio.options,
-              'api/Material/getAllMaterials/${termId}',
+              'api/Material/getmaterials/${termId}',
               queryParameters: queryParameters,
               data: _data,
             )

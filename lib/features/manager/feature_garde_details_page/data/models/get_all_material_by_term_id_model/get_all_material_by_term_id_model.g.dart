@@ -11,6 +11,7 @@ GetAllMaterialByTermIdModel _$GetAllMaterialByTermIdModelFromJson(
     GetAllMaterialByTermIdModel(
       id: json['id'] as int,
       name: json['name'] as String,
+      m_grade: json['m_grade'] as int,
     );
 
 Map<String, dynamic> _$GetAllMaterialByTermIdModelToJson(
@@ -18,4 +19,5 @@ Map<String, dynamic> _$GetAllMaterialByTermIdModelToJson(
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
+      'm_grade': instance.m_grade,
     };

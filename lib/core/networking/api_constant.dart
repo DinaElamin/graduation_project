@@ -23,7 +23,7 @@ class ApiConstant {
  static const String addClass = "api/PClass";
  static const String addMaterialGrade ="api/Material/addMaterialGrade";
  static const String getSemesterByYearId ="api/Term/getSemesterbyYear";
- static const String getAllMaterialByTermId ="api/Material/getAllMaterials";
+ static const String getAllMaterialByTermId ="api/Material/getmaterials";
  static const String getAllTeacherById = "api/User/getTeacherById";
 }
 

@@ -154,7 +154,8 @@ class _AddDegreeFromMaterialState extends State<AddDegreeFromMaterial> {
                                       },
                                       child: Text(
                                         enteredDegrees[index] ??
-                                            'Enter degree', // Display the entered degree for this item, or 'Enter degree' if not entered yet
+                                            getAllMaterialByTermIdModel[index].m_grade.toString(),
+                                        // Display the entered degree for this item, or 'Enter degree' if not entered yet
                                         style: TextStyles.font12RegularPurple,
                                       ),
                                     ),
