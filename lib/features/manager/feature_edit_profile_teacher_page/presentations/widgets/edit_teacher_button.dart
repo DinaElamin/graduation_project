@@ -45,7 +45,7 @@ class _EditTeacherButtonState extends State<EditTeacherButton> {
 
               }, context,
                   text: S.of(context).edit,
-                  contentText: S.of(context).add_teacher_successfully);
+                  contentText: "Edit Teacher Successfully !!");
             },
             error: (error) {
               return AlertDialog(
@@ -74,7 +74,7 @@ class _EditTeacherButtonState extends State<EditTeacherButton> {
         },
         child: AppTextButton(
             buttonHeight: 60.h,
-            textButton: S.of(context).add_teacher,
+            textButton: S.of(context).edit_teacher,
             onPressed:
               widget.onPressedFunction
             ),

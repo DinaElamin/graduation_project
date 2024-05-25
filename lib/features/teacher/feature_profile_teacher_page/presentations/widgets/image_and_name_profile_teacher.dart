@@ -10,7 +10,7 @@ import '../../../../../generated/l10n.dart';
 
 class ImageAndNameProfileTeacher extends StatefulWidget {
   const ImageAndNameProfileTeacher({Key? key, required this.nameTeacher, required this.emailTeacher, required this.imageTeacher}) : super(key: key);
-final String nameTeacher,emailTeacher,imageTeacher;
+  final String nameTeacher,emailTeacher,imageTeacher;
   @override
   _ImageAndNameProfileTeacherState createState() => _ImageAndNameProfileTeacherState();
 }

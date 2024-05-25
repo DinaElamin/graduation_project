@@ -4,14 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/image_manager.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 import '../widgets/students_information_widget.dart';
 
 class StudentExamsPage extends StatelessWidget {
-  const StudentExamsPage({super.key, required this.nameStudent, required this.emailStudent, required this.imageStudent, required this.nationalIdStudent, required this.classId, required this.subjectNameTeacher, required this.roleName});
-final String nameStudent,emailStudent,imageStudent,nationalIdStudent,subjectNameTeacher,roleName;
+  const StudentExamsPage({super.key, required this.nameStudent, required this.emailStudent, required this.imageStudent, required this.nationalIdStudent, required this.classId, required this.roleName});
+final String nameStudent,emailStudent,imageStudent,nationalIdStudent,roleName;
 final int classId;
 
   @override
@@ -36,15 +37,12 @@ final int classId;
           backgroundColor: ColorsManager.mainWhite):
 
       AppBar(
+        automaticallyImplyLeading: false,
       backgroundColor: ColorsManager.mainColor, // Change color to your preference
       title: Row(
         children: [
-          Image.asset(
-            'assets/logo_app.png', // Replace with your logo path
-            height: 30,
-            width: 30,
-          ),
-          const SizedBox(width: 10),
+          Image.asset(ImageManager.logoApp,height: 50.sp,width: 50.sp),
+          horizontalSpacing(50),
           const Text(
             "Student Home",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
@@ -141,7 +139,7 @@ final int classId;
               verticalSpacing(20),
                StudentInformationsWidget(
                  roleName: roleName,
-                 subjectNameTeacher: subjectNameTeacher,
+
                ),
             ],
           ),

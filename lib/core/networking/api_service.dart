@@ -5,6 +5,7 @@ import '../../features/feature_verify_code_page/data/models/verify_code_model/re
 import '../../features/feature_verify_code_page/data/models/verify_code_model/response/verify_code_response_model.dart';
 import '../../features/manager/feature_add_student_page/data/models/get_all_semester_model/get_all_year_model.dart';
 import '../../features/manager/feature_add_teacher_page/data/models/get_all_materail_model/get_all-matrial_model.dart';
+import '../../features/manager/feature_edit_profile_teacher_page/data/models/get_teacher_by_id_model/get_teacher_by_id_model.dart';
 import '../../features/manager/feature_garde_details_page/data/models/get_all_material_by_term_id_model/get_all_material_by_term_id_model.dart';
 import '../../features/manager/feature_garde_details_page/data/models/get_semester_by_term_id_model/get_semester_by_year_id_model.dart';
 import '../../features/manager/feature_home_manager_page/data/models/get_all_student_model/get_all_student_model.dart';
@@ -197,4 +198,8 @@ abstract class ApiService {
   @GET("${ApiConstant.getStudentById}/{studentId}")
   Future<GetStudentByIdModel> getStudentsById(
       @Path("studentId") String studentId);
+  // get teacher by id
+  @GET("${ApiConstant.getAllTeacherById}/{TeacherId}")
+  Future<GetTeacherByIdModel> getTeacherById(
+      @Path("TeacherId") String TeacherId);
 }

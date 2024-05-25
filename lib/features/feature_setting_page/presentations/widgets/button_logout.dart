@@ -20,7 +20,7 @@ class ButtonLogout extends StatelessWidget {
               fixedSize: MaterialStatePropertyAll(Size(120.w, 60.h)),
               backgroundColor: const MaterialStatePropertyAll(ColorsManager.mainColor)),
           onPressed: (){
-            context.pushNamed(Routes.changeProfilePage);
+            context.pushNamed(Routes.loginPage);
 
           }, child:
       Row(

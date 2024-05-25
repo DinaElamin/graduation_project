@@ -1,6 +1,5 @@
 import '../../../../core/helper/extentions.dart';
 import '../../../../core/theming/colors.dart';
-import '../../../../core/theming/image_manager.dart';
 import '../../../../core/theming/spacing.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/Routing/routers.dart';
@@ -22,13 +21,6 @@ class SettingPage extends StatelessWidget {
               children: [
                 AppBarWidget(pageName: S.of(context).setting),
                 verticalSpacing(50),
-                ContantOfSettingContainer(
-                  iconName:  Icon(Icons.person,color: ColorsManager.mainBlack.withOpacity(0.5)),
-                  text: S.of(context).my_profile,
-                  onPressedFromArrow: () {
-
-                  },
-                ),
                 ContantOfSettingContainer(
                   iconName: Icon(Icons.key_outlined,color: ColorsManager.mainBlack.withOpacity(0.5)),
                   text: S.of(context).reset_password,

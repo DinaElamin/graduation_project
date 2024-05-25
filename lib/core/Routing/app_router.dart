@@ -2,6 +2,7 @@ import 'package:ablexa/features/manager/feature_add_grade_page/logic/cubits/add_
 import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/get_all_semester_cubit/get_all_year_cubit.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
 import 'package:ablexa/features/manager/feature_edit_profile_teacher_page/logic/cubits/edit_teacher_cubit/edit_teacher_cubit.dart';
+import 'package:ablexa/features/manager/feature_edit_profile_teacher_page/logic/cubits/get_all_teacher_by_id_cubit/get_all_Teacher_by_id_cubit.dart';
 import 'package:ablexa/features/manager/feature_edit_profile_teacher_page/presentations/screens/edit_profile_teacher.dart';
 import 'package:ablexa/features/manager/feature_garde_details_page/logic/cubits/add_material_degree_cubit/add_material_degree_cubit.dart';
 import 'package:ablexa/features/manager/feature_garde_details_page/logic/cubits/get_all_material_by_term_id_cubit/get_all_material_by_term_id_cubit.dart';
@@ -338,7 +339,6 @@ class AppRouter {
         final String emailTeacher = args['emailTeacher'];
         final String nationalNumber = args['nationalNumber'];
         final String TeacherId = args['TeacherId'];
-        final String subjectNameTeacher = args['subjectNameTeacher'];
         final String roleName = args['roleName'];
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
@@ -349,7 +349,6 @@ class AppRouter {
             ],
             child: TeacherHome(
               roleName: roleName,
-              subjectNameTeacher: subjectNameTeacher,
               TeacherId: TeacherId,
               nationalNumber: nationalNumber,
               token: token,
@@ -364,7 +363,6 @@ class AppRouter {
         final args = settings.arguments as Map<String, dynamic>;
         final String className = args['className'];
         final int classId = args['classId'];
-        final String subjectNameTeacher = args['subjectNameTeacher'];
         final String roleName = args['roleName'];
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
@@ -375,7 +373,6 @@ class AppRouter {
             ],
             child: StudentsPage(
               roleName: roleName,
-              subjectNameTeacher: subjectNameTeacher,
               classId: classId,
               className: className,
             ),
@@ -402,16 +399,14 @@ class AppRouter {
               BlocProvider(
                 create: (context) => getIt<EditTeacherCubit>(),
               ),
+              BlocProvider(
+                create: (context) => getIt<GetTeacherByIdCubit>(),
+              ),
             ],
-            child: TeacherEditProfilePage(
+            child: EditProfileTeacherPage(
+              imageTeacher: imageTeacher,
               teacherId: TeacherId,
               token: token,
-              nationalNumber: nationalNumber,
-              nameTeacher: nameTeacher,
-              emailTeacher: emailTeacher,
-              imageTeacher: imageTeacher,
-
-
             ),
           ),
         );
@@ -460,12 +455,10 @@ class AppRouter {
         final String emailStudent = args['emailStudent'];
         final String nationalIdStudent = args['nationalIdStudent'];
         final int classId = args['classId'];
-        final String subjectNameTeacher = args['subjectNameTeacher'];
         final String roleName = args['roleName'];
         return MaterialPageRoute(
           builder: (context) => StudentExamsPage(
             roleName:roleName,
-            subjectNameTeacher:subjectNameTeacher,
             classId: classId,
             nationalIdStudent: nationalIdStudent,
             imageStudent: imageStudent,

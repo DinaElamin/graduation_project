@@ -54,40 +54,36 @@ class _SubjectDropDownState extends State<SubjectsDropDown> {
             }).toList();
 
 
-            return Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: Column(
-                children: <Widget>[
-                  SelectDropList(
-                    height: 60.sp,
-                    width: double.infinity,
-                    itemSelected: optionItemSelected,
-                    dropListModel: DropListModel(dropListItems),
-                    showIcon: false, // Show Icon in DropDown Title
-                    showArrowIcon: true, // Show Arrow Icon in DropDown
-                    showBorder: true,
-                    paddingTop: 0,
-                    dropboxColor: ColorsManager.mainColor,
-                    textColorItem: ColorsManager.mainWhite,
-                    textColorTitle: ColorsManager.mainWhite,
-                    arrowColor: ColorsManager.mainWhite,
-                    dropbBoxborderRadius: BorderRadius.circular(16.sp),
-                    heightBottomContainer: 80.r,
-                    containerDecoration: BoxDecoration(
-                      color: ColorsManager.mainColor,
-                      borderRadius: BorderRadius.circular(16.sp),
-                    ),
-                    hintColorTitle: ColorsManager.mainWhite,
-                    onOptionSelected: (optionItem) {
-                      setState(() {
-                        optionItemSelected = optionItem;
-                        widget.onSubjectSelected(optionItem.title); // Pass the selected subjectName to the callback function
-                      });
-                    },
+            return Column(
+              children: <Widget>[
+                SelectDropList(
+                  height: 60.sp,
+                  itemSelected: optionItemSelected,
+                  dropListModel: DropListModel(dropListItems),
+                  showIcon: false, // Show Icon in DropDown Title
+                  showArrowIcon: true, // Show Arrow Icon in DropDown
+                  showBorder: true,
+                  paddingTop: 0,
+                  dropboxColor: ColorsManager.mainColor,
+                  textColorItem: ColorsManager.mainWhite,
+                  textColorTitle: ColorsManager.mainWhite,
+                  arrowColor: ColorsManager.mainWhite,
+                  dropbBoxborderRadius: BorderRadius.circular(16.sp),
+                  heightBottomContainer: 80.r,
+                  containerDecoration: BoxDecoration(
+                    color: ColorsManager.mainColor,
+                    borderRadius: BorderRadius.circular(16.sp),
+                  ),
+                  hintColorTitle: ColorsManager.mainWhite,
+                  onOptionSelected: (optionItem) {
+                    setState(() {
+                      optionItemSelected = optionItem;
+                      widget.onSubjectSelected(optionItem.title); // Pass the selected subjectName to the callback function
+                    });
+                  },
 
-                  )
-                ],
-              ),
+                )
+              ],
             );
           },
             error: (error) {

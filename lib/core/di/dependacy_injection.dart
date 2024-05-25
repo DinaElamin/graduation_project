@@ -6,6 +6,7 @@ import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/ge
 import 'package:ablexa/features/manager/feature_add_teacher_page/data/repos/get_all_matrial_repo/get_all_matrial_repo.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
 import 'package:ablexa/features/manager/feature_edit_profile_teacher_page/data/repos/edit_teacher_profile_repo.dart';
+import 'package:ablexa/features/manager/feature_edit_profile_teacher_page/data/repos/get_teacher_by_class_id_repo/get_all_student_by_class_id_repo.dart';
 import 'package:ablexa/features/manager/feature_edit_profile_teacher_page/logic/cubits/edit_teacher_cubit/edit_teacher_cubit.dart';
 import 'package:ablexa/features/manager/feature_garde_details_page/data/repos/add_material_grade_repo/add_material_degree_repo.dart';
 import 'package:ablexa/features/manager/feature_garde_details_page/data/repos/get_all_material_by_term_id_repo/get_all_material_by_term_id_repo.dart';
@@ -28,6 +29,7 @@ import '../../features/feature_verify_code_page/logic/cubits/verify_code_cubit/v
 import '../../features/manager/feature_add_student_page/logic/cubits/add_student_cubit/add_student_cubit.dart';
 import '../../features/manager/feature_add_teacher_page/data/repos/add_teacher_repo/add_teacher_repo.dart';
 import '../../features/manager/feature_add_teacher_page/logic/cubits/add_teacher_cubit/add_teacher_cubit.dart';
+import '../../features/manager/feature_edit_profile_teacher_page/logic/cubits/get_all_teacher_by_id_cubit/get_all_Teacher_by_id_cubit.dart';
 import '../../features/manager/feature_garde_details_page/data/repos/add_class_repo/add_class_repo.dart';
 import '../../features/manager/feature_garde_details_page/logic/cubits/add_class_cubit/add_class_cubit.dart';
 import '../../features/manager/feature_garde_details_page/logic/cubits/get_semester_by_year_id_cubit/get_semester_by_year_id_cubit.dart';
@@ -123,4 +125,7 @@ final getIt = GetIt.instance;
   //get all material by termId
   getIt.registerLazySingleton<GetAllMaterialByTermIdRepo>(() => GetAllMaterialByTermIdRepo(getIt()));
   getIt.registerFactory<GetAllMaterialByTermIdCubit>(() => GetAllMaterialByTermIdCubit(getIt()));
+  //get teacher by id
+  getIt.registerLazySingleton<GetTeacherByIdRepo>(() => GetTeacherByIdRepo(getIt()));
+  getIt.registerFactory<GetTeacherByIdCubit>(() => GetTeacherByIdCubit(getIt()));
  }

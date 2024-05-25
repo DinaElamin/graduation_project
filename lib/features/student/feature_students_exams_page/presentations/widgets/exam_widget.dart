@@ -8,8 +8,8 @@ import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 
 class ExamWidget extends StatelessWidget {
-  const ExamWidget({Key? key, required this.subjectNameTeacher, required this.roleName}) : super(key: key);
-final String subjectNameTeacher,roleName;
+  const ExamWidget({Key? key,  required this.roleName}) : super(key: key);
+final String roleName;
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -43,7 +43,7 @@ final String subjectNameTeacher,roleName;
               roleName == 'Teacher'
                   ? examInformationWidget(
                       context,
-                      subjectName: subjectNameTeacher,
+                      subjectName: "math",
                       totalDegree: "40/60",
                     )
                   : ListView.builder(

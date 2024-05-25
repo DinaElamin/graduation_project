@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:dropdown_button2/dropdown_button2.dart';
+import 'package:dropdown_model_list/drop_down/model.dart';
+import 'package:dropdown_model_list/drop_down/select_drop_list.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
-import '../../../../../generated/l10n.dart';
 import '../../../../../features/manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_cubit.dart';
 import '../../../../../features/manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_state.dart';
 import '../../../../../features/manager/feature_home_manager_page/data/models/get_all_classes_model/get_all_classes_model.dart';
@@ -20,139 +19,104 @@ class ClassesDropDown extends StatefulWidget {
 
 class _ClassesDropDownState extends State<ClassesDropDown> {
   List<String> selectedClassIds = []; // Track selected class IDs
+  OptionItem optionItemSelected = OptionItem(title: "Class");
 
   @override
   void initState() {
     super.initState();
-    // Fetch data from the Cubit when the widget is first created
     context.read<GetAllClassesDataCubit>().emitAllClassesStates();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: BlocBuilder<GetAllClassesDataCubit, GetAllClassesDataState>(
-        builder: (context, state) {
-          return state.when(
+    return BlocBuilder<GetAllClassesDataCubit, GetAllClassesDataState>(
+      builder: (context, state) {
+        return state.when(
+            initial: () {
+              return const Center(
+                child: CircularProgressIndicator(
+                  color: ColorsManager.mainColor,
+                ),
+              );
+            },
+            loading: () {
+              return const Center(
+                child: CircularProgressIndicator(
+                  color: ColorsManager.mainColor,
+                ),
+              );
+            },
             success: (data) {
-              List<GetAllClassesModel> getAllClassesModel = data;
-              return Column(
-                children: [
-                  IntrinsicWidth(
-                    child: DropdownButtonHideUnderline(
-                      child: DropdownButton2<String>(
-                        isExpanded: true,
-                        hint: Row(
-                          children: [
-                            Expanded(
-                              child: Text(
-                                S.of(context).class_code,
-                                style: TextStyles.font16SemiBoldBlack.copyWith(
-                                  color: ColorsManager.mainWhite,
-                                ),
-                                overflow: TextOverflow.clip,
-                              ),
-                            ),
-                          ],
-                        ),
-                        items: getAllClassesModel.map((item) {
-                          return DropdownMenuItem<String>(
-                            value: item.classId.toString(),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  item.className.toString(),
-                                  style: TextStyles.font16SemiBoldBlack.copyWith(
-                                    color: ColorsManager.mainBlack,
-                                  ),
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                Container(
-                                  width: 25.w,
-                                  height: 25.h,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: selectedClassIds.contains(item.classId)
-                                        ? ColorsManager.greenColor
-                                        : Colors.transparent, // Change color based on selection
-                                  ),
-                                  child: Center(
-                                    child: Icon(
-                                      Icons.add,
-                                      size: 18.sp,
-                                      color: ColorsManager.mainWhite,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        }).toList(),
-                        onChanged: (String? value) {
-                          setState(() {
-                            String selectedValue = value!;
+              final List<GetAllClassesModel> getAllClassesModel = data;
+              List<OptionItem> dropListItems = getAllClassesModel.map((model) {
+                return OptionItem(id: model.classId.toString(), title: model.className ?? '');
+              }).toList();
 
-                            // Check if the class ID is already in the selected list
-                            if (!selectedClassIds.contains(selectedValue)) {
-                              // Add the class ID to the selected list
-                              selectedClassIds.add(selectedValue);
-                            } else {
-                              // Remove the class ID from the selected list
-                              selectedClassIds.remove(selectedValue);
-                            }
-                            widget.onSubjectsSelected(selectedClassIds);
-                          });
-                        },
-                        buttonStyleData: ButtonStyleData(
-                          width: 400.w,
-                          height: 60.h,
-                          padding: EdgeInsets.only(left: 14.w, right: 14.w),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14),
-                            border: Border.all(
-                              color: Colors.black26,
-                            ),
-                            color: ColorsManager.mainColor,
-                          ),
-                          elevation: 2,
-                        ),
-                        iconStyleData: IconStyleData(
-                          icon: const Icon(
-                            Icons.arrow_drop_down,
-                          ),
-                          iconSize: 21.sp,
-                          iconEnabledColor: ColorsManager.mainWhite,
-                          iconDisabledColor: ColorsManager.mainWhite,
-                        ),
-                        dropdownStyleData: DropdownStyleData(
-                          maxHeight: 200.h,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(14),
-                            color: ColorsManager.grey,
-                          ),
-                          offset: const Offset(5, -0),
-                          scrollbarTheme: ScrollbarThemeData(
-                            radius: const Radius.circular(40),
-                            thickness: MaterialStateProperty.all<double>(6),
-                            thumbVisibility: MaterialStateProperty.all<bool>(true),
-                          ),
-                        ),
-                        menuItemStyleData: MenuItemStyleData(
-                          height: 40.h,
-                          padding: EdgeInsets.only(left: 14.w, right: 14.w),
-                        ),
-                      ),
+              return Column(
+                children: <Widget>[
+                  SelectDropList(
+                    height: 60.sp,
+                    itemSelected: optionItemSelected,
+                    dropListModel: DropListModel(dropListItems),
+                    showIcon: false,
+                    showArrowIcon: true,
+                    showBorder: true,
+                    paddingTop: 0,
+                    dropboxColor: ColorsManager.mainColor,
+                    textColorItem: ColorsManager.mainWhite,
+                    textColorTitle: ColorsManager.mainWhite,
+                    arrowColor: ColorsManager.mainWhite,
+                    dropbBoxborderRadius: BorderRadius.circular(16.sp),
+                    heightBottomContainer: 80.r,
+                    containerDecoration: BoxDecoration(
+                      color: ColorsManager.mainColor,
+                      borderRadius: BorderRadius.circular(16.sp),
                     ),
-                  ),
+                    hintColorTitle: ColorsManager.mainWhite,
+                    onOptionSelected: (optionItem) {
+                      setState(() {
+                        if (selectedClassIds.contains(optionItem.id)) {
+                          selectedClassIds.remove(optionItem.id); // Remove ID if already selected
+                        } else {
+                          selectedClassIds.add(optionItem.id!); // Add ID if not selected
+                        }
+                        optionItemSelected = optionItem;
+                        widget.onSubjectsSelected(selectedClassIds); // Pass all selected class IDs
+                      });
+                    },
+                  )
                 ],
               );
             },
-            loading: () => const CircularProgressIndicator(),
-            error: (error) => Text('Error: $error'),
-            initial: () => const CircularProgressIndicator(),
-          );
-        },
+            error: (error) {
+              return setupErrorState(context, error);
+            }
+        );
+      },
+    );
+  }
+
+  Widget setupErrorState(BuildContext context, String error) {
+    return AlertDialog(
+      content: Text(
+        error,
+        style: TextStyles.font14MediumLightBlack,
+      ),
+      actions: [
+        TextButton(
+          onPressed: () {
+            Navigator.of(context).pop(); // Close the AlertDialog
+          },
+          child: Text(
+            'Got It ',
+            style: TextStyles.font20BoldBlack,
+          ),
+        ),
+      ],
+      icon: const Icon(
+        Icons.error,
+        color: Colors.red,
+        size: 32,
       ),
     );
   }

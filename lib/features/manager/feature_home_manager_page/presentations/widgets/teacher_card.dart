@@ -1,16 +1,18 @@
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
+import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/get_all_teacher_cubit/login_cubit/get_all_teacher_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/helper/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/image_manager.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
-class TeacherCard extends StatelessWidget {
+class TeacherCard extends StatefulWidget {
   final String name, type, image,id,token,email,nationalNumber,TeacherId;
 
   const TeacherCard({
@@ -20,6 +22,11 @@ class TeacherCard extends StatelessWidget {
     required this.image, required this.id, required this.token, required this.email, required this.nationalNumber, required this.TeacherId
   }) : super(key: key);
 
+  @override
+  State<TeacherCard> createState() => _TeacherCardState();
+}
+
+class _TeacherCardState extends State<TeacherCard> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,16 +42,16 @@ class TeacherCard extends StatelessWidget {
             children: [
               CircleAvatar(
                 radius: 25.sp,
-               backgroundImage: NetworkImage(image)),
+               backgroundImage: NetworkImage(widget.image)),
               horizontalSpacing(10),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(name, style: TextStyles.font12BlackBold),
+                  Text(widget.name, style: TextStyles.font12BlackBold),
                   verticalSpacing(10),
                   Text(
-                    type,
+                    widget.type,
                     style: TextStyles.font14MediumLightBlack.copyWith(fontSize: 12.sp),
                   ),
                 ],
@@ -67,12 +74,12 @@ class TeacherCard extends StatelessWidget {
                 onTap: () {
 
                       context.pushNamed(Routes.editTeacherProfilePage,arguments: {
-                        'token':token,
-                        'nameTeacher':name,
-                        'emailTeacher':email,
-                        'nationalNumber':nationalNumber,
-                        'imageTeacher':image,
-                        'TeacherId':TeacherId,
+                        'token':widget.token,
+                        'nameTeacher':widget.name,
+                        'emailTeacher':widget.email,
+                        'nationalNumber':widget.nationalNumber,
+                        'imageTeacher':widget.image,
+                        'TeacherId':widget.TeacherId,
                       });
                 },
                 value: 'view_profile',
@@ -82,14 +89,46 @@ class TeacherCard extends StatelessWidget {
                 ),
               ),
               PopupMenuItem(
-                onTap: (){
-                  context.read<DeleteUserCubit>().emitDeleteUserStates(token: token,userId: id);
-
-
-                },
+                onTap: () {
+                  showDialog<void>(
+                      context: context,
+                      builder: (BuildContext dialogContext) {
+                        final deleteStudentCubit = context
+                            .read<DeleteUserCubit>();
+                        return AlertDialog(
+                          content: Text("Delete Teacher ?? ",style: TextStyles.font20BoldBlack,),
+                          actions: <Widget>[
+                            AppTextButton(
+                                buttonHeight: 25.r,
+                                buttonWidth: 60.r,
+                                textButton: "Delete",
+                                onPressed: () {
+                                  deleteStudentCubit
+                                      .emitDeleteUserStates(
+                                      token: widget.token,userId:  widget.id);
+                                  Navigator.of(dialogContext)
+                                      .pop();
+                                  setState(() {
+                                    context.read<GetAllTeacherDataCubit>().emitAllTeacherStates();
+                                  });
+                                }),
+                            verticalSpacing(10),
+                            AppTextButton(
+                                buttonHeight: 25.r,
+                                buttonWidth: 60.r,
+                                textButton:
+                                S.of(context).cancel,
+                                onPressed: () {
+                                  Navigator.of(dialogContext)
+                                      .pop();
+                                }),
+                          ],
+                        );
+                      });                      },
                 value: 'delete',
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                  padding:
+                  const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                   child: Text(S.of(context).delete),
                 ),
               ),

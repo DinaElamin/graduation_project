@@ -9,13 +9,22 @@ import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 class EditTeacherTextFormFieldWidgets extends StatefulWidget {
-  const EditTeacherTextFormFieldWidgets({super.key});
+  const EditTeacherTextFormFieldWidgets({
+    Key? key,
+    required this.nameTeacher,
+    required this.emailTeacher,
+    required this.nationalNumberTeacher,
+  }) : super(key: key);
+
+  final String nameTeacher, emailTeacher, nationalNumberTeacher;
 
   @override
-  State<EditTeacherTextFormFieldWidgets> createState() => _EditTeacherTextFormFieldWidgetsState();
+  State<EditTeacherTextFormFieldWidgets> createState() =>
+      _EditTeacherTextFormFieldWidgetsState();
 }
 
-class _EditTeacherTextFormFieldWidgetsState extends State<EditTeacherTextFormFieldWidgets> {
+class _EditTeacherTextFormFieldWidgetsState
+    extends State<EditTeacherTextFormFieldWidgets> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -38,12 +47,14 @@ class _EditTeacherTextFormFieldWidgetsState extends State<EditTeacherTextFormFie
         ),
         verticalSpacing(10),
         AppTextFormField(
-          controller: context.read<EditTeacherCubit>().emailController,
+          controller: context.read<EditTeacherCubit>().emailController
+            ..text = widget.emailTeacher,
           fillColorFromBackground: ColorsManager.mainWhite,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16.sp),
-            borderSide:
-            BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
+            borderSide: BorderSide(
+              color: ColorsManager.mainBlack.withOpacity(0.3),
+            ),
           ),
           hintText: S.of(context).enter_email,
           validator: (value) {
@@ -70,12 +81,14 @@ class _EditTeacherTextFormFieldWidgetsState extends State<EditTeacherTextFormFie
         ),
         verticalSpacing(10),
         AppTextFormField(
-          controller: context.read<EditTeacherCubit>().nationalIdController,
+          controller: context.read<EditTeacherCubit>().nationalIdController
+            ..text = widget.nationalNumberTeacher,
           fillColorFromBackground: ColorsManager.mainWhite,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16.sp),
-            borderSide:
-            BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
+            borderSide: BorderSide(
+              color: ColorsManager.mainBlack.withOpacity(0.3),
+            ),
           ),
           hintText: S.of(context).enter_national_id,
           validator: (value) {
@@ -107,12 +120,14 @@ class _EditTeacherTextFormFieldWidgetsState extends State<EditTeacherTextFormFie
         ),
         verticalSpacing(10),
         AppTextFormField(
-          controller: context.read<EditTeacherCubit>().fullNameController,
+          controller: context.read<EditTeacherCubit>().fullNameController
+            ..text = widget.nameTeacher,
           fillColorFromBackground: ColorsManager.mainWhite,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(16.sp),
-            borderSide:
-            BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
+            borderSide: BorderSide(
+              color: ColorsManager.mainBlack.withOpacity(0.3),
+            ),
           ),
           hintText: S.of(context).enter_full_name,
           validator: (value) {

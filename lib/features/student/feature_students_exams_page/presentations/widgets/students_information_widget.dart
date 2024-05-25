@@ -8,8 +8,8 @@ import 'behaviors_widget.dart';
 import 'exam_widget.dart';
 
 class StudentInformationsWidget extends StatelessWidget {
-  const StudentInformationsWidget({Key? key, required this.subjectNameTeacher, required this.roleName});
-final String subjectNameTeacher,roleName;
+  const StudentInformationsWidget({Key? key, required this.roleName});
+final String roleName;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -54,7 +54,6 @@ final String subjectNameTeacher,roleName;
                     AttendenceWidget(),
                     ExamWidget(
                       roleName: roleName,
-                      subjectNameTeacher: subjectNameTeacher,
                     ),
                     BehaviorsWidget(), // Adjust as needed
                   ],

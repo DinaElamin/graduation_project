@@ -7,7 +7,7 @@ import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 
 class CardInformationGradeStudents extends StatelessWidget {
-  final String name, type, image, email, nationalIdStudent,subjectNameTeacher,roleName;
+  final String name, type, image, email, nationalIdStudent,roleName;
   final int classId;
 
   const CardInformationGradeStudents({
@@ -17,7 +17,7 @@ class CardInformationGradeStudents extends StatelessWidget {
     required this.image,
     required this.email,
     required this.nationalIdStudent,
-    required this.classId, required this.subjectNameTeacher, required this.roleName,
+    required this.classId,  required this.roleName,
   }) : super(key: key);
 
   @override
@@ -35,7 +35,6 @@ class CardInformationGradeStudents extends StatelessWidget {
           'emailStudent': email,
           'nationalIdStudent': nationalIdStudent,
           'classId': classId,
-          'subjectNameTeacher':subjectNameTeacher,
           'roleName':roleName,
         });
       },

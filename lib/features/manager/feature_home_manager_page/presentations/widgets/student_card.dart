@@ -1,9 +1,11 @@
+import 'package:ablexa/features/manager/feature_get_all_student_by_id_page/logic/get_all_students_by_class_id_cubit/get_all_students_by_class_id_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/helper/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import '../../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/image_manager.dart';
 import '../../../../../core/theming/spacing.dart';
@@ -12,6 +14,7 @@ import '../../../../../generated/l10n.dart';
 import '../../../feature_student_edit_profile_page/data/models/get_student_by_id_model.dart';
 import '../../../feature_student_edit_profile_page/logic/cubits/get_students_by_id_cubit/get_students_by_id_cubit.dart';
 import '../../../feature_student_edit_profile_page/logic/cubits/get_students_by_id_cubit/get_students_by_id_state.dart';
+import '../../logic/cubits/get_all_student_cubit/get_all_student_cubit/get_all_student_cubit.dart';
 
 class StudentCard extends StatefulWidget {
   final String name, type, image, id, token,email;
@@ -119,8 +122,41 @@ class _StudentCardState extends State<StudentCard> {
                       ),
                       PopupMenuItem(
                         onTap: () {
-                          _showDeleteConfirmationDialog(context);
-                        },
+                          showDialog<void>(
+                              context: context,
+                              builder: (BuildContext dialogContext) {
+                                final deleteStudentCubit = context
+                                    .read<DeleteUserCubit>();
+                                return AlertDialog(
+                                  content: Text("Delete Student ?? ",style: TextStyles.font20BoldBlack,),
+                                  actions: <Widget>[
+                                    AppTextButton(
+                                        buttonHeight: 25.r,
+                                        buttonWidth: 60.r,
+                                        textButton: "Delete",
+                                        onPressed: () {
+                                          deleteStudentCubit
+                                              .emitDeleteUserStates(
+                                              token: widget.token,userId:  widget.id);
+                                          Navigator.of(dialogContext)
+                                              .pop();
+                                          setState(() {
+                                            context.read<GetAllStudentDataCubit>().emitAllStudentStates();
+                                          });
+                                        }),
+                                    verticalSpacing(10),
+                                    AppTextButton(
+                                        buttonHeight: 25.r,
+                                        buttonWidth: 60.r,
+                                        textButton:
+                                        S.of(context).cancel,
+                                        onPressed: () {
+                                          Navigator.of(dialogContext)
+                                              .pop();
+                                        }),
+                                  ],
+                                );
+                              });                      },
                         value: 'delete',
                         child: Padding(
                           padding:
@@ -171,63 +207,66 @@ class _StudentCardState extends State<StudentCard> {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          shape:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-          title: Text(
-            S.of(context).delete_garde,
-            textAlign: TextAlign.center,
-          ),
-          content: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextButton(
-                onPressed: () {
-                  context.read<DeleteUserCubit>()
-                      .emitDeleteUserStates(token: widget.token, userId: widget.id);
-                  Navigator.of(context).pop(true);
-                },
-                child: Container(
-                  height: 30.h,
-                  width: 60.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(
-                        color: ColorsManager.mainBlack.withOpacity(0.3)),
-                  ),
-                  child: Center(
-                    child: Text(
-                      S.of(context).delete,
-                      style: TextStyles.font12RegularPurple
-                          .copyWith(color: Colors.red),
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(width: 10.w), // Add spacing between buttons
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(false),
-                child: Container(
-                  height: 30.h,
-                  width: 60.w,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    border: Border.all(
-                        color: ColorsManager.mainBlack.withOpacity(0.3)),
-                  ),
-                  child: Center(
-                    child: Text(
-                      S.of(context).cancel,
-                      style: TextStyles.font12RegularPurple
-                          .copyWith(color: ColorsManager.mainBlack),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        );
+        return _buildDeleteConfirmationDialog(context);
       },
+    );
+  }
+
+  Widget _buildDeleteConfirmationDialog(BuildContext context) {
+    return AlertDialog(
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      title: Text(
+        S.of(context).delete_garde,
+        textAlign: TextAlign.center,
+      ),
+      content: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextButton(
+            onPressed: () {
+              context.read<DeleteUserCubit>().emitDeleteUserStates(
+                  token: widget.token, userId: widget.id);
+              Navigator.of(context).pop(true);
+            },
+            child: Container(
+              height: 30.h,
+              width: 60.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(
+                    color: ColorsManager.mainBlack.withOpacity(0.3)),
+              ),
+              child: Center(
+                child: Text(
+                  S.of(context).delete,
+                  style: TextStyles.font12RegularPurple
+                      .copyWith(color: Colors.red),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(width: 10.w), // Add spacing between buttons
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(false),
+            child: Container(
+              height: 30.h,
+              width: 60.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(
+                    color: ColorsManager.mainBlack.withOpacity(0.3)),
+              ),
+              child: Center(
+                child: Text(
+                  S.of(context).cancel,
+                  style: TextStyles.font12RegularPurple
+                      .copyWith(color: ColorsManager.mainBlack),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

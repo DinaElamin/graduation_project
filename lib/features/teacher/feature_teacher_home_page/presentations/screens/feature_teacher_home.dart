@@ -14,8 +14,8 @@ import '../widgets/profile_and_setting_widget.dart';
 import '../widgets/teacher_classes.dart';
 
 class TeacherHome extends StatefulWidget {
-  const TeacherHome({super.key, required this.nameTeacher, required this.emailTeacher, required this.imageTeacher, required this.token, required this.nationalNumber, required this.TeacherId, required this.subjectNameTeacher, required this.roleName});
-  final String nameTeacher,emailTeacher,imageTeacher,token,nationalNumber,TeacherId,subjectNameTeacher,roleName;
+  const TeacherHome({super.key, required this.nameTeacher, required this.emailTeacher, required this.imageTeacher, required this.token, required this.nationalNumber, required this.TeacherId, required this.roleName});
+  final String nameTeacher,emailTeacher,imageTeacher,token,nationalNumber,TeacherId,roleName;
 
   @override
   State<TeacherHome> createState() => _TeacherHomeState();
@@ -115,7 +115,6 @@ class _TeacherHomeState extends State<TeacherHome> {
                   verticalSpacing(10),
                    TeacherClasses(
                      roleName: widget.roleName,
-                      subjectNameTeacher:widget.subjectNameTeacher
                   ),
                 ],
               ),

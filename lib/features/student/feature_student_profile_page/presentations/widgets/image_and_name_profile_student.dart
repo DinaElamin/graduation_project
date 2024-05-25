@@ -7,13 +7,24 @@ import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 class ImageAndNameProfileStudent extends StatefulWidget {
-  const ImageAndNameProfileStudent({super.key, required this.nameStudent, required this.imageStudent});
-final String nameStudent,imageStudent;
+  const ImageAndNameProfileStudent({
+    Key? key,
+    required this.nameStudent,
+    required this.imageStudent,
+    required this.setImage,
+  }) : super(key: key);
+
+  final String nameStudent, imageStudent;
+  final void Function(File? image) setImage;
+
   @override
-  State<ImageAndNameProfileStudent> createState() => _ImageAndNameProfileStudentState();
+  State<ImageAndNameProfileStudent> createState() =>
+      _ImageAndNameProfileStudentState();
 }
-File? _imageFile;
+
 class _ImageAndNameProfileStudentState extends State<ImageAndNameProfileStudent> {
+  File? _imageFile;
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,7 +33,7 @@ class _ImageAndNameProfileStudentState extends State<ImageAndNameProfileStudent>
       children: [
         imageProfile(),
         verticalSpacing(10),
-        Text(widget.nameStudent,style: TextStyles.font16SemiBoldBlack,)
+        Text(widget.nameStudent, style: TextStyles.font16SemiBoldBlack),
       ],
     );
   }
@@ -108,6 +119,8 @@ class _ImageAndNameProfileStudentState extends State<ImageAndNameProfileStudent>
       setState(() {
         _imageFile = pickedImage;
       });
+      // Call the function provided by the parent widget to pass the selected image
+      widget.setImage(pickedImage);
     }
   }
 }

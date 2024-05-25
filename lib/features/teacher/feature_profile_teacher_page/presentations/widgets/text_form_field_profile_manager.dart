@@ -71,13 +71,7 @@ final String nameTeacher,emailTeacher,nationalNumber,token,teacherId;
             validator: (p0) {},
           ),
           verticalSpacing(20),
-          Padding(
-            padding:  EdgeInsets.only(left: 50.w,right: 50.w),
-            child: AppTextButton(
-                textButton: S.of(context).edit_teacher, onPressed: (){
 
-            }),
-          )
         ],
       ),
     );

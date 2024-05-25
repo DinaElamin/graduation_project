@@ -48,7 +48,9 @@ class _ClassCardListViewState extends State<ClassCardListView> {
                       selectedIndex = index;
                       context.pushNamed(Routes.studentsPage, arguments: {
                         'className': getAllClassesModel[index].className,
-                        'classId':getAllClassesModel[index].classId
+                        'classId':getAllClassesModel[index].classId,
+                        'subjectNameTeacher':"Math",
+                        'roleName':"Manager"
                       });
                     });
                   },
