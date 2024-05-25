@@ -40,6 +40,7 @@ class _ClassCardListViewState extends State<TeacherClasses> {
           final List<GetAllClassesModel> getAllClassesModel = data;
           return ListView.builder(
             shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
             itemCount: getAllClassesModel
                 .length, // Example itemCount, replace with your actual data length
             itemBuilder: (context, index) {
@@ -55,21 +56,17 @@ class _ClassCardListViewState extends State<TeacherClasses> {
                     'roleName':widget.roleName,
                   });
                 },
-                child: Container(
-                  height: 90.h,
-                  padding: EdgeInsets.only(top: 10.h),
-                  child: Card(
-                    color: selectedIndex == index
-                        ? ColorsManager.mainColor
-                        : null,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16.sp),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                    height: 70.h,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: ColorsManager.mainColor,
                     ),
                     child: ListTile(
-                      mouseCursor: MouseCursor.uncontrolled,
-                      title: Text(
-                          getAllClassesModel[index].className.toString(),
-                          style: TextStyles.font20BoldBlack),
+                      title: Text(getAllClassesModel[index].className.toString(), style: TextStyles.font18SemiBoldWhite),
+
                     ),
                   ),
                 ),

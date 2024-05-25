@@ -94,7 +94,7 @@ class _TeacherHomeState extends State<TeacherHome> {
         ),
         verticalSpacing(20),
         Padding(
-          padding: EdgeInsets.only(left: 20.w, right: 20.w),
+          padding: EdgeInsets.only(left: 10.w, right: 10.w),
           child: Column(
             children: [
 

@@ -1,5 +1,8 @@
 import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/helper/extentions.dart';
+import '../../../../../core/shared_widgets/app_elevated_button.dart';
+import '../../../../../core/theming/spacing.dart';
+import '../../../../../generated/l10n.dart';
 import '../../data/models/get_all_classes_model/get_all_classes_model.dart';
 import '../../logic/cubits/get_all_classes_cubit/get_all_classes_cubit.dart';
 import '../../logic/cubits/get_all_classes_cubit/get_all_classes_state.dart';
@@ -39,7 +42,7 @@ class _ClassCardListViewState extends State<ClassCardListView> {
         final List<GetAllClassesModel> getAllClassesModel =data;
             return ListView.builder(
               shrinkWrap: true,
-              physics: const AlwaysScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: getAllClassesModel.length, // Example itemCount, replace with your actual data length
               itemBuilder: (context, index) {
                 return GestureDetector(
@@ -55,15 +58,56 @@ class _ClassCardListViewState extends State<ClassCardListView> {
                     });
                   },
                   child: Container(
-                    height: 100.h,
+                    height: 80.h,
                     padding: EdgeInsets.only(right: 10.w, left: 10.w, top: 10.h),
-                    child: Card(
-                      color: selectedIndex == index ? ColorsManager.mainColor : null,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.sp), // Set border radius to 20
+                    child: Container(
+                      height: 70.h,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: ColorsManager.mainColor,
                       ),
                       child: ListTile(
-                        title: Text(getAllClassesModel[index].className.toString(), style: TextStyles.font20BoldBlack),
+                        title: Text(getAllClassesModel[index].className.toString(), style: TextStyles.font18SemiBoldWhite),
+                        trailing: IconButton(
+                          icon: const Icon(Icons.delete, color: ColorsManager.mainWhite),
+                          onPressed: () {
+                            showDialog<void>(
+                                context: context,
+                                builder: (BuildContext dialogContext) {
+                                  // final deleteGradeGradeCubit = context
+                                  //     .read<DeleteGradeCubit>();
+                                  return AlertDialog(
+                                    content: Text("Delete Class ?? ",style: TextStyles.font20BoldBlack,),
+                                    actions: <Widget>[
+                                      AppTextButton(
+                                          buttonHeight: 25.r,
+                                          buttonWidth: 60.r,
+                                          textButton: "Delete",
+                                          onPressed: () {
+                                            // deleteGradeGradeCubit
+                                            //     .emitDeleteGradeStates(
+                                            //     token: widget.token,yearId: widget.yearId);
+                                            Navigator.of(dialogContext)
+                                                .pop();
+                                            setState(() {
+                                              context.read<GetAllClassesDataCubit>().emitAllClassesStates();
+                                            });
+                                          }),
+                                      verticalSpacing(10),
+                                      AppTextButton(
+                                          buttonHeight: 25.r,
+                                          buttonWidth: 60.r,
+                                          textButton:
+                                          S.of(context).cancel,
+                                          onPressed: () {
+                                            Navigator.of(dialogContext)
+                                                .pop();
+                                          }),
+                                    ],
+                                  );
+                                });
+                          },
+                        ),
                       ),
                     ),
                   ),
