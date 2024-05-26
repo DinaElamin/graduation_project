@@ -1,5 +1,8 @@
 
+import 'package:ablexa/core/helper/extentions.dart';
+import 'package:ablexa/core/shared_widgets/app_elevated_button.dart';
 import 'package:flutter/material.dart';
+import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/shared_widgets/appBar_widget.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../generated/l10n.dart';
@@ -36,7 +39,13 @@ class _ProfileTeacherPageState extends State<ProfileTeacherPage> {
              nationalNumber: widget.nationalNumber,
            ),
           verticalSpacing(20),
-
+          AppTextButton(textButton: "Add Exam", onPressed:
+          (){
+            context.pushNamed(Routes.addExamPage,arguments: {
+              'token':widget.token,
+              'TeacherId':widget.teacherId
+            });
+          })
         ],
       ),
     );
