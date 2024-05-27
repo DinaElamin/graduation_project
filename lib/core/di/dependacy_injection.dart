@@ -18,6 +18,7 @@ import 'package:ablexa/features/manager/feature_grades_page/logic/cubits/delete_
 import 'package:ablexa/features/manager/feature_home_manager_page/data/repos/delete_user_repo/delete_user_repo.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
 import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/edit_student_cubit/edit_student_cubit.dart';
+import 'package:ablexa/features/student/feature_students_exams_page/data/repos/get_material_by_teacher_id_repo/get_material_by_teacher_id_repo.dart';
 import 'package:ablexa/features/teacher/feature_add_exam_page/data/repos/add_exam_repo/add_exam_repo.dart';
 import 'package:ablexa/features/teacher/feature_add_exam_page/logic/cubits/add_exam_cubit/add_exam_cubit.dart';
 import '../../features/feature_change_password_page/data/repos/change_password_repo/change_password_repo.dart';
@@ -48,6 +49,7 @@ import '../../features/manager/feature_home_manager_page/logic/cubits/get_all_st
 import '../../features/manager/feature_student_edit_profile_page/data/repo/edit_student_profile_repo/edit_student_profile_repo.dart';
 import '../../features/manager/feature_student_edit_profile_page/data/repo/get_student_by_id_repo/get_student_by_id_repo.dart';
 import '../../features/manager/feature_student_edit_profile_page/logic/cubits/get_students_by_id_cubit/get_students_by_id_cubit.dart';
+import '../../features/student/feature_students_exams_page/logic/cubits/get_material_by_teacher_id_cubit/get_material_by_teacher_id_cubit.dart';
 import '../networking/api_service.dart';
 import '../networking/dio_factory.dart';
 final getIt = GetIt.instance;
@@ -128,4 +130,7 @@ final getIt = GetIt.instance;
   //get teacher by id
   getIt.registerLazySingleton<GetTeacherByIdRepo>(() => GetTeacherByIdRepo(getIt()));
   getIt.registerFactory<GetTeacherByIdCubit>(() => GetTeacherByIdCubit(getIt()));
+  //get material by teacher id
+  getIt.registerLazySingleton<GetMaterialByTeacherIdRepo>(() => GetMaterialByTeacherIdRepo(getIt()));
+  getIt.registerFactory<GetMaterialByTeacherIdCubit>(() => GetMaterialByTeacherIdCubit(getIt()));
  }

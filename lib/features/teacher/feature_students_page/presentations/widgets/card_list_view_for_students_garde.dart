@@ -16,8 +16,8 @@ class GradeStudents extends StatefulWidget {
       {Key? key,
       required this.gradeName,
       required this.classId,
-  required this.roleName});
-  final String gradeName,roleName;
+  required this.roleName, required this.teacherId});
+  final String gradeName,roleName,teacherId;
   final int classId;
 
   @override
@@ -86,6 +86,7 @@ class _GradeStudentsState extends State<GradeStudents> {
                             itemBuilder: (context, index) => Padding(
                               padding: EdgeInsets.only(top: 10.h),
                               child: CardInformationGradeStudents(
+                                teacherId: widget.teacherId,
                                 roleName:widget.roleName,
 
                                 email: getAllStudentsByClassIdModel[index]
@@ -110,6 +111,7 @@ class _GradeStudentsState extends State<GradeStudents> {
                             itemBuilder: (context, index) => Padding(
                               padding: EdgeInsets.only(top: 10.h),
                               child: CardInformationGradeStudents(
+                                teacherId: widget.teacherId,
                                 roleName:widget.roleName,
 
                                 email: getAllStudentsByClassIdModel[index]

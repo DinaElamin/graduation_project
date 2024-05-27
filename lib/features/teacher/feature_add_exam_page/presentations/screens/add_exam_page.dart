@@ -19,7 +19,7 @@ final String token,TeacherId;
 
 class _AddExamPageState extends State<AddExamPage> {
   final formKey = GlobalKey<FormState>();
-
+  late String subjectIdFromAddExam;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +35,13 @@ class _AddExamPageState extends State<AddExamPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const AddExamTextFormFields(),
+                  AddExamTextFormFields(
+                    teacherId: widget.TeacherId,
+                    onSubjectIdSelected: (subjectId) {
+                      subjectIdFromAddExam = subjectId;
+                      print("Selected subject ID: $subjectId");
+                    },
+                  ),
                   UploadImageFileWidget(onImageSelected: (file) {
                     setState(() {
                       imageFile = file;
@@ -66,7 +72,6 @@ class _AddExamPageState extends State<AddExamPage> {
       if (imageFile != null) {
         // Extract integers from text controllers
         final int examGrade = int.tryParse(context.read<AddExamCubit>().examGradeController.text) ?? 0;
-        final int materialId = int.tryParse(context.read<AddExamCubit>().subjectIdController.text) ?? 0;
 
         context.read<AddExamCubit>().emitAddExamStates(
           widget.token,
@@ -74,7 +79,7 @@ class _AddExamPageState extends State<AddExamPage> {
           Name: context.read<AddExamCubit>().examNameController.text,
           Exam_Grade: examGrade,
           Image: imageFile!,
-          MaterialId: materialId,
+          MaterialId: int.parse(subjectIdFromAddExam),
         );
       } else {
         showDialog(

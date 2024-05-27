@@ -10,8 +10,8 @@ import '../widgets/card_list_view_for_students_garde.dart';
 
 class StudentsPage extends StatefulWidget {
   const StudentsPage(
-      {super.key, required this.className, required this.classId, required this.roleName});
-  final String className,roleName;
+      {super.key, required this.className, required this.classId, required this.roleName, required this.teacherId});
+  final String className,roleName,teacherId;
   final int classId;
 
   @override
@@ -47,7 +47,7 @@ class _StudentsPageState extends State<StudentsPage> {
                   verticalSpacing(10),
                   GradeStudents(
                     roleName: widget.roleName,
-
+teacherId: widget.teacherId,
                       gradeName: widget.className,classId: widget.classId),
                 ],
               ),

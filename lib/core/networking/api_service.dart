@@ -18,6 +18,7 @@ import '../../features/feature_verify_code_page/data/models/verify_pin_code_mode
 import '../../features/manager/feature_get_all_student_by_id_page/data/model/get_all_student_by_id_model/get_all_student_by_id_model.dart';
 import '../../features/manager/feature_home_manager_page/data/models/get_all_classes_model/get_all_classes_model.dart';
 import '../../features/manager/feature_student_edit_profile_page/data/models/get_student_by_id_model.dart';
+import '../../features/student/feature_students_exams_page/data/models/get_material_by_teacher_id_model/get_material_by_teacher_id_model.dart';
 import 'api_constant.dart';
 import 'package:retrofit/retrofit.dart';
 part 'api_service.g.dart';
@@ -183,6 +184,11 @@ abstract class ApiService {
   @GET("${ApiConstant.getSemesterByYearId}/{yearId}")
   Future<List<GetSemesterByYearIdModel>> getSemesterByYearId(
       @Path("yearId") int yearId
+      );
+  // get material by teacher id
+  @GET("${ApiConstant.getMaterialByTeacherId}/{TeacherId}")
+  Future<List<GetMaterialByTeacherIdModel>> getMaterialByTeacherId(
+      @Path("TeacherId") String TeacherId
       );
   // getAllStudent Page
   @GET(ApiConstant.getAllStudentData)

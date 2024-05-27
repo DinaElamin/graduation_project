@@ -8,8 +8,8 @@ import 'behaviors_widget.dart';
 import 'exam_widget.dart';
 
 class StudentInformationsWidget extends StatelessWidget {
-  const StudentInformationsWidget({Key? key, required this.roleName});
-final String roleName;
+  const StudentInformationsWidget({Key? key, required this.roleName, required this.teacherId});
+final String roleName,teacherId;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -53,6 +53,7 @@ final String roleName;
                     // Add your TabBarView children here
                     AttendenceWidget(),
                     ExamWidget(
+                      teacherId: teacherId,
                       roleName: roleName,
                     ),
                     BehaviorsWidget(), // Adjust as needed
