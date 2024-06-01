@@ -11,8 +11,8 @@ import '../../../../manager/feature_home_manager_page/logic/cubits/get_all_class
 import '../../../../manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_state.dart';
 
 class TeacherClasses extends StatefulWidget {
-  const TeacherClasses({Key? key,  required this.roleName, required this.teacherId}) : super(key: key);
-final String roleName,teacherId;
+  const TeacherClasses({Key? key,  required this.roleName, required this.teacherId, required this.token}) : super(key: key);
+final String roleName,teacherId,token;
   @override
   State<TeacherClasses> createState() => _ClassCardListViewState();
 }
@@ -55,6 +55,7 @@ class _ClassCardListViewState extends State<TeacherClasses> {
                     'classId':getAllClassesModel[index].classId,
                     'roleName':widget.roleName,
                     'teacherId':widget.teacherId,
+                    'token':widget.token
                   });
                 },
                 child: Padding(

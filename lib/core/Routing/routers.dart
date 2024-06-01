@@ -29,6 +29,7 @@ class Routes {
   static const editStudentProfilePage ="/studentEditProfile";
   static const editTeacherProfilePage ="/editTeacherProfilePage";
   static const addDegreeFromMaterial = "/addDegreeFromMaterial";
+  static const addExamDegree = "/addExamDegree";
 
 
 }

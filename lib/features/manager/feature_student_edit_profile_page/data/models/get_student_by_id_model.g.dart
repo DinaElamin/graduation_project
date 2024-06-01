@@ -13,9 +13,9 @@ GetStudentByIdModel _$GetStudentByIdModelFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String?,
       nationalNumber: json['nationalNumber'] as String?,
       classId: json['classId'] as int?,
-      year: json['year'] == null
+      term: json['term'] == null
           ? null
-          : Year.fromJson(json['year'] as Map<String, dynamic>),
+          : Term.fromJson(json['term'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$GetStudentByIdModelToJson(
@@ -26,15 +26,15 @@ Map<String, dynamic> _$GetStudentByIdModelToJson(
       'email': instance.email,
       'nationalNumber': instance.nationalNumber,
       'classId': instance.classId,
-      'year': instance.year,
+      'term': instance.term,
     };
 
-Year _$YearFromJson(Map<String, dynamic> json) => Year(
-      yearId: json['yearId'] as int?,
-      yearName: json['yearName'] as String?,
+Term _$TermFromJson(Map<String, dynamic> json) => Term(
+      termId: json['termId'] as int?,
+      termName: json['termName'] as String?,
     );
 
-Map<String, dynamic> _$YearToJson(Year instance) => <String, dynamic>{
-      'yearId': instance.yearId,
-      'yearName': instance.yearName,
+Map<String, dynamic> _$TermToJson(Term instance) => <String, dynamic>{
+      'termId': instance.termId,
+      'termName': instance.termName,
     };

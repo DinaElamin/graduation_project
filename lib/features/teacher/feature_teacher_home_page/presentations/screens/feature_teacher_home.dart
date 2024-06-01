@@ -114,6 +114,7 @@ class _TeacherHomeState extends State<TeacherHome> {
                   ),
                   verticalSpacing(10),
                    TeacherClasses(
+                     token: widget.token,
                      teacherId: widget.TeacherId,
                      roleName: widget.roleName,
                   ),

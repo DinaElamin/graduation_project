@@ -7,7 +7,7 @@ class GetStudentByIdModel {
   String? email;
   String? nationalNumber;
   int? classId;
-  Year? year;
+  Term? term;
 
   GetStudentByIdModel(
       {this.id,
@@ -15,7 +15,7 @@ class GetStudentByIdModel {
         this.email,
         this.nationalNumber,
         this.classId,
-        this.year});
+        this.term});
 
   factory GetStudentByIdModel.fromJson(Map<String, dynamic> json) =>
       _$GetStudentByIdModelFromJson(json);
@@ -25,13 +25,13 @@ class GetStudentByIdModel {
 
 }
 @JsonSerializable()
-class Year {
-  int? yearId;
-  String? yearName;
+class Term {
+  int? termId;
+  String? termName;
 
-  Year({this.yearId, this.yearName});
-  factory Year.fromJson(Map<String, dynamic> json) =>
-      _$YearFromJson(json);
+  Term({this.termId, this.termName});
+  factory Term.fromJson(Map<String, dynamic> json) =>
+      _$TermFromJson(json);
 
-  Map<String, dynamic> toJson() => _$YearToJson(this);
+  Map<String, dynamic> toJson() => _$TermToJson(this);
 }

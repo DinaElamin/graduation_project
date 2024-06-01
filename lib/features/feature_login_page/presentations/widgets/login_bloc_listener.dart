@@ -67,6 +67,8 @@ class _SignInBlocListenerState extends State<LoginBlocListener> {
               'emailStudent': loginResponseModel.email.toString(),
               'imageStudent': loginResponseModel.photo.toString(),
               'roleName':loginResponseModel.roleName,
+              'teacherId':"",
+              'studentId':loginResponseModel.id,
             });
           }
         }, error: (error) {

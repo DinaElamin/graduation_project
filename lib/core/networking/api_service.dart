@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:ablexa/features/manager/feature_home_manager_page/data/models/delete_user_model/delete_uder_model_response.dart';
+import 'package:ablexa/features/student/feature_students_exams_page/data/models/get_student_material_grade_model/get_student_material_grade_model.dart';
 import '../../features/feature_change_password_page/data/models/change_password_model/change_password_model.dart';
 import '../../features/feature_verify_code_page/data/models/verify_code_model/request/verify_code_request_model.dart';
 import '../../features/feature_verify_code_page/data/models/verify_code_model/response/verify_code_response_model.dart';
@@ -19,6 +20,7 @@ import '../../features/manager/feature_get_all_student_by_id_page/data/model/get
 import '../../features/manager/feature_home_manager_page/data/models/get_all_classes_model/get_all_classes_model.dart';
 import '../../features/manager/feature_student_edit_profile_page/data/models/get_student_by_id_model.dart';
 import '../../features/student/feature_students_exams_page/data/models/get_material_by_teacher_id_model/get_material_by_teacher_id_model.dart';
+import '../../features/student/feature_subject_details_page/data/models/subject_details_model/subject_details_model.dart';
 import 'api_constant.dart';
 import 'package:retrofit/retrofit.dart';
 part 'api_service.g.dart';
@@ -90,6 +92,17 @@ abstract class ApiService {
       @Part(name: "SubjectName") String SubjectName,
       @Part(name: "AssignClassId") List<String> AssignClassId,
       );
+  // edit teacher student
+  @PUT("${ApiConstant.editGradeExam}/{studentGradeId}/{ExamId}/{StudentId}/{TeacherId}")
+  @MultiPart()
+  Future editGradeExam(
+      @Header("Authorization") String token,
+      @Path("studentGradeId") int studentGradeId,
+      @Path("StudentId") String StudentId,
+      @Path("ExamId") int ExamId,
+      @Path("TeacherId") String TeacherId,
+      @Part(name: "Student_Grade") int Student_Grade,
+      );
   // add year
   @POST(ApiConstant.addYear)
   @MultiPart()
@@ -153,6 +166,16 @@ abstract class ApiService {
       @Part(name: "MaterialId") int MaterialId,
       @Part(name: "Image") File Image,
       );
+  // add exam
+  @POST("${ApiConstant.addGrade}/{StudentId}/{ExamId}/{TeacherId}")
+  @MultiPart()
+  Future addGrade(
+      @Header("Authorization") String token,
+      @Path() int ExamId,
+      @Path() String StudentId,
+      @Path() String TeacherId,
+      @Part(name: "Student_Grade") int Student_Grade,
+      );
   // add Student
   @POST(ApiConstant.addStudent)
   @MultiPart()
@@ -189,6 +212,22 @@ abstract class ApiService {
   @GET("${ApiConstant.getMaterialByTeacherId}/{TeacherId}")
   Future<List<GetMaterialByTeacherIdModel>> getMaterialByTeacherId(
       @Path("TeacherId") String TeacherId
+      );
+  // get student material garde
+  @GET("${ApiConstant.getStudentMaterialGrade}/{studentId}/{termId}")
+  Future<List<GetStudentMaterialGradeModel>> getStudentMaterialGrade(
+      @Header("Authorization") String token,
+      @Path("studentId") String studentId,
+      @Path("termId") int termId,
+
+      );
+  // getStudentGradesDetailsForOneMaterial
+  @GET("${ApiConstant.getStudentGradesDetailsForOneMaterial}/{studentId}/{materialId}")
+  Future<List<GetStudentGradesDetailsForOneMaterialModel>> getStudentGradesDetailsForOneMaterial(
+      @Header("Authorization") String token,
+      @Path("studentId") String studentId,
+      @Path("materialId") int materialId,
+
       );
   // getAllStudent Page
   @GET(ApiConstant.getAllStudentData)

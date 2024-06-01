@@ -7,15 +7,28 @@ import '../../../../../core/shared_widgets/app_elevated_button.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
+
 class QuizDegree extends StatelessWidget {
-  const QuizDegree({super.key, required this.quizName});
- final String quizName;
+  const QuizDegree(
+      {super.key,
+      required this.quizName,
+      required this.imageExam,
+      required this.totalDegreeFromExam,
+      required this.studentExamGrade,
+      required this.roleName,
+      required this.TeacherId,
+      required this.studentId,
+      required this.token,
+      required this.ExamId});
+
+  final String quizName, imageExam, roleName, TeacherId, studentId, token;
+  final int totalDegreeFromExam, studentExamGrade, ExamId;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
         children: [
-          AppBarWidget(pageName:quizName),
+          AppBarWidget(pageName: quizName),
           verticalSpacing(20),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -30,25 +43,44 @@ class QuizDegree extends StatelessWidget {
                     color: ColorsManager.lighterPurple,
                     borderRadius: BorderRadius.circular(8.sp),
                   ),
-                  child: Center(child: Text("Exam Image", style: TextStyles.font20BoldBlack)),
+                  child: Center(child: Image.network(imageExam)),
                 ),
                 verticalSpacing(50),
-
-                Text("student grade  :  5/5",style: TextStyles.font20BoldBlack,),
+                Text(
+                  "student grade  :  $studentExamGrade/$totalDegreeFromExam",
+                  style: TextStyles.font20BoldBlack,
+                ),
                 verticalSpacing(50),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 50.w),
-                  child: AppTextButton(
-                    textButton: "Edit Student Degree",
-                    onPressed: () {
-                      Navigator.pushNamed(context, Routes.quizUpdatedDegreePage,arguments: quizName);
-                    },
-                  ),
-                )
+                roleName == 'Teacher'
+                    ? Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 50.w),
+                        child: AppTextButton(
+                          textButton: "Edit Student Degree",
+                          onPressed: () {
+                            // final String token = args['token'];
+                            // final String TeacherId = args['TeacherId'];
+                            // final String studentId = args['studentId'];
+                            // final int ExamId = args['ExamId'];
+                            Navigator.pushNamed(
+                                context, Routes.quizUpdatedDegreePage,
+                                arguments: {
+                                  'imageExam': imageExam,
+                                  'quizName': quizName,
+                                  'token': token,
+                                  'TeacherId': TeacherId,
+                                  'studentId': studentId,
+                                  'ExamId': ExamId,
+                                  'studentGradeId': studentExamGrade
+                                });
+                          },
+                        ),
+                      )
+                    : const SizedBox()
               ],
             ),
           )
         ],
-      ),);
+      ),
+    );
   }
 }

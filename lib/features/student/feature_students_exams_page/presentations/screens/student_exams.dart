@@ -11,8 +11,8 @@ import '../../../../../generated/l10n.dart';
 import '../widgets/students_information_widget.dart';
 
 class StudentExamsPage extends StatelessWidget {
-  const StudentExamsPage({super.key, required this.nameStudent, required this.emailStudent, required this.imageStudent, required this.nationalIdStudent, required this.classId, required this.roleName, required this.teacherId});
-final String nameStudent,emailStudent,imageStudent,nationalIdStudent,roleName,teacherId;
+  const StudentExamsPage({super.key, required this.nameStudent, required this.emailStudent, required this.imageStudent, required this.nationalIdStudent, required this.classId, required this.roleName, required this.teacherId, required this.studentId, required this.token});
+final String nameStudent,emailStudent,studentId,imageStudent,nationalIdStudent,roleName,teacherId,token;
 final int classId;
 
   @override
@@ -138,6 +138,8 @@ final int classId;
               ),
               verticalSpacing(20),
                StudentInformationsWidget(
+                 token: token,
+                 studentId: studentId,
                  teacherId: teacherId,
                  roleName: roleName,
 

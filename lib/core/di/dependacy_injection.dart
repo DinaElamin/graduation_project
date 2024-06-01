@@ -18,9 +18,13 @@ import 'package:ablexa/features/manager/feature_grades_page/logic/cubits/delete_
 import 'package:ablexa/features/manager/feature_home_manager_page/data/repos/delete_user_repo/delete_user_repo.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
 import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/edit_student_cubit/edit_student_cubit.dart';
-import 'package:ablexa/features/student/feature_students_exams_page/data/repos/get_material_by_teacher_id_repo/get_material_by_teacher_id_repo.dart';
+import 'package:ablexa/features/student/feature_students_exams_page/data/repos/get_student_material_grade_repo/get_student_material_grade_repo.dart';
+import 'package:ablexa/features/student/feature_subject_details_page/data/repos/subject_details_repo/subject_details_repo.dart';
+import 'package:ablexa/features/student/feature_subject_details_page/logic/cubits/subject_details_cubit/get_subject_details_cubit.dart';
 import 'package:ablexa/features/teacher/feature_add_exam_page/data/repos/add_exam_repo/add_exam_repo.dart';
 import 'package:ablexa/features/teacher/feature_add_exam_page/logic/cubits/add_exam_cubit/add_exam_cubit.dart';
+import 'package:ablexa/features/teacher/feature_quiz_update_degree_page/data/repos/edit_grade_repo/edit_grade.dart';
+import 'package:ablexa/features/teacher/feature_quiz_update_degree_page/logic/cubits/edit_grade_cubit/edit_grade_cubit.dart';
 import '../../features/feature_change_password_page/data/repos/change_password_repo/change_password_repo.dart';
 import '../../features/feature_change_password_page/logic/cubits/change_password_cubit/change_password_cubit.dart';
 import '../../features/feature_login_page/data/repos/login_repo/login_repo.dart';
@@ -49,7 +53,11 @@ import '../../features/manager/feature_home_manager_page/logic/cubits/get_all_st
 import '../../features/manager/feature_student_edit_profile_page/data/repo/edit_student_profile_repo/edit_student_profile_repo.dart';
 import '../../features/manager/feature_student_edit_profile_page/data/repo/get_student_by_id_repo/get_student_by_id_repo.dart';
 import '../../features/manager/feature_student_edit_profile_page/logic/cubits/get_students_by_id_cubit/get_students_by_id_cubit.dart';
+import '../../features/student/feature_students_exams_page/data/repos/get_material_by_teacher_id_repo/get_material_by_teacher_id_repo.dart';
 import '../../features/student/feature_students_exams_page/logic/cubits/get_material_by_teacher_id_cubit/get_material_by_teacher_id_cubit.dart';
+import '../../features/student/feature_students_exams_page/logic/cubits/get_student_material_grade_cubit/get_student_material_grade_cubit.dart';
+import '../../features/teacher/feature_quiz_add_degree_page/data/repos/add_grade_repo/add_grade.dart';
+import '../../features/teacher/feature_quiz_add_degree_page/logic/cubits/add_grade_cubit/add_grade_cubit.dart';
 import '../networking/api_service.dart';
 import '../networking/dio_factory.dart';
 final getIt = GetIt.instance;
@@ -133,4 +141,16 @@ final getIt = GetIt.instance;
   //get material by teacher id
   getIt.registerLazySingleton<GetMaterialByTeacherIdRepo>(() => GetMaterialByTeacherIdRepo(getIt()));
   getIt.registerFactory<GetMaterialByTeacherIdCubit>(() => GetMaterialByTeacherIdCubit(getIt()));
+  //get student material grade
+  getIt.registerLazySingleton<GetStudentMaterialGradeRepo>(() => GetStudentMaterialGradeRepo(getIt()));
+  getIt.registerFactory<GetStudentMaterialGradeCubit>(() => GetStudentMaterialGradeCubit(getIt()));
+  //subject details
+  getIt.registerLazySingleton<SubjectDetailsRepo>(() => SubjectDetailsRepo(getIt()));
+  getIt.registerFactory<SubjectDetailsCubit>(() => SubjectDetailsCubit(getIt()));
+  //add grade
+  getIt.registerLazySingleton<AddGradeRepo>(() => AddGradeRepo(getIt()));
+  getIt.registerFactory<AddGradeCubit>(() => AddGradeCubit(getIt()));
+  //edit grade
+  getIt.registerLazySingleton<EditGradeRepo>(() => EditGradeRepo(getIt()));
+  getIt.registerFactory<EditGradeCubit>(() => EditGradeCubit(getIt()));
  }

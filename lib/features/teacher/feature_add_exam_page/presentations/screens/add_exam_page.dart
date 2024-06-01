@@ -66,6 +66,7 @@ class _AddExamPageState extends State<AddExamPage> {
       ),
     );
   }
+
   void validateThenDoAddExam(BuildContext context) {
     if (context.read<AddExamCubit>().formKey.currentState!.validate()) {
       // Check if imageFile is not null before proceeding

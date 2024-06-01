@@ -1,8 +1,5 @@
-import 'package:ablexa/features/student/feature_students_exams_page/data/models/get_material_by_teacher_id_model/get_material_by_teacher_id_model.dart';
-import 'package:ablexa/features/student/feature_students_exams_page/logic/cubits/get_material_by_teacher_id_cubit/get_material_by_teacher_id_cubit.dart';
-import 'package:ablexa/features/student/feature_students_exams_page/logic/cubits/get_material_by_teacher_id_cubit/get_material_by_teacher_id_state.dart';
+import 'package:ablexa/features/student/feature_students_exams_page/data/models/get_student_material_grade_model/get_student_material_grade_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../../core/helper/extentions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,11 +7,13 @@ import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/spacing.dart';
 import '../../../../../core/theming/styles.dart';
+import '../../logic/cubits/get_student_material_grade_cubit/get_student_material_grade_cubit.dart';
+import '../../logic/cubits/get_student_material_grade_cubit/get_student_material_grade_state.dart';
 
 class ExamWidget extends StatefulWidget {
-  const ExamWidget({Key? key,  required this.roleName, required this.teacherId}) : super(key: key);
-final String roleName,teacherId;
-
+  const ExamWidget({Key? key,  required this.roleName, required this.teacherId, required this.studentId, required this.termId, required this.token}) : super(key: key);
+final String roleName,teacherId,studentId,token;
+final int termId;
   @override
   State<ExamWidget> createState() => _ExamWidgetState();
 }
@@ -24,9 +23,12 @@ class _ExamWidgetState extends State<ExamWidget> {
   @override
   Widget build(BuildContext context) {
     setState(() {
+
       context
-          .read<GetMaterialByTeacherIdCubit>()
-          .emitMaterialByTeacherIdStates(TeacherId: widget.teacherId);
+          .read<GetStudentMaterialGradeCubit>()
+          .emitStudentMaterialGrade(
+        widget.token,
+         studentId: widget.studentId,termId: widget.termId,);
     });
     return ListView(
       children: [
@@ -56,9 +58,8 @@ class _ExamWidgetState extends State<ExamWidget> {
         SingleChildScrollView(
           child: Column(
             children: [
-              widget.roleName == 'Teacher'
-                  ? BlocBuilder<GetMaterialByTeacherIdCubit,
-              GetMaterialByTeacherIdState>(
+              BlocBuilder<GetStudentMaterialGradeCubit,
+              GetStudentMaterialGradeState>(
               builder: (context, state) {
                 return state.when(initial: () {
                   return const Center(
@@ -73,43 +74,47 @@ class _ExamWidgetState extends State<ExamWidget> {
                     ),
                   );
                 }, success: (data) {
-                  final List<GetMaterialByTeacherIdModel>
-                  getMaterialByTeacherIdModel = data;
-                  return examInformationWidget(
-                    context,
-                    subjectName: getMaterialByTeacherIdModel[0].name.toString(),
-                    totalDegree: "40/${getMaterialByTeacherIdModel[0].m_grade}",
-                  );
+                  final List<GetStudentMaterialGradeModel>
+                  getStudentMaterialGradeModel = data;
+                 return ListView.builder(
+                   itemCount: getStudentMaterialGradeModel.length,
+                   shrinkWrap: true,
+                   physics: const NeverScrollableScrollPhysics(),
+                   itemBuilder: (context, index) => Padding(
+                     padding: const EdgeInsets.all(8.0),
+                     child: examInformationWidget(
+                       materialId: getStudentMaterialGradeModel[index].materialId!,
+                       context,
+                       subjectName: getStudentMaterialGradeModel[index].materialName.toString(),
+                       totalDegree: "${getStudentMaterialGradeModel[index].studentTotalGrade}/${getStudentMaterialGradeModel[index].materialGrade}",
+                     ),
+                   ),
+                 );
+
                 }, error: (error) {
                   return setupErrorState(context, error);
                 });
               },
-              )
-                  : ListView.builder(
-                      itemCount: 2,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) => Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: examInformationWidget(
-                          context,
-                          subjectName: "Science",
-                          totalDegree: "40/60",
-                        ),
-                      ),
-                    ),
-            ],
-          ),
+              ),
+          ])
         ),
       ],
     );
   }
 
   GestureDetector examInformationWidget(BuildContext context,
-      {required String subjectName, required String totalDegree}) {
+      {required String subjectName, required String totalDegree,required int materialId}) {
     return GestureDetector(
       onTap: () {
-        context.pushNamed(Routes.subjectDetailsPage, arguments: subjectName);
+        context.pushNamed(Routes.subjectDetailsPage, arguments: {
+          'roleName':widget.roleName,
+          'token':widget.token,
+          'subjectName':subjectName,
+          'studentId':widget.studentId,
+          'materialId':materialId,
+          'TeacherId':widget.teacherId,
+
+        });
       },
       child: SizedBox(
         height: 70.h,

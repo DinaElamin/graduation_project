@@ -303,6 +303,45 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<dynamic> editGradeExam(
+    String token,
+    int studentGradeId,
+    String StudentId,
+    int ExamId,
+    String TeacherId,
+    int Student_Grade,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = FormData();
+    _data.fields.add(MapEntry(
+      'Student_Grade',
+      Student_Grade.toString(),
+    ));
+    final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
+      method: 'PUT',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'multipart/form-data',
+    )
+        .compose(
+          _dio.options,
+          'api/StudentGrades/updategrade/${studentGradeId}/${ExamId}/${StudentId}/${TeacherId}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+    final value = _result.data;
+    return value;
+  }
+
+  @override
   Future<dynamic> addYear(
     String token,
     String YearName,
@@ -572,6 +611,44 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<dynamic> addGrade(
+    String token,
+    int ExamId,
+    String StudentId,
+    String TeacherId,
+    int Student_Grade,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = FormData();
+    _data.fields.add(MapEntry(
+      'Student_Grade',
+      Student_Grade.toString(),
+    ));
+    final _result = await _dio.fetch(_setStreamType<dynamic>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+      contentType: 'multipart/form-data',
+    )
+        .compose(
+          _dio.options,
+          'api/StudentGrades/addgrades/${StudentId}/${ExamId}/${TeacherId}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        ))));
+    final value = _result.data;
+    return value;
+  }
+
+  @override
   Future<dynamic> addStudent(
     String token,
     String name,
@@ -811,6 +888,78 @@ class _ApiService implements ApiService {
     var value = _result.data!
         .map((dynamic i) =>
             GetMaterialByTeacherIdModel.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
+  Future<List<GetStudentMaterialGradeModel>> getStudentMaterialGrade(
+    String token,
+    String studentId,
+    int termId,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<List<dynamic>>(
+        _setStreamType<List<GetStudentMaterialGradeModel>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'api/Material/getstudentmaterialgrade/${studentId}/${termId}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    var value = _result.data!
+        .map((dynamic i) =>
+            GetStudentMaterialGradeModel.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
+  Future<List<GetStudentGradesDetailsForOneMaterialModel>>
+      getStudentGradesDetailsForOneMaterial(
+    String token,
+    String studentId,
+    int materialId,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<List<dynamic>>(
+        _setStreamType<List<GetStudentGradesDetailsForOneMaterialModel>>(
+            Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+                .compose(
+                  _dio.options,
+                  'api/Material/getStudentGradesDetailsForOneMaterial/${studentId}/${materialId}',
+                  queryParameters: queryParameters,
+                  data: _data,
+                )
+                .copyWith(
+                    baseUrl: _combineBaseUrls(
+                  _dio.options.baseUrl,
+                  baseUrl,
+                ))));
+    var value = _result.data!
+        .map((dynamic i) => GetStudentGradesDetailsForOneMaterialModel.fromJson(
+            i as Map<String, dynamic>))
         .toList();
     return value;
   }

@@ -1,5 +1,5 @@
-import 'package:ablexa/features/student/feature_students_exams_page/data/repos/get_material_by_teacher_id_repo/get_material_by_teacher_id_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../data/repos/get_material_by_teacher_id_repo/get_material_by_teacher_id_repo.dart';
 import 'get_material_by_teacher_id_state.dart';
 
 class GetMaterialByTeacherIdCubit extends Cubit<GetMaterialByTeacherIdState> {

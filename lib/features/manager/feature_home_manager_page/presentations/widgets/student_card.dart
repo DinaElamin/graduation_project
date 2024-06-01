@@ -1,4 +1,3 @@
-import 'package:ablexa/features/manager/feature_get_all_student_by_id_page/logic/get_all_students_by_class_id_cubit/get_all_students_by_class_id_cubit.dart';
 import 'package:ablexa/features/manager/feature_home_manager_page/logic/cubits/delete_user_cubit/delete_user_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/Routing/routers.dart';
@@ -109,7 +108,7 @@ class _StudentCardState extends State<StudentCard> {
                             'email':getStudentByIdModel.email.toString(),
                             'token':widget.token,
                             'nationalNumber':getStudentByIdModel.nationalNumber.toString(),
-                            'yearId':getStudentByIdModel.year!.yearId,
+                            'yearId':getStudentByIdModel.term!.termId,
                             'classId':getStudentByIdModel.classId
                           });
                         },

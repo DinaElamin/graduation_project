@@ -1,17 +1,36 @@
+import 'package:ablexa/features/manager/feature_student_edit_profile_page/data/models/get_student_by_id_model.dart';
+import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/get_students_by_id_cubit/get_students_by_id_cubit.dart';
+import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/cubits/get_students_by_id_cubit/get_students_by_id_state.dart';
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/theming/colors.dart';
+import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 import 'attendence_widget.dart';
 import 'behaviors_widget.dart';
 import 'exam_widget.dart';
 
-class StudentInformationsWidget extends StatelessWidget {
-  const StudentInformationsWidget({Key? key, required this.roleName, required this.teacherId});
-final String roleName,teacherId;
+class StudentInformationsWidget extends StatefulWidget {
+  const StudentInformationsWidget({Key? key, required this.roleName, required this.teacherId, required this.studentId, required this.token});
+final String roleName,teacherId,studentId,token;
+
   @override
+  State<StudentInformationsWidget> createState() => _StudentInformationsWidgetState();
+}
+
+class _StudentInformationsWidgetState extends State<StudentInformationsWidget> {
+  @override
+
+
   Widget build(BuildContext context) {
+    setState(() {
+
+      context
+          .read<GetStudentByIdCubit>()
+          .emitAllStudentsByClassId(studentId: widget.studentId);
+    });
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,10 +70,42 @@ final String roleName,teacherId;
                 child:  TabBarView(
                   children: [
                     // Add your TabBarView children here
-                    AttendenceWidget(),
-                    ExamWidget(
-                      teacherId: teacherId,
-                      roleName: roleName,
+                    const AttendenceWidget(),
+                  // ExamWidget(
+                  //   token: widget.token,
+                  //   studentId:widget.studentId,
+                  //   termId: 110,
+                  //   teacherId: widget.teacherId,
+                  //   roleName: widget.roleName,
+                  // ),
+                    BlocBuilder<GetStudentByIdCubit,
+                        GetStudentByIdState>(
+                      builder: (context, state) {
+                        return state.when(initial: () {
+                          return const Center(
+                            child: CircularProgressIndicator(
+                              color: ColorsManager.mainColor,
+                            ),
+                          );
+                        }, loading: () {
+                          return const Center(
+                            child: CircularProgressIndicator(
+                              color: ColorsManager.mainColor,
+                            ),
+                          );
+                        }, success: (data) {
+                          final GetStudentByIdModel
+                          getStudentByIdModel = data;
+                          return ExamWidget(
+                            studentId:widget.studentId,
+                            termId: getStudentByIdModel.term!.termId!,
+                            teacherId: widget.teacherId,
+                            roleName: widget.roleName, token: widget.token,
+                          );
+                        }, error: (error) {
+                          return setupErrorState(context, error);
+                        });
+                      },
                     ),
                     BehaviorsWidget(), // Adjust as needed
                   ],
@@ -64,6 +115,35 @@ final String roleName,teacherId;
           ),
         ),
       ],
+    );
+  }
+
+   setupErrorState(BuildContext context, String error) {
+    Navigator.of(context).pop();
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        content: Text(
+          error,
+          style: TextStyles.font14MediumLightBlack,
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text(
+              'Got It ',
+              style: TextStyles.font20BoldBlack,
+            ),
+          ),
+        ],
+        icon: const Icon(
+          Icons.error,
+          color: Colors.red,
+          size: 32,
+        ),
+      ),
     );
   }
 }

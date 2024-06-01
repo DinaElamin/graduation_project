@@ -13,6 +13,7 @@ import 'package:ablexa/features/manager/feature_student_edit_profile_page/logic/
 import 'package:ablexa/features/manager/feature_student_edit_profile_page/presentations/screens/student_edit_profile_page.dart';
 import 'package:ablexa/features/student/feature_students_exams_page/logic/cubits/get_material_by_teacher_id_cubit/get_material_by_teacher_id_cubit.dart';
 import 'package:ablexa/features/teacher/feature_add_exam_page/logic/cubits/add_exam_cubit/add_exam_cubit.dart';
+import 'package:ablexa/features/teacher/feature_quiz_update_degree_page/logic/cubits/edit_grade_cubit/edit_grade_cubit.dart';
 import '../../features/feature_change_password_page/logic/cubits/change_password_cubit/change_password_cubit.dart';
 import '../../features/feature_login_page/logic/cubits/login_cubit/login_cubit/login_cubit.dart';
 import '../../features/feature_verify_code_page/logic/cubits/verify_code_cubit/verify_code_cubit.dart';
@@ -47,10 +48,14 @@ import '../../features/manager/feature_home_manager_page/presentations/screens/f
 import '../../features/manager/feature_profile_manager_page/presentations/screens/profile_manager.dart';
 import '../../features/student/feature_quiz_degree_page/presentations/screens/quiz_degree.dart';
 import '../../features/student/feature_student_profile_page/presentations/screens/student_profile_page.dart';
+import '../../features/student/feature_students_exams_page/logic/cubits/get_student_material_grade_cubit/get_student_material_grade_cubit.dart';
 import '../../features/student/feature_students_exams_page/presentations/screens/student_exams.dart';
+import '../../features/student/feature_subject_details_page/logic/cubits/subject_details_cubit/get_subject_details_cubit.dart';
 import '../../features/student/feature_subject_details_page/presentations/screens/subject_details.dart';
 import '../../features/teacher/feature_add_exam_page/presentations/screens/add_exam_page.dart';
 import '../../features/teacher/feature_profile_teacher_page/presentations/screens/profile_teacher.dart';
+import '../../features/teacher/feature_quiz_add_degree_page/logic/cubits/add_grade_cubit/add_grade_cubit.dart';
+import '../../features/teacher/feature_quiz_add_degree_page/presentations/screens/quiz_add_degree_page.dart';
 import '../../features/teacher/feature_quiz_update_degree_page/presentations/screens/quiz_update_degree_page.dart';
 import '../../features/teacher/feature_students_page/presentations/screens/students_page.dart';
 import '../../features/teacher/feature_teacher_home_page/presentations/screens/feature_teacher_home.dart';
@@ -366,6 +371,7 @@ class AppRouter {
         final int classId = args['classId'];
         final String roleName = args['roleName'];
         final String teacherId = args['teacherId'];
+        final String token = args['token'];
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
             providers: [
@@ -374,6 +380,7 @@ class AppRouter {
               ),
             ],
             child: StudentsPage(
+              token: token,
               teacherId: teacherId,
               roleName: roleName,
               classId: classId,
@@ -439,13 +446,17 @@ class AppRouter {
         final String teacherId = args['TeacherId'];
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
-            providers: [
-    BlocProvider(
-    create: (context) => getIt<AddExamCubit>(),),
-    BlocProvider(
-    create: (context) => getIt<GetMaterialByTeacherIdCubit>(),)
-            ],
-
+              providers: [
+                BlocProvider(
+                  create: (context) => getIt<AddExamCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt<GetMaterialByTeacherIdCubit>(),
+                ),
+                BlocProvider(
+                  create: (context) => getIt<GetStudentMaterialGradeCubit>(),
+                ),
+              ],
               child: AddExamPage(
                 TeacherId: teacherId,
                 token: token,
@@ -466,39 +477,131 @@ class AppRouter {
         final int classId = args['classId'];
         final String roleName = args['roleName'];
         final String teacherId = args['teacherId'];
+        final String studentId = args["studentId"];
+        final String token = args['token'];
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
             providers: [
-              BlocProvider(create: (context) => getIt<GetMaterialByTeacherIdCubit>(),)
+              BlocProvider(
+                create: (context) => getIt<GetMaterialByTeacherIdCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<GetStudentMaterialGradeCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<GetStudentByIdCubit>(),
+              )
             ],
             child: StudentExamsPage(
+              studentId: studentId,
               teacherId: teacherId,
-              roleName:roleName,
+              roleName: roleName,
               classId: classId,
               nationalIdStudent: nationalIdStudent,
               imageStudent: imageStudent,
               nameStudent: nameStudent,
               emailStudent: emailStudent,
+              token: token,
             ),
+          ),
+        );
+    // add student Exams grade page
+      case Routes.addExamDegree:
+        final args = settings.arguments as Map<dynamic, dynamic>;
+        final String quizName = args['quizName'];
+        final String imageExam = args['imageExam'];
+        final String token = args['token'];
+        final String TeacherId = args['TeacherId'];
+        final String studentId = args['studentId'];
+        final int ExamId = args['ExamId'];
+
+        return MaterialPageRoute(
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<AddGradeCubit>(),
+            child: QuizAddDegreePage(
+                token: token,
+                TeacherId: TeacherId,
+                ExamId: ExamId,
+                StudentId: studentId,
+                imageExam: imageExam,
+                quizName: quizName),
           ),
         );
       // student Exams page
       case Routes.quizUpdatedDegreePage:
-        final String quizName = settings.arguments as String;
+        final args = settings.arguments as Map<dynamic, dynamic>;
+        final String quizName = args['quizName'];
+        final String imageExam = args['imageExam'];
+        final String token = args['token'];
+        final String TeacherId = args['TeacherId'];
+        final String studentId = args['studentId'];
+        final int ExamId = args['ExamId'];
+        final int studentGradeId = args['studentGradeId'];
+
         return MaterialPageRoute(
-          builder: (context) => QuizUpdateDegreePage(quizName: quizName),
+          builder: (context) => BlocProvider(
+            create: (context) => getIt<EditGradeCubit>(),
+            child: QuizUpdateDegreePage(
+              studentGradeId: studentGradeId,
+                token: token,
+                TeacherId: TeacherId,
+                ExamId: ExamId,
+                StudentId: studentId,
+                imageExam: imageExam,
+                quizName: quizName),
+          ),
         );
       // student Exams page
+      // 'imageExam':imageExam,
+      // 'totalDegreeFromExam':examGrade,
+      // 'studentExamGrade':studentExamGrade,
+      // 'quizName':quizName
       case Routes.quizDegreePage:
-        final String quizName = settings.arguments as String;
+        final args = settings.arguments as Map<dynamic, dynamic>;
+        final String quizName = args['quizName'];
+        final String imageExam = args['imageExam'];
+        final int studentExamGrade = args['studentExamGrade'];
+        final int totalDegreeFromExam = args['totalDegreeFromExam'];
+        final String roleName = args['roleName'];
+        final String token = args['token'];
+        final String TeacherId = args['TeacherId'];
+        final String studentId = args['studentId'];
+        final int ExamId = args['ExamId'];
         return MaterialPageRoute(
-          builder: (context) => QuizDegree(quizName: quizName),
+          builder: (context) => QuizDegree(
+            TeacherId: TeacherId,
+            ExamId: ExamId,
+            token: token,
+            studentId: studentId,
+            roleName: roleName,
+            imageExam: imageExam,
+            studentExamGrade: studentExamGrade,
+            totalDegreeFromExam: totalDegreeFromExam,
+            quizName: quizName,
+          ),
         );
       // subject details page
       case Routes.subjectDetailsPage:
-        final String subjectName = settings.arguments as String;
+        final args = settings.arguments as Map<dynamic, dynamic>;
+        final String subjectName = args['subjectName'];
+        final String studentId = args['studentId'];
+        final int materialId = args['materialId'];
+        final String token = args['token'];
+        final String roleName = args['roleName'];
+        final String TeacherId = args['TeacherId'];
+
         return MaterialPageRoute(
-            builder: (context) => SubjectDetailsPage(subjectName: subjectName));
+            builder: (context) => BlocProvider(
+                  create: (context) => getIt<SubjectDetailsCubit>(),
+                  child: SubjectDetailsPage(
+                    TeacherId: TeacherId,
+                    roleName: roleName,
+                    token: token,
+                    subjectName: subjectName,
+                    studentId: studentId,
+                    materialId: materialId,
+                  ),
+                ));
       // student Exams page
       case Routes.resetPasswordPage:
         return MaterialPageRoute(
@@ -513,10 +616,12 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (context) => MultiBlocProvider(
             providers: [
-    BlocProvider(
-    create: (context) => getIt<AddMaterialGradeCubit>(),),
-    BlocProvider(
-    create: (context) => getIt<GetAllMaterialByTermIdCubit>(),),
+              BlocProvider(
+                create: (context) => getIt<AddMaterialGradeCubit>(),
+              ),
+              BlocProvider(
+                create: (context) => getIt<GetAllMaterialByTermIdCubit>(),
+              ),
             ],
             child: AddDegreeFromMaterial(
               semesterName: semesterName,
