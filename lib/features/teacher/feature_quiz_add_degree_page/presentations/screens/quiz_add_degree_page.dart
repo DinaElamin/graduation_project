@@ -29,7 +29,7 @@ class _QuizAddDegreePageState extends State<QuizAddDegreePage> {
     return Scaffold(
 
       body: Form(
-        key: formKey, // Set the key for the Form widget
+        key:context.read<AddGradeCubit>().formKey,
         child: ListView(
           children: [
             AppBarWidget(pageName: widget.quizName,),

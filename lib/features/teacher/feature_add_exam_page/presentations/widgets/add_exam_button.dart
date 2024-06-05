@@ -11,8 +11,8 @@ import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 class AddExamButton extends StatefulWidget {
   const AddExamButton({super.key, required this.token, this.onPressedFunction});
-final String token;
-final Function()? onPressedFunction;
+  final String token;
+  final Function()? onPressedFunction;
   @override
   State<AddExamButton> createState() => _AddExamButtonState();
 }
@@ -25,28 +25,28 @@ class _AddExamButtonState extends State<AddExamButton> {
       child: BlocListener<AddExamCubit, AddExamState>(
         listener: (context, state) {
           state.when(
-            initial: () {
-              return const Center(
-                child: CircularProgressIndicator(
-                  color: ColorsManager.mainColor,
-                ),
-              );
-            },
-            loading: () {
-              return const Center(
-                child: CircularProgressIndicator(
-                  color: ColorsManager.mainColor,
-                ),
-              );
-            },
-            success: (data) {
-              showSuccessDialog(onPressed: () {
-                context.pop();
+              initial: () {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: ColorsManager.mainColor,
+                  ),
+                );
+              },
+              loading: () {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: ColorsManager.mainColor,
+                  ),
+                );
+              },
+              success: (data) {
+                showSuccessDialog(onPressed: () {
+                  context.pop();
 
-              }, context,
-                  text: S.of(context).add_exam,
-                  contentText: S.of(context).add_exam_successfully);
-            },
+                }, context,
+                    text: S.of(context).add_exam,
+                    contentText: S.of(context).add_exam_successfully);
+              },
               error: (error) {
                 setupErrorState(context, error);
               });
@@ -56,8 +56,8 @@ class _AddExamButtonState extends State<AddExamButton> {
             buttonHeight: 60.h,
             textButton: S.of(context).add_teacher,
             onPressed:
-              widget.onPressedFunction
-            ),
+            widget.onPressedFunction
+        ),
       ),
     );
   }

@@ -181,28 +181,35 @@ class _SubjectDegreeWidgetState extends State<SubjectDegreeWidget> {
         child: SizedBox(
           height: 70.h,
           child: Container(
-            // Change color to purple if studentExamGrade is 0
-            color:
-                isNotUpdatedYet ? Colors.purple : ColorsManager.lighterPurple,
+            decoration: BoxDecoration(
+              color: isNotUpdatedYet ? Colors.purple : ColorsManager.lighterPurple,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  spreadRadius: 1,
+                  blurRadius: 3,
+                  offset: Offset(0, 2),
+                ),
+              ],
+            ),
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.w),
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(quizName, style: TextStyles.font20BoldBlack),
-                  // Change degree text if studentExamGrade is 0
                   Text(
-                    isNotUpdatedYet
-                        ? 'NotUpdatedYet'
-                        : "$studentExamGrade/$examGrade",
+                    isNotUpdatedYet ? 'NotUpdatedYet' : "$studentExamGrade/$examGrade",
                     style: isNotUpdatedYet
-                        ? const TextStyle(color: Colors.white)
+                        ? TextStyle(color: Colors.white)
                         : TextStyles.font18SemiBoldPurple,
                   ),
                 ],
               ),
             ),
           ),
+
         ),
       ),
     );

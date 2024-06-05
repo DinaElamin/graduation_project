@@ -12,14 +12,14 @@ import '../widgets/add_exam_text_form_fields.dart';
 
 class AddExamPage extends StatefulWidget {
   const AddExamPage({Key? key, required this.token, required this.TeacherId}) : super(key: key);
-final String token,TeacherId;
+  final String token,TeacherId;
   @override
   State<AddExamPage> createState() => _AddExamPageState();
 }
 
 class _AddExamPageState extends State<AddExamPage> {
   final formKey = GlobalKey<FormState>();
-  late String subjectIdFromAddExam;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,13 +35,7 @@ class _AddExamPageState extends State<AddExamPage> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  AddExamTextFormFields(
-                    teacherId: widget.TeacherId,
-                    onSubjectIdSelected: (subjectId) {
-                      subjectIdFromAddExam = subjectId;
-                      print("Selected subject ID: $subjectId");
-                    },
-                  ),
+                   AddExamTextFormFields(),
                   UploadImageFileWidget(onImageSelected: (file) {
                     setState(() {
                       imageFile = file;
@@ -66,13 +60,13 @@ class _AddExamPageState extends State<AddExamPage> {
       ),
     );
   }
-
   void validateThenDoAddExam(BuildContext context) {
     if (context.read<AddExamCubit>().formKey.currentState!.validate()) {
       // Check if imageFile is not null before proceeding
       if (imageFile != null) {
         // Extract integers from text controllers
         final int examGrade = int.tryParse(context.read<AddExamCubit>().examGradeController.text) ?? 0;
+        final int materialId = int.tryParse(context.read<AddExamCubit>().subjectIdController.text) ?? 0;
 
         context.read<AddExamCubit>().emitAddExamStates(
           widget.token,
@@ -80,7 +74,7 @@ class _AddExamPageState extends State<AddExamPage> {
           Name: context.read<AddExamCubit>().examNameController.text,
           Exam_Grade: examGrade,
           Image: imageFile!,
-          MaterialId: int.parse(subjectIdFromAddExam),
+          MaterialId: materialId,
         );
       } else {
         showDialog(

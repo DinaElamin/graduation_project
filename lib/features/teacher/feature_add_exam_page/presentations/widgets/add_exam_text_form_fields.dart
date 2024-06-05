@@ -1,5 +1,4 @@
 import 'package:ablexa/features/teacher/feature_add_exam_page/logic/cubits/add_exam_cubit/add_exam_cubit.dart';
-import 'package:ablexa/features/teacher/feature_add_exam_page/presentations/widgets/subjects_drop_down_add_exam.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -11,15 +10,9 @@ import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 
 
-class AddExamTextFormFields extends StatefulWidget {
-  const AddExamTextFormFields({Key? key, required this.teacherId, required this.onSubjectIdSelected}) : super(key: key);
- final String teacherId;
-  final void Function(String) onSubjectIdSelected;
-  @override
-  State<AddExamTextFormFields> createState() => _AddExamTextFormFieldsState();
-}
-late String subjectId;
-class _AddExamTextFormFieldsState extends State<AddExamTextFormFields> {
+class AddExamTextFormFields extends StatelessWidget {
+  const AddExamTextFormFields({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -45,7 +38,7 @@ class _AddExamTextFormFieldsState extends State<AddExamTextFormFields> {
           },
         ),
         verticalSpacing(20),
-        Text("Exam Grade", style: TextStyles.font20BoldBlack),
+        Text(S.of(context).grade, style: TextStyles.font20BoldBlack),
         verticalSpacing(10),
         AppTextFormField(
           controller:  context.read<AddExamCubit>().examGradeController,
@@ -55,7 +48,7 @@ class _AddExamTextFormFieldsState extends State<AddExamTextFormFields> {
             borderRadius: BorderRadius.circular(8.sp),
             borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
           ),
-          hintText: "enter grade ",
+          hintText: S.of(context).enter_class_code,
           validator: (value) {
             if (value == null || value.isEmpty) {
               return 'Please enter a grade';
@@ -64,15 +57,23 @@ class _AddExamTextFormFieldsState extends State<AddExamTextFormFields> {
           },
         ),
         verticalSpacing(20),
-        AddExamSubjectsDropDown(
-          onSubjectSelected: (subject) {
-            setState(() {
-              subjectId = subject;
-              print("the subject choose is :$subject");
-              // Pass the subject ID to the callback function
-              widget.onSubjectIdSelected(subject);
-            });
-          }, teacherId: widget.teacherId,
+        Text(S.of(context).subject_id, style: TextStyles.font20BoldBlack),
+        verticalSpacing(10),
+        AppTextFormField(
+          controller: context.read<AddExamCubit>().subjectIdController,
+          textInputType: TextInputType.number,
+          fillColorFromBackground: ColorsManager.mainWhite,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.sp),
+            borderSide: BorderSide(color: ColorsManager.mainBlack.withOpacity(0.3)),
+          ),
+          hintText: S.of(context).enter_subject_id,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter a subject ID';
+            }
+            return null;
+          },
         ),
         verticalSpacing(20),
       ],
