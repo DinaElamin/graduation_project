@@ -893,6 +893,40 @@ class _ApiService implements ApiService {
   }
 
   @override
+  Future<List<GetClassesByTeacherIdModel>> getClassesByTeacherId(
+    String token,
+    String TeacherId,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<List<dynamic>>(
+        _setStreamType<List<GetClassesByTeacherIdModel>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'api/PClass/getClassesByTeacherId/${TeacherId}',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    var value = _result.data!
+        .map((dynamic i) =>
+            GetClassesByTeacherIdModel.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
   Future<List<GetStudentMaterialGradeModel>> getStudentMaterialGrade(
     String token,
     String studentId,

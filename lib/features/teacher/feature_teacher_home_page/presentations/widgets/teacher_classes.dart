@@ -1,3 +1,6 @@
+import 'package:ablexa/features/teacher/feature_teacher_home_page/data/models/get_classes_by_teacher_Id_model/get_classes_by_teacher_Id_model.dart';
+import 'package:ablexa/features/teacher/feature_teacher_home_page/logic/cubits/get_classes_by_teacher_id_cubit/get_classes_by_teacher_id_cubit.dart';
+import 'package:ablexa/features/teacher/feature_teacher_home_page/logic/cubits/get_classes_by_teacher_id_cubit/get_classes_by_teacher_id_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/helper/extentions.dart';
 import 'package:flutter/material.dart';
@@ -6,9 +9,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/Routing/routers.dart';
 import '../../../../../core/theming/colors.dart';
 import '../../../../../core/theming/styles.dart';
-import '../../../../manager/feature_home_manager_page/data/models/get_all_classes_model/get_all_classes_model.dart';
-import '../../../../manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_cubit.dart';
-import '../../../../manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_state.dart';
 
 class TeacherClasses extends StatefulWidget {
   const TeacherClasses({Key? key,  required this.roleName, required this.teacherId, required this.token}) : super(key: key);
@@ -22,7 +22,7 @@ class _ClassCardListViewState extends State<TeacherClasses> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GetAllClassesDataCubit, GetAllClassesDataState>(
+    return BlocBuilder<GetClassesByTeacherIdCubit, GetClassesByTeacherIdState>(
       builder: (context, state) {
         return state.when(initial: () {
           return const Center(
@@ -37,11 +37,11 @@ class _ClassCardListViewState extends State<TeacherClasses> {
             ),
           );
         }, success: (data) {
-          final List<GetAllClassesModel> getAllClassesModel = data;
+          final List<GetClassesByTeacherIdModel> getClassesByTeacherIdModel = data;
           return ListView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
-            itemCount: getAllClassesModel
+            itemCount: getClassesByTeacherIdModel
                 .length, // Example itemCount, replace with your actual data length
             itemBuilder: (context, index) {
               return  GestureDetector(
@@ -51,8 +51,8 @@ class _ClassCardListViewState extends State<TeacherClasses> {
                     selectedIndex = index;
                   });
                   context.pushNamed(Routes.studentsPage, arguments: {
-                    'className': getAllClassesModel[index].className,
-                    'classId':getAllClassesModel[index].classId,
+                    'className': getClassesByTeacherIdModel[index].name,
+                    'classId':getClassesByTeacherIdModel[index].id,
                     'roleName':widget.roleName,
                     'teacherId':widget.teacherId,
                     'token':widget.token
@@ -67,7 +67,7 @@ class _ClassCardListViewState extends State<TeacherClasses> {
                       color: ColorsManager.mainColor,
                     ),
                     child: ListTile(
-                      title: Text(getAllClassesModel[index].className.toString(), style: TextStyles.font18SemiBoldWhite),
+                      title: Text(getClassesByTeacherIdModel[index].name.toString(), style: TextStyles.font18SemiBoldWhite),
 
                     ),
                   ),

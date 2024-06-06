@@ -25,6 +25,7 @@ import 'package:ablexa/features/teacher/feature_add_exam_page/data/repos/add_exa
 import 'package:ablexa/features/teacher/feature_add_exam_page/logic/cubits/add_exam_cubit/add_exam_cubit.dart';
 import 'package:ablexa/features/teacher/feature_quiz_update_degree_page/data/repos/edit_grade_repo/edit_grade.dart';
 import 'package:ablexa/features/teacher/feature_quiz_update_degree_page/logic/cubits/edit_grade_cubit/edit_grade_cubit.dart';
+import 'package:ablexa/features/teacher/feature_teacher_home_page/logic/cubits/get_classes_by_teacher_id_cubit/get_classes_by_teacher_id_cubit.dart';
 import '../../features/feature_change_password_page/data/repos/change_password_repo/change_password_repo.dart';
 import '../../features/feature_change_password_page/logic/cubits/change_password_cubit/change_password_cubit.dart';
 import '../../features/feature_login_page/data/repos/login_repo/login_repo.dart';
@@ -58,6 +59,7 @@ import '../../features/student/feature_students_exams_page/logic/cubits/get_mate
 import '../../features/student/feature_students_exams_page/logic/cubits/get_student_material_grade_cubit/get_student_material_grade_cubit.dart';
 import '../../features/teacher/feature_quiz_add_degree_page/data/repos/add_grade_repo/add_grade.dart';
 import '../../features/teacher/feature_quiz_add_degree_page/logic/cubits/add_grade_cubit/add_grade_cubit.dart';
+import '../../features/teacher/feature_teacher_home_page/data/repos/get_classes_by_teacher_id_repo/get_classes_by_teacher_id_repo.dart';
 import '../networking/api_service.dart';
 import '../networking/dio_factory.dart';
 final getIt = GetIt.instance;
@@ -153,4 +155,7 @@ final getIt = GetIt.instance;
   //edit grade
   getIt.registerLazySingleton<EditGradeRepo>(() => EditGradeRepo(getIt()));
   getIt.registerFactory<EditGradeCubit>(() => EditGradeCubit(getIt()));
+  //classes by teacher id
+  getIt.registerLazySingleton<GetClassesByTeacherId>(() => GetClassesByTeacherId(getIt()));
+  getIt.registerFactory<GetClassesByTeacherIdCubit>(() => GetClassesByTeacherIdCubit(getIt()));
  }

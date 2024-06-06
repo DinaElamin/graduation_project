@@ -1,4 +1,5 @@
 import 'package:ablexa/core/helper/extentions.dart';
+import 'package:ablexa/features/teacher/feature_teacher_home_page/logic/cubits/get_classes_by_teacher_id_cubit/get_classes_by_teacher_id_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/Routing/routers.dart';
@@ -9,7 +10,6 @@ import '../../../../../core/theming/styles.dart';
 import '../../../../../generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_cubit.dart';
 import '../widgets/profile_and_setting_widget.dart';
 import '../widgets/teacher_classes.dart';
 
@@ -26,7 +26,7 @@ class _TeacherHomeState extends State<TeacherHome> {
   @override
   Widget build(BuildContext context) {
     setState(() {
-      context.read<GetAllClassesDataCubit>().emitAllClassesStates();
+      context.read<GetClassesByTeacherIdCubit>().emitAllStudentsByClassId(token: widget.token, teacherId: widget.TeacherId);
     });
     return Scaffold(
       backgroundColor: ColorsManager.grey,

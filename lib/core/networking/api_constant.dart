@@ -30,6 +30,7 @@ class ApiConstant {
  static const String getStudentGradesDetailsForOneMaterial = "api/Material/getStudentGradesDetailsForOneMaterial";
  static const String addGrade = "api/StudentGrades/addgrades";
  static const String editGradeExam = "api/StudentGrades/updategrade";
+ static const String getClassesByTeacherId ="api/PClass/getClassesByTeacherId";
 }
 
 class ApiErrors {

@@ -58,6 +58,7 @@ import '../../features/teacher/feature_quiz_add_degree_page/logic/cubits/add_gra
 import '../../features/teacher/feature_quiz_add_degree_page/presentations/screens/quiz_add_degree_page.dart';
 import '../../features/teacher/feature_quiz_update_degree_page/presentations/screens/quiz_update_degree_page.dart';
 import '../../features/teacher/feature_students_page/presentations/screens/students_page.dart';
+import '../../features/teacher/feature_teacher_home_page/logic/cubits/get_classes_by_teacher_id_cubit/get_classes_by_teacher_id_cubit.dart';
 import '../../features/teacher/feature_teacher_home_page/presentations/screens/feature_teacher_home.dart';
 import '../di/dependacy_injection.dart';
 import 'routers.dart';
@@ -332,6 +333,7 @@ class AppRouter {
                 BlocProvider(
                   create: (context) => getIt<GetSemesterByIdCubit>(),
                 ),
+
               ],
               child: GradeDetailsPage(
                   token: token, materialid: materialid, gradeName: gradeName)),
@@ -350,7 +352,7 @@ class AppRouter {
           builder: (context) => MultiBlocProvider(
             providers: [
               BlocProvider(
-                create: (context) => getIt<GetAllClassesDataCubit>(),
+                create: (context) => getIt<GetClassesByTeacherIdCubit>(),
               ),
             ],
             child: TeacherHome(
