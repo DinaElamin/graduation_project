@@ -13,6 +13,10 @@ class TextStyles {
       color: ColorsManager.darkGreenColor,
       fontSize: 15.sp,
       fontWeight: FontWeightHelper.medium);
+      static TextStyle font15MediumDarkred = TextStyle(
+      color: Color.fromARGB(255, 121, 43, 43),
+      fontSize: 15.sp,
+      fontWeight: FontWeightHelper.medium);
   static TextStyle font20BoldBlack = TextStyle(
       color: ColorsManager.mainBlack,
       fontSize: 20.sp,

@@ -1,5 +1,8 @@
 import 'package:ablexa/core/helper/extentions.dart';
+import 'package:ablexa/features/feature_setting_page/presentations/screens/setting_page.dart';
+import 'package:ablexa/features/teacher/feature_profile_teacher_page/presentations/screens/profile_teacher.dart';
 import 'package:ablexa/features/teacher/feature_teacher_home_page/logic/cubits/get_classes_by_teacher_id_cubit/get_classes_by_teacher_id_cubit.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/Routing/routers.dart';
@@ -22,7 +25,7 @@ class TeacherHome extends StatefulWidget {
 }
 
 class _TeacherHomeState extends State<TeacherHome> {
-
+  int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     setState(() {
@@ -30,101 +33,122 @@ class _TeacherHomeState extends State<TeacherHome> {
     });
     return Scaffold(
       backgroundColor: ColorsManager.grey,
-      body: ListView(children: [
-        Container(
-          decoration: const BoxDecoration(color: ColorsManager.mainColor),
-          child: Row(
-
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Image.asset(ImageManager.logoApp,height: 50.sp,width: 50.sp),
-              ),
-              horizontalSpacing(50.sp),
-              Center(child: Text(S.of(context).home_page,style: TextStyles.font20BoldWhite,)),
-              horizontalSpacing(90.sp),
-              PopupMenuButton<String>(
-                offset: const Offset(0, 40), // Offset to position menu under the icon
-                itemBuilder: (BuildContext context) => [
-                  PopupMenuItem(
-                    onTap: () {
-                      context.pushNamed(Routes.teacherProfilePage,arguments: {
-                        'TeacherId':widget.TeacherId,
-                        'token':widget.token,
-                        'nameTeacher':widget.nameTeacher,
-                        'emailTeacher':widget.emailTeacher,
-                        'imageTeacher':widget.imageTeacher,
-                        'nationalNumber':widget.nationalNumber,
-                      });
-                    },
-                    value: 'my_profile',
-                    child: SizedBox(
-                      width: 100.w,
-                      child: Row(
-                        children: [
-                          const Icon(Icons.person_outline_sharp),
-                          horizontalSpacing(5),
-                          Text(S.of(context).my_profile, style: TextStyles.font12BlackBold),
-                        ],
+      body: IndexedStack(
+        children:[ ListView(children: [
+          Container(
+            decoration: const BoxDecoration(color: ColorsManager.mainColor),
+            child: Row(
+        
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Image.asset(ImageManager.logoApp,height: 50.sp,width: 50.sp),
+                ),
+                horizontalSpacing(50.sp),
+                Center(child: Text(S.of(context).home_page,style: TextStyles.font20BoldWhite,)),
+                horizontalSpacing(90.sp),
+                PopupMenuButton<String>(
+                  offset: const Offset(0, 40), // Offset to position menu under the icon
+                  itemBuilder: (BuildContext context) => [
+                    PopupMenuItem(
+                      onTap: () {
+                        context.pushNamed(Routes.teacherProfilePage,arguments: {
+                          'TeacherId':widget.TeacherId,
+                          'token':widget.token,
+                          'nameTeacher':widget.nameTeacher,
+                          'emailTeacher':widget.emailTeacher,
+                          'imageTeacher':widget.imageTeacher,
+                          'nationalNumber':widget.nationalNumber,
+                        });
+                      },
+                      value: 'my_profile',
+                      child: SizedBox(
+                        width: 100.w,
+                        child: Row(
+                          children: [
+                            const Icon(Icons.person_outline_sharp),
+                            horizontalSpacing(5),
+                            Text(S.of(context).my_profile, style: TextStyles.font12BlackBold),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  PopupMenuItem(
-                    onTap: () {
-                      context.pushNamed(Routes.settingPage);
-                    },
-                    value: 'settings',
-                    child: SizedBox(
-                        width: 100.w,
-                        child: Row(children: [
-                          const Icon(Icons.settings),
-                          horizontalSpacing(5),
-                          Text(S.of(context).setting, style: TextStyles.font12BlackBold),
-                        ],)
+                    PopupMenuItem(
+                      onTap: () {
+                        context.pushNamed(Routes.settingPage);
+                      },
+                      value: 'settings',
+                      child: SizedBox(
+                          width: 100.w,
+                          child: Row(children: [
+                            const Icon(Icons.settings),
+                            horizontalSpacing(5),
+                            Text(S.of(context).setting, style: TextStyles.font12BlackBold),
+                          ],)
+                      ),
                     ),
+                  ],
+                  icon:  Image.asset(ImageManager.settingWhite), // Use Flutter's built-in Icon widget
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16), // Set border radius to 16
                   ),
-                ],
-                icon:  Image.asset(ImageManager.settingWhite), // Use Flutter's built-in Icon widget
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16), // Set border radius to 16
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        verticalSpacing(20),
-        Padding(
-          padding: EdgeInsets.only(left: 10.w, right: 10.w),
-          child: Column(
-            children: [
-
-              ProfileInformationWidget(
-                 imageTeacher: widget.imageTeacher,
-                 emailTeacher: widget.emailTeacher,
-                 nameTeacher: widget.nameTeacher,
-               ),
-              verticalSpacing(20),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Text(
-                    S.of(context).classes,
-                    style: TextStyles.font20BoldBlack,
-                  ),
-                  verticalSpacing(10),
-                   TeacherClasses(
-                     token: widget.token,
-                     teacherId: widget.TeacherId,
-                     roleName: widget.roleName,
-                  ),
-                ],
-              ),
-              verticalSpacing(20),
-            ],
-          ),
-        )
+          verticalSpacing(20),
+          Padding(
+            padding: EdgeInsets.only(left: 10.w, right: 10.w),
+            child: Column(
+              children: [
+        
+                ProfileInformationWidget(
+                   imageTeacher: widget.imageTeacher,
+                   emailTeacher: widget.emailTeacher,
+                   nameTeacher: widget.nameTeacher,
+                 ),
+                verticalSpacing(20),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      S.of(context).classes,
+                      style: TextStyles.font20BoldBlack,
+                    ),
+                    verticalSpacing(10),
+                     TeacherClasses(
+                       token: widget.token,
+                       teacherId: widget.TeacherId,
+                       roleName: widget.roleName,
+                    ),
+                  ],
+                ),
+                verticalSpacing(20),
+              ],
+            ),
+          )
+        ]),
+        ProfileTeacherPage(nameTeacher: widget.nameTeacher, emailTeacher: widget.emailTeacher, imageTeacher: widget.imageTeacher, nationalNumber: widget.nationalNumber, token: widget.token, teacherId: widget.TeacherId),
+        SettingPage(),
       ]),
+      bottomNavigationBar: CurvedNavigationBar(  
+        color: Color(0xff6C63FF),
+        backgroundColor: Colors.transparent,
+        buttonBackgroundColor: Color(0xff6C63FF),
+        animationDuration: Duration(milliseconds: 500),
+          index: _currentIndex,
+          items: const <Widget>[
+            Icon(Icons.home, size: 30,color: Colors.white),
+            Icon(Icons.person, size: 30,color: Colors.white),
+            Icon(Icons.settings, size: 30,color: Colors.white),
+            
+          ],
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });},
+      ),
     );
   }
 }

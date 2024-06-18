@@ -1,3 +1,5 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+
 import '../../../../core/helper/extentions.dart';
 import '../../../../core/theming/colors.dart';
 import '../../../../core/theming/spacing.dart';
@@ -56,6 +58,29 @@ class SettingPage extends StatelessWidget {
           )
         ],
       ),
+      //  bottomNavigationBar: CurvedNavigationBar(
+      //    color: Color(0xff6C63FF),
+      //    backgroundColor: Colors.transparent,
+      //    buttonBackgroundColor: Color(0xff6C63FF),
+      //    animationDuration: Duration(milliseconds: 500),
+      //    items: [
+      //      Icon(
+      //       Icons.home_outlined,
+      //        color: Colors.white,
+      //        size: 30,
+      //      ),
+      //      Icon(
+      //        Icons.settings_outlined,
+      //        color: Colors.white,
+      //        size: 30,
+      //      ),
+      //      Icon(
+      //        Icons.person_2_sharp,
+      //        color: Colors.white,
+      //        size: 30,
+      //      ),
+      //    ],
+      //  ),
     );
   }
 }

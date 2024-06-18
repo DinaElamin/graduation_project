@@ -69,8 +69,35 @@ class _StudentInformationsWidgetState extends State<StudentInformationsWidget> {
                 height: MediaQuery.of(context).size.height * 0.7, // Adjust height as needed
                 child:  TabBarView(
                   children: [
+                    BlocBuilder<GetStudentByIdCubit,
+                        GetStudentByIdState>(
+                      builder: (context, state) {
+                        return state.when(initial: () {
+                          return const Center(
+                            child: CircularProgressIndicator(
+                              color: ColorsManager.mainColor,
+                            ),
+                          );
+                        }, loading: () {
+                          return const Center(
+                            child: CircularProgressIndicator(
+                              color: ColorsManager.mainColor,
+                            ),
+                          );
+                        }, success: (data) {
+                          // final GetStudentByIdModel
+                          // getStudentByIdModel = data;
+                          return AttendenceWidget(
+                            studentId:widget.studentId,
+                            token: widget.token,
+                          );
+                        }, error: (error) {
+                          return setupErrorState(context, error);
+                        });
+                      },
+                    ),
                     // Add your TabBarView children here
-                    const AttendenceWidget(),
+                    // const AttendenceWidget(),
                   // ExamWidget(
                   //   token: widget.token,
                   //   studentId:widget.studentId,

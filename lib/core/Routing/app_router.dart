@@ -48,6 +48,7 @@ import '../../features/manager/feature_home_manager_page/presentations/screens/f
 import '../../features/manager/feature_profile_manager_page/presentations/screens/profile_manager.dart';
 import '../../features/student/feature_quiz_degree_page/presentations/screens/quiz_degree.dart';
 import '../../features/student/feature_student_profile_page/presentations/screens/student_profile_page.dart';
+import '../../features/student/feature_students_exams_page/logic/cubits/get_student_attendance_cubit.dart';
 import '../../features/student/feature_students_exams_page/logic/cubits/get_student_material_grade_cubit/get_student_material_grade_cubit.dart';
 import '../../features/student/feature_students_exams_page/presentations/screens/student_exams.dart';
 import '../../features/student/feature_subject_details_page/logic/cubits/subject_details_cubit/get_subject_details_cubit.dart';
@@ -485,6 +486,9 @@ class AppRouter {
           builder: (context) => MultiBlocProvider(
             providers: [
               BlocProvider(
+                create: (context) => getIt<GetStudentAttendanceCubit>(),
+              ),
+              BlocProvider(
                 create: (context) => getIt<GetMaterialByTeacherIdCubit>(),
               ),
               BlocProvider(
@@ -633,6 +637,7 @@ class AppRouter {
             ),
           ),
         );
+
       default:
         return MaterialPageRoute(
           builder: (context) => Scaffold(

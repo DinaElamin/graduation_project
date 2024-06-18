@@ -20,6 +20,7 @@ import '../../features/manager/feature_get_all_student_by_id_page/data/model/get
 import '../../features/manager/feature_home_manager_page/data/models/get_all_classes_model/get_all_classes_model.dart';
 import '../../features/manager/feature_student_edit_profile_page/data/models/get_student_by_id_model.dart';
 import '../../features/student/feature_students_exams_page/data/models/get_material_by_teacher_id_model/get_material_by_teacher_id_model.dart';
+import '../../features/student/feature_students_exams_page/data/models/get_student_attendance_model.dart';
 import '../../features/student/feature_subject_details_page/data/models/subject_details_model/subject_details_model.dart';
 import '../../features/teacher/feature_teacher_home_page/data/models/get_classes_by_teacher_Id_model/get_classes_by_teacher_Id_model.dart';
 import 'api_constant.dart';
@@ -227,6 +228,12 @@ abstract class ApiService {
       @Path("studentId") String studentId,
       @Path("termId") int termId,
 
+      );
+  // get student attendance
+  @GET("${ApiConstant.getStudentAttendance}")
+  Future<List<GetStudentAttendanceModel>>getStudentAttendance(
+       @Header("Authorization") String token,
+       @Query("id") String studentId,
       );
   // getStudentGradesDetailsForOneMaterial
   @GET("${ApiConstant.getStudentGradesDetailsForOneMaterial}/{studentId}/{materialId}")

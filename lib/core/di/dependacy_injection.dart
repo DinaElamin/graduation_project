@@ -55,7 +55,9 @@ import '../../features/manager/feature_student_edit_profile_page/data/repo/edit_
 import '../../features/manager/feature_student_edit_profile_page/data/repo/get_student_by_id_repo/get_student_by_id_repo.dart';
 import '../../features/manager/feature_student_edit_profile_page/logic/cubits/get_students_by_id_cubit/get_students_by_id_cubit.dart';
 import '../../features/student/feature_students_exams_page/data/repos/get_material_by_teacher_id_repo/get_material_by_teacher_id_repo.dart';
+import '../../features/student/feature_students_exams_page/data/repos/get_student_attendance_repo/get_student_attendance_repo.dart';
 import '../../features/student/feature_students_exams_page/logic/cubits/get_material_by_teacher_id_cubit/get_material_by_teacher_id_cubit.dart';
+import '../../features/student/feature_students_exams_page/logic/cubits/get_student_attendance_cubit.dart';
 import '../../features/student/feature_students_exams_page/logic/cubits/get_student_material_grade_cubit/get_student_material_grade_cubit.dart';
 import '../../features/teacher/feature_quiz_add_degree_page/data/repos/add_grade_repo/add_grade.dart';
 import '../../features/teacher/feature_quiz_add_degree_page/logic/cubits/add_grade_cubit/add_grade_cubit.dart';
@@ -137,6 +139,10 @@ final getIt = GetIt.instance;
   //get all material by termId
   getIt.registerLazySingleton<GetAllMaterialByTermIdRepo>(() => GetAllMaterialByTermIdRepo(getIt()));
   getIt.registerFactory<GetAllMaterialByTermIdCubit>(() => GetAllMaterialByTermIdCubit(getIt()));
+  //get attendance
+  getIt.registerLazySingleton<GetStudentAttendanceRepo>(() => GetStudentAttendanceRepo(getIt()));
+  getIt.registerFactory<GetStudentAttendanceCubit>(() => GetStudentAttendanceCubit(getIt()));
+  
   //get teacher by id
   getIt.registerLazySingleton<GetTeacherByIdRepo>(() => GetTeacherByIdRepo(getIt()));
   getIt.registerFactory<GetTeacherByIdCubit>(() => GetTeacherByIdCubit(getIt()));
