@@ -1,3 +1,4 @@
+import 'package:ablexa/core/theming/colors.dart';
 import '../../../../core/theming/spacing.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/shared_widgets/appBar_widget.dart';
@@ -21,7 +22,18 @@ class _LoginPageState extends State<LoginPage> {
       body: SafeArea(
         child: ListView(children: [
           AppBarWidget(pageName: S.of(context).login),
-          verticalSpacing(100),
+          verticalSpacing(20),
+          CircleAvatar(
+            radius: 40,
+            backgroundColor: ColorsManager.mainColor,
+            child: Image.asset(
+              'assets/images/photo_2024-06-22_14-08-36.jpg',
+              height: 100,
+              width: 100,
+              fit: BoxFit.fill,
+            ),
+          ),
+          verticalSpacing(30),
           Text(
             textAlign: TextAlign.center,
             S.of(context).login_text,
@@ -35,11 +47,8 @@ class _LoginPageState extends State<LoginPage> {
               style: TextStyles.font14MediumLightBlack),
           verticalSpacing(50),
           const AllTextFieldsWidget(),
-
         ]),
       ),
     );
   }
-
-
 }

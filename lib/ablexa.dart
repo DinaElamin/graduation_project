@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:klocalizations_flutter/klocalizations_flutter.dart';
-
 import 'core/Routing/app_router.dart';
 import 'core/Routing/routers.dart';
 import 'core/theming/colors.dart';
@@ -26,12 +25,12 @@ class AplexaApp extends StatelessWidget {
         ],
         supportedLocales: S.delegate.supportedLocales,
         debugShowCheckedModeBanner: false,
-        title: 'Doc App',
+        title: 'aplexa app',
         theme: ThemeData(
           primaryColor: ColorsManager.mainColor,
           scaffoldBackgroundColor: Colors.white,
         ),
-        initialRoute: Routes.landingPage,
+        initialRoute: Routes.splashScreen,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );

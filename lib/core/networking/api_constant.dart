@@ -4,6 +4,7 @@ class ApiConstant {
  static const String getAllTeacherData = "api/User/getallteachers";
  static const String getAllStudentData = "api/User/getallstudentd";
  static const String getAllClassesData = "api/PClass/getallclasses";
+ static const String getViolenceData = "api/GettingAttendance/getBehavior";
  static const String getAllStudentByClassId = "api/User/getstudentsbyclass";
  static const String verifyCode = "api/User/send_reset_code";
  static const String verifyPinCode ="api/User/verify_pin";

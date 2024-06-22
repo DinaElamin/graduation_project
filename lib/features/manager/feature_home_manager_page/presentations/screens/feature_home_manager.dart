@@ -1,5 +1,4 @@
 import 'package:ablexa/core/theming/image_manager.dart';
-import 'package:ablexa/features/feature_login_page/data/models/login/response/login_response_model.dart';
 import 'package:ablexa/features/feature_setting_page/presentations/screens/setting_page.dart';
 import 'package:ablexa/features/manager/feature_profile_manager_page/presentations/screens/profile_manager.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
@@ -31,13 +30,13 @@ class HomeManagerPage extends StatefulWidget {
 class _HomeManagerPageState extends State<HomeManagerPage>
     with TickerProviderStateMixin {
   late TabController tabController;
-  int _currentIndex = 0;  
+  int _currentIndex = 0;
 
   @override
   void initState() {
     super.initState();
     tabController =
-        TabController(length: 4, vsync: this); // Updated length to 4
+        TabController(length: 5, vsync: this); // Updated length to 4
   }
 
   @override
@@ -46,9 +45,8 @@ class _HomeManagerPageState extends State<HomeManagerPage>
       child: Scaffold(
         backgroundColor:
             ColorsManager.grey, // Set scaffold background color to white
-        body: IndexedStack(
-          index: _currentIndex,
-          children:[ SingleChildScrollView(
+        body: IndexedStack(index: _currentIndex, children: [
+          SingleChildScrollView(
             child: Column(
               children: [
                 Container(
@@ -57,8 +55,22 @@ class _HomeManagerPageState extends State<HomeManagerPage>
                     children: [
                       Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Image.asset(ImageManager.logoApp,
-                            height: 50.sp, width: 50.sp),
+                        child: Container(
+                            width: 50.0,
+                            height: 50.0,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/photo_2024-06-22_14-08-36.jpg'),
+                                fit: BoxFit.fill,
+                              ),
+                            )),
+                        // child: Image.asset(
+                        //   "assets/images/photo_2024-06-22_14-08-36.jpg",
+                        //   height: 50.sp,
+                        //   width: 50.sp,
+                        // ),
                       ),
                       horizontalSpacing(50.sp),
                       Center(
@@ -137,162 +149,32 @@ class _HomeManagerPageState extends State<HomeManagerPage>
             ),
           ),
           ProfileManagerPage(
-              token: widget.token,
-              nameManager: widget.nameManager,
-              emailManager: widget.emailManager,
-              nationalId: widget.nationalNumber,
-              imageManager: widget.imageManager,
-            ),
-            SettingPage()
-          ]
-        ),
-        bottomNavigationBar: CurvedNavigationBar(  
-        color: Color(0xff6C63FF),
-        backgroundColor: Colors.transparent,
-        buttonBackgroundColor: Color(0xff6C63FF),
-        animationDuration: Duration(milliseconds: 500),
+            token: widget.token,
+            nameManager: widget.nameManager,
+            emailManager: widget.emailManager,
+            nationalId: widget.nationalNumber,
+            imageManager: widget.imageManager,
+          ),
+          SettingPage()
+        ]),
+        bottomNavigationBar: CurvedNavigationBar(
+          color: Color(0xff6C63FF),
+          backgroundColor: Colors.transparent,
+          buttonBackgroundColor: Color(0xff6C63FF),
+          animationDuration: Duration(milliseconds: 500),
           index: _currentIndex,
           items: const <Widget>[
-            Icon(Icons.home, size: 30,color: Colors.white),
-            Icon(Icons.person, size: 30,color: Colors.white),
-            Icon(Icons.settings, size: 30,color: Colors.white),
-            
+            Icon(Icons.home, size: 30, color: Colors.white),
+            Icon(Icons.person, size: 30, color: Colors.white),
+            Icon(Icons.settings, size: 30, color: Colors.white),
           ],
           onTap: (index) {
             setState(() {
               _currentIndex = index;
-            });},
+            });
+          },
+        ),
       ),
-    ),);
+    );
   }
 }
-// class BaseNavigationScreen extends StatefulWidget {
-//   final LoginResponseModel loginResponseModel;
-
-//   BaseNavigationScreen({required this.loginResponseModel});
-
-//   @override
-//   _BaseNavigationScreenState createState() => _BaseNavigationScreenState();
-// }
-
-// class _BaseNavigationScreenState extends State<BaseNavigationScreen> {
-//   int _currentIndex = 0;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final List<Widget> screens = [
-//       HomeManagerPage(
-//         token: widget.loginResponseModel.token,
-//         imageManager: widget.loginResponseModel.imageManager,
-//         nameManager: widget.loginResponseModel.nameManager,
-//         emailManager: widget.loginResponseModel.emailManager,
-//         nationalNumber: widget.loginResponseModel.nationalNumber,
-//       ),
-//       ProfileManagerPage(
-//         token: widget.loginResponseModel.token,
-//         nameManager: widget.loginResponseModel.nameManager,
-//         emailManager: widget.loginResponseModel.emailManager,
-//         nationalId: widget.loginResponseModel.nationalId,
-//         imageManager: widget.loginResponseModel.imageManager,
-//       ),
-//       const SettingPage(),
-//     ];
-
-//     return Scaffold(
-//       body: screens[_currentIndex],
-//       bottomNavigationBar: CurvedNavigationBar(
-//         color: Color(0xff6C63FF),
-//         backgroundColor: Colors.transparent,
-//         buttonBackgroundColor: Color(0xff6C63FF),
-//         animationDuration: Duration(milliseconds: 500),
-//         index: _currentIndex,
-//         onTap: (index) {
-//           setState(() {
-//             _currentIndex = index;
-//           });
-//         },
-//         items: [
-//           Icon(
-//             Icons.home_outlined,
-//             color: Colors.white,
-//             size: 30,
-//           ),
-//           Icon(
-//             Icons.settings_outlined,
-//             color: Colors.white,
-//             size: 30,
-//           ),
-//           Icon(
-//             Icons.person_2_sharp,
-//             color: Colors.white,
-//             size: 30,
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
-
-// class BaseNavigationScreen extends StatefulWidget {
-
-    
-//   @override
-//   _BaseNavigationScreenState createState() => _BaseNavigationScreenState();
-// }
-
-// class _BaseNavigationScreenState extends State<BaseNavigationScreen> {
-
-//   int _currentIndex = 0;
-//   final screens = [
-//     HomeManagerPage(
-//         token:,
-//         imageManager: imageManager,
-//         nameManager: nameManager,
-//         emailManager: emailManager,
-//         nationalNumber: nationalNumber),
-//     ProfileManagerPage(
-//         token:token ,
-//         nameManager: nameManager,
-//         emailManager: emailManager,
-//         nationalId: nationalId,
-//         imageManager: imageManager),
-//     const SettingPage()
-//   ];
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       body: screens[_currentIndex],
-//       bottomNavigationBar: CurvedNavigationBar(
-//         color: Color(0xff6C63FF),
-//         backgroundColor: Colors.transparent,
-//         buttonBackgroundColor: Color(0xff6C63FF),
-//         animationDuration: Duration(milliseconds: 500),
-//         index: _currentIndex,
-//         onTap: (index) {
-//           setState(() {
-//             _currentIndex = index;
-//           });
-//         },
-//         items: [
-//           Icon(
-//             Icons.home_outlined,
-//             color: Colors.white,
-//             size: 30,
-//           ),
-//           Icon(
-//             Icons.settings_outlined,
-//             color: Colors.white,
-//             size: 30,
-//           ),
-//           Icon(
-//             Icons.person_2_sharp,
-//             color: Colors.white,
-//             size: 30,
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }

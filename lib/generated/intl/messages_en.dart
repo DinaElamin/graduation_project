@@ -39,7 +39,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "appearance": MessageLookupByLibrary.simpleMessage("Appearance"),
         "attendence": MessageLookupByLibrary.simpleMessage("Attendence"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
-        "behaviors": MessageLookupByLibrary.simpleMessage("Behaviors"),
+        "Violence": MessageLookupByLibrary.simpleMessage("Violence"),
         "camera": MessageLookupByLibrary.simpleMessage("Camera"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "change_password":

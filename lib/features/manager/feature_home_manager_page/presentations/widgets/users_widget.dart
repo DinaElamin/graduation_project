@@ -1,3 +1,5 @@
+import 'package:ablexa/features/manager/feature_home_manager_page/presentations/widgets/violence_list_veiw.dart';
+
 import 'grades_list_view.dart';
 import 'students_list_view.dart';
 import 'teachers_list_view.dart';
@@ -30,7 +32,7 @@ final String token;
         verticalSpacing(20),
         DefaultTabController(
           animationDuration: const Duration(milliseconds: 30),
-          length: 4,
+          length: 5,
           child: Column(
             children: <Widget>[
               ButtonsTabBar(
@@ -57,6 +59,8 @@ final String token;
                   Tab(text: S.of(context).students),
                   Tab(text: S.of(context).classes),
                   Tab(text: S.of(context).grades,),
+                  Tab(text: S.of(context).behaviors,),
+
                 ],
               ),
               SizedBox(
@@ -68,6 +72,7 @@ final String token;
                     StudentsListView(token: token),
                     const ClassCardListView(),
                     GradesListView(token: token),
+                    const ViolenceListView(),
                   ],
                 ),
               ),

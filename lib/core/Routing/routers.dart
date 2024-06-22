@@ -1,5 +1,8 @@
 
+
+
 class Routes {
+  static const splashScreen = '/splashPage';
   static const landingPage = '/landingPage';
   static const loginPage = '/loginPage';
   static const forgetPasswordPage = '/forgetPasswordPage';

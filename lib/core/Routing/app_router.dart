@@ -1,3 +1,4 @@
+import 'package:ablexa/features/feature_splash_page/presentation/screens/feature_splash_page.dart';
 import 'package:ablexa/features/manager/feature_add_grade_page/logic/cubits/add_year_cubit/add_year_cubit.dart';
 import 'package:ablexa/features/manager/feature_add_student_page/logic/cubits/get_all_semester_cubit/get_all_year_cubit.dart';
 import 'package:ablexa/features/manager/feature_add_teacher_page/logic/cubits/get_all_material_cubit/get_all_material_cubit.dart';
@@ -44,6 +45,7 @@ import '../../features/manager/feature_add_teacher_page/presentations/screens/ad
 import '../../features/manager/feature_garde_details_page/presentations/screens/grade_details_page.dart';
 import '../../features/manager/feature_grades_page/presentations/screens/grades_page.dart';
 import '../../features/manager/feature_home_manager_page/logic/cubits/get_all_student_cubit/get_all_student_cubit/get_all_student_cubit.dart';
+import '../../features/manager/feature_home_manager_page/logic/cubits/get_violence_cubit/get_violence_cubit.dart';
 import '../../features/manager/feature_home_manager_page/presentations/screens/feature_home_manager.dart';
 import '../../features/manager/feature_profile_manager_page/presentations/screens/profile_manager.dart';
 import '../../features/student/feature_quiz_degree_page/presentations/screens/quiz_degree.dart';
@@ -71,6 +73,10 @@ class AppRouter {
       case Routes.landingPage:
         return MaterialPageRoute(
           builder: (context) => const LandingPage(),
+        );
+        case Routes.splashScreen:
+        return MaterialPageRoute(
+          builder: (context) =>  SplashScreen(),
         );
       //LoginPage
       case Routes.loginPage:
@@ -132,6 +138,9 @@ class AppRouter {
               providers: [
                 BlocProvider(
                   create: (context) => getIt<GetAllStudentDataCubit>(),
+                ),
+                 BlocProvider(
+                  create: (context) => getIt<GetViolenceCubit>(),
                 ),
                 BlocProvider(
                   create: (context) => getIt<DeleteUserCubit>(),

@@ -18,6 +18,7 @@ import '../../features/feature_verify_code_page/data/models/verify_pin_code_mode
 import '../../features/feature_verify_code_page/data/models/verify_pin_code_model/response/verify_code_pin_response_model.dart';
 import '../../features/manager/feature_get_all_student_by_id_page/data/model/get_all_student_by_id_model/get_all_student_by_id_model.dart';
 import '../../features/manager/feature_home_manager_page/data/models/get_all_classes_model/get_all_classes_model.dart';
+import '../../features/manager/feature_home_manager_page/data/models/get_violence_model/get_violence_model.dart';
 import '../../features/manager/feature_student_edit_profile_page/data/models/get_student_by_id_model.dart';
 import '../../features/student/feature_students_exams_page/data/models/get_material_by_teacher_id_model/get_material_by_teacher_id_model.dart';
 import '../../features/student/feature_students_exams_page/data/models/get_student_attendance_model.dart';
@@ -249,6 +250,9 @@ abstract class ApiService {
   // getAllClass Page
   @GET(ApiConstant.getAllClassesData)
   Future<List<GetAllClassesModel>> getAllClassesData();
+ //get violence for manager page 
+  @GET(ApiConstant.getViolenceData)
+  Future<List<GetViolenceModel>> getViolenceData();
   // getAllStudentsByClassId Page
   @GET("${ApiConstant.getAllStudentByClassId}/{classId}")
   Future<List<GetAllStudentsByClassIdModel>> getAllStudentsByClassId(

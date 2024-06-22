@@ -43,6 +43,7 @@ import '../../features/manager/feature_get_all_student_by_id_page/data/repos/get
 import '../../features/manager/feature_get_all_student_by_id_page/logic/get_all_students_by_class_id_cubit/get_all_students_by_class_id_cubit.dart';
 import '../../features/manager/feature_home_manager_page/data/repos/get_all_classes_repo/get_all_classes_repo.dart';
 import '../../features/manager/feature_home_manager_page/data/repos/get_all_teacher_repo/get_all_teacher_repo.dart';
+import '../../features/manager/feature_home_manager_page/data/repos/get_violence_repo/get_violence_repo.dart';
 import '../../features/manager/feature_home_manager_page/logic/cubits/get_all_classes_cubit/get_all_classes_cubit.dart';
 import '../../features/manager/feature_home_manager_page/logic/cubits/get_all_teacher_cubit/login_cubit/get_all_teacher_cubit.dart';
 import 'package:dio/dio.dart';
@@ -51,6 +52,7 @@ import '../../features/feature_verify_code_page/data/repos/verify_pin_code_repo/
 import '../../features/feature_verify_code_page/logic/cubits/verify_pin_code_cubit/verify_pin_code_cubit.dart';
 import '../../features/manager/feature_home_manager_page/data/repos/get_all_student_repo/get_all_student_repo.dart';
 import '../../features/manager/feature_home_manager_page/logic/cubits/get_all_student_cubit/get_all_student_cubit/get_all_student_cubit.dart';
+import '../../features/manager/feature_home_manager_page/logic/cubits/get_violence_cubit/get_violence_cubit.dart';
 import '../../features/manager/feature_student_edit_profile_page/data/repo/edit_student_profile_repo/edit_student_profile_repo.dart';
 import '../../features/manager/feature_student_edit_profile_page/data/repo/get_student_by_id_repo/get_student_by_id_repo.dart';
 import '../../features/manager/feature_student_edit_profile_page/logic/cubits/get_students_by_id_cubit/get_students_by_id_cubit.dart';
@@ -82,6 +84,9 @@ final getIt = GetIt.instance;
   // get all classes data
   getIt.registerLazySingleton<GetAllClassesRepo>(() => GetAllClassesRepo(getIt()));
   getIt.registerFactory<GetAllClassesDataCubit>(() => GetAllClassesDataCubit(getIt()));
+  // get violence
+  getIt.registerLazySingleton<GetViolenceRepo>(() => GetViolenceRepo(getIt()));
+  getIt.registerFactory<GetViolenceCubit>(() => GetViolenceCubit(getIt()));
   // get all students by classId data
   getIt.registerLazySingleton<GetAllStudentsByClassIdRepo>(() => GetAllStudentsByClassIdRepo(getIt()));
   getIt.registerFactory<GetAllStudentByClassIdCubit>(() => GetAllStudentByClassIdCubit(getIt()));
